@@ -1892,7 +1892,7 @@ footer .social a:hover {
 
 /* CTA Final Section */
 .cta-final {
-  background-image: url("img/cta-final/Background.png");
+  background-image: url("img/cta-final/background.png");
   background-position: center 60%; /* 👈 показва долната част на снимката */
   filter: brightness(80%);
   margin-bottom: 30px;
@@ -2464,4 +2464,5 @@ footer .social a:hover {
     padding: 15px 20px;
   }
 }
+
 
