@@ -1,91 +1,19 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>ConsultPro — Consulting Business Website</title>
-
-  <!-- Font Awesome (icons) -->
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
-
-  <!-- Your main stylesheet -->
+  <title>Consulting Business Website</title>
   <link rel="stylesheet" href="style.css">
-
-  <!-- Minimal critical CSS for header & language flags (helps avoid "no reaction" issues) -->
-  <style>
-    /* Header layout basics to ensure language switcher is placed & responsive */
-    .header {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      gap: 16px;
-      padding: 12px 20px;
-      position: sticky;
-      top: 0;
-      z-index: 100;
-      background: var(--header-bg, #0f1b23); /* fallback if not in style.css */
-      color: #fff;
-    }
-
-    .logo { font-size: 22px; font-weight: 700; }
-    .logo span { color: #0a7bff; }
-
-    .nav {
-      display:flex;
-      gap:12px;
-      align-items:center;
-      flex-wrap:wrap;
-    }
-
-    .menu-toggle { display:none; /* shown by your responsive CSS if needed */ }
-
-    /* Language switcher (kept here so it always applies even if external CSS not loaded) */
-    .language-switcher {
-      display: flex;
-      align-items: center;
-      gap: 12px;
-      margin-left: 12px;
-    }
-
-    .lang-btn {
-      background: transparent;
-      border: none;
-      padding: 4px;
-      cursor: pointer;
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      transition: transform 0.15s ease, box-shadow 0.15s ease;
-      border-radius: 6px;
-    }
-
-    .lang-btn img {
-      width: 36px;
-      height: 24px;
-      object-fit: cover;
-      display: block;
-      border-radius: 4px;
-      box-shadow: 0 0 0 rgba(0,0,0,0);
-    }
-
-    .lang-btn:hover { transform: translateY(-2px); }
-    .lang-btn.active { box-shadow: 0 0 0 3px rgba(10,123,255,0.12); }
-    /* small responsive rule so flags don't overflow on tiny screens */
-    @media (max-width:420px){
-      .lang-btn img{ width:30px; height:20px; }
-    }
-  </style>
 </head>
 <body>
 
   <!-- Header -->
   <header class="header">
-    <div style="display:flex; align-items:center; gap:16px;">
-      <div class="logo">Consult<span>Pro</span></div>
-      <button class="menu-toggle" aria-label="Toggle menu">☰</button>
-    </div>
-
-    <nav class="nav" aria-label="Main navigation">
+    <div class="logo">Consult<span>Pro</span></div>
+    <button class="menu-toggle">☰</button>
+    <nav class="nav">
       <a href="#home">Home</a>
       <a href="#services">Services</a>
       <a href="#stats">Stats</a>
@@ -95,388 +23,843 @@
       <a href="#contact">Contact</a>
       <a href="#map">Map</a>
     </nav>
+ 
+     <div class="language-switcher">
+  <button id="en-btn" class="lang-btn active">
+    <img src="img/flag/united kingdom.png" alt="English">
+  </button>
+  <button id="bg-btn" class="lang-btn">
+    <img src="img/flag/bulgaria.png" alt="Bulgarian">
+  </button>
+</div>
 
-    <div style="display:flex; align-items:center; gap:12px;">
-      <!-- Language switcher -->
-      <div class="language-switcher" role="toolbar" aria-label="Language switcher">
-        <button id="en-btn" class="lang-btn active" aria-pressed="true" title="English">
-          <img src="img/flag/united-kingdom.png" alt="English flag">
-        </button>
-        <button id="bg-btn" class="lang-btn" aria-pressed="false" title="Bulgarian">
-          <img src="img/flag/bulgaria.png" alt="Bulgarian flag">
-        </button>
-      </div>
-    </div>
-  </header>
+<style>
+    .language-switcher {
+      display: flex;
+      align-items: center;
+      gap: 20px;
+      margin-left: 15px;
+    }
 
-  <!-- Hero Section -->
+    .lang-btn {
+      background: transparent;
+      border: none;
+      padding: 3px;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .lang-btn img {
+      width: 45px !important;
+      height: 30px !important;
+      object-fit: cover;
+      border-radius: 4px;
+      display: block;
+    }
+
+    .lang-btn:hover img {
+      transform: scale(1.1);
+      transition: 0.3s;
+    }
+
+    .lang-btn.active {
+      outline: 2px solid #0a7bff;
+      border-radius: 4px;
+    }
+  </style>
+
+</header>
+
+  
+
+<!-- Hero Section -->
+ 
   <section id="home" class="hero">
-    <div class="hero-slider">
-      <div class="slide active" style="background-image: url('img/hero/slide1.jpg');"></div>
-      <div class="slide" style="background-image: url('img/hero/slide2.jpg');"></div>
-      <div class="slide" style="background-image: url('img/hero/slide3.jpg');"></div>
-    </div>
+  <div class="hero-slider">
+    <div class="slide active" style="background-image: url('img/Hero/slide1.jpg');"></div>
+    <div class="slide" style="background-image: url('img/hero/slide2.jpg');"></div>
+    <div class="slide" style="background-image: url('img/hero/slide3.jpg');"></div>
+  </div>
 
-    <div class="hero-content">
-      <h1>Grow Your Business with <span>ConsultPro</span></h1>
-      <p>We provide expert consulting services to help you achieve sustainable growth and success.</p>
-      <a href="#contact" class="btn">Get Started</a>
-    </div>
-  </section>
+  <div class="hero-content">
+    <h1>Grow Your Business with <span>ConsultPro</span></h1>
+    <p>We provide expert consulting services to help you achieve sustainable growth and success.</p>
+    <a href="#contact" class="btn">Get Started</a>
+  </div>
+</section>
 
-  <!-- Services -->
-  <section id="services" class="services">
-    <div class="container">
-      <h2>Our Services</h2>
-      <p class="subtitle">We provide professional consulting to help your business succeed.</p>
 
-      <div class="services-grid">
-        <div class="service-card">
-          <i class="fas fa-chart-line"></i>
-          <h3>Business Strategy</h3>
-          <p>Tailored strategies to help your company achieve sustainable growth and efficiency.</p>
-        </div>
-        <div class="service-card">
-          <i class="fas fa-coins"></i>
-          <h3>Financial Consulting</h3>
-          <p>Expert financial planning, analysis, and risk management for your business success.</p>
-        </div>
-        <div class="service-card">
-          <i class="fas fa-chart-pie"></i>
-          <h3>Market Analysis</h3>
-          <p>In-depth research and insights into your market to keep you ahead of competitors.</p>
-        </div>
-        <div class="service-card">
-          <i class="fas fa-chalkboard-teacher"></i>
-          <h3>Corporate Training</h3>
-          <p>Workshops and training sessions to boost team productivity and leadership skills.</p>
-        </div>
-        <div class="service-card">
-          <i class="fas fa-network-wired"></i>
-          <h3>IT Consulting</h3>
-          <p>Guidance on digital transformation, cloud solutions, and tech infrastructure.</p>
-        </div>
-        <div class="service-card">
-          <i class="fas fa-handshake"></i>
-          <h3>Partnership Development</h3>
-          <p>Building strong partnerships to expand your business opportunities worldwide.</p>
-        </div>
-      </div>
-    </div>
-  </section>
 
-  <!-- Process -->
-  <section id="process" class="process">
-    <div class="container">
-      <h2>Our Process</h2>
-      <p class="subtitle">We follow a clear and effective process to ensure successful results for every client.</p>
-      <div class="process-grid">
-        <div class="process-step"><i class="fas fa-comments"></i><h3>1. Consultation</h3><p>We start by understanding your business needs.</p></div>
-        <div class="process-step"><i class="fas fa-chart-line"></i><h3>2. Strategy</h3><p>We design data-driven strategies aligned with your goals.</p></div>
-        <div class="process-step"><i class="fas fa-cogs"></i><h3>3. Implementation</h3><p>We implement solutions and monitor performance.</p></div>
-        <div class="process-step"><i class="fas fa-trophy"></i><h3>4. Results</h3><p>We deliver measurable outcomes and recommendations.</p></div>
-      </div>
-    </div>
-  </section>
-
-  <!-- Stats -->
-  <section id="stats" class="stats">
-    <div class="container">
-      <div class="subtitle">
-        <h2>Our Achievements</h2>
-        <p>Key milestones that highlight our expertise and growth.</p>
-      </div>
-      <div class="stats-grid">
-        <div class="stat-item"><span class="number" data-target="120">0</span><p>Happy Clients</p></div>
-        <div class="stat-item"><span class="number" data-target="250">0</span><p>Completed Projects</p></div>
-        <div class="stat-item"><span class="number" data-target="10">0</span><p>Years of Experience</p></div>
-        <div class="stat-item"><span class="number" data-target="30">0</span><p>Expert Consultants</p></div>
-      </div>
-    </div>
-  </section>
-
-  <!-- Portfolio -->
-  <section id="portfolio" class="portfolio">
-    <h2>Our Projects</h2>
-    <p>Explore some of our featured works and consulting projects.</p>
-    <div class="portfolio-slider">
-      <div class="slide active">
-        <img src="img/portfolio/01.jpg" alt="Project 1">
-        <div class="caption"><h3>Business Growth Strategy</h3><p>Helping companies expand globally with smart solutions.</p></div>
-      </div>
-      <div class="slide">
-        <img src="img/portfolio/02.jpg" alt="Project 2">
-        <div class="caption"><h3>Digital Transformation</h3><p>Modernizing organizations for the new digital economy.</p></div>
-      </div>
-      <div class="slide">
-        <img src="img/portfolio/03.jpg" alt="Project 3">
-        <div class="caption"><h3>Financial Analysis</h3><p>Providing detailed financial insights and growth plans.</p></div>
-      </div>
-      <div class="slide">
-        <img src="img/portfolio/09.jpg" alt="Project 4">
-        <div class="caption"><h3>Corporate Training</h3><p>Empowering employees through leadership and innovation.</p></div>
-      </div>
-      <div class="slide">
-        <img src="img/portfolio/04.jpg" alt="Project 5">
-        <div class="caption"><h3>Partnership Development</h3><p>Creating strategic collaborations that drive business success.</p></div>
-      </div>
-      <button class="prev" aria-label="Previous slide">&#10094;</button>
-      <button class="next" aria-label="Next slide">&#10095;</button>
-    </div>
-  </section>
-
-  <!-- CASE STUDIES -->
-  <section id="case-studies" class="case-studies">
-    <div class="container">
-      <h2>Case Studies & Success Stories</h2>
-      <p class="subtitle">See how we’ve helped businesses achieve remarkable growth and transformation.</p>
-      <div class="case-grid">
-        <div class="case-card"><img src="img/cases/01.jpg" alt=""><div class="case-content"><h3>Financial Strategy Transformation</h3><p>We helped a UK-based finance firm boost efficiency by 35%...</p><a href="#" class="btn-read">Read Full Story</a></div></div>
-        <div class="case-card"><img src="img/cases/02.jpg" alt=""><div class="case-content"><h3>Digital Marketing Revamp</h3><p>Our team designed a new marketing strategy that increased engagement by 60%...</p><a href="#" class="btn-read">Read Full Story</a></div></div>
-        <div class="case-card"><img src="img/cases/03.jpg" alt=""><div class="case-content"><h3>Global Expansion Support</h3><p>ConsultPro guided a startup through international expansion...</p><a href="#" class="btn-read">Read Full Story</a></div></div>
-      </div>
-    </div>
-  </section>
-
-  <!-- Testimonials (team) -->
-  <section id="testimonials" class="testimonials">
-    <div class="container">
-      <h2>What Our Team Says</h2>
-      <p class="subtitle">Meet the people who make our company exceptional.</p>
-      <div class="testimonials-grid">
-        <div class="testimonial-card"><img src="img/team/01.jpg" alt=""><div class="testimonial-text"><p>“Working at ConsultPro has been an incredible journey!”</p><h4>John Smith</h4><span>CEO & Founder</span></div></div>
-        <div class="testimonial-card"><img src="img/team/03.jpg" alt=""><div class="testimonial-text"><p>“The teamwork and company culture here are truly inspiring.”</p><h4>Grace Campbell</h4><span>Financial Consultant</span></div></div>
-        <div class="testimonial-card"><img src="img/team/02.jpg" alt=""><div class="testimonial-text"><p>“ConsultPro gives you the freedom to innovate.”</p><h4>Mason Jerome</h4><span>Marketing Expert</span></div></div>
-      </div>
-    </div>
-  </section>
-
-  <!-- Why choose -->
-  <section id="why-choose" class="why-choose">
-    <div class="container">
-      <h2>Why Choose <span>ConsultPro</span></h2>
-      <p class="subtitle">Discover what makes our consulting services stand out.</p>
-      <div class="why-grid">
-        <div class="why-card"><i class="fas fa-user-tie"></i><h3>Experienced Professionals</h3><p>Our team brings years of industry experience and real-world business insight.</p></div>
-        <div class="why-card"><i class="fas fa-lightbulb"></i><h3>Innovative Strategies</h3><p>We develop creative, data-driven strategies to keep you ahead.</p></div>
-        <div class="why-card"><i class="fas fa-handshake"></i><h3>Client-Centric Approach</h3><p>Your goals are our priority — measurable success.</p></div>
-        <div class="why-card"><i class="fas fa-globe-europe"></i><h3>Global Expertise</h3><p>We deliver consulting solutions that meet international standards.</p></div>
-      </div>
-    </div>
-  </section>
-
-  <!-- Client testimonials -->
-  <section id="client-testimonials" class="testimonials">
-    <div class="container">
-      <h2>What Our Clients Say</h2>
-      <p class="subtitle">Real feedback from satisfied business partners.</p>
-      <div class="testimonials-grid">
-        <div class="testimonial-card"><img src="img/client/sarah-thompson.jpg" alt=""><h3>Sarah Thompson</h3><span>Marketing Director, VisionCorp</span><p>“ConsultPro helped us redefine our strategy and achieve record growth.”</p></div>
-        <div class="testimonial-card"><img src="img/client/james-walker.jpg" alt=""><h3>James Walker</h3><span>CEO, FinEdge Solutions</span><p>“Professional and reliable — their insights transformed us.”</p></div>
-        <div class="testimonial-card"><img src="img/client/emily-davis.jpg" alt=""><h3>Emily Davis</h3><span>Operations Manager, NovaTech</span><p>“Working with ConsultPro was a game changer.”</p></div>
-      </div>
-    </div>
-  </section>
-
-  <!-- FAQ -->
-  <section id="faq" class="faq">
-    <div class="container">
-      <h2>Frequently Asked Questions</h2>
-      <p class="subtitle">Answers to common questions about our consulting services.</p>
-
-      <div class="faq-item">
-        <button class="faq-question">What industries do you specialize in?</button>
-        <div class="faq-answer"><p>We work with finance, IT, healthcare, retail and more.</p></div>
+<!-- Services Section -->
+<section id="services" class="services">
+  <div class="container">
+    <h2>Our Services</h2>
+    <p class="subtitle">We provide professional consulting to help your business succeed.</p>
+    
+    <div class="services-grid">
+      <!-- Service 1 -->
+      <div class="service-card">
+        <i class="fas fa-chart-line"></i>
+        <h3>Business Strategy</h3>
+        <p>Tailored strategies to help your company achieve sustainable growth and efficiency.</p>
       </div>
 
-      <div class="faq-item">
-        <button class="faq-question">How long does a consulting project take?</button>
-        <div class="faq-answer"><p>Most projects take between 2 to 6 weeks depending on complexity.</p></div>
+      <!-- Service 2 -->
+      <div class="service-card">
+        <i class="fas fa-coins"></i>
+        <h3>Financial Consulting</h3>
+        <p>Expert financial planning, analysis, and risk management for your business success.</p>
       </div>
 
-      <div class="faq-item">
-        <button class="faq-question">Do you offer remote consulting?</button>
-        <div class="faq-answer"><p>Yes — both remote and in-person sessions are available.</p></div>
+      <!-- Service 3 -->
+      <div class="service-card">
+        <i class="fas fa-chart-pie"></i>
+        <h3>Market Analysis</h3>
+        <p>In-depth research and insights into your market to keep you ahead of competitors.</p>
       </div>
 
-      <div class="faq-item">
-        <button class="faq-question">Can you help with strategy and marketing?</button>
-        <div class="faq-answer"><p>Absolutely — we combine strategy with marketing insights to grow your brand.</p></div>
+      <!-- Service 4 -->
+      <div class="service-card">
+        <i class="fas fa-chalkboard-teacher"></i>
+        <h3>Corporate Training</h3>
+        <p>Workshops and training sessions to boost team productivity and leadership skills.</p>
       </div>
-    </div>
-  </section>
 
-  <!-- Partners -->
-  <section id="partners" class="partners">
-    <div class="container">
-      <h2>Our Trusted Partners</h2>
-      <p class="subtitle">We’re proud to collaborate with these leading brands and organizations.</p>
-      <div class="partners-grid">
-        <div class="partner-item"><img src="img/partners/1.jpg" alt=""></div>
-        <div class="partner-item"><img src="img/partners/2.jpg" alt=""></div>
-        <div class="partner-item"><img src="img/partners/3.jpg" alt=""></div>
-        <div class="partner-item"><img src="img/partners/4.jpg" alt=""></div>
-        <div class="partner-item"><img src="img/partners/5.jpg" alt=""></div>
+      <!-- Service 5 -->
+      <div class="service-card">
+        <i class="fas fa-network-wired"></i>
+        <h3>IT Consulting</h3>
+        <p>Guidance on digital transformation, cloud solutions, and tech infrastructure.</p>
       </div>
-    </div>
-  </section>
 
-  <!-- Awards -->
-  <section id="awards" class="awards">
-    <h2 class="section-title">Our Awards & Achievements</h2>
-    <p class="section-subtitle">Recognizing our dedication to excellence, innovation, and customer satisfaction.</p>
-    <div class="awards-container">
-      <div class="award-card"><img src="img/awards/trophy.png" alt=""><h3>Best Consulting Firm 2023</h3><p>Awarded for outstanding business strategy and innovation.</p></div>
-      <div class="award-card"><img src="img/awards/medal.png" alt=""><h3>Excellence in Customer Service</h3><p>Recognized for our exceptional client support and care.</p></div>
-      <div class="award-card"><img src="img/awards/briefcase.png" alt=""><h3>Top Business Growth 2024</h3><p>Honored for driving rapid and sustainable growth.</p></div>
-      <div class="award-card"><img src="img/awards/certificate.png" alt=""><h3>Innovation Award</h3><p>Celebrating creative and forward-thinking business solutions.</p></div>
-    </div>
-  </section>
-
-  <!-- Blog -->
-  <section id="blog" class="blog">
-    <div class="container">
-      <h2>Latest Insights</h2>
-      <p class="subtitle">Stay updated with our business tips, success stories, and industry news.</p>
-      <div class="blog-grid">
-        <div class="blog-post"><img src="img/blog/01.jpg" alt=""><div class="blog-content"><h3>How to Build a Winning Business Strategy</h3><p>Discover the key elements of developing a strong strategy.</p><a href="#" class="btn-read">Read More</a></div></div>
-        <div class="blog-post"><img src="img/blog/02.jpg" alt=""><div class="blog-content"><h3>Top 5 Market Trends for 2025</h3><p>Explore the biggest shifts that will shape the future of business.</p><a href="#" class="btn-read">Read More</a></div></div>
-        <div class="blog-post"><img src="img/blog/03.jpg" alt=""><div class="blog-content"><h3>Boost Your Team’s Productivity</h3><p>Learn techniques to keep your team motivated and efficient.</p><a href="#" class="btn-read">Read More</a></div></div>
-      </div>
-    </div>
-  </section>
-
-  <!-- Pricing -->
-  <section id="pricing" class="pricing">
-    <div class="container">
-      <h2>Our Pricing Plans</h2>
-      <p class="subtitle">Choose a plan that fits your business needs and goals.</p>
-      <div class="pricing-grid">
-        <div class="pricing-card"><h3>Basic</h3><p class="price">$199 / month</p><ul><li>✔ Business Consultation</li><li>✔ Financial Planning</li><li>✖ Marketing Strategy</li><li>✖ Ongoing Support</li></ul><a href="#contact" class="btn">Choose Plan</a></div>
-        <div class="pricing-card featured"><h3>Standard</h3><p class="price">$399 / month</p><ul><li>✔ Full Business Consultation</li><li>✔ Financial & Market Analysis</li><li>✔ Marketing Strategy</li><li>✖ Dedicated Consultant</li></ul><a href="#contact" class="btn">Choose Plan</a></div>
-        <div class="pricing-card"><h3>Premium</h3><p class="price">Custom</p><ul><li>✔ Complete Business Solutions</li><li>✔ Dedicated Expert Consultant</li><li>✔ Full Support 24/7</li><li>✔ Growth Strategy Reports</li></ul><a href="#contact" class="btn">Choose Plan</a></div>
-      </div>
-    </div>
-  </section>
-
-  <!-- Journey -->
-  <section id="journey" class="journey">
-    <div class="container">
-      <h2>Our Journey</h2>
-      <p class="subtitle">A look back at our milestones and growth through the years.</p>
-      <div class="timeline">
-        <div class="timeline-item"><div class="timeline-content"><h3>2016 Foundation of ConsultPro</h3><h4>Company Founded</h4><p>ConsultPro began its journey as a small consultancy firm.</p></div></div>
-        <div class="timeline-item"><div class="timeline-content"><h3>2018 International Expansion</h3><h4>First Major Client</h4><p>We secured our first international client and expanded our services.</p></div></div>
-        <div class="timeline-item"><div class="timeline-content"><h3>2020 Innovation & Growth</h3><h4>Global Expansion</h4><p>Our consulting team grew across Europe.</p></div></div>
-        <div class="timeline-item"><div class="timeline-content"><h3>2023</h3><h4>100+ Projects Completed</h4><p>Celebrated over 100 successful consulting projects delivered worldwide.</p></div></div>
-        <div class="timeline-item"><div class="timeline-content"><h3>2025</h3><h4>Innovation & Digital Future</h4><p>ConsultPro continues to lead in digital transformation and innovation.</p></div></div>
-      </div>
-    </div>
-  </section>
-
-  <!-- Careers -->
-  <section id="careers" class="careers">
-    <div class="container">
-      <h2>Join <span>Our Team</span></h2>
-      <p class="subtitle">We're always looking for passionate and talented professionals to grow with us.</p>
-      <div class="careers-grid">
-        <div class="career-card"><h3>Business Consultant</h3><p>Provide expert advice and insights to help clients improve efficiency.</p><ul><li><i class="fas fa-check-circle"></i> 3+ years experience in consulting</li><li><i class="fas fa-check-circle"></i> Strong analytical skills</li><li><i class="fas fa-check-circle"></i> Excellent communication</li></ul><a href="#contact" class="btn-apply">Apply Now</a></div>
-        <div class="career-card"><h3>Financial Analyst</h3><p>Analyze financial data and develop strategies for sustainable growth.</p><ul><li><i class="fas fa-check-circle"></i> Degree in Finance or Economics</li><li><i class="fas fa-check-circle"></i> Strong Excel & modeling skills</li><li><i class="fas fa-check-circle"></i> Detail-oriented mindset</li></ul><a href="#contact" class="btn-apply">Apply Now</a></div>
-        <div class="career-card"><h3>Marketing Manager</h3><p>Lead digital campaigns and branding initiatives to boost visibility.</p><ul><li><i class="fas fa-check-circle"></i> 5+ years in marketing</li><li><i class="fas fa-check-circle"></i> Experience with Google Ads & SEO</li><li><i class="fas fa-check-circle"></i> Creative thinker</li></ul><a href="#contact" class="btn-apply">Apply Now</a></div>
-      </div>
-    </div>
-  </section>
-
-  <!-- CTA final -->
-  <section class="cta-final">
-    <div class="cta-content">
-      <h2>Ready to Take Your Business to the Next Level?</h2>
-      <p>Our experts are here to help you grow, innovate, and succeed in every step of your journey.</p>
-      <a href="#contact" class="btn-primary">Contact Us</a>
-    </div>
-  </section>
-
-  <!-- Contact -->
-  <section id="contact" class="contact">
-    <div class="container">
-      <h2>Contact Us</h2>
-      <p class="subtitle">We’d love to hear from you. Get in touch with our team.</p>
-      <div class="contact-grid">
-        <div class="contact-info">
-          <h3>Get in Touch</h3>
-          <p>Whether you’re looking for business advice or collaboration, we’re here to help.</p>
-          <ul>
-            <li><i class="fas fa-map-marker-alt"></i> 15A Business Street, London, UK</li>
-            <li><i class="fas fa-envelope"></i> info@consultpro.co.uk</li>
-            <li><i class="fas fa-phone"></i> +44 20 1234 5678</li>
-            <li><i class="fas fa-clock"></i> Mon – Fri: 9:00 – 18:00</li>
-          </ul>
-        </div>
-        <div class="contact-form">
-          <form>
-            <div class="form-group"><input type="text" placeholder="Your Name" required></div>
-            <div class="form-group"><input type="email" placeholder="Your Email" required></div>
-            <div class="form-group"><textarea placeholder="Your Message" rows="5" required></textarea></div>
-            <button type="submit" class="btn">Send Message</button>
-          </form>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- Newsletter -->
-  <section id="newsletter" class="newsletter">
-    <div class="container">
-      <h2>Subscribe to Our Newsletter</h2>
-      <p class="subtitle">Stay updated with the latest business insights, trends, and exclusive offers from <strong>ConsultPro</strong>.</p>
-      <form class="newsletter-form">
-        <input type="email" placeholder="Enter your email address" required>
-        <button type="submit" class="btn-subscribe">Subscribe</button>
-      </form>
-      <p class="note">We respect your privacy. Unsubscribe anytime.</p>
-    </div>
-  </section>
-
-  <!-- Map -->
-  <section id="map" class="map-section">
-    <div class="container">
-      <h3>Find Us in London</h3>
-      <div class="map-container">
-        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d19801.6830209744!2d-0.1415880387431284!3d51.50721778098061!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x4876052d1c2b4d4b%3A0xb1b7db02f1d7b13!2sLondon%2C%20UK!5e0!3m2!1sen!2suk!4v1696268888888!5m2!1sen!2suk" width="100%" height="400" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
-      </div>
-    </div>
-  </section>
-
-  <!-- Chat widget -->
-  <div class="chat-widget">
-    <button class="chat-toggle"><i class="fas fa-comments"></i></button>
-    <div class="chat-box">
-      <div class="chat-header">
-        <h4>Ask a Consultant</h4>
-        <button class="chat-close">&times;</button>
-      </div>
-      <div class="chat-body">
-        <p>Hello 👋! How can we assist you today?</p>
-        <div class="chat-messages" id="chatMessages"></div>
-      </div>
-      <div class="chat-footer">
-        <input type="text" id="chatInput" placeholder="Type your message..." />
-        <button id="sendBtn"><i class="fas fa-paper-plane"></i></button>
+      <!-- Service 6 -->
+      <div class="service-card">
+        <i class="fas fa-handshake"></i>
+        <h3>Partnership Development</h3>
+        <p>Building strong partnerships to expand your business opportunities worldwide.</p>
       </div>
     </div>
   </div>
+</section>
 
-  <!-- Footer -->
-  <footer class="footer">
-    <div class="footer-container">
-      <div class="footer-logo"><h2>Consult<span>Pro</span></h2><p>Your trusted partner for business growth and innovation.</p></div>
-      <div class="footer-links"><h3>Quick Links</h3><ul><li><a href="#home">Home</a></li><li><a href="#services">Services</a></li><li><a href="#portfolio">Portfolio</a></li><li><a href="#contact">Contact</a></li></ul></div>
-      <div class="footer-contact"><h3>Contact Info</h3><p><i class="fas fa-map-marker-alt"></i> London, UK</p><p><i class="fas fa-phone"></i> +44 20 1234 5678</p><p><i class="fas fa-envelope"></i> info@consultpro.co.uk</p></div>
+
+<!-- Our Process Section -->
+<section id="process" class="process">
+  <div class="container">
+    <h2>Our Process</h2>
+    <p class="subtitle">We follow a clear and effective process to ensure successful results for every client.</p>
+
+    <div class="process-grid">
+      <div class="process-step">
+        <i class="fas fa-comments"></i>
+        <h3>1. Consultation</h3>
+        <p>We start by understanding your business needs, challenges, and goals to create a personalized approach.</p>
+      </div>
+
+      <div class="process-step">
+        <i class="fas fa-chart-line"></i>
+        <h3>2. Strategy</h3>
+        <p>Our team develops a data-driven strategy that aligns with your objectives and market opportunities.</p>
+      </div>
+
+      <div class="process-step">
+        <i class="fas fa-cogs"></i>
+        <h3>3. Implementation</h3>
+        <p>We execute the plan efficiently using proven methodologies and continuous performance tracking.</p>
+      </div>
+
+      <div class="process-step">
+        <i class="fas fa-trophy"></i>
+        <h3>4. Results</h3>
+        <p>We deliver measurable outcomes, review success metrics, and provide recommendations for long-term growth.</p>
+      </div>
     </div>
-    <div class="footer-bottom"><p>© 2025 ConsultPro. All rights reserved.</p></div>
-  </footer>
+  </div>
+</section>
 
-  <!-- Your script file -->
-  <script src="script.js"></script>
+
+
+     
+    
+    <!-- Stats Section -->
+<section id="stats" class="stats">
+  <div class="container">
+    <div class="subtitle">
+    <h2>Our Achievements</h2>
+    <p>Key milestones that highlight our expertise and growth.</p>
+    </div>
+   
+
+    <div class="stats-grid">
+      <div class="stat-item">
+        <span class="number" data-target="120">0</span>
+        <p>Happy Clients</p>
+      </div>
+
+      <div class="stat-item">
+        <span class="number" data-target="250">0</span>
+        <p>Completed Projects</p>
+      </div>
+
+      <div class="stat-item">
+        <span class="number" data-target="10">0</span>
+        <p>Years of Experience</p>
+      </div>
+
+      <div class="stat-item">
+        <span class="number" data-target="30">0</span>
+        <p>Expert Consultants</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<section id="portfolio" class="portfolio">
+  <h2>Our Projects</h2>
+  <p>Explore some of our featured works and consulting projects.</p>
+
+  <div class="portfolio-slider">
+    <div class="slide active">
+      <img src="img/portfolio/01.jpg" alt="Project 1">
+      <div class="caption">
+        <h3>Business Growth Strategy</h3>
+        <p>Helping companies expand globally with smart solutions.</p>
+      </div>
+    </div>
+
+    <div class="slide">
+      <img src="img/portfolio/02.jpg" alt="Project 2">
+      <div class="caption">
+        <h3>Digital Transformation</h3>
+        <p>Modernizing organizations for the new digital economy.</p>
+      </div>
+    </div>
+
+    <div class="slide">
+      <img src="img/portfolio/03.jpg" alt="Project 3">
+      <div class="caption">
+        <h3>Financial Analysis</h3>
+        <p>Providing detailed financial insights and growth plans.</p>
+      </div>
+    </div>
+
+    <div class="slide">
+      <img src="img/portfolio/09.jpg" alt="Project 4">
+      <div class="caption">
+        <h3>Corporate Training</h3>
+        <p>Empowering employees through leadership and innovation.</p>
+      </div>
+    </div>
+
+    <div class="slide">
+      <img src="img/portfolio/04.jpg" alt="Project 5">
+      <div class="caption">
+        <h3>Partnership Development</h3>
+        <p>Creating strategic collaborations that drive business success.</p>
+      </div>
+    </div>
+
+    <button class="prev">&#10094;</button>
+    <button class="next">&#10095;</button>
+  </div>
+</section>
+
+
+<section id="case-studies" class="case-studies">
+  <div class="container">
+    <h2>Case Studies & Success Stories</h2>
+    <p class="subtitle">See how we’ve helped businesses achieve remarkable growth and transformation.</p>
+
+    <div class="case-grid">
+      <!-- Case 1 -->
+      <div class="case-card">
+        <img src="img/cases/01.jpg" alt="Case Study 1">
+        <div class="case-content">
+          <h3>Financial Strategy Transformation</h3>
+          <p>We helped a UK-based finance firm boost efficiency by 35% through data-driven insights and process optimization.</p>
+          <a href="#" class="btn-read">Read Full Story</a>
+        </div>
+      </div>
+
+      <!-- Case 2 -->
+      <div class="case-card">
+        <img src="img/cases/02.jpg" alt="Case Study 2">
+        <div class="case-content">
+          <h3>Digital Marketing Revamp</h3>
+          <p>Our team designed a new marketing strategy that increased online engagement by 60% within 3 months.</p>
+          <a href="#" class="btn-read">Read Full Story</a>
+        </div>
+      </div>
+
+      <!-- Case 3 -->
+      <div class="case-card">
+        <img src="img/cases/03.jpg" alt="Case Study 3">
+        <div class="case-content">
+          <h3>Global Expansion Support</h3>
+          <p>ConsultPro guided a startup through international expansion, reaching 5 new markets in under a year.</p>
+          <a href="#" class="btn-read">Read Full Story</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+    
+
+<section id="testimonials" class="testimonials">
+  <div class="container">
+    <h2>What Our Team Says</h2>
+    <p class="subtitle">Meet the people who make our company exceptional.</p>
+
+    <div class="testimonials-grid">
+      <!-- 1 -->
+      <div class="testimonial-card">
+        <img src="img/team/01.jpg" alt="John Smith">
+        <div class="testimonial-text">
+          <p>
+            “Working at ConsultPro has been an incredible journey!  
+            I’ve grown professionally and personally thanks to the supportive leadership.”
+          </p>
+          <h4>John Smith</h4>
+          <span>CEO & Founder</span>
+        </div>
+      </div>
+
+      <!-- 2 -->
+      <div class="testimonial-card">
+        <img src="img/team/03.jpg" alt="Maria Petrova">
+        <div class="testimonial-text">
+          <p>
+            “The teamwork and company culture here are truly inspiring.  
+            Every project feels like a shared success.”
+          </p>
+          <h4>Grace Campbell</h4>
+          <span>Financial Consultant</span>
+        </div>
+      </div>
+
+      <!-- 3 -->
+      <div class="testimonial-card">
+        <img src="img/team/02.jpg" alt="Ivan Dimitrov">
+        <div class="testimonial-text">
+          <p>
+            “ConsultPro gives you the freedom to innovate and contribute your ideas.  
+            It’s amazing to work in such a dynamic environment.”
+          </p>
+          <h4>Mason Jerome</h4>
+          <span>Marketing Expert</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+
+<!-- Why Choose Us Section -->
+<section id="why-choose" class="why-choose">
+  <div class="container">
+    <h2>Why Choose <span>ConsultPro</span></h2>
+    <p class="subtitle">Discover what makes our consulting services stand out.</p>
+
+    <div class="why-grid">
+      <div class="why-card">
+        <i class="fas fa-user-tie"></i>
+        <h3>Experienced Professionals</h3>
+        <p>Our team brings years of industry experience and real-world business insight to every project.</p>
+      </div>
+
+      <div class="why-card">
+        <i class="fas fa-lightbulb"></i>
+        <h3>Innovative Strategies</h3>
+        <p>We develop creative, data-driven strategies to help your business stay ahead of the competition.</p>
+      </div>
+
+      <div class="why-card">
+        <i class="fas fa-handshake"></i>
+        <h3>Client-Centric Approach</h3>
+        <p>Your goals are our priority — we work closely with you to achieve measurable success.</p>
+      </div>
+
+      <div class="why-card">
+        <i class="fas fa-globe-europe"></i>
+        <h3>Global Expertise</h3>
+        <p>We deliver consulting solutions that meet international standards and market needs.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+
+<section id="client-testimonials" class="testimonials">
+  <div class="container">
+    <h2>What Our Clients Say</h2>
+    <p class="subtitle">Real feedback from satisfied business partners.</p>
+
+    <div class="testimonials-grid">
+
+      <div class="testimonial-card">
+        <img src="img/client/sarah thompson.jpg" alt="Client 1">
+        <h3>Sarah Thompson</h3>
+        <span>Marketing Director, VisionCorp</span>
+        <p>“ConsultPro helped us redefine our strategy and achieve record growth last quarter. Their team is exceptional!”</p>
+      </div>
+
+      <div class="testimonial-card">
+        <img src="img/client/james walker.jpg" alt="Client 2">
+        <h3>James Walker</h3>
+        <span>CEO, FinEdge Solutions</span>
+        <p>“Professional and reliable — their insights completely transformed how we approach our clients.”</p>
+      </div>
+
+      <div class="testimonial-card">
+        <img src="img/client/emily davis.jpg" alt="Client 3">
+        <h3>Emily Davis</h3>
+        <span>Operations Manager, NovaTech</span>
+        <p>“Working with ConsultPro was a game changer for our company’s long-term vision and operations.”</p>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+
+<section id="faq" class="faq">
+  <div class="container">
+    <h2>Frequently Asked Questions</h2>
+    <p class="subtitle">Answers to common questions about our consulting services.</p>
+
+    <div class="faq-item">
+      <button class="faq-question">What industries do you specialize in?</button>
+      <div class="faq-answer">
+        <p>We work with a wide range of industries including finance, IT, healthcare, and retail. Our consultants adapt to your specific business needs.</p>
+      </div>
+    </div>
+
+    <div class="faq-item">
+      <button class="faq-question">How long does a consulting project take?</button>
+      <div class="faq-answer">
+        <p>Most projects take between 2 to 6 weeks depending on their complexity. We always provide a detailed timeline before we begin.</p>
+      </div>
+    </div>
+
+    <div class="faq-item">
+      <button class="faq-question">Do you offer remote consulting?</button>
+      <div class="faq-answer">
+        <p>Yes, we provide both in-person and remote consulting sessions, ensuring flexibility for clients around the world.</p>
+      </div>
+    </div>
+
+    <div class="faq-item">
+      <button class="faq-question">Can you help with business strategy and marketing?</button>
+      <div class="faq-answer">
+        <p>Absolutely. We combine strategy development with marketing insights to help you grow your brand effectively.</p>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+
+<section id="partners" class="partners">
+  <div class="container">
+    <h2>Our Trusted Partners</h2>
+    <p class="subtitle">We’re proud to collaborate with these leading brands and organizations.</p>
+
+    <div class="partners-grid">
+      <div class="partner-item">
+        <img src="img/partners/1.jpg" alt="Partner 1">
+      </div>
+      <div class="partner-item">
+        <img src="img/partners/2.jpg" alt="Partner 2">
+      </div>
+      <div class="partner-item">
+        <img src="img/partners/3.jpg" alt="Partner 3">
+      </div>
+      <div class="partner-item">
+        <img src="img/partners/4.jpg" alt="Partner 4">
+      </div>
+      <div class="partner-item">
+        <img src="img/partners/5.jpg" alt="Partner 5">
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<section id="awards" class="awards">
+  <h2 class="section-title">Our Awards & Achievements</h2>
+  <p class="section-subtitle">
+    Recognizing our dedication to excellence, innovation, and customer satisfaction.
+  </p>
+
+  <div class="awards-container">
+    <div class="award-card">
+      <img src="img/awards/trophy.png" alt="Best Consulting Firm 2023">
+      <h3>Best Consulting Firm 2023</h3>
+      <p>Awarded for outstanding business strategy and innovation.</p>
+    </div>
+
+    <div class="award-card">
+      <img src="img/awards/medal.png" alt="Excellence in Customer Service">
+      <h3>Excellence in Customer Service</h3>
+      <p>Recognized for our exceptional client support and care.</p>
+    </div>
+
+    <div class="award-card">
+      <img src="img/awards/briefcase.png" alt="Top Business Growth 2024">
+      <h3>Top Business Growth 2024</h3>
+      <p>Honored for driving rapid and sustainable growth.</p>
+    </div>
+
+    <div class="award-card">
+      <img src="img/awards/certificate.png" alt="Innovation Award">
+      <h3>Innovation Award</h3>
+      <p>Celebrating creative and forward-thinking business solutions.</p>
+    </div>
+  </div>
+</section>
+
+
+
+<section id="blog" class="blog">
+  <div class="container">
+    <h2>Latest Insights</h2>
+    <p class="subtitle">Stay updated with our business tips, success stories, and industry news.</p>
+
+    <div class="blog-grid">
+      <!-- Статия 1 -->
+      <div class="blog-post">
+        <img src="img/blog/01.jpg" alt="Business Strategy">
+        <div class="blog-content">
+          <h3>How to Build a Winning Business Strategy</h3>
+          <p>Discover the key elements of developing a strong strategy that drives growth and success.</p>
+          <a href="#" class="btn-read">Read More</a>
+        </div>
+      </div>
+
+      <!-- Статия 2 -->
+      <div class="blog-post">
+        <img src="img/blog/02.jpg" alt="Market Trends">
+        <div class="blog-content">
+          <h3>Top 5 Market Trends for 2025</h3>
+          <p>Explore the biggest shifts that will shape the future of business and consulting.</p>
+          <a href="#" class="btn-read">Read More</a>
+        </div>
+      </div>
+
+      <!-- Статия 3 -->
+      <div class="blog-post">
+        <img src="img/blog/03.jpg" alt="Team Productivity">
+        <div class="blog-content">
+          <h3>Boost Your Team’s Productivity</h3>
+          <p>Learn simple yet powerful techniques to keep your team motivated and efficient.</p>
+          <a href="#" class="btn-read">Read More</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+
+<section id="pricing" class="pricing">
+  <div class="container">
+    <h2>Our Pricing Plans</h2>
+    <p class="subtitle">Choose a plan that fits your business needs and goals.</p>
+
+    <div class="pricing-grid">
+      <!-- Plan 1 -->
+      <div class="pricing-card">
+        <h3>Basic</h3>
+        <p class="price">$199 / month<span></span></p>
+        <ul>
+          <li>✔ Business Consultation</li>
+          <li>✔ Financial Planning</li>
+          <li>✖ Marketing Strategy</li>
+          <li>✖ Ongoing Support</li>
+        </ul>
+        <a href="#contact" class="btn">Choose Plan</a>
+      </div>
+
+      <!-- Plan 2 -->
+      <div class="pricing-card featured">
+        <h3>Standard</h3>
+        <p class="price">$399 / month<span></span></p>
+        <ul>
+          <li>✔ Full Business Consultation</li>
+          <li>✔ Financial & Market Analysis</li>
+          <li>✔ Marketing Strategy</li>
+          <li>✖ Dedicated Consultant</li>
+        </ul>
+        <a href="#contact" class="btn">Choose Plan</a>
+      </div>
+
+      <!-- Plan 3 -->
+      <div class="pricing-card">
+        <h3>Premium</h3>
+        <p class="price">Custom<span></span></p>
+        <ul>
+          <li>✔ Complete Business Solutions</li>
+          <li>✔ Dedicated Expert Consultant</li>
+          <li>✔ Full Support 24/7</li>
+          <li>✔ Growth Strategy Reports</li>
+        </ul>
+        <a href="#contact" class="btn">Choose Plan</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<section id="journey" class="journey">
+  <div class="container">
+    <h2>Our Journey</h2>
+    <p class="subtitle">A look back at our milestones and growth through the years.</p>
+
+    <div class="timeline">
+
+      <div class="timeline-item">
+        <div class="timeline-content">
+          <h3>2016 Foundation of ConsultPro</h3>
+          <h4>Company Founded</h4>
+          <p>ConsultPro began its journey as a small consultancy firm with a vision to empower businesses worldwide.</p>
+        </div>
+      </div>
+
+      <div class="timeline-item">
+        <div class="timeline-content">
+          <h3>2018 International Expansion</h3>
+          <h4>First Major Client</h4>
+          <p>We secured our first international client and expanded our services to financial and IT sectors.</p>
+        </div>
+      </div>
+
+      <div class="timeline-item">
+        <div class="timeline-content">
+          <h3>2020 Innovation & Growth</h3>
+          <h4>Global Expansion</h4>
+          <p>Our consulting team grew across Europe, establishing partnerships with global enterprises.</p>
+        </div>
+      </div>
+
+      <div class="timeline-item">
+        <div class="timeline-content">
+          <h3>2023</h3>
+          <h4>100+ Projects Completed</h4>
+          <p>Celebrated a major milestone — over 100 successful consulting projects delivered worldwide.</p>
+        </div>
+      </div>
+
+      <div class="timeline-item">
+        <div class="timeline-content">
+          <h3>2025</h3>
+          <h4>Innovation & Digital Future</h4>
+          <p>ConsultPro continues to lead the way in digital transformation and business innovation.</p>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+
+<!-- Careers / Join Our Team Section -->
+<section id="careers" class="careers">
+  <div class="container">
+    <h2>Join <span>Our Team</span></h2>
+    <p class="subtitle">
+      We're always looking for passionate and talented professionals to grow with us.
+    </p>
+
+    <div class="careers-grid">
+      <!-- Position 1 -->
+      <div class="career-card">
+        <h3>Business Consultant</h3>
+        <p>Provide expert advice and insights to help clients improve efficiency and achieve success.</p>
+        <ul>
+          <li><i class="fas fa-check-circle"></i> 3+ years experience in consulting</li>
+          <li><i class="fas fa-check-circle"></i> Strong analytical skills</li>
+          <li><i class="fas fa-check-circle"></i> Excellent communication</li>
+        </ul>
+        <a href="#contact" class="btn-apply">Apply Now</a>
+      </div>
+
+      <!-- Position 2 -->
+      <div class="career-card">
+        <h3>Financial Analyst</h3>
+        <p>Analyze financial data and develop strategies that help clients grow sustainably.</p>
+        <ul>
+          <li><i class="fas fa-check-circle"></i> Degree in Finance or Economics</li>
+          <li><i class="fas fa-check-circle"></i> Strong Excel & modeling skills</li>
+          <li><i class="fas fa-check-circle"></i> Detail-oriented mindset</li>
+        </ul>
+        <a href="#contact" class="btn-apply">Apply Now</a>
+      </div>
+
+      <!-- Position 3 -->
+      <div class="career-card">
+        <h3>Marketing Manager</h3>
+        <p>Lead digital campaigns and branding initiatives to boost our clients’ visibility.</p>
+        <ul>
+          <li><i class="fas fa-check-circle"></i> 5+ years in marketing</li>
+          <li><i class="fas fa-check-circle"></i> Experience with Google Ads & SEO</li>
+          <li><i class="fas fa-check-circle"></i> Creative thinker</li>
+        </ul>
+        <a href="#contact" class="btn-apply">Apply Now</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<section class="cta-final">
+  <div class="cta-content">
+    <h2>Ready to Take Your Business to the Next Level?</h2>
+    <p>Our experts are here to help you grow, innovate, and succeed in every step of your journey.</p>
+    <a href="#contact" class="btn-primary">Contact Us</a>
+  </div>
+</section>
+
+
+<section id="contact" class="contact">
+  <div class="container">
+    <h2>Contact Us</h2>
+    <p class="subtitle">We’d love to hear from you. Get in touch with our team.</p>
+
+    <div class="contact-grid">
+      <!-- Лява част -->
+      <div class="contact-info">
+        <h3>Get in Touch</h3>
+        <p>Whether you’re looking for business advice or collaboration, we’re here to help.</p>
+
+        <ul>
+          <li><i class="fas fa-map-marker-alt"></i> 15A Business Street, Sofia, Bulgaria</li>
+          <li><i class="fas fa-envelope"></i> info@consultpro.com</li>
+          <li><i class="fas fa-phone"></i> +359 888 123 456</li>
+          <li><i class="fas fa-clock"></i> Mon – Fri: 9:00 – 18:00</li>
+        </ul>
+      </div>
+
+      <!-- Дясна част — форма -->
+      <div class="contact-form">
+        <form>
+          <div class="form-group">
+            <input type="text" placeholder="Your Name" required>
+          </div>
+          <div class="form-group">
+            <input type="email" placeholder="Your Email" required>
+          </div>
+          <div class="form-group">
+            <textarea placeholder="Your Message" rows="5" required></textarea>
+          </div>
+          <button type="submit" class="btn">Send Message</button>
+        </form>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<section id="newsletter" class="newsletter">
+  <div class="container">
+    <h2>Subscribe to Our Newsletter</h2>
+    <p class="subtitle">
+      Stay updated with the latest business insights, trends, and exclusive offers from <strong>ConsultPro</strong>.
+    </p>
+
+    <form class="newsletter-form">
+      <input type="email" placeholder="Enter your email address" required>
+      <button type="submit" class="btn-subscribe">Subscribe</button>
+    </form>
+
+    <p class="note">We respect your privacy. Unsubscribe anytime.</p>
+  </div>
+</section>
+
+
+<!-- Google Map -->
+<section id="map" class="map-section">
+  <div class="container">
+    <h3>Find Us in London</h3>
+    <div class="map-container">
+      <iframe 
+        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d19801.6830209744!2d-0.1415880387431284!3d51.50721778098061!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x4876052d1c2b4d4b%3A0xb1b7db02f1d7b13!2sLondon%2C%20UK!5e0!3m2!1sen!2suk!4v1696268888888!5m2!1sen!2suk" 
+        width="100%" 
+        height="400" 
+        style="border:0;" 
+        allowfullscreen="" 
+        loading="lazy" 
+        referrerpolicy="no-referrer-when-downgrade">
+      </iframe>
+    </div>
+  </div>
+</section>
+
+
+
+<!-- Chat / Support Widget -->
+<div class="chat-widget">
+  <button class="chat-toggle">
+    <i class="fas fa-comments"></i>
+  </button>
+
+  <div class="chat-box">
+    <div class="chat-header">
+      <h4>Ask a Consultant</h4>
+      <button class="chat-close">&times;</button>
+    </div>
+
+    <div class="chat-body">
+      <p>Hello 👋! How can we assist you today?</p>
+      <div class="chat-messages" id="chatMessages"></div>
+    </div>
+
+    <div class="chat-footer">
+      <input type="text" id="chatInput" placeholder="Type your message..." />
+      <button id="sendBtn"><i class="fas fa-paper-plane"></i></button>
+    </div>
+  </div>
+</div> 
+
+
+
+<!-- Footer Section -->
+<footer class="footer">
+  <div class="footer-container">
+
+    <div class="footer-logo">
+      <h2>Consult<span>Pro</span></h2>
+      <p>Your trusted partner for business growth and innovation.</p>
+    </div>
+
+    <div class="footer-links">
+      <h3>Quick Links</h3>
+      <ul>
+        <li><a href="#home">Home</a></li>
+        <li><a href="#services">Services</a></li>
+        <li><a href="#portfolio">Portfolio</a></li>
+        <li><a href="#contact">Contact</a></li>
+      </ul>
+    </div>
+
+    <div class="footer-contact">
+      <h3>Contact Info</h3>
+      <p><i class="fas fa-map-marker-alt"></i> London, UK</p>
+      <p><i class="fas fa-phone"></i> +359 888 123 456</p>
+      <p><i class="fas fa-envelope"></i> info@consultpro.co.uk</p>
+    </div>
+  </div>
+
+  <div class="footer-bottom">
+    <p>© 2025 ConsultPro. All rights reserved.</p>
+  </div>
+</footer>
+
+
+<script src="script.js"></script>
 </body>
 </html>
