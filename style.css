@@ -2556,7 +2556,7 @@ h1, h2, h3, h4, p, a, button {
   }
 
   .hero h1 {
-    font-size: 1.8rem;
+    font-size: 3rem;
   }
 
   .hero p {
@@ -2582,6 +2582,7 @@ h1, h2, h3, h4, p, a, button {
 }
   
 }
+
 
 
 
