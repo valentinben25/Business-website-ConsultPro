@@ -641,7 +641,7 @@ body {
 .stats div span {
   display: block;
   font-size: 36px;
-  color: #c9c9c9;
+  color: #18a2ff;
 }
 
 @media (max-width: 768px) {
@@ -936,7 +936,7 @@ footer .social a:hover {
 
 
 .stat-item {
-  background: #fff;
+  background: #c9c9c9;
   padding: 20px;
   max-width: 250px;
   border-radius: 10px;
@@ -1017,7 +1017,7 @@ footer .social a:hover {
   right: 0;
   text-align: center;
   color: #000000;
-  background: rgb(255, 255, 255);
+  background: rgb(160 160 160);
   padding: 15px;
   border-radius: 0 0 12px 12px;
 }
@@ -1418,7 +1418,7 @@ footer .social a:hover {
 }
 
 .why-card p {
-  color: #444;
+  color: #000000;
   font-size: 16px;
   line-height: 1.6;
 }
@@ -1493,7 +1493,7 @@ footer .social a:hover {
 
 .testimonial-card span {
   font-size: 14px;
-  color: #666;
+  color: #000000;
   display: block;
   margin-bottom: 15px;
 }
@@ -2582,6 +2582,7 @@ h1, h2, h3, h4, p, a, button {
 }
   
 }
+
 
 
 
