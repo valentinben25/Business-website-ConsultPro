@@ -2488,7 +2488,100 @@ html, body {
   height: 25px;
   object-fit: cover;
 }
+
+
+  /* ========== MOBILE RESPONSIVE FIX ========== */
+
+/* Универсален ресет за скалиране */
+html, body {
+  margin: 0;
+  padding: 0;
+  overflow-x: hidden;
+  width: 100%;
+  max-width: 100%;
+  font-size: 16px;
+  zoom: 1;
+}
+
+/* Контейнерите да не излизат извън екрана */
+.container, section, header, footer {
+  width: 100%;
+  max-width: 100%;
+  overflow-x: hidden;
+  box-sizing: border-box;
+}
+
+/* Текстът и бутоните — нормален размер */
+h1, h2, h3, h4, p, a, button {
+  font-size: inherit;
+  line-height: 1.4;
+  word-wrap: break-word;
+}
+
+/* Поправка за hero секцията */
+.hero {
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  text-align: center;
+  padding: 60px 15px;
+}
+
+/* Фикс за флаговете */
+.language-switcher {
+  position: relative;
+  display: flex;
+  gap: 8px;
+  align-items: center;
+  justify-content: center;
+  right: 0;
+  margin-left: auto;
+  margin-right: 10px;
+  z-index: 10;
+}
+
+.lang-btn img {
+  width: 35px;
+  height: 25px;
+  object-fit: cover;
+  border-radius: 4px;
+}
+
+/* За телефони и таблети */
+@media (max-width: 768px) {
+  .header {
+    flex-wrap: wrap;
+    justify-content: space-between;
+    padding: 10px;
+  }
+
+  .hero h1 {
+    font-size: 1.8rem;
+  }
+
+  .hero p {
+    font-size: 1rem;
+  }
+
+  .btn, .btn-primary {
+    font-size: 1rem;
+    padding: 10px 18px;
+  }
+
+  .language-switcher {
+    position: relative;
+    right: 0;
+    top: 0;
+    margin: 5px auto;
+  }
+
+  img {
+    max-width: 100%;
+    height: auto;
+  }
+}
   
 }
+
 
 
