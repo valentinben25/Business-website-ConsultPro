@@ -2550,7 +2550,7 @@ h1, h2, h3, h4, p, a, button {
 /* За телефони и таблети */
 @media (max-width: 768px) {
   .header {
-    flex-wrap: wrap;
+    flex-wrap: balance;
     justify-content: space-between;
     padding: 10px;
   }
@@ -2582,6 +2582,7 @@ h1, h2, h3, h4, p, a, button {
 }
   
 }
+
 
 
 
