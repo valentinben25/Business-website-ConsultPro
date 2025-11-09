@@ -2463,6 +2463,32 @@ footer .social a:hover {
   .timeline-content {
     padding: 15px 20px;
   }
+
+  /* ====== FIX MOBILE OVERFLOW ====== */
+html, body {
+  overflow-x: hidden !important;
+  width: 100%;
+}
+
+.header, .hero, .container, .language-switcher, .nav {
+  max-width: 100%;
+  overflow-x: hidden;
+}
+
+/* За езиковите флагове — корекция на позицията */
+.language-switcher {
+  position: relative;
+  right: 0;
+  margin-right: 10px;
+  z-index: 10;
+}
+
+.lang-btn img {
+  width: 40px;
+  height: 25px;
+  object-fit: cover;
+}
+  
 }
 
 
