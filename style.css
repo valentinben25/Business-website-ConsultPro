@@ -2640,50 +2640,9 @@ header {
   padding-top: 0 !important;
 }
 
-/* ===================== Mobile-Specific Adjustments ===================== */
-@media only screen and (max-width: 768px) {
-  /* Премахваме излишно празно пространство */
-  body {
-    padding: 0 !important;
-    margin: 0 !important;
-    overflow-x: hidden;
-  }
-
-  /* Корекция за флаговете — центриране и вътрешно подравняване */
-  .language-switcher {
-    position: absolute;
-    right: 15px;
-    top: 10px;
-    transform: scale(0.9);
-  }
-
-  /* Намаляваме размера на логото, за да не избутва layout-а */
-  .logo {
-    font-size: 1.5rem;
-  }
-
-  /* Избягваме авто-мащабиране от браузъра */
-  html {
-    -webkit-text-size-adjust: 100%;
-    touch-action: manipulation;
-  }
-
-  /* Safe-area за телефони с notch (пример iPhone, Huawei) */
-  @supports (padding: env(safe-area-inset-top)) {
-    body {
-      padding-top: env(safe-area-inset-top, 0);
-    }
-  }
-
-  /* Принудително спиране на браузърния zoom за някои Android устройства */
-  meta[name="viewport"] {
-    content: "width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no";
-  }
-}
-
-/* ============================================= */
   
 }
+
 
 
 
