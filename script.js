@@ -3614,4 +3614,38 @@ document.addEventListener("DOMContentLoaded", () => {
   // Бутони за език
   enBtn.addEventListener("click", () => setFooterLanguage("en"));
   bgBtn.addEventListener("click", () => setFooterLanguage("bg"));
+
+
+  /* ========== FIX: Responsive language buttons & mobile resizing ========== */
+
+// Функция за динамично позициониране на бутоните с флагове
+function adjustLanguageSwitcher() {
+  const langSwitcher = document.querySelector('.language-switcher');
+  const header = document.querySelector('.header');
+  
+  if (!langSwitcher || !header) return;
+
+  // Изчисляваме позицията на флаговете спрямо ширината на екрана
+  const screenWidth = window.innerWidth;
+  if (screenWidth <= 768) {
+    langSwitcher.style.position = 'absolute';
+    langSwitcher.style.top = '12px';
+    langSwitcher.style.right = '10px';
+    langSwitcher.style.transform = 'scale(0.85)';
+  } else {
+    // Връщаме към нормалната позиция за десктоп
+    langSwitcher.style.position = 'relative';
+    langSwitcher.style.top = '0';
+    langSwitcher.style.right = '0';
+    langSwitcher.style.transform = 'scale(1)';
+  }
+}
+
+// След зареждане на страницата
+window.addEventListener('load', adjustLanguageSwitcher);
+
+// При промяна на размера или ориентацията (portrait/landscape)
+window.addEventListener('resize', adjustLanguageSwitcher);
+window.addEventListener('orientationchange', adjustLanguageSwitcher);
 });
+
