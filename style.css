@@ -2472,7 +2472,7 @@ html, body {
 
 .header, .hero, .container, .language-switcher, .nav {
   max-width: 100%;
-  overflow-x: hidden;
+  overflow-x: visible;
 }
 
 /* За езиковите флагове — корекция на позицията */
@@ -2614,6 +2614,7 @@ header {
 }
   
 }
+
 
 
 
