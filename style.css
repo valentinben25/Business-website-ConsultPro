@@ -2550,13 +2550,13 @@ h1, h2, h3, h4, p, a, button {
 /* За телефони и таблети */
 @media (max-width: 768px) {
   .header {
-    flex-wrap: balance;
+    
     justify-content: space-between;
     padding: 10px;
   }
 
   .hero h1 {
-    font-size: 2.1rem;
+    font-size: 3.3rem;
   }
 
   .hero p {
@@ -2582,6 +2582,7 @@ h1, h2, h3, h4, p, a, button {
 }
   
 }
+
 
 
 
