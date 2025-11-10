@@ -2751,6 +2751,58 @@ header {
   }
 }
 
+  /* Подрежда бутона и флаговете хоризонтално */
+.nav-controls {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-left: auto;
+}
+
+.language-switcher {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.lang-btn {
+  background: transparent;
+  border: none;
+  padding: 2px;
+  cursor: pointer;
+}
+
+.lang-btn img {
+  width: 36px;
+  height: 24px;
+  border-radius: 3px;
+  display: block;
+}
+
+.menu-toggle {
+  background: none;
+  border: none;
+  font-size: 26px;
+  color: white;
+  cursor: pointer;
+}
+
+@media (max-width: 768px) {
+  .nav-controls {
+    gap: 6px;
+  }
+
+  .menu-toggle {
+    font-size: 22px;
+  }
+
+  .lang-btn img {
+    width: 30px;
+    height: 20px;
+  }
+}
+
   
 }
+
 
