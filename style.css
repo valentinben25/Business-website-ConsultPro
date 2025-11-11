@@ -2858,9 +2858,116 @@ header {
   }
 }
 
+  /* ===== HEADER / LANGUAGE FIX ===== */
+.header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 10px 18px;
+  background-color: #0a1b2b; /* остави своя цвят */
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+  box-sizing: border-box;
+}
+
+/* Контейнер за меню-контроли (menu-toggle + flags) */
+.nav-controls {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  flex-shrink: 0;
+}
+
+/* Навигацията (извън мобилния режим може да е flex) */
+.nav {
+  display: flex;
+  gap: 22px;
+  align-items: center;
+  flex-wrap: nowrap;
+  white-space: nowrap;
+}
+
+/* Бутон за меню (hamburger) */
+.menu-toggle {
+  background: transparent;
+  border: none;
+  color: #fff;
+  font-size: 26px;
+  cursor: pointer;
+  padding: 6px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+/* Language switcher */
+.language-switcher {
+  display: flex;
+  align-items: center;
+  gap: 8px;            /* разстояние между флаговете */
+  margin-left: 6px;
+  flex-shrink: 0;
+}
+
+/* бутоните около флаговете */
+.lang-btn {
+  background: transparent;
+  border: none;
+  padding: 2px;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+/* КЛЮЧОВО: фиксираме размера на флаговете и спираме глобално широки правила */
+.lang-btn img {
+  width: 38px;          /* регулираш тук размера */
+  height: auto;
+  max-width: none;      /* отменя глобални max-width правила */
+  object-fit: cover;
+  display: block;
+  flex: 0 0 auto;       /* не позволява да растат/смаляват с flex контейнер */
+  border-radius: 4px;
+}
+
+/* Активен флаг */
+.lang-btn.active {
+  outline: 2px solid #0a7bff;
+  border-radius: 6px;
+}
+
+/* Ако имаш глобално правило img { width:100% } — това ще го препокрие.
+   Ако имаш друго глобално правило в style.css, тествай следния по-специфичен селектор: */
+header .lang-btn img { width: 38px !important; max-width: none !important; }
+
+/* -------- Responsive: когато пробутваш навигацията под/върху header -------- */
+@media (max-width: 900px) {
+  .nav {
+    display: none; /* ако използваш бутон за мобилно меню, скриваме основната nav */
+  }
+  .menu-toggle {
+    display: inline-flex;
+  }
+  .lang-btn img { width: 30px; } /* малко по-малки флагове на телефони */
+}
+
+/* Ако желаеш менюто и флаговете винаги да стоят на един ред:
+   ограничи растежа на логото (в противен случай логото може да „избута“ флаговете) */
+.logo {
+  font-size: 28px;
+  font-weight: 700;
+  color: #11b2e0;
+  flex-shrink: 0;
+  margin-right: 12px;
+}
 
   
 }
+
 
 
 
