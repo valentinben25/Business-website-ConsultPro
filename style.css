@@ -2965,8 +2965,60 @@ header .lang-btn img { width: 38px !important; max-width: none !important; }
   margin-right: 12px;
 }
 
+
+  /* Корекция за флагове и меню в header */
+.nav-controls {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  flex-shrink: 0;
+}
+
+.language-switcher {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  flex-shrink: 0;
+}
+
+.lang-btn img {
+  width: 36px;
+  height: auto;
+  max-width: none;
+  object-fit: cover;
+  flex: 0 0 auto;
+  display: block;
+}
+
+.menu-toggle {
+  font-size: 26px;
+  padding: 6px;
+  flex-shrink: 0;
+}
+
+.header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 10px 18px;
+  box-sizing: border-box;
+  width: 100%;
+}
+
+/* Мобилна версия */
+@media (max-width: 768px) {
+  .lang-btn img {
+    width: 30px;
+  }
+  .menu-toggle {
+    font-size: 22px;
+  }
+}
+
+
   
 }
+
 
 
 
