@@ -482,7 +482,7 @@ body {
   font-size: 48px;
   margin-bottom: 20px;
   border-width: 10px;
-  background-color: rgb(160 160 160);
+      background-color: rgb(255 255 255);
   color: #000;
   line-height: 1.2;
   margin: 10px 2em;
@@ -495,7 +495,7 @@ body {
 .hero-content p {
   margin-bottom: 20px;
   font-size: 18px;
-  background-color: rgb(160 160 160);
+  background-color: rgb(255 255 255);
   color: #000;
   line-height: 1.5;
   margin: 30px 5em;
@@ -631,7 +631,7 @@ body {
 }
 
 .process-step {
-  background: #c9c9c9;
+  background: #ffffff;
   padding: 30px 20px;
   border-radius: 12px;
   box-shadow: 0 4px 15px rgba(0,0,0,0.06);
@@ -915,7 +915,7 @@ footer .social a:hover {
 }
 
 .service-card {
-  background: #c9c9c9;
+  background: #ffffff;
   padding: 30px;
   border-radius: 10px;
   text-align: center;
@@ -1037,7 +1037,7 @@ footer .social a:hover {
 
 
 .stat-item {
-  background: #c9c9c9;
+  background: #ffffff;
   padding: 20px;
   max-width: 250px;
   border-radius: 10px;
@@ -1118,7 +1118,7 @@ footer .social a:hover {
   right: 0;
   text-align: center;
   color: #000000;
-  background: rgb(160 160 160);
+  background: rgb(255 255 255);
   padding: 15px;
   border-radius: 0 0 12px 12px;
 }
@@ -1244,7 +1244,7 @@ footer .social a:hover {
 }
 
 .case-card {
-  background: #c9c9c9;
+  background: #ffffff;
   border-radius: 12px;
   overflow: hidden;
   box-shadow: 0 6px 20px rgba(0,0,0,0.08);
@@ -3208,6 +3208,7 @@ body {
   
   
 }
+
 
 
 
