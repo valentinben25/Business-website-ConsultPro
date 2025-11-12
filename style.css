@@ -1408,7 +1408,7 @@ footer .social a:hover {
 }
 
 .career-card {
-  background: #c9c9c9;
+  background: #ffffff;
   padding: 30px;
   border-radius: 12px;
   box-shadow: 0 4px 10px rgba(0,0,0,0.08);
@@ -1494,7 +1494,7 @@ footer .social a:hover {
 }
 
 .why-card {
-  background: #c9c9c9;
+  background: #ffffff;
   padding: 30px 20px;
   border-radius: 10px;
   box-shadow: 0 5px 15px rgba(0,0,0,0.08);
@@ -1566,7 +1566,7 @@ footer .social a:hover {
 }
 
 .testimonial-card {
-  background: #c9c9c9;
+  background: #ffffff;
   border-radius: 12px;
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
   max-width: 320px;
@@ -1791,7 +1791,7 @@ footer .social a:hover {
   text-align: center;
   padding: 20px;
   border-radius: 12px;
-  background: #c9c9c9;
+  background: #ffffff;
   transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 .award-card:hover {
@@ -1830,7 +1830,7 @@ footer .social a:hover {
 }
 
 .blog-post {
-  background: #c9c9c9;
+  background: #ffffff;
   border-radius: 10px;
   overflow: hidden;
   box-shadow: 0 4px 12px rgba(0,0,0,0.1);
@@ -1920,7 +1920,7 @@ footer .social a:hover {
 }
 
 .pricing-card {
-  background: #c9c9c9;
+  background: #ffffff;
   padding: 30px;
   border-radius: 10px;
   box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
@@ -2528,7 +2528,7 @@ footer .social a:hover {
 }
 
 .timeline-content {
-  background: #c9c9c9;
+  background: #ffffff;
   padding: 20px 30px;
   border-radius: 10px;
   box-shadow: 0 4px 10px rgba(0,0,0,0.1);
@@ -3208,6 +3208,7 @@ body {
   
   
 }
+
 
 
 
