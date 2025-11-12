@@ -3530,6 +3530,12 @@ body {
   box-shadow: 0 0 6px rgba(0, 180, 216, 0.5);
 }
 
+  .lang-btn.active img {
+  border: 2px solid #00b4d8;
+  border-radius: 4px;
+  box-shadow: 0 0 5px rgba(0, 180, 216, 0.6);
+}
+
 /* Бутон ☰ */
 .menu-toggle {
   display: none;
@@ -3575,6 +3581,7 @@ body {
   
   
 }
+
 
 
 
