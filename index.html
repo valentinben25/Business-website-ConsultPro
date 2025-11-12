@@ -12,12 +12,20 @@
    <!-- HEADER SECTION -->
 <header class="header">
   <!-- Лого -->
-  <div class="logo">
-    Consult<span>Pro</span>
-  </div>
+  <div class="logo">Consult<span>Pro</span></div>
 
   <!-- Бутон за мобилно меню -->
-  <button class="menu-toggle" aria-label="Toggle menu">☰</button>
+  <div class="header-right">
+    <div class="language-switcher">
+      <button id="en-btn" class="lang-btn active">
+        <img src="img/flag/united-kingdom.png" alt="English">
+      </button>
+      <button id="bg-btn" class="lang-btn">
+        <img src="img/flag/bulgaria.png" alt="Bulgarian">
+      </button>
+    </div>
+    <button class="menu-toggle">☰</button>
+  </div>
 
   <!-- Навигация -->
   <nav class="nav">
@@ -28,16 +36,6 @@
     <a href="#pricing">Pricing</a>
     <a href="#contact">Contact</a>
   </nav>
-
-  <!-- Езикова селекция -->
-  <div class="language-switcher">
-    <button id="en-btn" class="lang-btn active" aria-label="English">
-      <img src="img/flag/united-kingdom.png" alt="English flag">
-    </button>
-    <button id="bg-btn" class="lang-btn" aria-label="Bulgarian">
-      <img src="img/flag/bulgaria.png" alt="Bulgarian flag">
-    </button>
-  </div>
 </header>
 
 </head>
@@ -837,6 +835,7 @@
 <script src="script.js"></script>
 </body>
 </html>
+
 
 
 
