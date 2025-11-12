@@ -3647,5 +3647,23 @@ window.addEventListener('load', adjustLanguageSwitcher);
 // При промяна на размера или ориентацията (portrait/landscape)
 window.addEventListener('resize', adjustLanguageSwitcher);
 window.addEventListener('orientationchange', adjustLanguageSwitcher);
+
+  });
+
+  // Mobile menu toggle
+const menuToggle = document.querySelector('.menu-toggle');
+const nav = document.querySelector('.nav');
+menuToggle.addEventListener('click', () => {
+  nav.classList.toggle('active');
 });
+
+// Language button activation
+const langButtons = document.querySelectorAll('.lang-btn');
+langButtons.forEach(btn => {
+  btn.addEventListener('click', () => {
+    langButtons.forEach(b => b.classList.remove('active'));
+    btn.classList.add('active');
+  });
+});
+
 
