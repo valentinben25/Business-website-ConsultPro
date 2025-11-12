@@ -3648,7 +3648,6 @@ window.addEventListener('load', adjustLanguageSwitcher);
 window.addEventListener('resize', adjustLanguageSwitcher);
 window.addEventListener('orientationchange', adjustLanguageSwitcher);
 
-  });
 
   // Mobile menu toggle
 const menuToggle = document.querySelector('.menu-toggle');
@@ -3659,15 +3658,6 @@ menuToggle.addEventListener('click', () => {
 
 
 
-const langBtns = document.querySelectorAll(".lang-btn");
-langBtns.forEach((btn) => {
-  btn.addEventListener("click", () => {
-    langBtns.forEach((b) => b.classList.remove("active"));
-    btn.classList.add("active");
-  });
-});
-
-
 // Активиране на избраното знаме
 const langBtns = document.querySelectorAll(".lang-btn");
 langBtns.forEach((btn) => {
@@ -3675,7 +3665,6 @@ langBtns.forEach((btn) => {
     langBtns.forEach((b) => b.classList.remove("active"));
     btn.classList.add("active");
   });
-});
 });
 
 
