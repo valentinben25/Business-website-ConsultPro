@@ -3328,9 +3328,129 @@ body {
     height: 20px;
   }
 }
+
+  /* === RESET === */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  overflow-x: hidden; /* премахва празното място вдясно */
+  font-family: "Segoe UI", sans-serif;
+}
+
+/* === HEADER === */
+.header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  background: #0f1d2d;
+  color: #fff;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 12px 20px;
+  z-index: 1000;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+}
+
+/* Лого */
+.logo {
+  font-size: 1.8rem;
+  font-weight: bold;
+  color: #00b4d8;
+}
+.logo span {
+  color: #fff;
+}
+
+/* Дясната секция (бутон + флагове) */
+.header-right {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+/* Бутон ☰ */
+.menu-toggle {
+  display: none;
+  background: none;
+  border: none;
+  font-size: 1.7rem;
+  color: white;
+  cursor: pointer;
+}
+
+/* Навигация */
+.nav {
+  display: flex;
+  gap: 20px;
+}
+.nav a {
+  color: white;
+  text-decoration: none;
+  transition: 0.3s;
+}
+.nav a:hover {
+  color: #00b4d8;
+}
+
+/* Флагове */
+.language-switcher {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+.lang-btn {
+  background: none;
+  border: none;
+  padding: 0;
+  cursor: pointer;
+}
+.lang-btn img {
+  width: 30px;
+  height: 20px;
+  border-radius: 3px;
+  object-fit: cover;
+  transition: transform 0.2s ease;
+}
+.lang-btn:hover img {
+  transform: scale(1.1);
+}
+.lang-btn.active {
+  outline: 2px solid #00b4d8;
+  border-radius: 4px;
+}
+
+/* === MOBILE === */
+@media (max-width: 992px) {
+  .nav {
+    display: none;
+    flex-direction: column;
+    position: absolute;
+    top: 60px;
+    right: 20px;
+    background: #1a2733;
+    padding: 15px;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+  }
+
+  .nav.active {
+    display: flex;
+  }
+
+  .menu-toggle {
+    display: block;
+  }
+}
   
   
 }
+
 
 
 
