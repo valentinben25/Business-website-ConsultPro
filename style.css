@@ -14,6 +14,7 @@ body {
   padding-top: 90px; /* височината на header-а */
 }
 
+
 /* === HEADER === */
 .header {
   position: fixed;
@@ -3115,9 +3116,99 @@ header .lang-btn img { width: 38px !important; max-width: none !important; }
   }
 }
 
+/* === FIX за мобилна подредба на HEADER === */
+body {
+  overflow-x: hidden; /* ❌ маха хоризонталния скрол и празното място вдясно */
+}
+
+/* Основен header */
+.header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background-color: #0f1d2d;
+  padding: 10px 16px;
+  width: 100%;
+  box-sizing: border-box;
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 1000;
+}
+
+/* Лого */
+.logo {
+  font-size: 1.6rem;
+  font-weight: bold;
+  color: #00b4d8;
+  display: flex;
+  align-items: center;
+  white-space: nowrap;
+}
+
+/* Езикови флагове + бутон меню */
+.header-right {
+  display: flex;
+  align-items: center;
+  gap: 8px; /* разстояние между флаговете и бутона */
+}
+
+/* Контейнер за езиковите бутони */
+.language-switcher {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.lang-btn {
+  background: transparent;
+  border: none;
+  padding: 0;
+  cursor: pointer;
+}
+
+.lang-btn img {
+  width: 28px;
+  height: 18px;
+  border-radius: 3px;
+  object-fit: cover;
+}
+
+/* Бутон за меню */
+.menu-toggle {
+  background: none;
+  border: none;
+  color: white;
+  font-size: 1.6rem;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+}
+
+/* Отзивчивост за мобилни устройства */
+@media (max-width: 768px) {
+  .header {
+    padding: 10px 12px;
+  }
+
+  .logo {
+    font-size: 1.4rem;
+  }
+
+  .header-right {
+    gap: 6px;
+  }
+
+  .lang-btn img {
+    width: 26px;
+    height: 16px;
+  }
+}
 
   
+  
 }
+
 
 
 
