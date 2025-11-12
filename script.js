@@ -3664,6 +3664,22 @@ langButtons.forEach(btn => {
     langButtons.forEach(b => b.classList.remove('active'));
     btn.classList.add('active');
   });
+
+  const menuToggle = document.querySelector(".menu-toggle");
+const nav = document.querySelector(".nav");
+
+menuToggle.addEventListener("click", () => {
+  nav.classList.toggle("active");
 });
+
+const langBtns = document.querySelectorAll(".lang-btn");
+langBtns.forEach((btn) => {
+  btn.addEventListener("click", () => {
+    langBtns.forEach((b) => b.classList.remove("active"));
+    btn.classList.add("active");
+  });
+});
+});
+
 
 
