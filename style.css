@@ -5,12 +5,112 @@
   box-sizing: border-box;
 }
 
+
 body {
   font-family: "Segoe UI", Tahoma, sans-serif;
   line-height: 1.6;
   color: #333;
   background: #f4f6f8;
-  padding-top: 90px;
+  padding-top: 90px; /* височината на header-а */
+}
+
+/* === HEADER === */
+.header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  background: #1a2733;
+  color: #fff;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px 25px;
+  z-index: 1000;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2);
+}
+
+/* Лого */
+.logo {
+  font-size: 1.8rem;
+  font-weight: bold;
+  color: #00b4d8;
+  display: flex;
+  align-items: center;
+}
+.logo span {
+  color: #fff;
+}
+
+/* Навигация */
+.nav {
+  display: flex;
+  gap: 20px;
+}
+.nav a {
+  color: #fff;
+  text-decoration: none;
+  font-weight: 500;
+  font-size: 1rem;
+  transition: color 0.3s ease;
+}
+.nav a:hover {
+  color: #00b4d8;
+}
+
+/* Бутон меню (само за мобилни) */
+.menu-toggle {
+  display: none;
+  background: none;
+  border: none;
+  font-size: 28px;
+  color: #fff;
+  cursor: pointer;
+}
+
+/* Езикова селекция */
+.language-switcher {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+.lang-btn {
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  padding: 2px;
+}
+.lang-btn img {
+  width: 32px;
+  height: 22px;
+  object-fit: cover;
+  border-radius: 4px;
+  transition: transform 0.3s ease;
+}
+.lang-btn:hover img {
+  transform: scale(1.1);
+}
+
+/* === MOBILE HEADER === */
+@media (max-width: 768px) {
+  .header {
+    flex-wrap: nowrap;
+    justify-content: space-between;
+    padding: 10px 15px;
+  }
+
+  .menu-toggle {
+    display: block;
+  }
+
+  .nav {
+    display: none;
+  }
+
+  .language-switcher {
+    flex-direction: row;
+    margin-left: 10px;
+  }
 }
 
 @media (max-width: 768px) {
@@ -3018,6 +3118,7 @@ header .lang-btn img { width: 38px !important; max-width: none !important; }
 
   
 }
+
 
 
 
