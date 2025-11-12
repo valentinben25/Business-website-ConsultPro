@@ -3657,20 +3657,7 @@ menuToggle.addEventListener('click', () => {
   nav.classList.toggle('active');
 });
 
-// Language button activation
-const langButtons = document.querySelectorAll('.lang-btn');
-langButtons.forEach(btn => {
-  btn.addEventListener('click', () => {
-    langButtons.forEach(b => b.classList.remove('active'));
-    btn.classList.add('active');
-  });
 
-  const menuToggle = document.querySelector(".menu-toggle");
-const nav = document.querySelector(".nav");
-
-menuToggle.addEventListener("click", () => {
-  nav.classList.toggle("active");
-});
 
 const langBtns = document.querySelectorAll(".lang-btn");
 langBtns.forEach((btn) => {
@@ -3680,13 +3667,6 @@ langBtns.forEach((btn) => {
   });
 });
 
-  // Меню бутон
-const menuToggle = document.querySelector(".menu-toggle");
-const nav = document.querySelector(".nav");
-
-menuToggle.addEventListener("click", () => {
-  nav.classList.toggle("active");
-});
 
 // Активиране на избраното знаме
 const langBtns = document.querySelectorAll(".lang-btn");
@@ -3697,6 +3677,7 @@ langBtns.forEach((btn) => {
   });
 });
 });
+
 
 
 
