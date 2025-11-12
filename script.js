@@ -3679,7 +3679,25 @@ langBtns.forEach((btn) => {
     btn.classList.add("active");
   });
 });
+
+  // Меню бутон
+const menuToggle = document.querySelector(".menu-toggle");
+const nav = document.querySelector(".nav");
+
+menuToggle.addEventListener("click", () => {
+  nav.classList.toggle("active");
 });
+
+// Активиране на избраното знаме
+const langBtns = document.querySelectorAll(".lang-btn");
+langBtns.forEach((btn) => {
+  btn.addEventListener("click", () => {
+    langBtns.forEach((b) => b.classList.remove("active"));
+    btn.classList.add("active");
+  });
+});
+});
+
 
 
 
