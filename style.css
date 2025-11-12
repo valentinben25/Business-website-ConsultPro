@@ -3447,9 +3447,135 @@ body {
     display: block;
   }
 }
+
+  /* === HEADER === */
+.header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  background: #16222e;
+  color: #fff;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 12px 30px;
+  z-index: 1000;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.25);
+}
+
+body {
+  overflow-x: hidden;
+  font-family: "Segoe UI", sans-serif;
+  margin: 0;
+}
+
+/* Лого */
+.logo {
+  font-size: 1.8rem;
+  font-weight: bold;
+  color: #00b4d8;
+}
+.logo span {
+  color: #fff;
+}
+
+/* Навигация (вляво) */
+.nav {
+  display: flex;
+  gap: 25px;
+}
+.nav a {
+  color: #fff;
+  text-decoration: none;
+  font-weight: 500;
+  transition: color 0.3s;
+}
+.nav a:hover {
+  color: #00b4d8;
+}
+
+/* Дясна част: флагове + меню бутон */
+.header-right {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+/* Флагове */
+.language-switcher {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+.lang-btn {
+  background: transparent;
+  border: 2px solid transparent;
+  border-radius: 5px;
+  padding: 2px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+.lang-btn img {
+  width: 34px;
+  height: 22px;
+  border-radius: 4px;
+  object-fit: cover;
+}
+.lang-btn:hover {
+  border-color: #00b4d8;
+}
+.lang-btn.active {
+  border-color: #00b4d8; /* ✅ синя рамка при избран флаг */
+  box-shadow: 0 0 6px rgba(0, 180, 216, 0.5);
+}
+
+/* Бутон ☰ */
+.menu-toggle {
+  display: none;
+  background: none;
+  border: none;
+  color: white;
+  font-size: 1.8rem;
+  cursor: pointer;
+}
+
+/* === MOBILE === */
+@media (max-width: 992px) {
+  .nav {
+    display: none;
+    position: absolute;
+    top: 60px;
+    left: 0;
+    width: 100%;
+    flex-direction: column;
+    background: #1a2733;
+    padding: 15px;
+    gap: 10px;
+    text-align: center;
+  }
+
+  .nav.active {
+    display: flex;
+  }
+
+  .menu-toggle {
+    display: block;
+  }
+
+  .header {
+    flex-wrap: nowrap;
+  }
+
+  .language-switcher {
+    gap: 6px;
+  }
+}
+
   
   
 }
+
 
 
 
