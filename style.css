@@ -345,7 +345,6 @@ body {
 .hero {
   height: 190vh;
   background: linear-gradient(rgba(30,42,56,0.8), rgba(30,42,56,0.8)),
-              url('img/hero-bg.jpg') center/cover no-repeat;
   color: #fff;
   display: flex;
   flex-direction: column;
@@ -3534,6 +3533,7 @@ body {
   
   
 }
+
 
 
 
