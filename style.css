@@ -3530,9 +3530,17 @@ body {
   }
 }
 
+
+/* Активен флаг – показва се рамка */
+.lang-btn.active img {
+  border: 2px solid #0a7bff;
+  box-shadow: 0 0 8px rgba(10, 123, 255, 0.5);
+  border-radius: 5px;
+}
   
   
 }
+
 
 
 
