@@ -3530,11 +3530,13 @@ body {
   box-shadow: 0 0 6px rgba(0, 180, 216, 0.5);
 }
 
-  .lang-btn.active img {
-  border: 2px solid #00b4d8;
+.lang-btn.active img {
+  outline: 2px solid #0a7bff;
   border-radius: 4px;
-  box-shadow: 0 0 5px rgba(0, 180, 216, 0.6);
+  box-shadow: 0 0 6px rgba(10, 123, 255, 0.5);
+  transition: all 0.3s ease;
 }
+
 
 /* Бутон ☰ */
 .menu-toggle {
@@ -3581,6 +3583,7 @@ body {
   
   
 }
+
 
 
 
