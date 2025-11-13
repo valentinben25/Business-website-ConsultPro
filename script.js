@@ -3668,6 +3668,53 @@ langBtns.forEach((btn) => {
 });
 
 
+// === Смяна на езика на сайта ===
+const translations = {
+  en: {
+    home: "Home",
+    services: "Services",
+    stats: "Stats",
+    portfolio: "Portfolio",
+    testimonials: "Testimonials",
+    pricing: "Pricing",
+    contact: "Contact",
+    map: "Map",
+    heroTitle: "Grow Your Business with ConsultPro",
+    heroText: "We provide expert consulting services to help you achieve sustainable growth and success.",
+    heroBtn: "Get Started"
+  },
+  bg: {
+    home: "Начало",
+    services: "Услуги",
+    stats: "Статистика",
+    portfolio: "Портфолио",
+    testimonials: "Отзиви",
+    pricing: "Цени",
+    contact: "Контакт",
+    map: "Карта",
+    heroTitle: "Развий своя бизнес с ConsultPro",
+    heroText: "Ние предоставяме експертни консултантски услуги за устойчив растеж и успех.",
+    heroBtn: "Започни сега"
+  }
+};
+
+function changeLanguage(lang) {
+  document.querySelector('a[href="#home"]').textContent = translations[lang].home;
+  document.querySelector('a[href="#services"]').textContent = translations[lang].services;
+  document.querySelector('a[href="#stats"]').textContent = translations[lang].stats;
+  document.querySelector('a[href="#portfolio"]').textContent = translations[lang].portfolio;
+  document.querySelector('a[href="#testimonials"]').textContent = translations[lang].testimonials;
+  document.querySelector('a[href="#pricing"]').textContent = translations[lang].pricing;
+  document.querySelector('a[href="#contact"]').textContent = translations[lang].contact;
+  document.querySelector('a[href="#map"]').textContent = translations[lang].map;
+  document.querySelector('.hero-content h1').textContent = translations[lang].heroTitle;
+  document.querySelector('.hero-content p').textContent = translations[lang].heroText;
+  document.querySelector('.hero-content a').textContent = translations[lang].heroBtn;
+}
+
+// Обработваме натискане на флаг
+document.getElementById('en-btn').addEventListener('click', () => changeLanguage('en'));
+document.getElementById('bg-btn').addEventListener('click', () => changeLanguage('bg'));
 
 
 
