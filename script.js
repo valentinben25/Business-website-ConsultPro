@@ -3716,5 +3716,6 @@ function changeLanguage(lang) {
 document.getElementById('en-btn').addEventListener('click', () => changeLanguage('en'));
 document.getElementById('bg-btn').addEventListener('click', () => changeLanguage('bg'));
 
-
+  });
+});
 
