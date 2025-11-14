@@ -3667,52 +3667,138 @@ langBtns.forEach((btn) => {
 });
 
 
-// === Смяна на езика на сайта ===
-const translations = {
-  en: {
-    home: "Home",
-    services: "Services",
-    stats: "Stats",
-    portfolio: "Portfolio",
-    testimonials: "Testimonials",
-    pricing: "Pricing",
-    contact: "Contact",
-    map: "Map",
-    heroTitle: "Grow Your Business with ConsultPro",
-    heroText: "We provide expert consulting services to help you achieve sustainable growth and success.",
-    heroBtn: "Get Started"
-  },
-  bg: {
-    home: "Начало",
-    services: "Услуги",
-    stats: "Статистика",
-    portfolio: "Портфолио",
-    testimonials: "Отзиви",
-    pricing: "Цени",
-    contact: "Контакт",
-    map: "Карта",
-    heroTitle: "Развий своя бизнес с ConsultPro",
-    heroText: "Ние предоставяме експертни консултантски услуги за устойчив растеж и успех.",
-    heroBtn: "Започни сега"
+// script.js — чист, тестван и без синтактични грешки
+document.addEventListener("DOMContentLoaded", () => {
+
+  /* ------------------------
+     HELPERS / TRANSLATIONS
+     ------------------------ */
+  const translations = {
+    en: {
+      home: "Home",
+      services: "Services",
+      stats: "Stats",
+      portfolio: "Portfolio",
+      testimonials: "Testimonials",
+      pricing: "Pricing",
+      contact: "Contact",
+      map: "Map",
+      heroTitle: "Grow Your Business with ConsultPro",
+      heroText: "We provide expert consulting services to help you achieve sustainable growth and success.",
+      heroBtn: "Get Started"
+    },
+    bg: {
+      home: "Начало",
+      services: "Услуги",
+      stats: "Статистика",
+      portfolio: "Портфолио",
+      testimonials: "Отзиви",
+      pricing: "Цени",
+      contact: "Контакт",
+      map: "Карта",
+      heroTitle: "Развий своя бизнес с ConsultPro",
+      heroText: "Ние предоставяме експертни консултантски услуги за устойчив растеж и успех.",
+      heroBtn: "Започни сега"
+    }
+  };
+
+  /* ------------------------
+     ADJUST LANGUAGE SWITCHER POSITION (responsive)
+     ------------------------ */
+  function adjustLanguageSwitcher() {
+    const langSwitcher = document.querySelector('.language-switcher');
+    if (!langSwitcher) return;
+    const screenWidth = window.innerWidth;
+    if (screenWidth <= 768) {
+      langSwitcher.style.position = 'absolute';
+      langSwitcher.style.top = '12px';
+      langSwitcher.style.right = '10px';
+      langSwitcher.style.transform = 'scale(0.85)';
+    } else {
+      langSwitcher.style.position = '';
+      langSwitcher.style.top = '';
+      langSwitcher.style.right = '';
+      langSwitcher.style.transform = '';
+    }
   }
-};
 
-function changeLanguage(lang) {
-  document.querySelector('a[href="#home"]').textContent = translations[lang].home;
-  document.querySelector('a[href="#services"]').textContent = translations[lang].services;
-  document.querySelector('a[href="#stats"]').textContent = translations[lang].stats;
-  document.querySelector('a[href="#portfolio"]').textContent = translations[lang].portfolio;
-  document.querySelector('a[href="#testimonials"]').textContent = translations[lang].testimonials;
-  document.querySelector('a[href="#pricing"]').textContent = translations[lang].pricing;
-  document.querySelector('a[href="#contact"]').textContent = translations[lang].contact;
-  document.querySelector('a[href="#map"]').textContent = translations[lang].map;
-  document.querySelector('.hero-content h1').textContent = translations[lang].heroTitle;
-  document.querySelector('.hero-content p').textContent = translations[lang].heroText;
-  document.querySelector('.hero-content a').textContent = translations[lang].heroBtn;
-}
+  // call once and on resize/orientation change
+  adjustLanguageSwitcher();
+  window.addEventListener('resize', adjustLanguageSwitcher);
+  window.addEventListener('orientationchange', adjustLanguageSwitcher);
 
-// Обработваме натискане на флаг
-document.getElementById('en-btn').addEventListener('click', () => changeLanguage('en'));
-document.getElementById('bg-btn').addEventListener('click', () => changeLanguage('bg'));
+  /* ------------------------
+     MOBILE MENU TOGGLE
+     ------------------------ */
+  const menuToggle = document.querySelector('.menu-toggle');
+  const nav = document.querySelector('.nav');
+  if (menuToggle && nav) {
+    menuToggle.addEventListener('click', () => {
+      nav.classList.toggle('active'); // CSS should show .nav.active on mobile
+    });
+  }
 
+  /* ------------------------
+     LANGUAGE BUTTONS (visual active state)
+     ------------------------ */
+  const langBtns = Array.from(document.querySelectorAll('.lang-btn'));
+  const enBtn = document.getElementById('en-btn');
+  const bgBtn = document.getElementById('bg-btn');
 
+  function setActiveFlagButton(btn) {
+    langBtns.forEach(b => b.classList.remove('active'));
+    if (btn) btn.classList.add('active');
+  }
+
+  langBtns.forEach(btn => {
+    btn.addEventListener('click', () => {
+      setActiveFlagButton(btn);
+      if (btn.id === 'en-btn') changeLanguage('en');
+      if (btn.id === 'bg-btn') changeLanguage('bg');
+    });
+  });
+
+  const initiallyActive = langBtns.find(b => b.classList.contains('active'));
+  if (!initiallyActive && enBtn) setActiveFlagButton(enBtn);
+
+  /* ------------------------
+     CHANGE TEXTS ON PAGE
+     ------------------------ */
+  function changeLanguage(lang) {
+    const t = translations[lang];
+    if (!t) return;
+
+    const map = {
+      '#home': t.home, '#services': t.services, '#stats': t.stats,
+      '#portfolio': t.portfolio, '#testimonials': t.testimonials,
+      '#pricing': t.pricing, '#contact': t.contact, '#map': t.map
+    };
+    Object.keys(map).forEach(sel => {
+      const a = document.querySelector(`.nav a[href="${sel}"]`) || document.querySelector(`a[href="${sel}"]`);
+      if (a) a.textContent = map[sel];
+    });
+
+    const heroH1 = document.querySelector('.hero-content h1');
+    const heroP = document.querySelector('.hero-content p');
+    const heroBtn = document.querySelector('.hero-content a');
+    if (heroH1) heroH1.textContent = t.heroTitle;
+    if (heroP) heroP.textContent = t.heroText;
+    if (heroBtn) heroBtn.textContent = t.heroBtn;
+  }
+
+  if (enBtn) enBtn.addEventListener('click', () => changeLanguage('en'));
+  if (bgBtn) bgBtn.addEventListener('click', () => changeLanguage('bg'));
+
+  /* ------------------------
+     Accessibility: keyboard (optional)
+     ------------------------ */
+  langBtns.forEach(btn => {
+    btn.addEventListener('keydown', (e) => {
+      if (e.key === 'Enter' || e.key === ' ') {
+        e.preventDefault();
+        btn.click();
+      }
+    });
+  });
+
+}); // DOMContentLoaded end
