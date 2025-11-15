@@ -3799,6 +3799,6 @@ document.addEventListener("DOMContentLoaded", () => {
         btn.click();
       }
     });
-  });
 
 }); // DOMContentLoaded end
+
