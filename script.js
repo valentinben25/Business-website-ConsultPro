@@ -3800,5 +3800,4 @@ document.addEventListener("DOMContentLoaded", () => {
       }
     });
 
-}); // DOMContentLoaded end
 
