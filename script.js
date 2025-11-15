@@ -17,12 +17,12 @@ document.addEventListener("DOMContentLoaded", () => {
         nav.classList.remove('active');
       });
     });
-
+ }
 
   // ---------------------
   // Stats counter
   // ---------------------
-  const counters = document.querySelectorAll('.number');
+   const counters = document.querySelectorAll('.number');
   if (counters.length > 0) {
     counters.forEach(counter => {
       counter.innerText = "0";
@@ -42,21 +42,22 @@ document.addEventListener("DOMContentLoaded", () => {
     });
   }
 
+
   // ---------------------
   // Hero slider (auto-rotate)
   // ---------------------
-  const slides = document.querySelectorAll('.hero .slide');
+   const slides = document.querySelectorAll('.hero .slide');
   let idx = 0;
 
   if (slides.length > 0) {
-    slides[idx].classList.add('active'); // първата активна
+    slides[idx].classList.add('active');
     setInterval(() => {
       slides[idx].classList.remove('active');
       idx = (idx + 1) % slides.length;
       slides[idx].classList.add('active');
-    }, 4000); // смяна на 4s
+    }, 4000);
   }
-});
+}); // ← правилно затваряне на DOMContentLoaded
 
 // Portfolio slider
 const slidesP = document.querySelectorAll('.portfolio-slider .slide');
@@ -3799,5 +3800,4 @@ document.addEventListener("DOMContentLoaded", () => {
         btn.click();
       }
     });
-
 
