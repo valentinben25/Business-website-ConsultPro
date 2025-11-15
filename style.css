@@ -3227,8 +3227,8 @@ body {
   cursor: pointer;
 }
 .lang-btn img {
-  width: 32px;
-  height: 22px;
+  width: 50px;
+  height: 30px;
   border-radius: 4px;
   object-fit: cover;
   display: block;
@@ -3548,6 +3548,7 @@ body {
   
   
 }
+
 
 
 
