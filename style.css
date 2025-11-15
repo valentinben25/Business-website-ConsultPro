@@ -94,6 +94,12 @@ body {
   transform: scale(1.1);
 }
 
+    .lang-btn.active img {
+        border: 1px solid #00b4d8;
+        border-radius: 4px;
+        box-shadow: 0 0 5px rgba(0, 180, 216, 0.6);
+    }
+
 /* === MOBILE HEADER === */
 @media (max-width: 768px) {
   .header {
@@ -3542,6 +3548,7 @@ body {
   
   
 }
+
 
 
 
