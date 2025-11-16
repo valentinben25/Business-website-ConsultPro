@@ -1,4 +1,5 @@
 document.addEventListener("DOMContentLoaded", () => {
+
   // ---------------------
   // Mobile menu
   // ---------------------
@@ -10,19 +11,18 @@ document.addEventListener("DOMContentLoaded", () => {
       nav.classList.toggle('active');
     });
 
-    // Затваряне при клик върху линк
     const navLinks = document.querySelectorAll('.nav a');
     navLinks.forEach(link => {
       link.addEventListener('click', () => {
         nav.classList.remove('active');
       });
     });
- }
+  }
 
   // ---------------------
   // Stats counter
   // ---------------------
-   const counters = document.querySelectorAll('.number');
+    const counters = document.querySelectorAll('.number');
   if (counters.length > 0) {
     counters.forEach(counter => {
       counter.innerText = "0";
@@ -46,87 +46,84 @@ document.addEventListener("DOMContentLoaded", () => {
   // ---------------------
   // Hero slider (auto-rotate)
   // ---------------------
-   const slides = document.querySelectorAll('.hero .slide');
-  let idx = 0;
-
-  if (slides.length > 0) {
-    slides[idx].classList.add('active');
-    setInterval(() => {
-      slides[idx].classList.remove('active');
-      idx = (idx + 1) % slides.length;
-      slides[idx].classList.add('active');
-    }, 4000);
-  }
-}); // ← правилно затваряне на DOMContentLoaded
-
-// Portfolio slider
+   // Portfolio slider
 const slidesP = document.querySelectorAll('.portfolio-slider .slide');
 let current = 0;
 
 function showSlide(index) {
+  if (!slidesP || slidesP.length === 0) return;
   slidesP.forEach(s => s.classList.remove('active'));
-  slidesP[index].classList.add('active');
+  const slide = slidesP[index];
+  if (slide) slide.classList.add('active');
 }
 
-document.querySelector('.next').addEventListener('click', () => {
-  current = (current + 1) % slidesP.length;
-  showSlide(current);
-});
+// next / prev — защитени селектори
+const nextBtn = document.querySelector('.next');
+const prevBtn = document.querySelector('.prev');
 
-document.querySelector('.prev').addEventListener('click', () => {
-  current = (current - 1 + slidesP.length) % slidesP.length;
-  showSlide(current);
-});
+if (slidesP.length > 0) {
+  showSlide(current); // покажи първия при зареждане
+}
 
-// Автоматична смяна
-setInterval(() => {
-  current = (current + 1) % slidesP.length;
-  showSlide(current);
-}, 4000);
+if (nextBtn) {
+  nextBtn.addEventListener('click', () => {
+    if (slidesP.length === 0) return;
+    current = (current + 1) % slidesP.length;
+    showSlide(current);
+  });
+}
+
+if (prevBtn) {
+  prevBtn.addEventListener('click', () => {
+    if (slidesP.length === 0) return;
+    current = (current - 1 + slidesP.length) % slidesP.length;
+    showSlide(current);
+  });
+}
+
+// Автоматична смяна — само ако има слайдове
+if (slidesP.length > 0) {
+  setInterval(() => {
+    current = (current + 1) % slidesP.length;
+    showSlide(current);
+  }, 4000);
+}
 
 
 // FAQ accordion
 const faqItems = document.querySelectorAll('.faq-item');
-
-faqItems.forEach(item => {
-  const question = item.querySelector('.faq-question');
-  question.addEventListener('click', () => {
-    item.classList.toggle('active');
+if (faqItems && faqItems.length > 0) {
+  faqItems.forEach(item => {
+    const question = item.querySelector('.faq-question');
+    if (question) {
+      question.addEventListener('click', () => {
+        item.classList.toggle('active');
+      });
+    }
   });
-});
-
+}
 
 // ==============================
 // Newsletter Subscribe Message
 // ==============================
-document.addEventListener("DOMContentLoaded", () => {
-  const newsletterForm = document.querySelector(".newsletter-form");
-
-  if (newsletterForm) {
-    newsletterForm.addEventListener("submit", (e) => {
-      e.preventDefault(); // спира презареждането
-
-      const emailInput = newsletterForm.querySelector("input[type='email']");
-      const userEmail = emailInput.value.trim();
-
-      if (userEmail === "") {
-        alert("Please enter a valid email address.");
-        return;
-      }
-
-      // Показваме съобщение
-      alert("✅ Thank you for subscribing, " + userEmail + "!");
-
-      // Изчистваме полето
-      emailInput.value = "";
-    });
-  }
-});
-
-
+// (Ако искаш да остане отделен DOMContentLoaded — можеш да го оставиш, но е по-добре да проверим елемента)
+const newsletterForm = document.querySelector(".newsletter-form");
+if (newsletterForm) {
+  newsletterForm.addEventListener("submit", (e) => {
+    e.preventDefault();
+    const emailInput = newsletterForm.querySelector("input[type='email']");
+    const userEmail = emailInput ? emailInput.value.trim() : "";
+    if (userEmail === "") {
+      alert("Please enter a valid email address.");
+      return;
+    }
+    alert("✅ Thank you for subscribing, " + userEmail + "!");
+    if (emailInput) emailInput.value = "";
+  });
+}
 
 // ---------------------
-// Chat / Support Widget
+// Chat / Support Widget (защитен)
 // ---------------------
 const chatToggle = document.querySelector('.chat-toggle');
 const chatBox = document.querySelector('.chat-box');
@@ -135,53 +132,35 @@ const sendBtn = document.querySelector('#sendBtn');
 const chatInput = document.querySelector('#chatInput');
 const chatMessages = document.querySelector('#chatMessages');
 
-// Отваряне и затваряне
-chatToggle.addEventListener('click', () => {
-  chatBox.classList.toggle('active');
-});
+if (chatToggle && chatBox) {
+  chatToggle.addEventListener('click', () => {
+    chatBox.classList.toggle('active');
+  });
+}
+if (chatClose && chatBox) {
+  chatClose.addEventListener('click', () => {
+    chatBox.classList.remove('active');
+  });
+}
+if (sendBtn && chatInput && chatMessages) {
+  sendBtn.addEventListener('click', () => {
+    const message = chatInput.value.trim();
+    if (message !== '') {
+      const msg = document.createElement('div');
+      msg.textContent = `You: ${message}`;
+      chatMessages.appendChild(msg);
+      chatInput.value = '';
+      chatMessages.scrollTop = chatMessages.scrollHeight;
+    }
+  });
+}
 
-chatClose.addEventListener('click', () => {
-  chatBox.classList.remove('active');
-});
 
-// Изпращане на съобщение
-sendBtn.addEventListener('click', () => {
-  const message = chatInput.value.trim();
-  if (message !== '') {
-    const msg = document.createElement('div');
-    msg.textContent = `You: ${message}`;
-    chatMessages.appendChild(msg);
-    chatInput.value = '';
-    chatMessages.scrollTop = chatMessages.scrollHeight;
-  }
-});
-
-// ---------------------
-// Language Switcher (EN / BG)
-// ---------------------
-const enBtn = document.getElementById("en-btn");
-const bgBtn = document.getElementById("bg-btn");
-
-// Обект с преводи
-const translations = {
-  en: {
-    heroTitle: "Grow Your Business with ConsultPro",
-    heroText: "We provide expert consulting services to help you achieve sustainable growth and success.",
-    servicesTitle: "Our Services",
-    contactTitle: "Contact Us",
-  },
-  bg: {
-    heroTitle: "Развийте бизнеса си с ConsultPro",
-    heroText: "Ние предоставяме професионални консултантски услуги за устойчив растеж и успех.",
-    servicesTitle: "Нашите услуги",
-    contactTitle: "Свържете се с нас",
-  }
-};
 
 // ---------------------
 // FULL LANGUAGE SWITCHER (EN / BG) — Hero + Services + Process + Stats
 // ---------------------
- document.addEventListener("DOMContentLoaded", () => {
+document.addEventListener("DOMContentLoaded", () => {
   const enBtn = document.getElementById("en-btn");
   const bgBtn = document.getElementById("bg-btn");
 
@@ -3800,4 +3779,5 @@ document.addEventListener("DOMContentLoaded", () => {
         btn.click();
       }
     });
+
 
