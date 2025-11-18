@@ -693,8 +693,10 @@ body {
 }
 
 .stats div {
-  font-size: 22px;
-  font-weight: bold;
+    font-size: 22px;
+    font-weight: bold;
+    padding: 20px;
+    color: black;
 }
 
 .stats div span {
@@ -3560,6 +3562,7 @@ body {
 }
   
 }
+
 
 
 
