@@ -1,53 +1,88 @@
 document.addEventListener("DOMContentLoaded", () => {
 
   /* ============================
-     MOBILE MENU
-  ============================= */
-  const menuToggle = document.querySelector(".menu-toggle");
-  const nav = document.querySelector(".nav");
-
-  if (menuToggle && nav) {
-    menuToggle.addEventListener("click", () => {
-      nav.classList.toggle("active");
-      menuToggle.classList.toggle("active");
-    });
-  }
-
-  /* ============================
      LANGUAGE SWITCHER
-  ============================= */
-  const enBtn = document.getElementById("en-btn");
-  const bgBtn = document.getElementById("bg-btn");
+  ============================ */
 
-  function applyLanguage(lang) {
-    const elements = document.querySelectorAll("[data-en], [data-bg]");
+  const langButtons = {
+    en: document.getElementById("en-btn"),
+    bg: document.getElementById("bg-btn")
+  };
 
-    elements.forEach((el) => {
-      const text = el.getAttribute(`data-${lang}`);
-      if (text) el.textContent = text;
-    });
+  const translations = {
+    en: {
+      // Headers
+      teamTitle: "What Our Team Says",
+      teamSubtitle: "Meet the people who make our company exceptional.",
+      clientTitle: "What Our Clients Say",
+      clientSubtitle: "Real feedback from satisfied business partners.",
 
-    // запазване в localStorage
-    localStorage.setItem("lang", lang);
+      // Navigation
+      home: "Home",
+      services: "Services",
+      stats: "Stats",
+      portfolio: "Portfolio",
+      testimonials: "Testimonials",
+      pricing: "Pricing",
+      contact: "Contact",
+      map: "Map"
+    },
+
+    bg: {
+      // Headers
+      teamTitle: "Какво Казва Нашият Екип",
+      teamSubtitle: "Запознайте се с хората, които правят нашата компания изключителна.",
+      clientTitle: "Какво Казват Нашите Клиенти",
+      clientSubtitle: "Истинска обратна връзка от доволни бизнес партньори.",
+
+      // Navigation
+      home: "Начало",
+      services: "Услуги",
+      stats: "Статистики",
+      portfolio: "Портфолио",
+      testimonials: "Отзиви",
+      pricing: "Цени",
+      contact: "Контакт",
+      map: "Карта"
+    }
+  };
+
+  function setLanguage(lang) {
+    document.querySelector("#testimonials h2").textContent = translations[lang].teamTitle;
+    document.querySelector("#testimonials .subtitle").textContent = translations[lang].teamSubtitle;
+
+    document.querySelector("#client-testimonials h2").textContent = translations[lang].clientTitle;
+    document.querySelector("#client-testimonials .subtitle").textContent = translations[lang].clientSubtitle;
+
+    // Navigation
+    document.querySelector("a[href='#home']").textContent = translations[lang].home;
+    document.querySelector("a[href='#services']").textContent = translations[lang].services;
+    document.querySelector("a[href='#stats']").textContent = translations[lang].stats;
+    document.querySelector("a[href='#portfolio']").textContent = translations[lang].portfolio;
+    document.querySelector("a[href='#testimonials']").textContent = translations[lang].testimonials;
+    document.querySelector("a[href='#pricing']").textContent = translations[lang].pricing;
+    document.querySelector("a[href='#contact']").textContent = translations[lang].contact;
+    document.querySelector("a[href='#map']").textContent = translations[lang].map;
+
+    // Active button style
+    langButtons.en.classList.toggle("active", lang === "en");
+    langButtons.bg.classList.toggle("active", lang === "bg");
   }
 
-  // зареждане на езика от localStorage
-  const savedLang = localStorage.getItem("lang") || "en";
-  applyLanguage(savedLang);
+  langButtons.en.addEventListener("click", () => setLanguage("en"));
+  langButtons.bg.addEventListener("click", () => setLanguage("bg"));
 
-  if (enBtn) enBtn.addEventListener("click", () => applyLanguage("en"));
-  if (bgBtn) bgBtn.addEventListener("click", () => applyLanguage("bg"));
+
 
   /* ============================
-     FADE-IN OBSERVER
-  ============================= */
-  const fadeElements = document.querySelectorAll(
-    ".fade-in, .service-card, .faq-item, .partner-item, .story-step, .testimonial-card, .case-card"
-  );
+     FADE-IN EFFECT
+  ============================ */
+
+  const faders = document.querySelectorAll(".testimonial-card");
 
   const observer = new IntersectionObserver(
-    (entries) => {
-      entries.forEach((entry) => {
+    entries => {
+      entries.forEach(entry => {
         if (entry.isIntersecting) {
           entry.target.classList.add("visible");
         }
@@ -56,6 +91,5 @@ document.addEventListener("DOMContentLoaded", () => {
     { threshold: 0.2 }
   );
 
-  fadeElements.forEach((el) => observer.observe(el));
-
+  faders.forEach(card => observer.observe(card));
 });
