@@ -1,140 +1,61 @@
 document.addEventListener("DOMContentLoaded", () => {
-  console.log("%cConsultPro JS Loaded Successfully", "color:#4CAF50; font-size:14px");
 
-  /* ============================================================
-     1) Mobile Navigation
-  ============================================================ */
+  /* ============================
+     MOBILE MENU
+  ============================= */
   const menuToggle = document.querySelector(".menu-toggle");
-  const navMenu = document.querySelector(".nav-menu");
+  const nav = document.querySelector(".nav");
 
-  if (menuToggle && navMenu) {
+  if (menuToggle && nav) {
     menuToggle.addEventListener("click", () => {
-      navMenu.classList.toggle("active");
+      nav.classList.toggle("active");
       menuToggle.classList.toggle("active");
     });
   }
 
-  /* ============================================================
-     2) Language Switcher (EN / BG)
-  ============================================================ */
-  const langToggle = document.querySelector(".language-toggle");
-  let currentLang = "en";
+  /* ============================
+     LANGUAGE SWITCHER
+  ============================= */
+  const enBtn = document.getElementById("en-btn");
+  const bgBtn = document.getElementById("bg-btn");
 
-  const translations = {
-    en: {
-      heroTitle: "Empowering Your Business Growth",
-      heroSubtitle: "Consulting solutions that transform your ideas into success.",
-      servicesTitle: "Our Services",
-      faqTitle: "Frequently Asked Questions",
-      partnersTitle: "Our Trusted Partners",
-      journeyTitle: "Our Journey",
-      testimonialsTitle: "What Our Clients Say",
-      teamTestimonialsTitle: "Our Team Says"
-    },
-    bg: {
-      heroTitle: "Подкрепяме растежа на вашия бизнес",
-      heroSubtitle: "Консултантски решения, които превръщат идеите в успех.",
-      servicesTitle: "Нашите услуги",
-      faqTitle: "Често задавани въпроси",
-      partnersTitle: "Нашите доверени партньори",
-      journeyTitle: "Нашият път",
-      testimonialsTitle: "Какво казват клиентите",
-      teamTestimonialsTitle: "Какво казва нашият екип"
-    }
-  };
+  function applyLanguage(lang) {
+    const elements = document.querySelectorAll("[data-en], [data-bg]");
 
-  const translatable = {
-    heroTitle: "hero-title",
-    heroSubtitle: "hero-subtitle",
-    servicesTitle: "services-title",
-    faqTitle: "faq-title",
-    partnersTitle: "partners-title",
-    journeyTitle: "journey-title",
-    testimonialsTitle: "client-testimonials-title",
-    teamTestimonialsTitle: "team-testimonials-title"
-  };
-
-  // Apply Translation
-  function applyTranslation(lang) {
-    Object.keys(translatable).forEach(key => {
-      const element = document.getElementById(translatable[key]);
-      if (element) element.textContent = translations[lang][key];
+    elements.forEach((el) => {
+      const text = el.getAttribute(`data-${lang}`);
+      if (text) el.textContent = text;
     });
+
+    // запазване в localStorage
+    localStorage.setItem("lang", lang);
   }
 
-  // Toggle Language
-  if (langToggle) {
-    langToggle.addEventListener("click", () => {
-      currentLang = currentLang === "en" ? "bg" : "en";
-      applyTranslation(currentLang);
-      langToggle.textContent = currentLang.toUpperCase();
-    });
-  }
+  // зареждане на езика от localStorage
+  const savedLang = localStorage.getItem("lang") || "en";
+  applyLanguage(savedLang);
 
-  /* ============================================================
-     3) FAQ Accordion
-  ============================================================ */
-  const faqItems = document.querySelectorAll(".faq-item");
+  if (enBtn) enBtn.addEventListener("click", () => applyLanguage("en"));
+  if (bgBtn) bgBtn.addEventListener("click", () => applyLanguage("bg"));
 
-  faqItems.forEach(item => {
-    const header = item.querySelector(".faq-question");
-    if (!header) return;
-
-    header.addEventListener("click", () => {
-      item.classList.toggle("active");
-    });
-  });
-
-  /* ============================================================
-     4) Fade-In Animations (ALL SECTIONS)
-  ============================================================ */
-
+  /* ============================
+     FADE-IN OBSERVER
+  ============================= */
   const fadeElements = document.querySelectorAll(
-    ".fade-in, .service-card, .faq-item, .partner-card, .story-step, .testimonial-card"
+    ".fade-in, .service-card, .faq-item, .partner-item, .story-step, .testimonial-card, .case-card"
   );
 
-  const fadeObserver = new IntersectionObserver(
+  const observer = new IntersectionObserver(
     (entries) => {
-      entries.forEach(entry => {
+      entries.forEach((entry) => {
         if (entry.isIntersecting) {
           entry.target.classList.add("visible");
-          fadeObserver.unobserve(entry.target);
         }
       });
     },
     { threshold: 0.2 }
   );
 
-  fadeElements.forEach(el => fadeObserver.observe(el));
-
-  /* ============================================================
-     5) Testimonials — Both Sections
-  ============================================================ */
-
-  const testimonialSections = [
-    "#client-testimonials",
-    "#testimonials"
-  ];
-
-  testimonialSections.forEach(sectionSelector => {
-    const section = document.querySelector(sectionSelector);
-    if (!section) return;
-
-    const cards = section.querySelectorAll(".testimonial-card");
-    cards.forEach(card => fadeObserver.observe(card));
-  });
-
-  /* ============================================================
-     6) Smooth Scroll for Navigation
-  ============================================================ */
-  document.querySelectorAll("a[href^='#']").forEach(anchor => {
-    anchor.addEventListener("click", function (e) {
-      const target = document.querySelector(this.getAttribute("href"));
-      if (target) {
-        e.preventDefault();
-        target.scrollIntoView({ behavior: "smooth" });
-      }
-    });
-  });
+  fadeElements.forEach((el) => observer.observe(el));
 
 });
