@@ -791,3 +791,225 @@
 
   // Done
 })();
+
+// =========================================================
+// FULL WEBSITE TRANSLATIONS (EN / BG) + FADE ANIMATION
+// =========================================================
+
+// Detect language buttons
+const enBtn = document.getElementById("en-btn");
+const bgBtn = document.getElementById("bg-btn");
+
+// Fade helper
+function fadeContent(element, callback) {
+  if (!element) return;
+  element.style.transition = "opacity 0.35s";
+  element.style.opacity = "0";
+
+  setTimeout(() => {
+    callback();
+    element.style.opacity = "1";
+  }, 350);
+}
+
+// =========================================================
+// TRANSLATION DATA
+// =========================================================
+
+const translations = {
+  en: {
+    nav: ["Home", "About", "Services", "Team", "Testimonials", "Blog", "Pricing", "Contact"],
+
+    hero_title: "Grow Your Business With Professional Consulting",
+    hero_subtitle: "We help companies achieve stability, growth, and long-term success.",
+    hero_btn: "Get Started",
+
+    services_title: "Our Services",
+    services_sub: "High-quality consulting tailored to your business.",
+
+    team_title: "Our Team",
+    team_sub: "Meet the experts behind our consulting success.",
+
+    testimonials_title: "What Our Team Says",
+    testimonials_sub: "Meet the people who make our company exceptional.",
+
+    clients_title: "What Our Clients Say",
+    clients_sub: "Real feedback from satisfied business partners.",
+
+    blog_title: "Latest Insights",
+    blog_sub: "Stay updated with our business tips, success stories, and industry news.",
+    blog_btn: "Read More",
+
+    pricing_title: "Our Pricing Plans",
+    pricing_sub: "Choose the plan that best fits your business needs.",
+    pricing_btn: "Choose Plan",
+
+    journey_title: "Our Journey",
+    journey_sub: "A look back at our milestones and growth through the years.",
+
+    awards_title: "Our Awards & Achievements",
+    awards_sub: "Recognizing our dedication to excellence, innovation, and customer satisfaction.",
+
+    footer_rights: "All rights reserved.",
+  },
+
+  // --------------------------------------------------------
+  // BULGARIAN VERSION
+  // --------------------------------------------------------
+  bg: {
+    nav: ["Начало", "За нас", "Услуги", "Екип", "Мнения", "Блог", "Цени", "Контакт"],
+
+    hero_title: "Развийте бизнеса си с професионално консултиране",
+    hero_subtitle: "Помагаме на фирмите да постигнат стабилност, растеж и дългосрочен успех.",
+    hero_btn: "Започнете",
+
+    services_title: "Нашите услуги",
+    services_sub: "Висококачествени бизнес решения, съобразени с вашите нужди.",
+
+    team_title: "Нашият екип",
+    team_sub: "Запознайте се с експертите зад нашия успех.",
+
+    testimonials_title: "Какво казва нашият екип",
+    testimonials_sub: "Запознайте се с хората, които правят нашата компания изключителна.",
+
+    clients_title: "Какво казват клиентите",
+    clients_sub: "Реална обратна връзка от доволни бизнес партньори.",
+
+    blog_title: "Последно от блога",
+    blog_sub: "Бъдете в крак с новите бизнес съвети, истории за успех и новини.",
+    blog_btn: "Прочетете още",
+
+    pricing_title: "Нашите ценови пакети",
+    pricing_sub: "Изберете плана, който най-добре отговаря на вашите нужди.",
+    pricing_btn: "Избери план",
+
+    journey_title: "Нашето пътуване",
+    journey_sub: "Поглед назад към нашите постижения през годините.",
+
+    awards_title: "Нашите награди и постижения",
+    awards_sub: "Признание за отдаденост към качество, иновации и клиенти.",
+
+    footer_rights: "Всички права запазени.",
+  }
+};
+
+// =========================================================
+// APPLY TRANSLATION
+// =========================================================
+
+function applyTranslation(lang) {
+  const t = translations[lang];
+
+  // NAVIGATION
+  document.querySelectorAll(".nav-links a").forEach((item, i) => {
+    fadeContent(item, () => item.textContent = t.nav[i]);
+  });
+
+  // HERO
+  fadeContent(document.querySelector(".hero-title"), () =>
+    document.querySelector(".hero-title").textContent = t.hero_title
+  );
+
+  fadeContent(document.querySelector(".hero-subtitle"), () =>
+    document.querySelector(".hero-subtitle").textContent = t.hero_subtitle
+  );
+
+  fadeContent(document.querySelector(".hero-btn"), () =>
+    document.querySelector(".hero-btn").textContent = t.hero_btn
+  );
+
+  // SERVICES
+  fadeContent(document.querySelector("#services h2"), () =>
+    document.querySelector("#services h2").textContent = t.services_title
+  );
+
+  fadeContent(document.querySelector("#services .subtitle"), () =>
+    document.querySelector("#services .subtitle").textContent = t.services_sub
+  );
+
+  // TEAM
+  fadeContent(document.querySelector("#team h2"), () =>
+    document.querySelector("#team h2").textContent = t.team_title
+  );
+
+  fadeContent(document.querySelector("#team .subtitle"), () =>
+    document.querySelector("#team .subtitle").textContent = t.team_sub
+  );
+
+  // TESTIMONIALS (Employees)
+  fadeContent(document.querySelector("#testimonials h2"), () =>
+    document.querySelector("#testimonials h2").textContent = t.testimonials_title
+  );
+
+  fadeContent(document.querySelector("#testimonials .subtitle"), () =>
+    document.querySelector("#testimonials .subtitle").textContent = t.testimonials_sub
+  );
+
+  // TESTIMONIALS (Clients)
+  fadeContent(document.querySelector("#client-testimonials h2"), () =>
+    document.querySelector("#client-testimonials h2").textContent = t.clients_title
+  );
+
+  fadeContent(document.querySelector("#client-testimonials .subtitle"), () =>
+    document.querySelector("#client-testimonials .subtitle").textContent = t.clients_sub
+  );
+
+  // BLOG
+  fadeContent(document.querySelector("#blog h2"), () =>
+    document.querySelector("#blog h2").textContent = t.blog_title
+  );
+
+  fadeContent(document.querySelector("#blog .subtitle"), () =>
+    document.querySelector("#blog .subtitle").textContent = t.blog_sub
+  );
+
+  document.querySelectorAll(".btn-read").forEach(btn =>
+    fadeContent(btn, () => btn.textContent = t.blog_btn)
+  );
+
+  // PRICING
+  fadeContent(document.querySelector("#pricing h2"), () =>
+    document.querySelector("#pricing h2").textContent = t.pricing_title
+  );
+
+  fadeContent(document.querySelector("#pricing .subtitle"), () =>
+    document.querySelector("#pricing .subtitle").textContent = t.pricing_sub
+  );
+
+  document.querySelectorAll(".pricing-card .btn").forEach(btn =>
+    fadeContent(btn, () => btn.textContent = t.pricing_btn)
+  );
+
+  // JOURNEY
+  fadeContent(document.querySelector("#journey h2"), () =>
+    document.querySelector("#journey h2").textContent = t.journey_title
+  );
+
+  fadeContent(document.querySelector("#journey .subtitle"), () =>
+    document.querySelector("#journey .subtitle").textContent = t.journey_sub
+  );
+
+  // AWARDS
+  fadeContent(document.querySelector("#awards h2"), () =>
+    document.querySelector("#awards h2").textContent = t.awards_title
+  );
+
+  fadeContent(document.querySelector("#awards .section-subtitle"), () =>
+    document.querySelector("#awards .section-subtitle").textContent = t.awards_sub
+  );
+
+  // FOOTER
+  fadeContent(document.querySelector(".footer-rights"), () =>
+    document.querySelector(".footer-rights").textContent = t.footer_rights
+  );
+}
+
+// =========================================================
+// BUTTON EVENT LISTENERS
+// =========================================================
+
+if (enBtn && bgBtn) {
+  enBtn.addEventListener("click", () => applyTranslation("en"));
+  bgBtn.addEventListener("click", () => applyTranslation("bg"));
+}
+
