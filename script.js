@@ -1013,3 +1013,122 @@ if (enBtn && bgBtn) {
   bgBtn.addEventListener("click", () => applyTranslation("bg"));
 }
 
+
+/* =============================
+   TRANSLATIONS INSIDE JS
+============================= */
+
+const translations = {
+  en: {
+    nav: {
+      home: "Home",
+      services: "Services",
+      stats: "Stats",
+      portfolio: "Portfolio",
+      testimonials: "Testimonials",
+      pricing: "Pricing",
+      contact: "Contact",
+      map: "Map"
+    },
+    partners: {
+      title: "Trusted by Leading Companies"
+    },
+    awards: {
+      title: "Our Achievements"
+    },
+    blog: {
+      title: "Latest Blog Articles"
+    },
+    pricing: {
+      title: "Pricing Plans"
+    },
+    journey: {
+      title: "Our Journey"
+    },
+    careers: {
+      title: "Careers at ConsultPro"
+    },
+    mapSection: {
+      title: "Find Us on the Map"
+    }
+  },
+
+  bg: {
+    nav: {
+      home: "Начало",
+      services: "Услуги",
+      stats: "Статистика",
+      portfolio: "Портфолио",
+      testimonials: "Отзиви",
+      pricing: "Цени",
+      contact: "Контакт",
+      map: "Карта"
+    },
+    partners: {
+      title: "Партньори, които ни се довериха"
+    },
+    awards: {
+      title: "Нашите Награди"
+    },
+    blog: {
+      title: "Последни Статии"
+    },
+    pricing: {
+      title: "Планове и Цени"
+    },
+    journey: {
+      title: "Нашият Път"
+    },
+    careers: {
+      title: "Кариери в ConsultPro"
+    },
+    mapSection: {
+      title: "Намерете ни на картата"
+    }
+  }
+};
+
+/* =============================================
+   LANGUAGE SWITCHER + AUTO-UPDATE
+============================================= */
+
+function updateLanguage(lang) {
+  const allElements = document.querySelectorAll("[data-i18n]");
+
+  allElements.forEach(el => {
+    const path = el.getAttribute("data-i18n").split(".");
+    let translation = translations[lang];
+
+    path.forEach(key => {
+      if (translation[key]) {
+        translation = translation[key];
+      }
+    });
+
+    if (translation) {
+      el.textContent = translation;
+    }
+  });
+
+  localStorage.setItem("site-language", lang);
+}
+
+/* =============================
+   BUTTON EVENTS
+============================= */
+
+document.getElementById("en-btn").addEventListener("click", () => {
+  updateLanguage("en");
+});
+
+document.getElementById("bg-btn").addEventListener("click", () => {
+  updateLanguage("bg");
+});
+
+/* =============================
+   AUTO-LOAD LANGUAGE
+============================= */
+
+const savedLang = localStorage.getItem("site-language") || "en";
+updateLanguage(savedLang);
+
