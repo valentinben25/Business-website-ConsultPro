@@ -1132,3 +1132,336 @@ document.getElementById("bg-btn").addEventListener("click", () => {
 const savedLang = localStorage.getItem("site-language") || "en";
 updateLanguage(savedLang);
 
+
+// =======================
+//  TRANSLATIONS DATABASE
+// =======================
+
+const translations = {
+  en: {
+    nav: {
+      home: "Home",
+      services: "Services",
+      stats: "Stats",
+      portfolio: "Portfolio",
+      testimonials: "Testimonials",
+      pricing: "Pricing",
+      contact: "Contact",
+      map: "Map"
+    },
+
+    // HERO (ако имаш)
+    hero: {
+      title: "Professional Consulting Services",
+      subtitle: "We help your business grow, optimize operations, and reach success.",
+      button: "Learn More"
+    },
+
+    // SERVICES
+    services: {
+      card1: { title: "Business Strategy", text: "We help companies create strong strategies for long-term success." },
+      card2: { title: "Financial Planning", text: "Our experts assist with budgeting, forecasting, and financial growth." },
+      card3: { title: "Market Analysis", text: "We analyze markets and competitors to help you make smarter decisions." },
+      card4: { title: "Risk Management", text: "We identify risks and build strategies to minimize them." },
+      card5: { title: "Operations Optimization", text: "We improve workflow, reduce costs, and increase efficiency." },
+      card6: { title: "IT Consulting", text: "We provide modern technology solutions for your business." }
+    },
+
+    // TEAM TESTIMONIALS
+    team: {
+      testimonial1: {
+        text: "Working at ConsultPro has been an incredible journey! I’ve grown professionally and personally thanks to the supportive leadership.",
+        name: "John Smith",
+        role: "CEO & Founder"
+      },
+      testimonial2: {
+        text: "The teamwork and company culture here are truly inspiring. Every project feels like a shared success.",
+        name: "Grace Campbell",
+        role: "Financial Consultant"
+      },
+      testimonial3: {
+        text: "ConsultPro gives you the freedom to innovate and contribute your ideas. It's amazing to work in such a dynamic environment.",
+        name: "Mason Jerome",
+        role: "Marketing Expert"
+      }
+    },
+
+    // CLIENT TESTIMONIALS
+    clients: {
+      testimonial1: {
+        name: "Sarah Thompson",
+        role: "Marketing Director, VisionCorp",
+        text: "ConsultPro helped us redefine our strategy and achieve record growth last quarter. Their team is exceptional!"
+      },
+      testimonial2: {
+        name: "James Walker",
+        role: "CEO, FinEdge Solutions",
+        text: "Professional and reliable — their insights completely transformed how we approach our clients."
+      },
+      testimonial3: {
+        name: "Emily Davis",
+        role: "Operations Manager, NovaTech",
+        text: "Working with ConsultPro was a game changer for our company’s long-term vision and operations."
+      }
+    },
+
+    // PARTNERS
+    partners: {
+      title: "Our Partners",
+      subtitle: "Trusted by leading companies worldwide."
+    },
+
+    // AWARDS
+    awards: {
+      title: "Awards & Recognition",
+      subtitle: "Proud of our achievements.",
+      card1: { title: "Best Consulting Firm 2024", text: "Awarded for excellence in strategic development and innovation." },
+      card2: { title: "Top Strategy Experts", text: "Recognized for outstanding consulting solutions." },
+      card3: { title: "Innovation Award", text: "Awarded for implementing modern digital systems." }
+    },
+
+    // BLOG
+    blog: {
+      title: "Latest Insights",
+      subtitle: "Articles from our consultants.",
+      post1: { title: "How to Scale Your Business", text: "Learn proven strategies for growth and expansion." },
+      post2: { title: "Future of AI in Consulting", text: "AI is transforming the consulting industry in powerful ways." },
+      post3: { title: "Common Startup Mistakes", text: "Avoid the most frequent pitfalls when launching a new business." }
+    },
+
+    // PRICING
+    pricing: {
+      title: "Pricing Plans",
+      subtitle: "Choose the right plan for your needs.",
+      basic: {
+        title: "Basic Plan",
+        feature1: "Initial consultation",
+        feature2: "Email support"
+      },
+      pro: {
+        title: "Professional Plan",
+        feature1: "Full project support",
+        feature2: "Monthly reports"
+      },
+      enterprise: {
+        title: "Enterprise Plan",
+        feature1: "Dedicated consultant",
+        feature2: "Custom solutions"
+      }
+    },
+
+    // JOURNEY / PROCESS
+    journey: {
+      title: "Our Process",
+      subtitle: "Step by step to success.",
+      step1: { title: "Discovery", text: "We analyze your needs and business environment." },
+      step2: { title: "Planning", text: "We create an actionable and effective strategy." },
+      step3: { title: "Execution", text: "We implement the plan with precision and expertise." },
+      step4: { title: "Optimization", text: "We monitor results and make improvements." }
+    },
+
+    // FAQ
+    faq: {
+      q1: "How does your consulting process work?",
+      a1: "Our process begins with understanding your goals and building a tailored plan.",
+      q2: "What industries do you specialize in?",
+      a2: "We work with companies in finance, technology, retail, manufacturing, and more.",
+      q3: "How long does a typical project take?",
+      a3: "Most projects last between 3 and 12 weeks depending on complexity.",
+      q4: "Do you offer ongoing support?",
+      a4: "Yes, we provide continuous support and maintenance."
+    },
+
+    // MAP
+    map: {
+      title: "Our Office Location",
+      subtitle: "Find us easily on the map."
+    },
+
+    // CONTACT
+    contact: {
+      title: "Contact Us",
+      subtitle: "We're here to help your business grow.",
+      phone: "Phone",
+      email: "Email",
+      address: "Address"
+    }
+  },
+
+  // ==============================
+  //  BULGARIAN 🔥 (FULL TRANSLATION)
+  // ==============================
+  bg: {
+    nav: {
+      home: "Начало",
+      services: "Услуги",
+      stats: "Статистика",
+      portfolio: "Портфолио",
+      testimonials: "Отзиви",
+      pricing: "Цени",
+      contact: "Контакт",
+      map: "Карта"
+    },
+
+    hero: {
+      title: "Професионални консултантски услуги",
+      subtitle: "Помагаме на бизнеса да расте, да оптимизира процеси и да постига успех.",
+      button: "Научи повече"
+    },
+
+    services: {
+      card1: { title: "Бизнес стратегия", text: "Помагаме на компаниите да изграждат силни стратегии за дългосрочен успех." },
+      card2: { title: "Финансово планиране", text: "Нашите експерти съдействат с бюджети, прогнози и финансов растеж." },
+      card3: { title: "Пазарен анализ", text: "Анализираме пазара и конкуренцията за по-добри решения." },
+      card4: { title: "Управление на риска", text: "Идентифицираме рискове и създаваме стратегии за минимизиране." },
+      card5: { title: "Оптимизация на процеси", text: "Подобряваме работния поток, намаляваме разходи и увеличаваме ефективността." },
+      card6: { title: "ИТ консултиране", text: "Предлагаме модерни технологични решения за бизнеса." }
+    },
+
+    team: {
+      testimonial1: {
+        text: "Работата в ConsultPro е невероятно пътешествие! Развих се професионално и лично благодарение на подкрепящото ръководство.",
+        name: "Джон Смит",
+        role: "Изпълнителен директор и основател"
+      },
+      testimonial2: {
+        text: "Екипната работа и културата в компанията са вдъхновяващи. Всеки проект е общ успех.",
+        name: "Грейс Кембъл",
+        role: "Финансов консултант"
+      },
+      testimonial3: {
+        text: "ConsultPro ти дава свободата да иновираш и да споделяш идеи. Уникална работна среда!",
+        name: "Мейсън Джером",
+        role: "Маркетинг експерт"
+      }
+    },
+
+    clients: {
+      testimonial1: {
+        name: "Сара Томпсън",
+        role: "Маркетинг директор, VisionCorp",
+        text: "ConsultPro промени нашата стратегия и ни помогна да постигнем рекорден растеж."
+      },
+      testimonial2: {
+        name: "Джеймс Уокър",
+        role: "Главен изпълнителен директор, FinEdge Solutions",
+        text: "Професионално и надеждно — техните идеи преобразиха начина, по който работим."
+      },
+      testimonial3: {
+        name: "Емили Дейвис",
+        role: "Оперативен мениджър, NovaTech",
+        text: "Работата с ConsultPro беше истински пробив за нашата дългосрочна визия."
+      }
+    },
+
+    partners: {
+      title: "Нашите партньори",
+      subtitle: "Доверени от водещи компании по света."
+    },
+
+    awards: {
+      title: "Награди и признания",
+      subtitle: "Гордеем се с нашите постижения.",
+      card1: { title: "Най-добра консултантска фирма 2024", text: "Отличие за стратегическо развитие и иновации." },
+      card2: { title: "Топ експерти по стратегия", text: "Признание за изключителни консултантски решения." },
+      card3: { title: "Награда за иновации", text: "Присъдена за внедряване на модерни дигитални системи." }
+    },
+
+    blog: {
+      title: "Последни статии",
+      subtitle: "Професионални анализи от нашите експерти.",
+      post1: { title: "Как да развиете бизнеса си", text: "Научете доказани стратегии за растеж." },
+      post2: { title: "Бъдещето на AI в консултирането", text: "Изкуственият интелект променя индустрията." },
+      post3: { title: "Грешки, които стартиращите бизнеси правят", text: "Как да избегнете най-честите капани." }
+    },
+
+    pricing: {
+      title: "Ценови планове",
+      subtitle: "Изберете подходящия план за вашите нужди.",
+      basic: {
+        title: "Базов план",
+        feature1: "Първоначална консултация",
+        feature2: "Имейл поддръжка"
+      },
+      pro: {
+        title: "Професионален план",
+        feature1: "Пълна проектна поддръжка",
+        feature2: "Месечни отчети"
+      },
+      enterprise: {
+        title: "Корпоративен план",
+        feature1: "Личен консултант",
+        feature2: "Персонални решения"
+      }
+    },
+
+    journey: {
+      title: "Нашият процес",
+      subtitle: "Стъпка по стъпка към успеха.",
+      step1: { title: "Откриване", text: "Анализираме вашите нужди и бизнес среда." },
+      step2: { title: "Планиране", text: "Създаваме ефективна стратегия." },
+      step3: { title: "Изпълнение", text: "Прилагаме плана с прецизност." },
+      step4: { title: "Оптимизация", text: "Следим резултатите и подобряваме." }
+    },
+
+    faq: {
+      q1: "Как протича процесът на консултиране?",
+      a1: "Започваме с анализ на вашите цели и създаване на индивидуален план.",
+      q2: "В кои индустрии сте специализирани?",
+      a2: "Работим с компании в сферата на финансите, технологиите, търговията и други.",
+      q3: "Колко време трае типичен проект?",
+      a3: "Обикновено между 3 и 12 седмици според сложността.",
+      q4: "Предлагате ли последваща поддръжка?",
+      a4: "Да, осигуряваме постоянна поддръжка и консултации."
+    },
+
+    map: {
+      title: "Нашият офис",
+      subtitle: "Намерете ни лесно на картата."
+    },
+
+    contact: {
+      title: "Свържете се с нас",
+      subtitle: "Тук сме, за да ви помогнем да развиете бизнеса си.",
+      phone: "Телефон",
+      email: "Имейл",
+      address: "Адрес"
+    }
+  }
+};
+
+// ================================
+// APPLY TRANSLATION FUNCTION
+// ================================
+
+function applyTranslations(lang) {
+  document.querySelectorAll("[data-i18n]").forEach((el) => {
+    const keys = el.getAttribute("data-i18n").split(".");
+    let text = translations[lang];
+
+    keys.forEach((k) => { text = text?.[k]; });
+
+    if (text) el.textContent = text;
+  });
+}
+
+// ================================
+// LANGUAGE SWITCHER
+// ================================
+
+document.getElementById("en-btn").onclick = () => {
+  applyTranslations("en");
+  localStorage.setItem("lang", "en");
+};
+
+document.getElementById("bg-btn").onclick = () => {
+  applyTranslations("bg");
+  localStorage.setItem("lang", "bg");
+};
+
+// ================================
+// LOAD SAVED LANGUAGE
+// ================================
+
+const savedLang = localStorage.getItem("lang") || "en";
+applyTranslations(savedLang);
