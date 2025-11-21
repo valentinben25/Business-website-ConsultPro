@@ -3560,8 +3560,15 @@ body {
   opacity: 1;
   transform: translateY(0);
 }
+
+  .reveal { opacity: 0; transform: translateY(18px); transition: opacity .6s ease, transform .6s ease; }
+.reveal.in-view { opacity: 1; transform: none; }
+.nav.open { /* your mobile styles */ }
+.menu-toggle.open { /* change icon state */ }
+.lang-btn.active { outline: 2px solid rgba(0,0,0,0.06); transform: scale(1.02); }
   
 }
+
 
 
 
