@@ -14,6 +14,10 @@ body {
   padding-top: 90px; /* височината на header-а */
 }
 
+.nav.active {
+   transform: translateX(0);
+}
+
 
 /* === HEADER === */
 .header {
@@ -3568,6 +3572,7 @@ body {
 .lang-btn.active { outline: 2px solid rgba(0,0,0,0.06); transform: scale(1.02); }
   
 }
+
 
 
 
