@@ -1,23 +1,15 @@
-/**
- * script.js
- * Clean, single-file i18n + UI helpers for ConsultPro
- *
- * Features:
- * - Single source of translations (en, bg)
- * - Applies to elements with:
- *     data-i18n (textContent),
- *     data-i18n-html (innerHTML),
- *     data-i18n-placeholder (placeholder attr),
- *     data-i18n-alt (alt attr)
- * - Graceful fallback if key missing
- * - Language switch buttons (with active class) and autosave to localStorage
- * - Simple fade-in / scroll reveal for sections
- * - Ensures nav links have pointer cursor and basic keyboard accessibility
- * - Defensive: won't throw if keys/elements missing
- */
+/* script.js
+   - I18N translate (data-i18n, data-i18n-html, data-i18n-placeholder, data-i18n-alt)
+   - Language buttons (en-btn, bg-btn) + autosave (localStorage)
+   - Menu toggle (menu-toggle)
+   - Ensure nav links show pointer cursor
+   - Fade-in / Scroll reveal (IntersectionObserver)
+   - Stats counter on scroll
+   - Basic accessibility tweaks
+*/
 
 /* =========================
-   TRANSLATIONS (en + bg)
+   TRANSLATIONS: EN and BG
    ========================= */
 const translations = {
   en: {
@@ -33,184 +25,115 @@ const translations = {
     },
     hero: {
       title: 'Grow Your Business with <span>ConsultPro</span>',
-      text: "We provide expert consulting services to help you achieve sustainable growth and success.",
-      btn: "Get Started"
+      text: 'We provide expert consulting services to help you achieve sustainable growth and success.',
+      btn: 'Get Started'
     },
     services: {
-      card1: {
-        title: "Business Strategy",
-        text: "Tailored strategies to help your company achieve sustainable growth and efficiency."
-      },
-      card2: {
-        title: "Financial Consulting",
-        text: "Expert financial planning, analysis, and risk management for your business success."
-      },
-      card3: {
-        title: "Market Analysis",
-        text: "In-depth research and insights into your market to keep you ahead of competitors."
-      },
-      card4: {
-        title: "Corporate Training",
-        text: "Workshops and training sessions to boost team productivity and leadership skills."
-      },
-      card5: {
-        title: "IT Consulting",
-        text: "Guidance on digital transformation, cloud solutions, and tech infrastructure."
-      },
-      card6: {
-        title: "Partnership Development",
-        text: "Building strong partnerships to expand your business opportunities worldwide."
-      }
+      "card1": { title: "Business Strategy", text: "Tailored strategies to help your company achieve sustainable growth and efficiency." },
+      "card2": { title: "Financial Consulting", text: "Expert financial planning, analysis, and risk management for your business success." },
+      "card3": { title: "Market Analysis", text: "In-depth research and insights into your market to keep you ahead of competitors." },
+      "card4": { title: "Corporate Training", text: "Workshops and training sessions to boost team productivity and leadership skills." },
+      "card5": { title: "IT Consulting", text: "Guidance on digital transformation, cloud solutions, and tech infrastructure." },
+      "card6": { title: "Partnership Development", text: "Building strong partnerships to expand your business opportunities worldwide." }
     },
-    stats: {
-      title: "Our Achievements",
-      subtitle: "Key milestones that highlight our expertise and growth.",
-      clients: "Happy Clients",
-      projects: "Completed Projects",
-      years: "Years of Experience",
-      experts: "Expert Consultants"
+    team: {
+      testimonial1: { text: "“Working at ConsultPro has been an incredible journey! I’ve grown professionally and personally thanks to the supportive leadership.”", name: "John Smith", role: "CEO & Founder" },
+      testimonial2: { text: "“The teamwork and company culture here are truly inspiring. Every project feels like a shared success.”", name: "Grace Campbell", role: "Financial Consultant" },
+      testimonial3: { text: "“ConsultPro gives you the freedom to innovate and contribute your ideas. It’s amazing to work in such a dynamic environment.”", name: "Mason Jerome", role: "Marketing Expert" }
     },
-    portfolio: {
-      title: "Our Projects",
-      subtitle: "Explore some of our featured works and consulting projects."
+    clients: {
+      testimonial1: { name: "Sarah Thompson", role: "Marketing Director, VisionCorp", text: "“ConsultPro helped us redefine our strategy and achieve record growth last quarter. Their team is exceptional!”" },
+      testimonial2: { name: "James Walker", role: "CEO, FinEdge Solutions", text: "“Professional and reliable — their insights completely transformed how we approach our clients.”" },
+      testimonial3: { name: "Emily Davis", role: "Operations Manager, NovaTech", text: "“Working with ConsultPro was a game changer for our company’s long-term vision and operations.”" }
     },
-    caseStudies: {
-      title: "Case Studies & Success Stories",
-      subtitle: "See how we’ve helped businesses achieve remarkable growth and transformation.",
-      case1: {
-        title: "Financial Strategy Transformation",
-        text: "We helped a UK-based finance firm boost efficiency by 35% through data-driven insights and process optimization."
-      },
-      case2: {
-        title: "Digital Marketing Revamp",
-        text: "Our team designed a new marketing strategy that increased online engagement by 60% within 3 months."
-      },
-      case3: {
-        title: "Global Expansion Support",
-        text: "ConsultPro guided a startup through international expansion, reaching 5 new markets in under a year."
-      }
+    partners: {
+      title: "Our Trusted Partners",
+      subtitle: "We’re proud to collaborate with these leading brands and organizations.",
+      img1_alt: "Partner 1",
+      img2_alt: "Partner 2",
+      img3_alt: "Partner 3",
+      img4_alt: "Partner 4",
+      img5_alt: "Partner 5"
     },
-    testimonials: {
-      team: {
-        testimonial1: {
-          text: "“Working at ConsultPro has been an incredible journey! I’ve grown professionally and personally thanks to the supportive leadership.”",
-          name: "John Smith",
-          role: "CEO & Founder"
-        },
-        testimonial2: {
-          text: "“The teamwork and company culture here are truly inspiring. Every project feels like a shared success.”",
-          name: "Grace Campbell",
-          role: "Financial Consultant"
-        },
-        testimonial3: {
-          text: "“ConsultPro gives you the freedom to innovate and contribute your ideas. It’s amazing to work in such a dynamic environment.”",
-          name: "Mason Jerome",
-          role: "Marketing Expert"
-        }
-      },
-      clients: {
-        testimonial1: {
-          name: "Sarah Thompson",
-          role: "Marketing Director, VisionCorp",
-          text: "“ConsultPro helped us redefine our strategy and achieve record growth last quarter. Their team is exceptional!”"
-        },
-        testimonial2: {
-          name: "James Walker",
-          role: "CEO, FinEdge Solutions",
-          text: "“Professional and reliable — their insights completely transformed how we approach our clients.”"
-        },
-        testimonial3: {
-          name: "Emily Davis",
-          role: "Operations Manager, NovaTech",
-          text: "“Working with ConsultPro was a game changer for our company’s long-term vision and operations.”"
-        }
-      }
+    awards: {
+      title: "Our Awards & Achievements",
+      subtitle: "Recognizing our dedication to excellence, innovation, and customer satisfaction.",
+      card1: { title: "Best Consulting Firm 2023", text: "Awarded for outstanding business strategy and innovation." },
+      card2: { title: "Excellence in Customer Service", text: "Recognized for our exceptional client support and care." },
+      card3: { title: "Top Business Growth 2024", text: "Honored for driving rapid and sustainable growth." },
+      card4: { title: "Innovation Award", text: "Celebrating creative and forward-thinking business solutions." }
     },
     blog: {
       title: "Latest Insights",
       subtitle: "Stay updated with our business tips, success stories, and industry news.",
-      post1: {
-        title: "How to Build a Winning Business Strategy",
-        text: "Discover the key elements of developing a strong strategy that drives growth and success."
-      },
-      post2: {
-        title: "Top 5 Market Trends for 2025",
-        text: "Explore the biggest shifts that will shape the future of business and consulting."
-      },
-      post3: {
-        title: "Boost Your Team’s Productivity",
-        text: "Learn simple yet powerful techniques to keep your team motivated and efficient.",
-        btn: "Read More"
-      },
+      post1: { title: "How to Build a Winning Business Strategy", text: "Discover the key elements of developing a strong strategy that drives growth and success." },
+      post2: { title: "Top 5 Market Trends for 2025", text: "Explore the biggest shifts that will shape the future of business and consulting." },
+      post3: { title: "Boost Your Team’s Productivity", text: "Learn simple yet powerful techniques to keep your team motivated and efficient." },
       btn: "Read More"
     },
     pricing: {
-      title: "Our Pricing Plans",
-      subtitle: "Choose a plan that fits your business needs and goals.",
+      chooseBtn: "Choose Plan",
       basic: {
-        title: "Basic"
+        title: "Basic",
+        price: "$199 / month",
+        feature1: "✔ Business Consultation",
+        feature2: "✔ Financial Planning",
+        feature3: "✖ Marketing Strategy",
+        feature4: "✖ Ongoing Support"
       },
-      btn: "Choose Plan"
+      standard: {
+        title: "Standard",
+        price: "$399 / month",
+        feature1: "✔ Full Business Consultation",
+        feature2: "✔ Financial & Market Analysis",
+        feature3: "✔ Marketing Strategy",
+        feature4: "✖ Dedicated Consultant"
+      },
+      premium: {
+        title: "Premium",
+        price: "Custom",
+        feature1: "✔ Complete Business Solutions",
+        feature2: "✔ Dedicated Expert Consultant",
+        feature3: "✔ Full Support 24/7",
+        feature4: "✔ Growth Strategy Reports"
+      }
     },
     journey: {
       title: "Our Journey",
       subtitle: "A look back at our milestones and growth through the years.",
-      step1: {
-        title: "2016 Foundation of ConsultPro",
-        text: "ConsultPro began its journey as a small consultancy firm with a vision to empower businesses worldwide."
-      },
-      step2: {
-        title: "2018 International Expansion",
-        text: "We secured our first international client and expanded our services to financial and IT sectors."
-      },
-      step3: {
-        title: "2020 Innovation & Growth",
-        text: "Our consulting team grew across Europe, establishing partnerships with global enterprises."
-      },
-      step4: {
-        title: "2023",
-        text: "Celebrated a major milestone — over 100 successful consulting projects delivered worldwide."
-      },
-      step6: {
-        text: "ConsultPro continues to lead the way in digital transformation and business innovation."
-      }
+      step1: { title: "2016 Foundation of ConsultPro", text: "ConsultPro began its journey as a small consultancy firm with a vision to empower businesses worldwide." },
+      step2: { title: "2018 International Expansion", text: "We secured our first international client and expanded our services to financial and IT sectors." },
+      step3: { title: "2020 Innovation & Growth", text: "Our consulting team grew across Europe, establishing partnerships with global enterprises." },
+      step4: { title: "2023", text: "Celebrated a major milestone — over 100 successful consulting projects delivered worldwide." },
+      step6: { title: "2025", text: "ConsultPro continues to lead the way in digital transformation and business innovation." }
     },
     careers: {
-      title: "Join Our Team",
+      title: "Join <span>Our Team</span>",
       subtitle1: "We're always looking for passionate and talented professionals to grow with us.",
       position1: "Business Consultant",
       position2: "Financial Analyst",
-      position3: "Marketing Manager"
+      position3: "Marketing Manager",
+      subtitle2: "Provide expert advice and insights to help clients improve efficiency and achieve success.",
+      subtitle3: "Analyze financial data and develop strategies that help clients grow sustainably.",
+      subtitle4: "Lead digital campaigns and branding initiatives to boost our clients’ visibility."
     },
     contact: {
-      title: "Contact Us",
-      address: "15A Business Street, Sofia, Bulgaria",
-      email: "info@consultpro.com",
-      phone: "+44 888 123 456",
-      hours: "Mon – Fri: 9:00 – 18:00",
       formName: "Your Name",
       formEmail: "Your Email",
       formMessage: "Your Message",
-      sendBtn: "Send Message"
-    },
-    map: {
-      title: "Find Us in London"
+      sendBtn: "Send Message",
+      mapTitle: "Find Us in London"
     },
     footer: {
       rights: "© 2025 ConsultPro. All rights reserved."
-    },
-    ui: {
-      askConsultant: "Ask a Consultant",
-      chatPlaceholder: "Type your message..."
     }
   },
 
-  /* Bulgarian translations (bg) - adjust phrasing as you prefer */
   bg: {
     nav: {
       home: "Начало",
       services: "Услуги",
-      stats: "Постижения",
+      stats: "Статистика",
       portfolio: "Портфолио",
       testimonials: "Отзиви",
       pricing: "Цени",
@@ -219,401 +142,364 @@ const translations = {
     },
     hero: {
       title: 'Развийте бизнеса си с <span>ConsultPro</span>',
-      text: "Ние предоставяме експертни консултантски услуги, за да постигнете устойчив растеж и успех.",
-      btn: "Започнете"
+      text: 'Предлагаме експертни консултантски услуги, за да постигнете устойчив растеж и успех.',
+      btn: 'Започнете'
     },
     services: {
-      card1: {
-        title: "Бизнес Стратегия",
-        text: "Персонализирани стратегии за устойчив растеж и ефективност."
-      },
-      card2: {
-        title: "Финансово Консултиране",
-        text: "Експертно финансово планиране, анализ и управление на риска."
-      },
-      card3: {
-        title: "Анализ на Пазара",
-        text: "Задълбочени изследвания и прозрения, за да сте пред конкурентите."
-      },
-      card4: {
-        title: "Корпоративно Обучение",
-        text: "Уъркшопи и обучения за повишаване на продуктивността и лидерството."
-      },
-      card5: {
-        title: "ИТ Консултации",
-        text: "Съвети за дигитална трансформация, облачни решения и инфраструктура."
-      },
-      card6: {
-        title: "Развитие на Партньорства",
-        text: "Изграждане на силни партньорства за разширяване на възможностите."
-      }
+      "card1": { title: "Бизнес стратегия", text: "Индивидуални стратегии за устойчив растеж и ефективност." },
+      "card2": { title: "Финансови консултации", text: "Експертно финансово планиране, анализ и управление на риска." },
+      "card3": { title: "Маркетингов анализ", text: "Задълбочени изследвания и пазарни прозрения за преднина пред конкуренцията." },
+      "card4": { title: "Корпоративно обучение", text: "Работилници и обучения за повишаване на продуктивността и лидерството." },
+      "card5": { title: "IT консултации", text: "Насоки за дигитална трансформация, облачни решения и инфраструктура." },
+      "card6": { title: "Развитие на партньорства", text: "Изграждане на силни партньорства за разширяване на възможности." }
     },
-    stats: {
-      title: "Нашите Постижения",
-      subtitle: "Ключови стъпки, които показват нашия опит и растеж.",
-      clients: "Доволни клиенти",
-      projects: "Завършени проекти",
-      years: "Години опит",
-      experts: "Експертни консултанти"
+    team: {
+      testimonial1: { text: "„Работата в ConsultPro беше невероятно преживяване! Израснах професионално и лично благодарение на подкрепящото ръководство.“", name: "John Smith", role: "Главен изпълнителен директор" },
+      testimonial2: { text: "„Екипната работа и културата тук са истинско вдъхновение. Всеки проект е споделен успех.“", name: "Grace Campbell", role: "Финансов консултант" },
+      testimonial3: { text: "„ConsultPro ти дава свобода да иновираш и допринасяш с идеи. Прекрасно е да работиш в такава динамична среда.“", name: "Mason Jerome", role: "Маркетинг експерт" }
     },
-    portfolio: {
-      title: "Нашите Проекти",
-      subtitle: "Разгледайте някои от нашите проекти и реализации."
+    clients: {
+      testimonial1: { name: "Sarah Thompson", role: "Директор маркетинг, VisionCorp", text: "„ConsultPro ни помогна да преразгледаме стратегията и да постигнем рекорден растеж през последното тримесечие. Екипът е изключителен!“" },
+      testimonial2: { name: "James Walker", role: "Изпълнителен директор, FinEdge Solutions", text: "„Професионални и надеждни — техните анализи промениха изцяло начина ни на работа.“" },
+      testimonial3: { name: "Emily Davis", role: "Оперативен мениджър, NovaTech", text: "„Работата с ConsultPro беше решаваща за дългосрочната визия и операции на нашата компания.“" }
     },
-    caseStudies: {
-      title: "Казуси и Успешни Истории",
-      subtitle: "Вижте как сме помогнали на бизнеси да постигнат значителен растеж.",
-      case1: {
-        title: "Трансформация на Финансова Стратегия",
-        text: "Помогнахме на финансова компания да увеличи ефективността с 35% чрез данни и оптимизация."
-      },
-      case2: {
-        title: "Ревизия на Дигиталния Маркетинг",
-        text: "Новата маркетингова стратегия увеличи ангажираността с 60% за 3 месеца."
-      },
-      case3: {
-        title: "Подкрепа за Глобална Експанзия",
-        text: "Насочихме стартъп в 5 нови пазара за по-малко от година."
-      }
+    partners: {
+      title: "Нашите партньори",
+      subtitle: "Горди сме да си сътрудничим с тези водещи марки и организации.",
+      img1_alt: "Партньор 1",
+      img2_alt: "Партньор 2",
+      img3_alt: "Партньор 3",
+      img4_alt: "Партньор 4",
+      img5_alt: "Партньор 5"
     },
-    testimonials: {
-      team: {
-        testimonial1: {
-          text: "„Работата в ConsultPro беше невероятно преживяване! Развих се професионално и лично благодарение на подкрепящото ръководство.“",
-          name: "Джон Смит",
-          role: "Изпълнителен директор и основател"
-        },
-        testimonial2: {
-          text: "„Екипната работа и културата в компанията са истинско вдъхновение. Всеки проект е общ успех.“",
-          name: "Грейс Кемпбъл",
-          role: "Финансов консултант"
-        },
-        testimonial3: {
-          text: "„ConsultPro дава свободата да иновираме и да предлагаме идеи. Прекрасно е да работиш в такава среда.“",
-          name: "Мейсън Джером",
-          role: "Маркетинг експерт"
-        }
-      },
-      clients: {
-        testimonial1: {
-          name: "Сара Томпсън",
-          role: "Директор Маркетинг, VisionCorp",
-          text: "„ConsultPro ни помогна да пренапишем стратегията и отчетохме рекорден растеж.“"
-        },
-        testimonial2: {
-          name: "Джеймс Уокър",
-          role: "Изпълнителен директор, FinEdge Solutions",
-          text: "„Професионални и надеждни — техните прозрения промениха нашия подход.“"
-        },
-        testimonial3: {
-          name: "Емили Дейвис",
-          role: "Оперативен мениджър, NovaTech",
-          text: "„Работата с ConsultPro промени дългосрочната ни визия и операции.“"
-        }
-      }
+    awards: {
+      title: "Нашите награди",
+      subtitle: "Признаване за ангажимента ни към качество, иновации и удовлетворение на клиентите.",
+      card1: { title: "Най-добра консултантска фирма 2023", text: "Наградена за отлична бизнес стратегия и иновации." },
+      card2: { title: "Отличие за обслужване на клиенти", text: "Признание за изключителна клиентска подкрепа и грижа." },
+      card3: { title: "Най-голям бизнес растеж 2024", text: "Отличени за ускорен и устойчив растеж." },
+      card4: { title: "Награда за иновации", text: "Отбелязване на креативни и напредничави бизнес решения." }
     },
     blog: {
-      title: "Последни Статии",
-      subtitle: "Останете информирани с нашите съвети, истории и новини.",
-      post1: {
-        title: "Как да изградим печеливша бизнес стратегия",
-        text: "Открийте ключовите елементи за силна стратегия, която задвижва растежа."
-      },
-      post2: {
-        title: "Топ 5 тенденции за 2025",
-        text: "Разгледайте най-големите промени, които ще оформят бъдещето."
-      },
-      post3: {
-        title: "Увеличете продуктивността на екипа си",
-        text: "Научете прости, но ефективни техники за мотивация и изпълнение."
-      },
+      title: "Последни публикации",
+      subtitle: "Актуални бизнес съвети, истории за успех и новини от бранша.",
+      post1: { title: "Как да създадете печеливша бизнес стратегия", text: "Открийте ключовите елементи за разработка на силна стратегия." },
+      post2: { title: "Топ 5 маркетингови тенденции за 2025", text: "Разгледайте най-големите промени, които ще формират бъдещето." },
+      post3: { title: "Повишете продуктивността на екипа си", text: "Прости, но мощни техники за мотивация и ефективност." },
       btn: "Прочети"
     },
     pricing: {
-      title: "Нашите Планове",
-      subtitle: "Изберете план, който пасва на нуждите ви.",
+      chooseBtn: "Избери план",
       basic: {
-        title: "Базов"
+        title: "Бейсик",
+        price: "199 лв / месец",
+        feature1: "✔ Бизнес консултация",
+        feature2: "✔ Финансово планиране",
+        feature3: "✖ Маркетинг стратегия",
+        feature4: "✖ Постоянна поддръжка"
       },
-      btn: "Избери План"
-    },
-    journey: {
-      title: "Нашият Път",
-      subtitle: "Поглед назад към нашите ключови моменти.",
-      step1: {
-        title: "2016 Създаване на ConsultPro",
-        text: "ConsultPro започна като малка консултантска фирма с визия да подкрепя бизнесите."
+      standard: {
+        title: "Стандартен",
+        price: "399 лв / месец",
+        feature1: "✔ Пълна бизнес консултация",
+        feature2: "✔ Финансов и пазарен анализ",
+        feature3: "✔ Маркетинг стратегия",
+        feature4: "✖ Персонален консултант"
       },
-      step2: {
-        title: "2018 Международна експанзия",
-        text: "Първи международни клиенти и разширяване в ИТ и финанси."
-      },
-      step3: {
-        title: "2020 Иновации и растеж",
-        text: "Екипът ни стана международен с партньорства в Европа."
-      },
-      step4: {
-        title: "2023",
-        text: "Празнуваме 100+ успешни проекта по целия свят."
-      },
-      step6: {
-        text: "ConsultPro продължава да води дигиталната трансформация."
+      premium: {
+        title: "Премиум",
+        price: "По заявка",
+        feature1: "✔ Цялостни бизнес решения",
+        feature2: "✔ Посветен експерт консултант",
+        feature3: "✔ Денонощна поддръжка 24/7",
+        feature4: "✔ Доклади за растеж"
       }
     },
+    journey: {
+      title: "Нашият път",
+      subtitle: "Връщане назад към нашите важни моменти и растеж.",
+      step1: { title: "2016 Основаниe", text: "ConsultPro започна като малка консултантска фирма с визия да подкрепя бизнеса." },
+      step2: { title: "2018 Международно разрастване", text: "Първи международен клиент и разширяване на услугите." },
+      step3: { title: "2020 Иновации и растеж", text: "Екипът се разраства и създава партньорства в Европа." },
+      step4: { title: "2023", text: "Празнуване на над 100 успешно приключени проекта." },
+      step6: { title: "2025", text: "ConsultPro продължава да води дигиталната трансформация." }
+    },
     careers: {
-      title: "Стани част от екипа",
-      subtitle1: "Търсим страстни и талантливи професионалисти.",
-      position1: "Бизнес Консултант",
-      position2: "Финансов Аналитик",
-      position3: "Маркетинг Мениджър"
+      title: "Присъедини се към нашия екип",
+      subtitle1: "Търсим талантливи професионалисти, които да растат с нас.",
+      position1: "Бизнес консултант",
+      position2: "Финансов анализатор",
+      position3: "Маркетинг мениджър",
+      subtitle2: "Предоставяне на експертни насоки и препоръки за оптимизация.",
+      subtitle3: "Анализ на финансови данни и разработване на стратегии.",
+      subtitle4: "Водене на дигитални кампании и бранд активности."
     },
     contact: {
-      title: "Свържете се с нас",
-      address: "15A Business Street, Sofia, Bulgaria",
-      email: "info@consultpro.com",
-      phone: "+44 888 123 456",
-      hours: "Пон – Пт: 9:00 – 18:00",
       formName: "Вашето име",
-      formEmail: "Вашият email",
-      formMessage: "Вашето съобщение",
-      sendBtn: "Изпрати"
-    },
-    map: {
-      title: "Къде сме"
+      formEmail: "Вашият имейл",
+      formMessage: "Съобщение",
+      sendBtn: "Изпрати съобщение",
+      mapTitle: "Намерете ни в Лондон"
     },
     footer: {
       rights: "© 2025 ConsultPro. Всички права запазени."
-    },
-    ui: {
-      askConsultant: "Попитай консултант",
-      chatPlaceholder: "Напишете съобщението..."
     }
   }
 };
 
 /* =========================
-   Utility: get nested by key 'a.b.c'
+   HELPERS: find by dotted key
    ========================= */
-function getNested(obj, key) {
-  if (!key) return undefined;
-  return key.split('.').reduce((o, k) => (o && o[k] !== undefined) ? o[k] : undefined, obj);
+function getByDotted(obj, path) {
+  if (!obj || !path) return undefined;
+  return path.split('.').reduce((acc, p) => (acc ? acc[p] : undefined), obj);
 }
 
 /* =========================
-   Apply translations to DOM
-   - data-i18n => textContent
-   - data-i18n-html => innerHTML
-   - data-i18n-placeholder => placeholder attr
-   - data-i18n-alt => alt attr
+   APPLY TRANSLATIONS
+   - data-i18n          -> textContent
+   - data-i18n-html     -> innerHTML
+   - data-i18n-placeholder -> placeholder
+   - data-i18n-alt      -> alt attribute
    ========================= */
 function applyTranslation(lang) {
-  const langObj = translations[lang] || translations.en;
+  const dict = translations[lang] || translations.en;
 
-  // textContent
+  // data-i18n (textContent)
   document.querySelectorAll('[data-i18n]').forEach(el => {
     const key = el.getAttribute('data-i18n');
-    const val = getNested(langObj, key);
-    if (val !== undefined) {
-      el.textContent = val;
-    } // else leave existing text (fallback to HTML copy)
+    const val = getByDotted(dict, key);
+    if (val !== undefined) el.textContent = val;
   });
 
-  // innerHTML
+  // data-i18n-html (innerHTML)
   document.querySelectorAll('[data-i18n-html]').forEach(el => {
     const key = el.getAttribute('data-i18n-html');
-    const val = getNested(langObj, key);
-    if (val !== undefined) {
-      el.innerHTML = val;
-    }
+    const val = getByDotted(dict, key);
+    if (val !== undefined) el.innerHTML = val;
   });
 
-  // placeholder
+  // data-i18n-placeholder
   document.querySelectorAll('[data-i18n-placeholder]').forEach(el => {
     const key = el.getAttribute('data-i18n-placeholder');
-    const val = getNested(langObj, key);
-    if (val !== undefined) {
-      el.setAttribute('placeholder', val);
-    }
+    const val = getByDotted(dict, key);
+    if (val !== undefined) el.placeholder = val;
   });
 
-  // alt
+  // data-i18n-alt
   document.querySelectorAll('[data-i18n-alt]').forEach(el => {
     const key = el.getAttribute('data-i18n-alt');
-    const val = getNested(langObj, key);
-    if (val !== undefined) {
-      el.setAttribute('alt', val);
-    }
+    const val = getByDotted(dict, key);
+    if (val !== undefined) el.alt = val;
   });
 
-  // Special: team testimonials nested structure may require mapping if keys in HTML differ
-  // We try to map some known patterns gracefully
-  try {
-    // team testimonial mapping if present
-    const teamRoot = getNested(langObj, 'testimonials.team');
-    if (teamRoot && typeof teamRoot === 'object') {
-      Object.keys(teamRoot).forEach((tKey, idx) => {
-        const base = `.testimonial-card:nth-of-type(${idx + 1})`;
-        // but we won't overwrite arbitrary nodes — keep generic approach
-      });
-    }
-  } catch (e) {
-    // ignore mapping errors
-    console.warn('testimonial mapping skipped', e);
-  }
-}
+  // Special: support nested structured keys for services, team, clients, pricing etc.
+  // Loop through known groups and apply internal keys if present on elements as e.g. data-i18n="services.card1.title"
+  // (Handled by generic getByDotted above)
 
-/* =========================
-   Language switching + persistence
-   ========================= */
-const STORAGE_KEY = 'consultpro_lang';
+  // Ensure nav anchors have pointer cursor
+  document.querySelectorAll('nav a').forEach(a => {
+    a.style.cursor = 'pointer';
+  });
 
-function setLanguage(lang, save = true) {
-  if (!translations[lang]) lang = 'en';
-  applyTranslation(lang);
-
-  // update active class on buttons
+  // Update active flag button aria-labels
+  const currentLang = lang;
   document.querySelectorAll('.lang-btn').forEach(btn => {
-    btn.classList.toggle('active', btn.id === (lang === 'bg' ? 'bg-btn' : 'en-btn'));
+    btn.setAttribute('aria-pressed', btn.classList.contains('active') ? 'true' : 'false');
   });
-
-  if (save) localStorage.setItem(STORAGE_KEY, lang);
 }
 
 /* =========================
-   Init: attach listeners and load saved lang
+   LANGUAGE SWITCHING + persistence
    ========================= */
-function initI18n() {
-  // buttons
+const LANG_KEY = 'consultpro_lang';
+
+function setLanguage(lang) {
+  // remove active class on all
+  document.querySelectorAll('.lang-btn').forEach(b => b.classList.remove('active'));
+  // set appropriate button active
+  const btnMap = { en: document.getElementById('en-btn'), bg: document.getElementById('bg-btn') };
+  if (btnMap[lang]) btnMap[lang].classList.add('active');
+
+  applyTranslation(lang);
+  localStorage.setItem(LANG_KEY, lang);
+}
+
+/* =========================
+   INITIALIZE LANGUAGE on load
+   ========================= */
+function initLanguage() {
+  const saved = localStorage.getItem(LANG_KEY);
+  let lang = saved || (navigator.language && navigator.language.startsWith('bg') ? 'bg' : 'en');
+  // default some pages to en if unknown
+  if (!['en', 'bg'].includes(lang)) lang = 'en';
+  setLanguage(lang);
+}
+
+/* =========================
+   Set up language buttons events
+   ========================= */
+function initLanguageButtons() {
   const enBtn = document.getElementById('en-btn');
   const bgBtn = document.getElementById('bg-btn');
 
   if (enBtn) enBtn.addEventListener('click', () => setLanguage('en'));
   if (bgBtn) bgBtn.addEventListener('click', () => setLanguage('bg'));
-
-  // keyboard accessible: toggle language with Enter/Space on focused buttons
-  document.querySelectorAll('.lang-btn').forEach(btn => {
-    btn.setAttribute('role', 'button');
-    btn.tabIndex = 0;
-    btn.addEventListener('keydown', e => {
-      if (e.key === 'Enter' || e.key === ' ') {
-        e.preventDefault();
-        btn.click();
-      }
-    });
-  });
-
-  // load saved or detect
-  const saved = localStorage.getItem(STORAGE_KEY);
-  const navLang = navigator.language || navigator.userLanguage || 'en';
-  const initial = saved || (navLang.startsWith('bg') ? 'bg' : 'en');
-
-  setLanguage(initial, false);
 }
 
 /* =========================
-   Simple Fade-In / Scroll Reveal
-   - add class 'in-view' to visible sections/elements
-   - target many major blocks
+   MENU TOGGLE (mobile)
    ========================= */
-function initReveal() {
-  const revealSelector = [
-    'section',       // all sections
-    '.service-card',
-    '.case-card',
-    '.testimonial-card',
-    '.pricing-card',
-    '.portfolio-slider .slide'
-  ].join(',');
+function initMenuToggle() {
+  const menuBtn = document.querySelector('.menu-toggle');
+  const nav = document.querySelector('.nav');
 
-  const items = document.querySelectorAll(revealSelector);
+  if (!menuBtn || !nav) return;
 
-  if (!('IntersectionObserver' in window)) {
-    // fallback: show all
-    items.forEach(i => i.classList.add('in-view'));
-    return;
-  }
+  menuBtn.addEventListener('click', () => {
+    nav.classList.toggle('active');
+    const expanded = nav.classList.contains('active');
+    menuBtn.setAttribute('aria-expanded', expanded ? 'true' : 'false');
+  });
 
-  const io = new IntersectionObserver((entries) => {
+  // Close nav when clicking outside (for mobile)
+  document.addEventListener('click', (e) => {
+    const isClickInside = e.target.closest('.header');
+    if (!isClickInside && nav.classList.contains('active')) {
+      nav.classList.remove('active');
+      menuBtn.setAttribute('aria-expanded', 'false');
+    }
+  });
+}
+
+/* =========================
+   Fade-in / Scroll reveal
+   Add class 'reveal-on-scroll' to elements you want to reveal,
+   but to be safe we will attach this to many section children automatically.
+   ========================= */
+function initScrollReveal() {
+  // Add reveal-on-scroll class to common blocks if not already present
+  const autoTargets = [
+    'section .container', '.service-card', '.process-step', '.case-card',
+    '.testimonial-card', '.award-card', '.blog-post', '.pricing-card', '.career-card', '.cta-content', '.contact-info', '.contact-form'
+  ];
+  autoTargets.forEach(sel => {
+    document.querySelectorAll(sel).forEach(el => {
+      if (!el.classList.contains('reveal-on-scroll')) el.classList.add('reveal-on-scroll');
+    });
+  });
+
+  const observer = new IntersectionObserver((entries) => {
     entries.forEach(entry => {
       if (entry.isIntersecting) {
-        entry.target.classList.add('in-view');
-        // if you want one-time reveal, unobserve after visible:
-        io.unobserve(entry.target);
+        entry.target.classList.add('revealed');
+        // optional: if you want the animation only once:
+        observer.unobserve(entry.target);
       }
     });
-  }, {
-    root: null, // viewport
-    threshold: 0.12
-  });
+  }, { threshold: 0.12 });
 
-  items.forEach(i => {
-    // add initial style class so CSS can target .in-view transitions
-    i.classList.add('reveal');
-    io.observe(i);
+  document.querySelectorAll('.reveal-on-scroll').forEach(el => {
+    observer.observe(el);
   });
 }
 
 /* =========================
-   Minor UI fixes
-   - ensure nav anchors show pointer cursor if missing
-   - ensure nav anchors are keyboard focusable
+   STATS COUNTER (animate numeric up)
+   target: elements with class .number and data-target attr
    ========================= */
-function patchNavUX() {
+function initStatsCounter() {
+  const counters = document.querySelectorAll('.number[data-target]');
+  const observed = new IntersectionObserver((entries, obs) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        const el = entry.target;
+        const target = parseInt(el.getAttribute('data-target'), 10) || 0;
+        const duration = 1500; // ms
+        const stepTime = Math.max(20, Math.floor(duration / target));
+        let current = 0;
+        const increment = Math.ceil(target / (duration / stepTime));
+
+        const timer = setInterval(() => {
+          current += increment;
+          if (current >= target) {
+            el.textContent = target;
+            clearInterval(timer);
+          } else {
+            el.textContent = current;
+          }
+        }, stepTime);
+
+        obs.unobserve(el);
+      }
+    });
+  }, { threshold: 0.4 });
+
+  counters.forEach(c => observed.observe(c));
+}
+
+/* =========================
+   Accessibility / small fixes
+   - Ensure anchors without href still navigable with cursor
+   - Add role="button" where needed
+   ========================= */
+function accessibilityTweaks() {
   document.querySelectorAll('nav a').forEach(a => {
-    // some anchors may lack href: ensure usable and pointer cursor
     if (!a.hasAttribute('href') || a.getAttribute('href').trim() === '') {
-      a.setAttribute('href', '#');
+      a.setAttribute('role', 'button');
+      a.style.cursor = 'pointer';
     }
-    a.style.cursor = 'pointer';
-    a.tabIndex = a.tabIndex || 0;
-    // optional: when click, close mobile menu if present (simple event)
-    a.addEventListener('click', () => {
-      const mobileToggle = document.querySelector('.menu-toggle');
-      if (mobileToggle && getComputedStyle(mobileToggle).display !== 'none') {
-        // try to trigger a click to close menu - projects vary; safe attempt
-        mobileToggle.dispatchEvent(new Event('click'));
-      }
+  });
+
+  // ensure menu-toggle has aria-label
+  const menuBtn = document.querySelector('.menu-toggle');
+  if (menuBtn && !menuBtn.hasAttribute('aria-label')) menuBtn.setAttribute('aria-label', 'Toggle menu');
+}
+
+/* =========================
+   Initialize all
+   ========================= */
+function initAll() {
+  initLanguageButtons();
+  initLanguage();         // applies translation
+  initMenuToggle();
+  initScrollReveal();
+  initStatsCounter();
+  accessibilityTweaks();
+
+  // Make sure nav anchor focus shows pointer (fix for cursor text insertion issue)
+  document.querySelectorAll('nav a').forEach(a => {
+    a.addEventListener('mousedown', (e) => {
+      // prevent text cursor caret on accidental focus
+      try { e.preventDefault(); } catch (err) { /* ignore */ }
     });
   });
 }
 
 /* =========================
-   Prevent broken console errors:
-   - wrap risky code
+   DOMContentLoaded
    ========================= */
-function safeInit() {
+document.addEventListener('DOMContentLoaded', () => {
   try {
-    initI18n();
-  } catch (e) {
-    console.error('i18n init failed', e);
+    initAll();
+  } catch (err) {
+    // safe fallback log — don't break page
+    console.error('initAll error:', err);
   }
-
-  try {
-    initReveal();
-  } catch (e) {
-    console.error('reveal init failed', e);
-  }
-
-  try {
-    patchNavUX();
-  } catch (e) {
-    console.error('nav patch failed', e);
-  }
-}
+});
 
 /* =========================
-   DOM Ready
+   Optional: expose for debugging
    ========================= */
-if (document.readyState === 'loading') {
-  document.addEventListener('DOMContentLoaded', safeInit);
-} else {
-  safeInit();
-}
-
-/* =========================
-   Optional: expose setLanguage for console/testing
-   ========================= */
-window.ConsultPro = {
+window._i18n = {
+  translations,
   setLanguage,
-  getCurrentLanguage: () => localStorage.getItem(STORAGE_KEY) || (navigator.language || 'en').slice(0,2)
+  applyTranslation
 };
+
+/* =========================
+   CSS note: for reveal animations you need CSS like:
+   .reveal-on-scroll { opacity:0; transform: translateY(12px); transition: all .7s ease-out; }
+   .reveal-on-scroll.revealed { opacity:1; transform: translateY(0); }
+   Add this to your style.css if not present.
+   ========================= */
