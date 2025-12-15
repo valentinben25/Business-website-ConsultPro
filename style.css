@@ -13,6 +13,16 @@
   padding: 0;
 }
 
+.text-fade-out {
+  opacity: 0;
+  transition: opacity 0.2s ease;
+}
+
+.text-fade-in {
+  opacity: 1;
+  transition: opacity 0.3s ease;
+}
+
 
 /* =========================
    Text-only language transition
@@ -2743,3 +2753,4 @@ overflow: visible;
   text-align: center;
   font-size: 0.85rem;
 }
+
