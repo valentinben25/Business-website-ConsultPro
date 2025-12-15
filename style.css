@@ -14,7 +14,20 @@
 }
 
 
+/* =========================
+   Text-only language transition
+   ========================= */
 
+[data-i18n],
+[data-i18n-html],
+[data-i18n-placeholder] {
+  transition: opacity 0.25s ease, transform 0.25s ease;
+}
+
+.lang-text-hide {
+  opacity: 0;
+  transform: translateY(4px);
+}
 
 
 /* ================================
