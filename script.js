@@ -806,6 +806,22 @@ function setLanguage(lang, save = true) {
   if (save) localStorage.setItem(STORAGE_KEY, lang);
 }
 
+function setLanguageWithTransition(lang) {
+  const textEls = document.querySelectorAll(
+    '[data-i18n], [data-i18n-html], [data-i18n-placeholder]'
+  );
+
+  // fade out text only
+  textEls.forEach(el => el.classList.add('lang-text-hide'));
+
+  setTimeout(() => {
+    setLanguage(lang);
+
+    // fade in text only
+    textEls.forEach(el => el.classList.remove('lang-text-hide'));
+  }, 200);
+}
+
 function initLanguageButtons() {
   const enBtn = document.getElementById('en-btn');
   const bgBtn = document.getElementById('bg-btn');
