@@ -3,7 +3,9 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
   <title>Consulting Business Website</title>
   <link rel="icon" href="img/Favicon/logo.svg">
   <link rel="stylesheet" href="style.css">
@@ -17,6 +19,7 @@
 <header class="header">
   <div class="logo">Consult<span>Pro</span></div>
 
+  
   <nav class="nav">
 <a data-i18n="nav.home" href="#home">Home</a>
 <a data-i18n="nav.services" href="#services">Services</a>
@@ -37,7 +40,9 @@
         <img src="img/flag/bulgaria.png" alt="Bulgarian">
       </button>
     </div>
+ 
     <button class="menu-toggle">☰</button>
+
   </div>
 </header>
 
@@ -132,6 +137,7 @@
         <i class="fas fa-comments"></i>
         <h3 data-i18n="process.step1.title">1. Consultation</h3>
         <p data-i18n="process.step1.text">We start by understanding your business needs, challenges, and goals to create a personalized approach.</p>
+        </div>
 
       <div class="process-step">
         <i class="fas fa-chart-line"></i>
@@ -159,34 +165,35 @@
      
     
     <!-- Stats Section -->
-<section id="stats" class="stats">
+<section class="stats" id="stats">
   <div class="container">
-    <div class="subtitle">
     <h2 data-i18n="stats.title">Our Achievements</h2>
-    <p data-i18n="stats.subtitle">Key milestones that highlight our expertise and growth.</p>
-    </div>
-   
+    <p class="section-subtitle" data-i18n="stats.subtitle">
+      Key milestones that highlight our expertise and growth.
+    </p>
 
     <div class="stats-grid">
+
       <div class="stat-item">
-        <span class="number" data-target="120">0</span>
-        <p data-i18n="stats.item1">Happy Clients</p>
+        <div class="stat-number" data-i18n="stats.clients">250+</div>
+        <div class="stat-label" data-i18n="stats.clientsLabel">Happy Clients</div>
       </div>
 
       <div class="stat-item">
-        <span class="number" data-target="250">0</span>
-        <p data-i18n="stats.item2">Completed Projects</p>
+        <div class="stat-number" data-i18n="stats.projects">480+</div>
+        <div class="stat-label" data-i18n="stats.projectsLabel">Completed Projects</div>
       </div>
 
       <div class="stat-item">
-        <span class="number" data-target="10">0</span>
-        <p data-i18n="stats.item3">Years of Experience</p>
+        <div class="stat-number" data-i18n="stats.years">10+</div>
+        <div class="stat-label" data-i18n="stats.yearsLabel">Years of Experience</div>
       </div>
 
       <div class="stat-item">
-        <span class="number" data-target="30">0</span>
-        <p data-i18n="stats.item4">Expert Consultants</p>
+        <div class="stat-number" data-i18n="stats.experts">40+</div>
+        <div class="stat-label" data-i18n="stats.expertsLabel">Expert Consultants</div>
       </div>
+
     </div>
   </div>
 </section>
@@ -194,53 +201,84 @@
 
 <section id="portfolio" class="portfolio">
   <h2 data-i18n="portfolio.title">Our Projects</h2>
-  <p data-i18n="portfolio.subtitle">Explore some of our featured works and consulting projects.</p>
+  <p class="subtitle" data-i18n="portfolio.subtitle">
+    Explore some of our featured works and consulting projects.
+  </p>
 
   <div class="portfolio-slider">
+
+    <!-- Slide 1 -->
     <div class="slide active">
       <img src="img/portfolio/01.jpg" alt="Project 1">
       <div class="caption">
         <h3 data-i18n="portfolio.item1.title1">Business Growth Strategy</h3>
-        <p data-i18n="portfolio.item1.text1">Helping companies expand globally with smart solutions.</p>
+        <p data-i18n="portfolio.item1.text1">
+          Helping companies expand globally with smart solutions.
+        </p>
       </div>
     </div>
 
+    
+
+    <!-- Slide 2 -->
     <div class="slide">
       <img src="img/portfolio/02.jpg" alt="Project 2">
       <div class="caption">
-        <h3 data-i18n="portfolio.item1.title2">Digital Transformation</h3>
-        <p data-i18n="portfolio.item1.text2">Modernizing organizations for the new digital economy.</p>
+        <h3 data-i18n="portfolio.item2.title2">Digital Transformation</h3>
+        <p data-i18n="portfolio.item2.text2">
+          Modernizing organizations for the new digital economy.
+        </p>
       </div>
     </div>
 
+     
+
+    <!-- Slide 3 -->
     <div class="slide">
       <img src="img/portfolio/03.jpg" alt="Project 3">
       <div class="caption">
-        <h3 data-i18n="portfolio.item1.title3">Financial Analysis</h3>
-        <p data-i18n="portfolio.item1.text3">Providing detailed financial insights and growth plans.</p>
+        <h3 data-i18n="portfolio.item3.title3">Financial Analysis</h3>
+        <p data-i18n="portfolio.item3.text3">
+          Providing detailed financial insights and growth plans.
+        </p>
       </div>
     </div>
 
+    
+
+    <!-- Slide 4 -->
     <div class="slide">
       <img src="img/portfolio/09.jpg" alt="Project 4">
       <div class="caption">
-        <h3 data-i18n="portfolio.item1.title4">Corporate Training</h3>
-        <p data-i18n="portfolio.item1.text4">Empowering employees through leadership and innovation.</p>
+        <h3 data-i18n="portfolio.item4.title4">Corporate Training</h3>
+        <p data-i18n="portfolio.item4.text4">
+          Empowering employees through leadership and innovation.
+        </p>
       </div>
     </div>
 
+     <div class="portfolio-divider"></div>
+
+    <!-- Slide 5 -->
     <div class="slide">
       <img src="img/portfolio/04.jpg" alt="Project 5">
       <div class="caption">
-        <h3 data-i18n="portfolio.item1.title5">Partnership Development</h3>
-        <p data-i18n="portfolio.item1.text5">Creating strategic collaborations that drive business success.</p>
+        <h3 data-i18n="portfolio.item5.title5">Partnership Development</h3>
+        <p data-i18n="portfolio.item5.text5">
+          Creating strategic collaborations that drive business success.
+        </p>
       </div>
     </div>
+
+     <div class="portfolio-divider"></div>
 
     <button class="prev">&#10094;</button>
     <button class="next">&#10095;</button>
   </div>
 </section>
+
+
+
 
 
 <section id="case-studies" class="case-studies">
@@ -251,31 +289,31 @@
     <div class="case-grid">
       <!-- Case 1 -->
       <div class="case-card">
-        <img src="img/cases/01.jpg" alt="Case Study 1">
+        <img src="img/cases/01.jpg" data-i18n-alt="cases.case1.alt" alt="Financial Strategy Case Study">
         <div class="case-content">
           <h3 data-i18n="cases.case1.title">Financial Strategy Transformation</h3>
           <p data-i18n="cases.case1.text">We helped a UK-based finance firm boost efficiency by 35% through data-driven insights and process optimization.</p>
-          <a href="#" class="btn-read">Read Full Story</a>
+          <a href="#" data-i18n="cases.case3.button" class="btn-read">Read Full Story</a>
         </div>
       </div>
 
       <!-- Case 2 -->
       <div class="case-card">
-        <img src="img/cases/02.jpg" alt="Case Study 2">
+        <img src="img/cases/02.jpg" data-i18n-alt="cases.case2.alt" alt="Digital Marketing Case Study">
         <div class="case-content">
           <h3 data-i18n="cases.case2.title">Digital Marketing Revamp</h3>
           <p data-i18n="cases.case2.text">Our team designed a new marketing strategy that increased online engagement by 60% within 3 months.</p>
-          <a href="#" class="btn-read">Read Full Story</a>
+          <a href="#" data-i18n="cases.case3.button" class="btn-read">Read Full Story</a>
         </div>
       </div>
 
       <!-- Case 3 -->
       <div class="case-card">
-        <img src="img/cases/03.jpg" alt="Case Study 3">
+        <img src="img/cases/03.jpg" data-i18n-alt="cases.case3.alt" alt="Global Expansion Case Study">
         <div class="case-content">
           <h3 data-i18n="cases.case3.title">Global Expansion Support</h3>
           <p data-i18n="cases.case3.text">ConsultPro guided a startup through international expansion, reaching 5 new markets in under a year.</p>
-          <a href="#" class="btn-read">Read Full Story</a>
+          <a href="#" data-i18n="cases.case3.button" class="btn-read">Read Full Story</a>
         </div>
       </div>
     </div>
@@ -285,48 +323,50 @@
 
 <section id="testimonials" class="testimonials">
   <div class="container">
-    <h2>What Our Team Says</h2>
-    <p class="subtitle">Meet the people who make our company exceptional.</p>
 
-    <div class="testimonials-grid">
-      <!-- 1 -->
+    <h2 class="subtitle-text" data-i18n="testimonials.title">What Our Clients Say</h2>
+    <p class="subtitle" data-i18n="testimonials.subtitle">
+      Hear from business leaders who trusted our expertise.
+    </p>
+
+    <div class="testimonial-grid">
+
+      <!-- Card 1 -->
       <div class="testimonial-card">
-        <img src="img/team/01.jpg" alt="John Smith">
-        <div class="testimonial-text">
-          <p data-i18n="team.testimonial1.text">
-            “Working at ConsultPro has been an incredible journey!  
-            I’ve grown professionally and personally thanks to the supportive leadership.”
+        <img src="img/team/01.jpg" alt="Client 1">
+        <div class="testimonial-content">
+          <h3 data-i18n="testimonials.client1.name">John Williams</h3>
+          <span data-i18n="testimonials.client1.role">CEO, FinCorp</span>
+          <p data-i18n="testimonials.client1.text">
+            “ConsultPro helped us redesign our financial strategy and improve efficiency by over 40%.”
           </p>
-          <h4 data-i18n="team.testimonial1.name">John Smith</h4>
-          <span data-i18n="team.testimonial1.role">CEO & Founder</span>
         </div>
       </div>
 
-      <!-- 2 -->
+      <!-- Card 2 -->
       <div class="testimonial-card">
-        <img src="img/team/03.jpg" alt="Maria Petrova">
-        <div class="testimonial-text">
-          <p data-i18n="team.testimonial2.text">
-            “The teamwork and company culture here are truly inspiring.  
-            Every project feels like a shared success.”
+        <img src="img/team/03.jpg" alt="Client 2">
+        <div class="testimonial-content">
+          <h3 data-i18n="testimonials.client2.name">Emily Roberts</h3>
+          <span data-i18n="testimonials.client2.role">Marketing Director</span>
+          <p data-i18n="testimonials.client2.text">
+            “Their digital transformation roadmap boosted our online presence within months.”
           </p>
-          <h4 data-i18n="team.testimonial2.name">Grace Campbell</h4>
-          <span data-i18n="team.testimonial2.role">Financial Consultant</span>
         </div>
       </div>
 
-      <!-- 3 -->
+      <!-- Card 3 -->
       <div class="testimonial-card">
-        <img src="img/team/02.jpg" alt="Ivan Dimitrov">
-        <div class="testimonial-text">
-          <p data-i18n="team.testimonial3.text">
-            “ConsultPro gives you the freedom to innovate and contribute your ideas.  
-            It’s amazing to work in such a dynamic environment.”
+        <img src="img/team/02.jpg" alt="Client 3">
+        <div class="testimonial-content">
+          <h3 data-i18n="testimonials.client3.name">Michael Brown</h3>
+          <span data-i18n="testimonials.client3.role">Operations Manager</span>
+          <p data-i18n="testimonials.client3.text">
+            “Professional, reliable, and innovative — highly recommended for any growing business.”
           </p>
-          <h4 data-i18n="team.testimonial3.name">Mason Jerome</h4>
-          <span data-i18n="team.testimonial3.role">Marketing Expert</span>
         </div>
       </div>
+
     </div>
   </div>
 </section>
@@ -336,65 +376,87 @@
 <!-- Why Choose Us Section -->
 <section id="why-choose" class="why-choose">
   <div class="container">
-    <h2 data-i18n="why.title">Why Choose <span>ConsultPro</span></h2>
-    <p class="subtitle" data-i18n="why.subtitle">Discover what makes our consulting services stand out.</p>
+    <h2 data-i18n="why.title">Why Choose ConsultPro</h2>
+    <p class="subtitle" data-i18n="why.subtitle">
+      Discover what makes our consulting services stand out.
+    </p>
 
     <div class="why-grid">
+
+      <!-- Box 1 -->
       <div class="why-card">
-        <i class="fas fa-user-tie"></i>
-        <h3 data-i18n="why.card1.title">Experienced Professionals</h3>
-        <p data-i18n="why.card1.text">Our team brings years of industry experience and real-world business insight to every project.</p>
+        <div class="icon">👔</div>
+        <h3 data-i18n="why.item1.title">Experienced Professionals</h3>
+        <p data-i18n="why.item1.text">
+          Our team brings years of industry experience and real-world business insight to every project.
+        </p>
       </div>
 
+      <!-- Box 2 -->
       <div class="why-card">
-        <i class="fas fa-lightbulb"></i>
-        <h3 data-i18n="why.card2.title">Innovative Strategies</h3>
-        <p data-i18n="why.card2.text">We develop creative, data-driven strategies to help your business stay ahead of the competition.</p>
+        <div class="icon">💡</div>
+        <h3 data-i18n="why.item2.title">Innovative Strategies</h3>
+        <p data-i18n="why.item2.text">
+          We develop creative, data-driven strategies to help your business stay ahead of the competition.
+        </p>
       </div>
 
+      <!-- Box 3 -->
       <div class="why-card">
-        <i class="fas fa-handshake"></i>
-        <h3 data-i18n="why.card3.title">Client-Centric Approach</h3>
-        <p data-i18n="why.card3.text">Your goals are our priority — we work closely with you to achieve measurable success.</p>
+        <div class="icon">🤝</div>
+        <h3 data-i18n="why.item3.title">Client-Centric Approach</h3>
+        <p data-i18n="why.item3.text">
+          Your goals are our priority — we work closely with you to achieve measurable success.
+        </p>
       </div>
 
+      <!-- Box 4 -->
       <div class="why-card">
-        <i class="fas fa-globe-europe"></i>
-        <h3 data-i18n="why.card4.title">Global Expertise</h3>
-        <p data-i18n="why.card4.text">We deliver consulting solutions that meet international standards and market needs.</p>
+        <div class="icon">🌍</div>
+        <h3 data-i18n="why.item4.title">Global Expertise</h3>
+        <p data-i18n="why.item4.text">
+          We deliver consulting solutions that meet international standards and market needs.
+        </p>
       </div>
+
     </div>
   </div>
 </section>
 
 
 
-<section id="client-testimonials" class="testimonials">
+<section id="clients" class="clients">
   <div class="container">
-    <h2>What Our Clients Say</h2>
-    <p class="subtitle">Real feedback from satisfied business partners.</p>
+    <h2 data-i18n="clients.title">What Our Clients Say</h2>
+    <p class="subtitle" data-i18n="clients.subtitle">Real feedback from satisfied business partners.</p>
 
-    <div class="testimonials-grid">
+    <div class="clients-grid">
 
-      <div class="testimonial-card">
+      <div class="client-card">
         <img src="img/client/sarah-thompson.jpg" alt="Client 1">
         <h3 data-i18n="clients.testimonial1.name">Sarah Thompson</h3>
         <span data-i18n="clients.testimonial1.role">Marketing Director, VisionCorp</span>
-        <p data-i18n="clients.testimonial1.text">“ConsultPro helped us redefine our strategy and achieve record growth last quarter. Their team is exceptional!”</p>
+        <p data-i18n="clients.testimonial1.text">
+          “ConsultPro helped us redefine our strategy and achieve record growth last quarter. Their team is exceptional!”
+        </p>
       </div>
 
-      <div class="testimonial-card">
+      <div class="client-card">
         <img src="img/client/james-walker.jpg" alt="Client 2">
         <h3 data-i18n="clients.testimonial2.name">James Walker</h3>
         <span data-i18n="clients.testimonial2.role">CEO, FinEdge Solutions</span>
-        <p data-i18n="clients.testimonial2.text">“Professional and reliable — their insights completely transformed how we approach our clients.”</p>
+        <p data-i18n="clients.testimonial2.text">
+          “Professional and reliable — their insights completely transformed how we approach our clients.”
+        </p>
       </div>
 
-      <div class="testimonial-card">
+      <div class="client-card">
         <img src="img/client/emily-davis.jpg" alt="Client 3">
         <h3 data-i18n="clients.testimonial3.name">Emily Davis</h3>
         <span data-i18n="clients.testimonial3.role">Operations Manager, NovaTech</span>
-        <p data-i18n="clients.testimonial3.text">“Working with ConsultPro was a game changer for our company’s long-term vision and operations.”</p>
+        <p data-i18n="clients.testimonial3.text">
+          “Working with ConsultPro was a game changer for our company’s long-term vision and operations.”
+        </p>
       </div>
 
     </div>
@@ -402,37 +464,26 @@
 </section>
 
 
-<section id="faq" class="faq">
+<section class="faq" id="faq">
   <div class="container">
+
     <h2 data-i18n="faq.title">Frequently Asked Questions</h2>
     <p class="subtitle" data-i18n="faq.subtitle">Answers to common questions about our consulting services.</p>
 
     <div class="faq-item">
-      <button class="faq-question" data-i18n="faq.q1">What industries do you specialize in?</button>
-      <div class="faq-answer">
-        <p data-i18n="faq.a1">We work with a wide range of industries including finance, IT, healthcare, and retail. Our consultants adapt to your specific business needs.</p>
-      </div>
+      <h3 data-i18n="faq.q1">What industries do you specialize in?</h3>
     </div>
 
     <div class="faq-item">
-      <button class="faq-question" data-i18n="faq.q2">How long does a consulting project take?</button>
-      <div class="faq-answer">
-        <p data-i18n="faq.a2">Most projects take between 2 to 6 weeks depending on their complexity. We always provide a detailed timeline before we begin.</p>
-      </div>
+      <h3 data-i18n="faq.q2">How long does a consulting project take?</h3>
     </div>
 
     <div class="faq-item">
-      <button class="faq-question" data-i18n="faq.q3">Do you offer remote consulting?</button>
-      <div class="faq-answer">
-        <p data-i18n="faq.a3">Yes, we provide both in-person and remote consulting sessions, ensuring flexibility for clients around the world.</p>
-      </div>
+      <h3 data-i18n="faq.q3">Do you offer remote consulting?</h3>
     </div>
 
     <div class="faq-item">
-      <button class="faq-question" data-i18n="faq.q4">Can you help with business strategy and marketing?</button>
-      <div class="faq-answer">
-        <p data-i18n="faq.a4">Absolutely. We combine strategy development with marketing insights to help you grow your brand effectively.</p>
-      </div>
+      <h3 data-i18n="faq.q4">Can you help with business strategy and marketing?</h3>
     </div>
 
   </div>
@@ -444,23 +495,14 @@
     <h2 data-i18n="partners.title">Our Trusted Partners</h2>
     <p class="subtitle" data-i18n="partners.subtitle">We’re proud to collaborate with these leading brands and organizations.</p>
 
-    <div class="partners-grid">
-      <div class="partner-item">
-        <img src="img/partners/1.jpg" data-i18n-alt="partners.img1_alt" alt="Partner 1">
-      </div>
-      <div class="partner-item">
-        <img src="img/partners/2.jpg" data-i18n-alt="partners.img2_alt" alt="Partner 2">
-      </div>
-      <div class="partner-item">
-        <img src="img/partners/3.jpg" data-i18n-alt="partners.img3_alt" alt="Partner 3">
-      </div>
-      <div class="partner-item">
-        <img src="img/partners/4.jpg" data-i18n-alt="partners.img4_alt" alt="Partner 4">
-      </div>
-      <div class="partner-item">
-        <img src="img/partners/5.jpg" data-i18n-alt="partners.img5_alt" alt="Partner 5">
-      </div>
+    <div class="partners-row">
+      <img src="img/partners/1.jpg" alt="Partner 1">
+      <img src="img/partners/2.jpg" alt="Partner 2">
+      <img src="img/partners/3.jpg" alt="Partner 3">
+      <img src="img/partners/4.jpg" alt="Partner 4">
+      <img src="img/partners/5.jpg" alt="Partner 5">
     </div>
+
   </div>
 </section>
 
@@ -502,7 +544,7 @@
 
 <section id="blog" class="blog">
   <div class="container">
-    <h2 data-i18n="blog.title">Latest Insights</h2>
+    <h2 class="Maintext" data-i18n="blog.title">Latest Insights</h2>
     <p class="subtitle" data-i18n="blog.subtitle">Stay updated with our business tips, success stories, and industry news.</p>
 
     <div class="blog-grid">
@@ -553,10 +595,10 @@
         <h3 data-i18n="pricing.basic.title">Basic</h3>
         <p class="price" data-i18n="pricing.basic.price">$199 / month<span></span></p>
         <ul>
-          <li data-i18n="pricing.basic.feature1">✔ Business Consultation</li>
-          <li data-i18n="pricing.basic.feature2">✔ Financial Planning</li>
-          <li data-i18n="pricing.basic.feature3">✖ Marketing Strategy</li>
-          <li data-i18n="pricing.basic.feature4">✖ Ongoing Support</li>
+           <li data-i18n=">pricing.basic.feature1">✔ Business Consultation</li>
+           <li data-i18n="pricing.basic.feature2">✔ Financial Planning</li>
+           <li data-i18n="pricing.basic.feature3">✖ Marketing Strategy</li>
+           <li data-i18n="pricing.basic.feature4">✖ Ongoing Support</li>
         </ul>
         <a href="#contact" class="btn" data-i18n="pricing.chooseBtn">Choose Plan</a>
       </div>
@@ -566,10 +608,10 @@
         <h3 data-i18n="pricing.standard.title">Standard</h3>
         <p class="price" data-i18n="pricing.standard.price">$399 / month<span></span></p>
         <ul>
-          <li data-i18n="pricing.standard.feature1">✔ Full Business Consultation</li>
-          <li data-i18n="pricing.standard.feature2">✔ Financial & Market Analysis</li>
-          <li data-i18n="pricing.standard.feature3">✔ Marketing Strategy</li>
-          <li data-i18n="pricing.standard.feature4">✖ Dedicated Consultant</li>
+           <li data-i18n="pricing.standard.feature1">✔ Full Business Consultation</li>
+           <li data-i18n="pricing.standard.feature2">✔ Financial & Market Analysis</li>
+           <li data-i18n="pricing.standard.feature3">✔ Marketing Strategy</li>
+           <li data-i18n="pricing.standard.feature4">✖ Dedicated Consultant</li>
         </ul>
         <a href="#contact" class="btn" data-i18n="pricing.chooseBtn">Choose Plan</a>
       </div>
@@ -579,17 +621,17 @@
         <h3 data-i18n="pricing.premium.title">Premium</h3>
         <p class="price" data-i18n="pricing.premium.price">Custom<span></span></p>
         <ul>
-          <li data-i18n="pricing.premium.feature1">✔ Complete Business Solutions</li>
-          <li data-i18n="pricing.premium.feature2">✔ Dedicated Expert Consultant</li>
-          <li data-i18n="pricing.premium.feature3">✔ Full Support 24/7</li>
-          <li data-i18n="pricing.premium.feature4">✔ Growth Strategy Reports</li>
+           <li data-i18n="pricing.premium.feature1">✔ Complete Business Solutions</li>
+           <li data-i18n="pricing.premium.feature2">✔ Dedicated Expert Consultant</li>
+           <li data-i18n="pricing.premium.feature3">✔ Full Support 24/7</li>
+           <li data-i18n="pricing.premium.feature4">✔ Growth Strategy Reports</li>
         </ul>
         <a href="#contact" class="btn" data-i18n="pricing.chooseBtn">Choose Plan</a>
       </div>
 
     </div>
 
-    <button data-i18n="pricing.btn">Choose Plan</button>
+    
   </div>
 </section>
 
@@ -648,7 +690,7 @@
 
 <section id="careers" class="careers">
   <div class="container">
-    <h2 data-i18n="careers.title">Join <span>Our Team</span></h2>
+    <h2 data-i18n="careers.title">Join Our Team</h2>
     <p class="subtitle" data-i18n="careers.subtitle1">
       We're always looking for passionate and talented professionals to grow with us.
     </p>
@@ -660,10 +702,16 @@
         <h3 data-i18n="careers.position1.title">Business Consultant</h3>
         <p data-i18n="careers.position1.text">Provide expert advice and insights to help clients improve efficiency and achieve success.</p>
         <ul>
-          <li><i class="fas fa-check-circle"></i> 3+ years experience in consulting</li>
-          <li><i class="fas fa-check-circle"></i> Strong analytical skills</li>
-          <li><i class="fas fa-check-circle"></i> Excellent communication</li>
-        </ul>
+  <li data-i18n="careers.position1.feature1">
+    <i class="fas fa-check-circle"></i> 3+ years experience in consulting
+  </li>
+  <li data-i18n="careers.position1.feature2">
+    <i class="fas fa-check-circle"></i> Strong analytical skills
+  </li>
+  <li data-i18n="careers.position1.feature3">
+    <i class="fas fa-check-circle"></i> Excellent communication
+  </li>
+</ul>
         <a href="#contact" class="btn-apply" data-i18n="careers.apply">Apply Now</a>
       </div>
 
@@ -672,9 +720,15 @@
         <h3 data-i18n="careers.position2.title">Financial Analyst</h3>
         <p data-i18n="careers.position2.text">Analyze financial data and develop strategies that help clients grow sustainably.</p>
         <ul>
-          <li><i class="fas fa-check-circle"></i> Degree in Finance or Economics</li>
-          <li><i class="fas fa-check-circle"></i> Strong Excel & modeling skills</li>
-          <li><i class="fas fa-check-circle"></i> Detail-oriented mindset</li>
+          <li data-i18n="careers.position2.feature1">
+          <i class="fas fa-check-circle"></i> Degree in Finance or Economics<>
+          </li>
+           <li data-i18n="careers.position2.feature2">
+          <i class="fas fa-check-circle"></i> Strong Excel & modeling skills<>
+           </li>
+           <li data-i18n="careers.position2.feature3">
+          <i class="fas fa-check-circle"></i> Detail-oriented mindset<>
+          </li>
         </ul>
         <a href="#contact" class="btn-apply" data-i18n="careers.apply">Apply Now</a>
       </div>
@@ -684,9 +738,15 @@
         <h3 data-i18n="careers.position3.title">Marketing Manager</h3>
         <p data-i18n="careers.position3.text">Lead digital campaigns and branding initiatives to boost our clients’ visibility.</p>
         <ul>
-          <li><i class="fas fa-check-circle"></i> 5+ years in marketing</li>
-          <li><i class="fas fa-check-circle"></i> Experience with Google Ads & SEO</li>
-          <li><i class="fas fa-check-circle"></i> Creative thinker</li>
+          <li data-i18n="careers.position3.feature1">
+          <i class="fas fa-check-circle"></i> 5+ years in marketing<>
+          </li>
+          <li data-i18n="careers.position3.feature2">
+          <i class="fas fa-check-circle"></i> Experience with Google Ads & SEO<>
+          </li>
+        <li data-i18n="careers.position3.feature3">
+          <i class="fas fa-check-circle"></i> Creative thinker<>
+        </li>
         </ul>
         <a href="#contact" class="btn-apply" data-i18n="careers.apply">Apply Now</a>
       </div>
@@ -698,9 +758,9 @@
 
 <section class="cta-final">
   <div class="cta-content">
-    <h2>Ready to Take Your Business to the Next Level?</h2>
-    <p>Our experts are here to help you grow, innovate, and succeed in every step of your journey.</p>
-    <a href="#contact" class="btn-primary">Contact Us</a>
+    <h2 data-i18n="cta.title">Ready to Take Your Business to the Next Level?</h2>
+    <p data-i18n="cta.text">Our experts are here to help you grow, innovate, and succeed in every step of your journey.</p>
+    <a href="#contact" class="btn-primary" data-i18n="cta.btn">Contact Us</a>
   </div>
 </section>
 
@@ -708,7 +768,9 @@
 <section id="contact" class="contact">
   <div class="container">
     <h2 data-i18n="contact.title">Contact Us</h2>
-    <p class="subtitle" data-i18n="contact.subtitle">We’d love to hear from you. Get in touch with our team.</p>
+    <p class="subtitle" data-i18n="contact.subtitle">
+      We’d love to hear from you. Get in touch with our team.
+    </p>
 
     <div class="contact-grid">
 
@@ -720,17 +782,21 @@
         </p>
 
         <ul>
-          <li><i class="fas fa-map-marker-alt"></i> 
-            <span data-i18n="contact.address">15A Business Street, Sofia, Bulgaria</span>
+          <li>
+            <i class="fas fa-map-marker-alt"></i>
+            <span class="Contacts" data-i18n="contact.address">15A Business Street, Sofia, Bulgaria</span>
           </li>
-          <li><i class="fas fa-envelope"></i> 
-            <span data-i18n="contact.email">info@consultpro.com</span>
+          <li>
+            <i class="fas fa-envelope"></i>
+            <span class="Contacts" data-i18n="contact.email">info@consultpro.com</span>
           </li>
-          <li><i class="fas fa-phone"></i> 
-            <span data-i18n="contact.phone">+44 888 123 456</span>
+          <li>
+            <i class="fas fa-phone"></i>
+            <span class="Contacts" data-i18n="contact.phone">+44 888 123 456</span>
           </li>
-          <li><i class="fas fa-clock"></i> 
-            <span data-i18n="contact.hours">Mon – Fri: 9:00 – 18:00</span>
+          <li>
+            <i class="fas fa-clock"></i>
+            <span class="Contacts" data-i18n="contact.hours">Mon – Fri: 9:00 – 18:00</span>
           </li>
         </ul>
       </div>
@@ -739,15 +805,17 @@
       <div class="contact-form">
         <form>
           <div class="form-group">
-            <input data-i18n-placeholder="contact.formName" type="text" placeholder="Your Name" required>
+            <input type="text" data-i18n-placeholder="contact.formName" placeholder="Your Name" required>
           </div>
           <div class="form-group">
-            <input data-i18n-placeholder="contact.formEmail" type="email" placeholder="Your Email" required>
+            <input type="email" data-i18n-placeholder="contact.formEmail" placeholder="Your Email" required>
           </div>
           <div class="form-group">
-            <textarea data-i18n-placeholder="contact.formMessage" placeholder="Your Message" rows="5" required></textarea>
+            <textarea rows="5" data-i18n-placeholder="contact.formMessage" placeholder="Your Message" required></textarea>
           </div>
-          <button type="submit" class="btn" data-i18n="contact.sendBtn">Send Message</button>
+          <button type="submit" class="btn" data-i18n="contact.sendBtn">
+            Send Message
+          </button>
         </form>
       </div>
 
@@ -831,11 +899,11 @@
     <div class="footer-links">
       <h3 data-i18n="footer.quicklinks">Quick Links</h3>
       <ul>
-        <li><a href="#home" data-i18n="footer.link.home">Home</a></li>
-        <li><a href="#services" data-i18n="footer.link.services">Services</a></li>
-        <li><a href="#portfolio" data-i18n="footer.link.portfolio">Portfolio</a></li>
-        <li><a href="#contact" data-i18n="footer.link.contact">Contact</a></li>
-      </ul>
+         <li><a href="#home" data-i18n="footer.link.home">Home</a></li>
+         <li><a href="#services" data-i18n="footer.link.services">Services</a></li>
+         <li><a href="#portfolio" data-i18n="footer.link.portfolio">Portfolio</a></li>
+         <li><a href="#contact" data-i18n="footer.link.contact">Contact</a></li>
+       </ul>
     </div>
 
     <div class="footer-contact">
@@ -861,9 +929,8 @@
   </div>
 </footer>
 
-
+<script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
 <script src="script.js"></script>
 </body>
 </html>
-
 
