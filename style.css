@@ -1,1447 +1,1264 @@
 /* Общи стилове */
 * {
+ margin: 0;
+ padding: 0;
+ box-sizing:border-box;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
   margin: 0;
   padding: 0;
-  box-sizing: border-box;
 }
 
 
-body {
-  font-family: "Segoe UI", Tahoma, sans-serif;
-  line-height: 1.6;
-  color: #333;
-  background: #f4f6f8;
-  padding-top: 90px; /* височината на header-а */
-}
-
-.nav.active {
-   transform: translateX(0);
-}
 
 
-/* === HEADER === */
+
+/* ================================
+HEADER
+================================ */
+
 .header {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  background: #1a2733;
-  color: #fff;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  padding: 10px 25px;
-  z-index: 1000;
-  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2);
+ position: fixed;
+ top: 0;
+ left: 0;
+ width: 100%;
+ background: #1a2733;
+ color: #fff;
+ display: flex;
+ justify-content: space-between;
+ align-items: center;
+ padding: 10px 25px;
+ z-index: 1000;
+ box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2);
 }
 
-/* Лого */
+/* Logo */
 .logo {
-  font-size: 1.8rem;
-  font-weight: bold;
-  color: #00b4d8;
-  display: flex;
-  align-items: center;
+ font-size: 28px;
+ font-weight: 700;
+ color: #00b4d8;
 }
 .logo span {
-  color: #fff;
+ color: #fff;
 }
 
-/* Навигация */
+/* Navigation */
+.nav {
+ display: flex;
+ gap: 25px;
+ align-items: center;
+}
+
+.nav a {
+ color: #fff;
+ margin-left: 20px;
+ text-decoration: none;
+ font-weight: 500;
+ transition: color 0.3s; 
+ font-size: 20px;
+}
+
+.nav a:hover {
+ color: #0077ff;
+}
+
+/* Right side (language + menu) */
+.header-right {
+ display: flex;
+ align-items: center;
+ gap: 15px;
+}
+
+/* Language switch buttons */
+.lang-btn {
+ background: none;
+border: 2px solid transparent;
+ padding: 3px;
+border-radius: 6px;
+ cursor: pointer;
+ transition: 0.25s;
+}
+
+.lang-btn img {
+  width: 50px;
+ height: 30px;
+ object-fit: cover;
+border-radius: 4px;
+ transition: transform 0.3s 
+ea
+}
+
+.lang-btn.active img {
+border: 1px solid #00b4d8;
+border-radius: 4px;
+ box-shadow: 0 0 5px rgba(0, 180, 216, 0.6);
+}
+
+/* Desktop */
 .nav {
   display: flex;
-  gap: 20px;
-}
-.nav a {
-  color: #fff;
-  text-decoration: none;
-  font-weight: 500;
-  font-size: 1rem;
-  transition: color 0.3s ease;
-}
-.nav a:hover {
-  color: #00b4d8;
+  gap: 24px;
 }
 
-/* Бутон меню (само за мобилни) */
+/* Mobile */
 .menu-toggle {
   display: none;
-  background: none;
-  border: none;
-  font-size: 28px;
-  color: #fff;
-  cursor: pointer;
+  color: #ffffff;
 }
 
-/* Езикова селекция */
-.language-switcher {
-  display: flex;
-  align-items: center;
-  gap: 8px;
+/* Mobile styles */
+
+
+
+/* =====================================
+RESPONSIVE NAVIGATION
+===================================== */
+/* Общи стилове */
+* {
+ margin: 0;
+ padding: 0;
+ box-sizing:border-box;
 }
+
+
+/* ================================
+HEADER
+================================ */
+
+.header {
+ position: fixed;
+ top: 0;
+ left: 0;
+ width: 100%;
+ background: #1a2733;
+ color: #fff;
+ display: flex;
+ justify-content: space-between;
+ align-items: center;
+ padding: 10px 25px;
+ z-index: 1000;
+ box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2);
+}
+
+/* Logo */
+.logo {
+ font-size: 28px;
+ font-weight: 700;
+ color: #00b4d8;
+}
+.logo span {
+ color: #fff;
+}
+
+/* Navigation */
+.nav {
+ display: flex;
+ gap: 25px;
+ align-items: center;
+}
+
+.nav a {
+ color: #fff;
+ margin-left: 20px;
+ text-decoration: none;
+ font-weight: 500;
+ transition: color 0.3s; 
+ font-size: 20px;
+}
+
+.nav a:hover {
+ color: #0077ff;
+}
+
+/* Right side (language + menu) */
+.header-right {
+ display: flex;
+ align-items: center;
+ gap: 15px;
+}
+
+/* Language switch buttons */
 .lang-btn {
-  background: transparent;
-  border: none;
-  cursor: pointer;
-  padding: 2px;
+ background: none;
+border: 2px solid transparent;
+ padding: 3px;
+border-radius: 6px;
+ cursor: pointer;
+ transition: 0.25s;
 }
+
 .lang-btn img {
   width: 50px;
-  height: 30px;
-  object-fit: cover;
-  border-radius: 4px;
-  transition: transform 0.3s ease;
+ height: 30px;
+ object-fit: cover;
+border-radius: 4px;
+ transition: transform 0.3s 
+ea
 }
 
-
-.lang-btn:hover img {
-  transform: scale(1.1);
+.lang-btn.active img {
+border: 1px solid #00b4d8;
+border-radius: 4px;
+ box-shadow: 0 0 5px rgba(0, 180, 216, 0.6);
 }
 
-    .lang-btn.active img {
-        border: 1px solid #00b4d8;
-        border-radius: 4px;
-        box-shadow: 0 0 5px rgba(0, 180, 216, 0.6);
-    }
-
-/* === MOBILE HEADER === */
-@media (max-width: 768px) {
-  .header {
-    flex-wrap: nowrap;
-    justify-content: space-between;
-    padding: 10px 15px;
-  }
-
-  .menu-toggle {
-    display: block;
-  }
-
-  .nav {
-    display: none;
-  }
-
-  .language-switcher {
-    flex-direction: row;
-    margin-left: 10px;
-  }
+/* Desktop */
+.nav {
+  display: flex;
+  gap: 24px;
 }
 
-@media (max-width: 768px) {
-    body {
-        padding-top: 90px;  /* височината на header-а */
-    }
-  }
-
-
-.header .logo {
-  font-size: 30px;
-  font-weight: bold;
-  color: #00b4d8;
-}
-
-@media (max-width: 768px) {
-  .header .logo span {
-    gap: 20px;
-  }
-}
-
-.header .logo span {
-  color: #fff;
-}
-
-.header .nav a {
-  color: #fff;
-  margin-left: 20px;
-  text-decoration: none;
-  font-weight: 500;
-  transition: color 0.3s ease;
-  font-size: 20px;
-}
-
-
-
-/* Бутонът за мобилното меню - по default скрит */
+/* Mobile */
 .menu-toggle {
   display: none;
-  background: none;
-  border: none;
-  font-size: 28px;
-  cursor: pointer;
-  color: #fff;
+  color: #ffffff;
 }
 
-/* Навигацията на desktop */
-.nav {
-  display: flex;
-  gap: 20px;
-}
-
-.nav a {
-  color: #fff;
-  text-decoration: none;
-  font-weight: 500;
-  transition: color 0.3s ease;
-}
-
-.nav a:hover {
-  color: #0a7bff;
-}
-
-/* === MOBILE STYLES === */
-@media (max-width: 768px) {
-  .menu-toggle {
-    display: block; /* показваме бутона */
-  }
-
-
-
-/* Логото – леко вляво, дишащо */
-.logo {
-  font-size: 1.8rem;
-  font-weight: bold;
-  color: #00c2ff;
-  display: flex;
-  align-items: center;
-}
-
-/* Навигация (Desktop) */
-.nav {
-  display: flex;
-  gap: 25px; /* ✅ Разстояние между бутоните */
-}
-
-.nav a {
-  color: #fff;
-  text-decoration: none;
-  font-size: 1rem;
-  transition: 0.3s;
-}
-
-.nav a:hover {
-  color: #00c2ff;
-}
-
-/* Езиковите флагове – вече с дистанция */
-.language-switcher {
-  display: flex;
-  align-items: center;
-  gap: 10px;
-  margin-left: 15px;
-}
-
-.lang-btn {
-  background: transparent;
-  border: none;
-  cursor: pointer;
-  padding: 4px;
-}
-
-.lang-btn img {
-  width: 32px;
-  height: 22px;
-  object-fit: cover;
-  border-radius: 4px;
-  transition: transform 0.3s ease;
-}
-
-.lang-btn:hover img {
-  transform: scale(1.1);
-}
-
-/* ===== РЕСПОНСИВЕН (МОБИЛЕН) HEADER ===== */
-@media (max-width: 768px) {
-  .header {
-    flex-wrap: nowrap;
-    padding: 10px 20px;
-  }
-
-  /* ✅ Центриране на логото + бутона */
-  .logo {
-    flex: 1 1 10%;
-    text-align: center;
-    margin-bottom: 10px;
-  }
-
+/* Mobile styles */
+@media (max-width: 992px) {
   .menu-toggle {
     display: block;
-    font-size: 1.5rem;
-    color: #fff;
+    font-size: 26px;
     background: none;
     border: none;
     cursor: pointer;
+    color: #ffffff;
   }
 
-  /* Навигация става вертикална (скрива се) */
-  .nav {
-    flex-direction: column;
-    gap: 15px;
-    width: 100%;
-    display: none; /* Скрито по подразбиране */
-    text-align: center;
-    margin-top: 10px;
-  }
+ 
 
-  /* Когато натиснем ☰ менюто */
-  .nav.active {
-    display: flex;
-  }
-
-  /* Флаговете на отделен ред */
-  .language-switcher {
-    margin: 0 auto;
-    padding: 10px 0;
+  body.menu-open .nav {
+    transform: translateX(0);
   }
 }
 
 
-
- /* ===== Language Switcher ===== */
-/* Контейнер за бутоните */
-.language-switcher {
+/* =====================================
+RESPONSIVE NAVIGATION
+===================================== */
+/* Desktop */
+.nav {
   display: flex;
-  align-items: center;
-  gap: 10px; /* Разстояние между флаговете */
-  margin-left: 15px;
+  gap: 24px;
 }
 
-/* Бутоните — без рамка, чист фон */
-.lang-btn {
-  background: transparent;
+/* Mobile */
+.menu-toggle {
+  display: none;
+  font-size: 26px;
+  background: none;
   border: none;
-  padding: 3px;
   cursor: pointer;
-  transition: all 0.3s ease;
-  display: flex;
-  align-items: center;
-  justify-content: center;
+  color: #ffffff;
 }
 
-/* Снимка на флага */
-.lang-btn img {
-  width: 32px;     /* Регулираш размера оттук */
-  height: 22px;    /* Пропорционален размер */
-  border-radius: 3px;
-}
+@media (max-width: 992px) {
 
-
-
-
-  .nav {
-    display: none; /* скриваме менюто по default */
-    flex-direction: column;
-    position: absolute;
-    top: 60px;
-    right: 0;
-    background: #1a2733;
-    width: 220px;
-    padding: 15px;
+  /* ☰ винаги видим */
+  .menu-toggle {
+    display: block;
+    font-size: 26px;
+    background: none;
+    border: none;
+    cursor: pointer;
+    color: #fff;
+    position: static;
+    top: 15px;
+    right: 20px;
+    z-index: 2001;
   }
 
-  .nav.active {
-    display: flex; /* показва се при клик */
+  /* NAV = dropdown */
+  .nav {
+    position: fixed;
+    top: 70px; /* под header */
+    left: 0;
+    width: 100%;
+    background: #1a2733;
+
+    flex-direction: column;
+    align-items: center;
+    gap: 18px;
+    padding: 25px 0;
+
+    /* 🔽 hidden by default */
+    transform: translateY(-120%);
+    transition: transform 0.35s ease;
+
+    z-index: 2000;
+  }
+
+  /* 🔓 open */
+  body.menu-open .nav {
+    transform: translateY(0);
+    height: 530px;
+    width: 200px;
+    margin-left: 180px;
   }
 
   .nav a {
-    padding: 10px 0;
-    border-bottom: 1px solid rgba(255,255,255,0.1);
-  }
-
-  .nav a:last-child {
-    border-bottom: none;
+    font-size: 18px;
+    padding: 8px 0;
   }
 }
 
+/* Prevent header overlap on scroll */
+body {
+ padding-top: 95px;
+ font-family: "Segoe UI", Tahoma, sans-serif;
+ line-height: 1.6;
+ color: #333;
+ background: #b8b8b8;
+ padding-top: 90px; /* височината на header-а */
+}
 
- 
-/* Hero */
+
+
+/* ================================
+HERO SECTION
+================================ */
+
 .hero {
-  height: 190vh;
-  background: linear-gradient(rgba(30,42,56,0.8), rgba(30,42,56,0.8));
-  color: #fff;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  text-align: center;
-  padding: 0 20px;
-  padding-top: 80px;
+ position: relative;
+ width: 100%;
+ height: 90vh;
+ overflow: hidden;
+ display: flex;
+ align-items: center;
+ justify-content: center;
 }
 
-.hero h1 {
-  font-size: 48px;
-  margin-bottom: 20px;
-}
-
-.hero p {
-  font-size: 18px;
-  margin-bottom: 30px;
-}
-
-.hero .btn-primary {
-  background: #00b4d8;
-  color: #fff;
-  padding: 14px 30px;
-  border-radius: 6px;
-  text-decoration: none;
-  font-weight: bold;
-  transition: background 0.3s ease;
-}
-
-.hero .btn-primary:hover {
-  background: #0077b6;
-}
-
-
-@media (max-width: 768px) {
-  .hero h1 { font-size: 70px; }
-  .stats { flex-direction: column; gap: 20px; }
-}
-
-
-/* Hero Section */
-.hero {
-  position: relative;
-  min-height: 100vh;
-  width: 100%;
-  height: 100vh; /* винаги височината на екрана */
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  overflow: hidden;
-  color: #fff;
-}
-
+/* Background slider */
 .hero-slider {
-  position: absolute;
-  inset: 0;
-  z-index: 1;
+ position: absolute;
+ inset: 0;
+ width: 100%;
+ height: 100%;
 }
+
+.hero-slider .slide {
+ position: absolute;
+ inset: 0;
+ background-size: cover;
+ background-position: center;
+ opacity: 0;
+ transition: opacity 1.2s ease;
+}
+
+.hero-slider .slide.active {
+ opacity: 1;
+}
+
+/* Dark overlay */
+.hero::before {
+ content: "";
+ position: absolute;
+ inset: 0;
+ background: rgba(0, 0, 0, 0.45);
+ z-index: 1;
+}
+
+/* HERO content */
 
 .slide {
-  position: absolute;
-  inset: 0;
-  background-size: cover;       /* запълва цял екран */
-  background-position: center;  /* центрира снимката */
-  background-repeat: no-repeat; /* не повтаря */
-  opacity: 0;
-  transition: opacity 1s ease-in-out;
-  height: 100vh;
-}
-
-.slide.active {
-  opacity: 1;
+ position: absolute;
+ inset: 0;
+ background-size: cover;
+ background-position: center;
+ background-repeat: no-repeat;
+ opacity: 0;
+ transition: opacity 1s 
+ease-in-out;
+ height: 100vh;
 }
 
 .hero-content {
-  position: relative;
-  z-index: 2;
-  text-align: center;
-  max-width: 900px;
-  padding: 40px;
+ position: relative;
+ z-index: 2;
+ text-align: center;
+ max-width: 900px;
+ padding: 0 20px;
+ color: #fff;
+ animation: fadeUp 1.2s ease;
 }
 
 .hero-content h1 {
   font-size: 48px;
-  margin-bottom: 20px;
-  border-width: 10px;
-      background-color: rgb(255 255 255);
-  color: #000;
-  line-height: 1.2;
-  margin: 10px 2em;
+ margin-bottom: 20px;
+border-width: 10px;
+ background-color: rgb(255 255 255);
+ color: #000;
+ line-height: 1.2;
+ margin: 10px 2em;
 }
 
 .hero-content h1 span {
-  color: #18a2ff;
+ color: #00a2ff;
 }
 
 .hero-content p {
   margin-bottom: 20px;
-  font-size: 18px;
-  background-color: rgb(255 255 255);
-  color: #000;
-  line-height: 1.5;
-  margin: 30px 5em;
-}
-
-.btn {
-  display: inline-block;
-  background: #0a7bff;
-  color: #fff;
-  padding: 12px 22px;
-  border-radius: 8px;
-  text-decoration: none;
-  font-weight: bold;
-}
-
-/* Responsive за телефони */
-@media (max-width: 768px) {
-
-  .hero-content h1 {
-    font-size: 28px; 
-          
-  }
-  .hero-content p {
-    font-size: 16px;
-  }
-  .btn {
-    padding: 10px 18px;
-    font-size: 16px;
-  }
-}
-
-@media (max-width: 480px) {
-  .hero {
-    min-height: 80vh;
-  }
-  .hero-content h1 {
-    font-size: 22px;
-  }
-  .hero-content p {
-    font-size: 14px;
-  }
-  .btn {
-    font-size: 20px;
-    padding: 8px 16px;
-  }
-}
-
-/* responsive за малки екрани */
-@media (max-width: 768px) {
-  .hero-content h1 {
-    font-size: 60px;
-    margin-top: -220px;
-  }
-  .hero-content p {
-    /* font-size: 14px; */
-    font-size: 1.2rem;
-  }
-}
-
-
-/* Services Section */
-.services {
-  padding: 80px 20px;
-  text-align: center;
-  background: #838384;
-}
-
-.services h2 {
-  font-size: 36px;
-  margin-bottom: 10px;
-}
-
-.services .subtitle {
-  font-size: 18px;
-  margin-bottom: 40px;
-  color: #666;
-}
-
-.services-grid {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr); /* 3 колони */
-  gap: 30px; /* разстояние между кутиите */
-  max-width: 1100px;
-  margin: 0 auto;
-}
-
-.service-card {
-  background: #fff;
-  padding: 30px 20px;
-  border-radius: 12px;
-  box-shadow: 0 4px 12px rgba(0,0,0,0.1);
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
-}
-
-.service-card:hover {
-  transform: translateY(-8px);
-  box-shadow: 0 8px 20px rgba(0,0,0,0.15);
-}
-
-.service-card i {
-  font-size: 40px;
-  color: #007bff;
-  margin-bottom: 15px;
-}
-
-
-
-/* Our Process Section */
-.process {
-  background: #b8b8b8;
-  padding: 80px 20px;
-  text-align: center;
-}
-
-.process h2 {
-  font-size: 36px;
-  color: #000000;
-  margin-bottom: 15px;
-}
-
-.process .subtitle {
-  font-size: 18px;
-  color: #000000;
-  margin-bottom: 50px;
-}
-
-.process-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-  gap: 30px;
-  max-width: 1100px;
-  margin: 0 auto;
-}
-
-.process-step {
-  background: #ffffff;
-  padding: 30px 20px;
-  border-radius: 12px;
-  box-shadow: 0 4px 15px rgba(0,0,0,0.06);
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
-}
-
-.process-step i {
-  font-size: 40px;
-  color: #007bff;
-  margin-bottom: 15px;
-}
-
-.process-step h3 {
-  font-size: 22px;
-  margin-bottom: 10px;
-  color: #000000;
-}
-
-.process-step p {
-  font-size: 15px;
-  color: #000000;
-}
-
-.process-step:hover {
-  transform: translateY(-8px);
-  box-shadow: 0 8px 25px rgba(0,0,0,0.1);
-}
-
-
-
-/* Stats */
-
-.stats {
-  padding: 80px 20px;
-  background: #eef3f8;
-  text-align: center;
-}
-
-.container {
-  margin-bottom: 40px;
-}
-
-.subtitle h2 {
-  font-size: 36px;
-  margin-bottom: 10px;
-  color: #000;
-}
-
-.subtitle p {
-  font-size: 18px;
-  color: #000000;
-  margin-bottom: 50px;
-}
-
-/* Grid за кутиите */
-.stats-grid {
-  display: grid;
-  grid-template-columns: repeat(4, 1fr); /* 4 кутийки в ред */
-  gap: 20px;
-  flex-direction: column; /* една под друга */
-  align-items: center;    /* център по хоризонтал */
-  max-width: 400px;
-  margin: 0 auto; /* центриране */
-}
-
-.stat-item {
-  background: #fff;
-  width: 100%;            /* всяка кутия да заема цялата ширина на контейнера */
-  max-width: 300px;       /* но не по-широка от 300px */
-  text-align: center;     /* съдържанието вътре е в център */
-  padding: 30px 20px;
-  border-radius: 12px;
-  box-shadow: 0 4px 12px rgba(0,0,0,0.1);
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
-}
-
-.stat-item:hover {
-  transform: translateY(-8px);
-  box-shadow: 0 8px 20px rgba(0,0,0,0.15);
-}
-
-.stat-item h3 {
-  font-size: 32px;
-  color: #007bff;
-  margin-bottom: 10px;
-}
-
-.stat-item p {
-  font-size: 16px;
-  color: #000000;
-}
-
-
-.stats {
-   background: #1e2a38;
-  color: #fff;
-  display: flex;
-  justify-content: space-around;
-  padding: 60px 20px;
-  text-align: center;
-}
-
-.stats div {
-    font-size: 22px;
-    font-weight: bold;
-    padding: 20px;
-    color: black;
-}
-
-.stats div span {
-  display: block;
-  font-size: 36px;
-  color: #18a2ff;
-}
-
-@media (max-width: 768px) {
-  .stats {  
-  padding: 20px 20px;
-  
-   }
-
-   .stats-grid {
-    max-width: 300px;       /* но не по-широка от 300px */
-  text-align: center;     /* съдържанието вътре е в център */
-  padding: 10px 50px;
-   }
-}
-
-/* Testimonials */
-.testimonials {
-  padding: 80px 60px;
-  background: #f9fbfd;
-  text-align: center;
-}
-
-.testimonial {
-  max-width: 700px;
-  margin: 0 auto 30px auto;
-  font-style: italic;
-}
-
-.testimonial img {
-  width: 80px;
-  height: 80px;
-  border-radius: 50%;
-  margin: 15px 0;
-  object-fit: cover;
-  border: 3px solid #00b4d8;
-}
-
-
-.testimonial-card {
-  opacity: 0;
-  transform: translateY(40px);
-  transition: opacity 0.7s ease, transform 0.7s ease;
-}
-
-.testimonial-card.show {
-  opacity: 1;
-  transform: translateY(0);
-}
-
-
-
-/* Portfolio */
-.portfolio {
-  padding: 80px 60px;
-}
-
-.portfolio-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-  gap: 20px;
-}
-
-.portfolio-item {
-  position: relative;
-  overflow: hidden;
-  border-radius: 10px;
-}
-
-.portfolio-item img {
-  width: 100%;
-  display: block;
-  transition: transform 0.4s ease;
-}
-
-.portfolio-item:hover img {
-  transform: scale(1.1);
-}
-
-.portfolio-item .overlay {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background: rgba(30,42,56,0.85);
-  color: #fff;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  opacity: 0;
-  transition: opacity 0.4s ease;
-  text-align: center;
-}
-
-.portfolio-item:hover .overlay {
-  opacity: 1;
-}
-
-/* CTA */
-.cta {
-  background: #00b4d8;
-  color: #fff;
-  text-align: center;
-  padding: 60px 20px;
-}
-
-.cta h2 {
-  margin-bottom: 20px;
-}
-
-.cta .btn-light {
-  background: #fff;
-  color: #00b4d8;
-  padding: 12px 25px;
-  border-radius: 6px;
-  text-decoration: none;
-  font-weight: bold;
-}
-
-.cta .btn-light:hover {
-  background: #caf0f8;
-}
-
-/* Footer */
-footer {
-  background: #1e2a38;
-  color: #fff;
-  text-align: center;
-  padding: 30px 20px;
-}
-
-footer .social a {
-  color: #00b4d8;
-  margin: 0 10px;
-  font-size: 20px;
-  transition: color 0.3s ease;
-}
-
-footer .social a:hover {
-  color: #fff;
-}
-
-
-
-/* Services Section */
-.services {
-  background: #01193a;
-  padding: 80px 20px;
-  text-align: center;
-}
-
-.services h2 {
-  font-size: 2.5rem;
-  color: #ffffff; 
-  margin-bottom: 10px;
-}
-
-.services .subtitle {
-  color: #ffffff;
-  margin-bottom: 40px;
-  font-size: 1.2rem;
-}
-
-
-.services-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-  gap: 30px;
-  margin-top: 40px;
-}
-
-.service-card {
-  background: #ffffff;
-  padding: 30px;
-  border-radius: 10px;
-  text-align: center;
-  box-shadow: 0 4px 15px rgba(0,0,0,0.1);
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
-}
-
-.service-card:hover {
-  transform: translateY(-10px);
-  box-shadow: 0 8px 20px rgba(0,0,0,0.2);
-}
-
-.service-card h3 {
-  margin-bottom: 15px;
-  font-size: 22px;
-  color: #333;
-}
-
-
-.service-card p {
-  color: #333;
-  font-size: 1rem;
-  line-height: 1.6;
-}
-
-
-.service-icon {
-  font-size: 40px;
-  color: #0077b6; /* син акцент */
-  margin-bottom: 20px;
-  transition: transform 0.3s ease, color 0.3s ease;
-}
-
-.service-card:hover .service-icon {
-  color: #023e8a; /* по-тъмен син при hover */
-}
-
-
-.service-card i {
-  font-size: 40px;
-  color: #0056b3;
-  margin-bottom: 15px;
-}
-
-/* Stats Section */
-.stats {
-  text-align: center;
-  padding: 60px 20px;
-  background: #b8b8b8;; /* лек фон за контраст */
-  flex-direction: column;  /* <-- казва: подреди децата вертикално */
-  align-items: center;     /* центрира по хоризонтала */
-}
-
-.stats-header {
-  margin-bottom: 40px;
-  max-width: 700px; /* за да не се разлива */
-}
-
-.stats-header h2 {
-  font-size: 2rem;
-  font-weight: bold;
-  margin-bottom: 10px;
-  color: #000000;
-}
-
-.stats-header p {
-  font-size: 1.1rem;
-  color: #000000;
-}
-
-.stats-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-  gap: 30px;
-  max-width: 1100px;
-  margin: 0 auto;
-  width: 100%;  /* да заема цялата ширина */
-}
-
-.stat-item {
-  background: #fff;
-  padding: 25px;
-  border-radius: 12px;
-  box-shadow: 0 4px 12px rgba(0,0,0,0.08);
-  transition: transform 0.3s ease;
-}
-
-.stat-item:hover {
-  transform: translateY(-5px);
-}
-
-.stat-item h3 {
-  font-size: 2rem;
-  font-weight: bold;
-  color: #007bff;
-  margin-bottom: 10px;
-}
-
-.stat-item p {
-  font-size: 1rem;
-  color: #333;
-}
-
-.stat-item:hover {
-  transform: translateY(-5px);
-}
-
-@media (max-width: 992px) {
-  .stats-grid {
-    grid-template-columns: repeat(2, 1fr); /* 2 колони на таблет */
-  }
+ font-size: 19px;
+ background-color: rgb(255 255 255);
+ color: #000;
+ line-height: 1.5;
+ margin: 30px 5em;
+}
+
+.hero-content .btn {
+ display: inline-block;
+ background: #00a2ff;
+ padding: 14px 32px;
+border-radius: 8px;
+ font-size: 18px;
+ font-weight: 600;
+ color: #fff;
+ text-decoration: none;
+ transition: 0.25s;
+}
+
+.hero-content .btn:hover {
+ background: #0080cc;
+}
+
+/* ================================
+ANIMATION
+================================ */
+@keyframes fadeUp {
+ 0% { opacity: 0; transform: translateY(30px); }
+ 100% { opacity: 1; transform: translateY(0); }
+}
+
+/* ================================
+RESPONSIVE
+================================ */
+@media (max-width: 900px) {
+ .hero {
+ height: 70vh;
+ }
+
+ .hero-content h1 {
+    font-size: 3.3rem;
+ }
+
+ .hero-content p {
+ font-size: 1rem;
+ }
+
+ .hero-content .btn {
+ font-size: 1rem;
+ padding: 10px 18px;
+ }
 }
 
 @media (max-width: 600px) {
+ .hero {
+ height: 60vh;
+ }
+
+ .hero-content h1 {
+ font-size: 3.3rem;
+ }
+
+ .hero-content p {
+ font-size: 1rem;
+ }
+}
+
+/* ================================
+SERVICES SECTION
+================================ */
+
+.services {
+  background: #01193a;
+ padding: 80px 20px;
+ text-align: center;
+}
+
+.services .container {
+ max-width: 1300px;
+ margin: 0 auto;
+ padding: 0 20px;
+ text-align: center;
+}
+
+.services h2 {
+ font-size: 2.5rem;
+ color: #ffffff;
+ margin-bottom: 10px;
+}
+
+.services p {
+  color: #ffffff;
+ margin-bottom: 40px;
+ font-size: 1.2rem;
+}
+
+/* Grid layout */
+.services-grid {
+ display: grid;
+ grid-template-columns: repeat(3, 1fr);
+ gap: 30px;
+}
+
+/* Service Cards */
+.service-card {
+ background: #ffffff;
+ padding: 30px;
+border-radius: 10px;
+ text-align: center;
+ box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+ transition: transform 0.3s 
+ease, box-shadow 0.3s 
+
+}
+
+.service-card i {
+ font-size: 40px;
+ color: #0056b3;
+ margin-bottom: 15px;
+}
+
+
+.service-card:hover {
+ transform: translateY(-8px);
+ box-shadow: 0 10px 28px rgba(0,0,0,0.14);
+}
+
+/* Icon */
+.service-card img,
+.service-card ion-icon {
+ width: 70px;
+ height: 70px;
+ margin-bottom: 20px;
+ color: #00a2ff;
+}
+
+/* Text */
+.service-card h3 {
+  margin-bottom: 15px;
+ font-size: 22px;
+ color: #333;
+}
+
+.service-card p {
+ color: #333;
+ font-size: 1rem;
+ line-height: 1.6;
+}
+
+/* ================================
+RESPONSIVE
+================================ */
+@media (max-width: 950px) {
+ .services-grid {
+ grid-template-columns: repeat(2, 1fr);
+ }
+}
+
+@media (max-width: 600px) {
+ .services-grid {
+ grid-template-columns: 1fr;
+ }
+
+ .service-card {
+ padding: 30px 20px;
+ }
+}
+
+/* ================================
+PROCESS SECTION
+================================ */
+
+.process {
+ background: #b8b8b8;
+ padding: 80px 20px;
+ text-align: center;
+}
+
+.process .container {
+ max-width: 1280px;
+ margin: 0 auto;
+ padding: 0 20px;
+ text-align: center;
+}
+
+.process h2 {
+ font-size: 36px;
+ color: #000000;
+ margin-bottom: 15px;
+}
+
+.process p {
+ font-size: 18px;
+ color: #000000;
+ margin-bottom: 50px;
+}
+
+.process-step i {
+ font-size: 40px;
+ color: #007bff;
+ margin-bottom: 15px;
+}
+
+/* Grid Layout */
+.process-grid {
+ display: grid;
+ grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+ gap: 25px;
+ max-width: 900px;
+ margin: 0 auto; 
+}
+
+/* Cards */
+.process-step {
+  background: #ffffff;
+ padding: 30px 20px;
+border-radius: 12px;
+ box-shadow: 0 4px 15px rgba(0, 0, 0, 0.06);
+ transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.process-step:hover {
+ transform: translateY(-10px);
+ box-shadow: 0 10px 28px rgba(0,0,0,0.12);
+}
+
+/* Step Number */
+.process-step .step-number {
+ width: 60px;
+ height: 60px;
+ background: #00a2ff;
+ color: #fff;
+ display: flex;
+ align-items: center;
+ justify-content: center;
+border-radius: 50%;
+ font-size: 22px;
+ font-weight: 700;
+ margin: 0 auto 20px auto;
+}
+
+/* Title */
+.process-step h3 {
+  font-size: 22px;
+ margin-bottom: 10px;
+ color: #000000;
+}
+
+/* Text */
+.process-step p {
+ font-size: 15px;
+ color: #000000;
+ line-height: 1.55;
+}
+
+/* ================================
+RESPONSIVE
+================================ */
+@media (max-width: 950px) {
+ .process-grid {
+ grid-template-columns: repeat(2, 1fr);
+ }
+}
+
+@media (max-width: 600px) {
+ .process-grid {
+ grid-template-columns: 1fr;
+ }
+
+ .process-step {
+ padding: 30px 20px;
+ }
+
+ .process-step .step-number {
+ width: 55px;
+ height: 55px;
+ font-size: 20px;
+ }
+}
+
+/* ================================
+STATS SECTION
+================================ */
+
+.stats {
+ text-align: center;
+ padding: 60px 20px;
+ background: #b8b8b8;
+ flex-direction: column;
+ align-items: center;
+}
+
+.stats .container {
+ max-width: 1280px;
+ margin: 0 auto;
+ padding: 0 20px;
+}
+
+.stats h2 {
+ font-size: 36px;
+ font-weight: 700;
+ margin-bottom: 15px;
+ color: #000;
+}
+
+.stats p.section-subtitle {
+ font-size: 18px;
+ color: #000000;
+ margin-bottom: 50px;
+}
+
+/* Grid layout */
+.stats-grid {
+ display: grid;
+ grid-template-columns: repeat(4, 1fr);
+ gap: 35px;
+}
+
+/* Stat box */
+.stat-item {
+ background: #ffffff;
+ padding: 40px 25px;
+border-radius: 14px;
+ box-shadow: 0 6px 20px rgba(0,0,0,0.06);
+ transition: 0.3s ease;
+}
+
+.stat-item:hover {
+ transform: translateY(-8px);
+ box-shadow: 0 12px 26px rgba(0,0,0,0.10);
+}
+
+/* Number */
+.stat-item .stat-number {
+ font-size: 42px;
+ font-weight: 800;
+ color: #005eff;
+ margin-bottom: 10px;
+}
+
+/* Label */
+.stat-item .stat-label {
+ font-size: 16px;
+ font-weight: 600;
+ color: #333;
+}
+
+
+@media (max-width: 900px) {
+  .stats {
+    padding: 60px 0;
+  }
+
   .stats-grid {
-    grid-template-columns: 1fr; /* 1 колона на телефон */
+    grid-template-columns: repeat(2, 1fr);
+    gap: 25px;
+  }
+
+  .stat-card {
+    padding: 24px 18px;
+  }
+
+  .stat-number {
+    font-size: 36px;
+  }
+
+  .stat-label {
+    font-size: 15px;
+  }
+}
+
+/* ============================================
+            MOBILE — max-width: 600px
+============================================ */
+@media (max-width: 600px) {
+
+  .stats {
+    padding: 50px 0;
+  }
+
+  .stats h2 {
+    font-size: 24px;
+  }
+
+  .stats .subtitle {
+    font-size: 14px;
+    margin-bottom: 30px;
+  }
+
+  .stats-grid {
+    grid-template-columns: 1fr;   /* ❗ Една колона */
+    gap: 18px;
+    max-width: 380px;
+  }
+
+  .stat-card {
+    padding: 22px 16px;
+  }
+
+  .stat-number {
+    font-size: 32px;
+  }
+
+  .stat-label {
+    font-size: 14px;
   }
 }
 
 
-.stat-item {
-  background: #ffffff;
-  padding: 20px;
-  max-width: 250px;
-  border-radius: 10px;
-  flex: 1 1 220px; /* минимална ширина, но гъвкава */
-  box-shadow: 0 4px 10px rgba(0,0,0,0.08);
-  transition: transform 0.3s ease;
-}
-
-.stat-item:hover {
-  transform: translateY(-8px);
-}
-
-.stat-item h3 {
-  color: #0077ff;
-  font-size: 2rem;
-  margin-bottom: 10px;
-}
-
-.stat-item p {
-  color: #333;
-  font-weight: 500;
-}
 
 
-.stats-header {
-  text-align: center;
-}
 
-/* ===== Portfolio Section ===== */
-/* PORTFOLIO SECTION (SLIDER STYLE) */
+/* ==========================================
+   PORTFOLIO SECTION — CLEAN & ORIGINAL STYLE
+========================================== */
+
+
 .portfolio {
-  text-align: center;
-  padding: 100px 20px;
-  background: #01193a;
+ padding: 20px;
+ text-align: center;
+ max-width: 1000px;
+ margin: 0 auto 130px;
+ background: #b8b8b8;
 }
 
 .portfolio h2 {
-  font-size: 36px;
-  margin-bottom: 10px;
+ margin-bottom: 10px;
+ color: #000000;
+ font-size: 30px;
 }
 
-.portfolio p {
-  color: #000000;
-  max-width: 600px;
-  margin: 0 auto 40px;
+.portfolio .subtitle {
+ color: #000000;
+ font-size: 16px;
+ margin-bottom: 40px;
 }
 
+.slide {
+position: relative;
+inset: 0;
+background-size: cover;
+background-position: center;
+background-repeat: no-repeat;
+opacity: 0;
+transition: opacity 1s 
+ease-in-out;
+height: 100vh;
+
+}
+
+/* SLIDER WRAPPER */
 .portfolio-slider {
-  position: relative;
-  max-width: 900px;
-  margin: 0 auto;
-  overflow: hidden;
-  border-radius: 12px;
-  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
-}
-
-.portfolio-slider .slide {
-  display: none;
-  position: relative;
-}
-
-.portfolio-slider .slide.active {
-  display: block;
-  animation: fade 1s ease-in-out;
-}
-
-.portfolio-slider img {
-  width: 100%;
-  height: 500px;
-  object-fit: cover;
-  border-radius: 12px;
-}
-
-.portfolio-slider .caption {
-  position: absolute;
-  bottom: 20px;
-  left: 0;
-  right: 0;
-  text-align: center;
-  color: #000000;
-  background: rgb(255 255 255);
-  padding: 15px;
-  border-radius: 0 0 12px 12px;
+ position: relative;
+width: 100%;
+max-width: 1000px;
+margin: 0 auto;
+overflow: visible;
 }
 
 .portfolio-slider button {
-  position: absolute;
-  top: 50%;
-  transform: translateY(-50%);
-  background: rgba(255,255,255,0.8);
-  border: none;
-  font-size: 28px;
-  cursor: pointer;
-  border-radius: 50%;
-  width: 45px;
-  height: 45px;
-  transition: background 0.3s;
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background: rgba(255, 255, 255, 0.8);
+    border: none;
+    font-size: 28px;
+    cursor: pointer;
+    border-radius: 50%;
+    width: 45px;
+    height: 45px;
+    transition: background 0.3s;
 }
 
-.portfolio-slider button:hover {
-  background: rgba(255,255,255,1);
+/* --- SLIDES --- */
+.portfolio-slider .slide {
+ position: absolute;
+ top: 0;
+ left: 0;
+ width: 100%;
+ opacity: 0;
+ transition: opacity 0.7s ease;
+ pointer-events: none;
 }
 
-.prev {
-  left: 15px;
+/* Първият слайд трябва да се вижда */
+.portfolio-slider .slide:first-child {
+ position: relative;
 }
 
-.next {
-  right: 15px;
+/* Активен слайд */
+.portfolio-slider .slide.active {
+ opacity: 1;
+ pointer-events: auto;
 }
 
-@keyframes fade {
-  from {opacity: 0.4;}
-  to {opacity: 1;}
+/* IMAGES */
+.portfolio-slider img {
+ width: 84%;
+ height: 70%;
+ object-fit: cover;   /* изрязва, за да са еднакви */
+ object-position: center; /* центрира изображението */
+ border-radius: 12px;
 }
 
-/* PORTFOLIO SECTION */
-.portfolio {
-  text-align: center;
-  padding: 100px 20px;
-  background: #b8b8b8;
+/* CAPTION — бял блок под снимката */
+.portfolio-slider .caption {
+ background: #fff;
+ padding: 15px 10px 60px;
+ border-radius: 0 0 14px 14px;
+ box-shadow: 0 8px 25px rgba(0,0,0,0.12);
+ max-width: 900px;
+ margin: 20px 80px;
 }
 
-.portfolio h2 {
-  color: #000000;
-  font-size: 36px;
-  margin-bottom: 10px;
+.portfolio-slider .caption h3 {
+ font-size: 22px;
+ margin-bottom: 10px;
+ font-weight: 600;
 }
 
-.portfolio p {
-  color: #000000;
-  max-width: 600px;
-  margin: 0 auto 50px;
+.portfolio-slider .caption p {
+ font-size: 16px;
+ color: #666;
 }
 
-.portfolio-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-  gap: 30px;
-  justify-items: center;
+/* BUTTONS */
+.portfolio-slider .prev,
+.portfolio-slider .next {
+ position: absolute;
+ top: 50%;
+ transform: translateY(-50%);
+ background: rgba(255,255,255,0.85);
+ width: 48px;
+ height: 48px;
+ border: none;
+ font-size: 28px;
+ border-radius: 50%;
+ cursor: pointer;
+ transition: 0.3s;
+ z-index: 20;
+ display: flex;
+ justify-content: center;
+ align-items: center;
 }
 
-.portfolio-card {
-  position: relative;
-  overflow: hidden;
-  border-radius: 10px;
-  box-shadow: 0 4px 10px rgba(0,0,0,0.1);
-  transition: transform 0.3s ease;
+.portfolio-slider .prev:hover,
+.portfolio-slider .next:hover {
+ background: rgba(255,255,255,1);
 }
 
-.portfolio-card img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  display: block;
+.portfolio-slider .prev {
+ left: -55px;
 }
 
-.portfolio-card:hover {
-  transform: scale(1.05);
+.portfolio-slider .next {
+ right: -55px;
 }
 
-.portfolio-card .overlay {
-  position: absolute;
-  inset: 0;
-  background: rgba(0, 123, 255, 0.8);
-  color: #fff;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  opacity: 0;
-  transition: opacity 0.4s ease;
-  text-align: center;
-  padding: 20px;
+/* ================================
+          MOBILE RESPONSIVE
+================================ */
+
+/* До 768px (таблет) */
+@media (max-width: 768px) {
+
+  .portfolio {
+    padding: 60px 0;
+  }
+
+  .portfolio-slider img {
+    height: 400px;
+    width: 360px;
+  }
+
+  .portfolio-slider .prev,
+  .portfolio-slider .next {
+    top: 45%;
+    padding: 9px 12px;
+    font-size: 20px;
+  }
+
+  .portfolio-slider .prev {
+    left: 10px;
+  }
+
+  .portfolio-slider .next {
+    right: 10px;
+  }
 }
 
-.portfolio-card:hover .overlay {
-  opacity: 1;
+/* До 480px (малък телефон) */
+@media (max-width: 480px) {
+
+  .portfolio h2 {
+    font-size: 24px;
+  }
+
+  .portfolio .subtitle {
+    font-size: 14px;
+  }
+
+  .portfolio-slider img {
+    height: 400px;
+  }
+
+  .caption h3 {
+    font-size: 18px;
+  }
+
+  .caption p {
+    font-size: 14px;
+  }
+
+  .portfolio-slider .prev,
+  .portfolio-slider .next {
+    padding: 8px 10px;
+    font-size: 18px;
+    margin-top: 80px;
+  }
 }
 
 
-/* CASE STUDIES SECTION */
+
+/* ================================
+   CASE STUDIES – CLEAN CARD LAYOUT
+================================= */
+
 .case-studies {
-  padding: 80px 20px;
-  background: #b8b8b8;
+  padding: 80px 0;
+}
+
+.case-studies .container {
+  max-width: 1200px;
+  margin: 0 auto;
   text-align: center;
 }
 
 .case-studies h2 {
-  font-size: 36px;
-  margin-bottom: 15px;
-  color: #000000;
+  margin-bottom: 10px;
+  color: #000;
+  font-size: 30px;
 }
 
 .case-studies .subtitle {
+  max-width: 700px;
+  margin: 0 auto 50px;
   color: #000000;
-  margin-bottom: 50px;
+  font-size: 16px;
 }
 
+/* GRID – 3 CARDS IN ONE ROW */
 .case-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+  display: flex;
   gap: 30px;
+  justify-content: center;
+  flex-wrap: nowrap; /* важно! – 3 хоризонтално */
 }
 
+/* CARD */
 .case-card {
-  background: #ffffff;
-  border-radius: 12px;
+  background: #fff;
+  border-radius: 14px;
   overflow: hidden;
-  box-shadow: 0 6px 20px rgba(0,0,0,0.08);
+  width: 100%;
+  max-width: 360px;
+  box-shadow: 0 8px 25px rgba(0,0,0,0.09);
   transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
 .case-card:hover {
   transform: translateY(-6px);
-  box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+  box-shadow: 0 12px 30px rgba(0,0,0,0.13);
 }
 
+/* IMAGE */
 .case-card img {
   width: 100%;
   height: 220px;
-  object-fit: cover;
+  object-fit: cover;   /* всички снимки стават еднакви */
+  display: block;
 }
 
+/* TEXT AREA */
 .case-content {
-  padding: 25px;
+  padding: 20px 25px;
   text-align: left;
 }
 
 .case-content h3 {
-  font-size: 22px;
-  color: #007bff;
+  font-size: 20px;
   margin-bottom: 10px;
+  font-weight: 600;
 }
 
 .case-content p {
   color: #000000;
   font-size: 15px;
-  margin-bottom: 15px;
+  line-height: 1.55;
+  margin-bottom: 18px;
 }
 
-.btn-read {
+/* READ BUTTON */
+.case-content .btn-read {
   display: inline-block;
-  color: #007bff;
-  font-weight: 600;
+  padding: 10px 18px;
+  background: #0047ab;
+  color: #fff;
+  font-size: 14px;
+  border-radius: 8px;
   text-decoration: none;
-  transition: color 0.3s ease;
+  transition: background 0.3s;
 }
 
-.btn-read:hover {
-  color: #0056b3;
+.case-content .btn-read:hover {
+  background: #00398a;
+}
+
+/* ================================
+        RESPONSIVE
+================================ */
+
+/* На таблет – 2 в ред */
+@media (max-width: 900px) {
+  .case-grid {
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+
+  .case-card {
+    max-width: 45%;
+  }
+}
+
+/* На телефон – 1 в ред */
+@media (max-width: 600px) {
+  .case-card {
+    max-width: 90%;
+  }
 }
 
 
-
-
+/* ================================
+        TESTIMONIALS — MAIN
+================================ */
+/* ================================
+   TESTIMONIALS – CARD STYLE
+================================ */
 .testimonials {
-  background: #01193a;
-  padding: 80px 20px;
+  padding: 80px 0;
+  background: #b8b8b8;
   text-align: center;
 }
 
-.testimonials h2 {
-  font-size: 36px;
-  margin-bottom: 10px;
-  color: #ffffff;
-}
-
-.testimonials .subtitle {
-  color: #ffffff;
-  font-size: 16px;
-  margin-bottom: 50px;
-}
-
-.testimonials-grid {
+.testimonial-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  grid-template-columns: repeat(3, 1fr);
   gap: 30px;
-  justify-items: center;
-  max-width: 1100px;
-  margin: 0 auto;
+  margin-top: 40px;
 }
 
+
+.subtitle-text {
+  font-size: 30px;
+  color: #000;
+}
+
+
+/* Card */
 .testimonial-card {
-  background: #fff;
-  border-radius: 10px;
-  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.08);
+  background: #ffffff;
+  border-radius: 16px;
   overflow: hidden;
-  text-align: left;
-  transition: all 0.3s ease;
-  max-width: 340px;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+  transition: 0.3s ease;
 }
 
 .testimonial-card:hover {
-  transform: translateY(-8px);
-  box-shadow: 0 8px 18px rgba(0, 0, 0, 0.12);
+  transform: translateY(-6px);
 }
 
+/* Image */
 .testimonial-card img {
-  width: 100%;
-  height: 200px;
+  width: 50%;
+  height: 220px;
   object-fit: cover;
-  border-bottom: 3px solid #007bff;
+  border-radius: 60%;
+  padding: 30px;
 }
 
-.testimonial-text {
-  padding: 20px;
+/* Content */
+.testimonial-content {
+  padding: 20px 25px;
 }
 
-.testimonial-text p {
-  font-style: italic;
-  color: #333;
-  margin-bottom: 15px;
+.testimonial-content h3 {
+  font-size: 20px;
+  margin-bottom: 4px;
+  font-weight: 600;
+  color: #000;
+}
+
+.testimonial-content span {
+  font-size: 14px;
+  color: #000000;
+  display: block;
+  margin-bottom: 12px;
+}
+
+.testimonial-content p {
+  font-size: 15px;
+  color: #000000;
   line-height: 1.6;
 }
 
-.testimonial-text h4 {
-  color: #0a1f33;
-  font-size: 18px;
-  margin-bottom: 4px;
+.subtitle {
+  color: #000;
+  font-size: 15px;
 }
 
-.testimonial-text span {
-  color: #007bff;
-  font-size: 14px;
-  font-weight: 500;
-}
 
-/* Responsive */
-@media (max-width: 768px) {
-  .testimonials h2 {
-    font-size: 28px;
+
+/* ================================
+        TESTIMONIALS — MOBILE
+================================ */
+@media (max-width: 992px) {
+  .testimonial-grid {
+    grid-template-columns: repeat(2, 1fr);
   }
+}
+
+@media (max-width: 600px) {
+  .testimonial-grid {
+    grid-template-columns: 1fr;
+  }
+
   .testimonial-card img {
     height: 180px;
   }
 }
 
 
-/* ===== Careers Section ===== */
-.careers {
-  padding: 100px 20px;
-  background: #b8b8b8;
-  text-align: center;
-}
 
-.careers h2 {
-  font-size: 2.5rem;
-  margin-bottom: 15px;
-}
-
-.careers h2 span {
-  color: #0a7bff;
-}
-
-.careers .subtitle {
-  font-size: 1.1rem;
-  color: #000000;
-  margin-bottom: 50px;
-}
-
-.careers-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-  gap: 30px;
-  max-width: 1100px;
-  margin: 0 auto;
-}
-
-.career-card {
-  background: #ffffff;
-  padding: 30px;
-  border-radius: 12px;
-  box-shadow: 0 4px 10px rgba(0,0,0,0.08);
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
-  text-align: left;
-}
-
-.career-card:hover {
-  transform: translateY(-5px);
-  box-shadow: 0 6px 18px rgba(0,0,0,0.1);
-}
-
-.career-card h3 {
-  font-size: 1.5rem;
-  color: #0a7bff;
-  margin-bottom: 10px;
-}
-
-.career-card p {
-  color: #000000;
-  margin-bottom: 15px;
-}
-
-.career-card ul {
-  list-style: none;
-  padding: 0;
-  margin-bottom: 20px;
-}
-
-.career-card ul li {
-  margin-bottom: 8px;
-  color: #333;
-}
-
-.career-card i {
-  color: #0a7bff;
-  margin-right: 6px;
-}
-
-.btn-apply {
-  display: inline-block;
-  padding: 10px 20px;
-  background: #0a7bff;
-  color: #fff;
-  border-radius: 6px;
-  text-decoration: none;
-  transition: background 0.3s;
-}
-
-.btn-apply:hover {
-  background: #005fcc;
-}
-
-
-
-/* WHY CHOOSE US SECTION */
+/* ==========================
+    WHY CHOOSE SECTION
+========================== */
 .why-choose {
+  padding: 80px 0;
   background: #b8b8b8;
   text-align: center;
-  padding: 80px 20px;
 }
 
 .why-choose h2 {
   font-size: 36px;
-  color: #000000;
+  font-weight: 700;
   margin-bottom: 10px;
+  color: #000;
 }
-
-
 
 .why-choose .subtitle {
   font-size: 18px;
@@ -1449,138 +1266,219 @@ footer .social a:hover {
   margin-bottom: 50px;
 }
 
+/* GRID */
 .why-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  grid-template-columns: repeat(4, 1fr);
   gap: 30px;
-  max-width: 1100px;
-  margin: 0 auto;
+  justify-items: center;
 }
 
+/* CARD */
 .why-card {
   background: #ffffff;
-  padding: 30px 20px;
-  border-radius: 10px;
-  box-shadow: 0 5px 15px rgba(0,0,0,0.08);
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  padding: 40px 30px;
+  border-radius: 16px;
+  box-shadow: 0 12px 25px rgba(0, 0, 0, 0.15);
+  max-width: 260px;
+  text-align: center;
+  transition: 0.3s ease;
 }
 
 .why-card:hover {
-  transform: translateY(-8px);
-  box-shadow: 0 8px 18px rgba(0,0,0,0.12);
+  transform: translateY(-6px);
 }
 
-.why-card i {
-  font-size: 40px;
+/* ICON */
+.why-card .icon {
+  font-size: 44px;
   color: #007bff;
-  margin-bottom: 20px;
+  margin-bottom: 15px;
 }
 
+/* TEXT */
 .why-card h3 {
   font-size: 20px;
+  font-weight: 600;
+  margin-bottom: 15px;
+}
+
+.why-card p {
+  font-size: 15px;
+  line-height: 1.6;
+  color: #000000;
+}
+
+
+/* Tablet */
+@media (max-width: 992px) {
+  .why-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+/* Mobile */
+@media (max-width: 600px) {
+  .why-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .why-card {
+    max-width: 100%;
+  }
+}
+
+
+
+/* ================================
+   CLIENTS (Testimonials) Section
+================================== */
+
+.clients {
+  padding: 70px 20px;
+  background: #b8b8b8;
+}
+
+.clients .container {
+  max-width: 1200px;
+  margin: 0 auto;
+  text-align: center;
+}
+
+.clients h2 {
+  font-size: 32px;
+  font-weight: 700;
   color: #222;
   margin-bottom: 10px;
 }
 
-.why-card p {
+.clients .subtitle {
+  font-size: 18px;
   color: #000000;
-  font-size: 16px;
-  line-height: 1.6;
+  margin-bottom: 40px;
 }
 
-@media (max-width: 768px) {
-  .why-choose h2 {
-    font-size: 28px;
-  }
-
-  .why-choose .subtitle {
-    font-size: 16px;
-  }
-
-  .why-card {
-    padding: 25px 15px;
-  }
+/* GRID */
+.clients-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 25px;
+  padding: 10px;
 }
 
-/* =======================
-   TESTIMONIALS SECTION
-======================= */
-.testimonials {
-  background: #b8b8b8;
-  padding: 80px 20px;
+/* CARD */
+.client-card {
+  background: #fff;
+  border-radius: 15px;
+  padding: 25px 20px;
   text-align: center;
+  box-shadow: 0px 4px 15px rgba(0,0,0,0.1);
+  transition: all 0.3s ease;
 }
 
-.testimonials h2 {
-  font-size: 36px;
-  margin-bottom: 10px;
-  color: #1a2733;
+.client-card:hover {
+  transform: translateY(-7px);
+  box-shadow: 0px 10px 22px rgba(0,0,0,0.15);
 }
 
-.testimonials .subtitle {
-  color: #000000;
-  margin-bottom: 50px;
-}
-
-.testimonials-grid {
-  display: flex;
-  justify-content: center;
-  flex-wrap: wrap;
-  gap: 30px;
-}
-
-.testimonial-card {
-  background: #ffffff;
-  border-radius: 12px;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
-  max-width: 320px;
-  padding: 25px;
-  transition: transform 0.3s ease;
-}
-
-.testimonial-card:hover {
-  transform: translateY(-10px);
-}
-
-.testimonial-card img {
-  width: 80px;
-  height: 80px;
-  border-radius: 50%;
+/* IMAGE */
+.client-card img {
+  width: 110px;
+  height: 110px;
   object-fit: cover;
+  border-radius: 50%;
   margin-bottom: 15px;
+  border: 4px solid #e6e6e6;
 }
 
-.testimonial-card h3 {
+/* TEXT */
+.client-card h3 {
   font-size: 20px;
-  margin: 10px 0 5px;
-  color: #0a7bff;
+  font-weight: 700;
+  margin-bottom: 5px;
+  color: #000000;
 }
 
-.testimonial-card span {
-  font-size: 14px;
-  color: #000000;
+.client-card span {
   display: block;
+  font-size: 15px;
+  color: #000000;
   margin-bottom: 15px;
 }
 
-.testimonial-card p {
+.client-card p {
   font-size: 15px;
-  color: #444;
   line-height: 1.6;
+  color: #000000;
+}
+
+/* ================================
+   RESPONSIVE – TABLET
+================================== */
+@media (max-width: 992px) {
+  .clients-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .client-card img {
+    width: 100px;
+    height: 100px;
+  }
+}
+
+/* ================================
+   RESPONSIVE – MOBILE
+================================== */
+@media (max-width: 600px) {
+  .clients {
+    padding: 50px 10px;
+  }
+
+  .clients-grid {
+    grid-template-columns: 1fr;
+    gap: 20px;
+  }
+
+  .client-card {
+    padding: 20px 15px;
+  }
+
+  .client-card img {
+    width: 90px;
+    height: 90px;
+  }
+
+  .client-card h3 {
+    font-size: 18px;
+  }
+
+  .client-card p {
+    font-size: 14px;
+  }
 }
 
 
-/* FAQ Section */
+/* ===============================
+   FAQ SECTION — Clean & Modern
+================================= */
+
 .faq {
   padding: 80px 20px;
-  background: #b8b8b8;;
+  color: #b8b8b8;
+}
+
+.faq .container {
+  max-width: 900px;
+  margin: 0 auto;
   text-align: center;
 }
 
+/* Заглавия */
 .faq h2 {
-  font-size: 36px;
-  margin-bottom: 10px;
+  font-size: 34px;
+  font-weight: 700;
   color: #000000;
+  margin-bottom: 10px;
 }
 
 .faq .subtitle {
@@ -1589,485 +1487,703 @@ footer .social a:hover {
   margin-bottom: 40px;
 }
 
+/* Въпросите */
 .faq-item {
   max-width: 800px;
   margin: 0 auto 15px;
   text-align: left;
-  border-bottom: 1px solid #ddd;
+  padding: 18px 0;
+  border-bottom: 3px solid #ffffff;
+  cursor: pointer;
+  transition: color 0.3s ease;
   padding-bottom: 10px;
 }
 
-.faq-question {
-  width: 100%;
-  background: none;
-  border: none;
+.faq-item:hover {
+  color: #0066cc;
+}
+
+.faq-item h3 {
   font-size: 20px;
   font-weight: 600;
-  text-align: left;
-  color: #1a2733;
-  cursor: pointer;
-  padding: 15px 0;
-  transition: color 0.3s;
+  margin: 0;
+  color: #000000;
 }
 
-.faq-question:hover {
-  color: #007bff;
-}
-
+/* Скрити отговори (ако решиш да ги активираш по-късно) */
 .faq-answer {
   display: none;
-  padding: 0 0 15px;
-  color: #444;
+  padding-top: 10px;
+  font-size: 16px;
+  color: #000000;
   line-height: 1.6;
 }
 
-.faq-item.active .faq-answer {
-  display: block;
+.faq-item:hover {
+    color: #007bff;
 }
 
-.faq-item.active .faq-question {
-  color: #007bff;
+/* ===============================
+   MOBILE RESPONSIVE (max-width: 600px)
+================================= */
+
+@media (max-width: 600px) {
+  .faq {
+    padding: 50px 15px;
+  }
+
+  .faq h2 {
+    font-size: 28px;
+  }
+
+  .faq .subtitle {
+    font-size: 16px;
+  }
+
+  .faq-item h3 {
+    font-size: 18px;
+  }
 }
 
 
-/* PARTNERS Section */
+/* ===============================
+   PARTNERS SECTION — Clean Logos Row
+================================= */
+
 .partners {
-  padding: 80px 20px;
-  background: #b8b8b8;
+  padding: 70px 20px;
+  background: #b8b8b8; /* лек фон за контраст */
   text-align: center;
 }
 
 .partners h2 {
-  font-size: 36px;
-  color: #000000;
+  font-size: 32px;
+  font-weight: 700;
+  color: #222;
   margin-bottom: 10px;
 }
 
-.partners .subtitle {
-  font-size: 18px;
-  color: #000000;
-  margin-bottom: 40px;
+.subtitle {
+  margin-bottom: 30px;
+  font-size: 15px;
 }
 
-.partners-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
-  gap: 40px;
-  justify-items: center;
+.partners-row {
+  display: flex;
+  justify-content: center;
   align-items: center;
+  gap: 40px;
+  flex-wrap: wrap; /* ако няма място, пада красиво на нов ред */
 }
 
-.partner-item img {
-  max-width: 140px;
+.partners-row img {
+  width: 130px;          /* еднакъв размер за всички логa */
+  height: auto; 
   opacity: 0.8;
   transition: all 0.3s ease;
 }
 
-.partner-item img:hover {
+.partners-row img:hover {
   filter: grayscale(0%);
   opacity: 1;
-  transform: scale(1.05);
+  transform: scale(1.07);
 }
 
+/* ===============================
+   MOBILE RESPONSIVE
+================================= */
 
-.partner-card {
-  opacity: 1;
-  transform: translateY(0);
-  transition: opacity 0.4s ease, transform 0.4s ease;
+@media (max-width: 600px) {
+  .partners-row {
+    gap: 25px;
+  }
+
+  .partners-row img {
+    width: 100px;
+  }
+
+  .partners h2 {
+    font-size: 26px;
+  }
 }
 
-.partner-card.fade {
-  opacity: 0;
-  transform: translateY(10px);
-}
+/* Awards */
 
-
-
-/* ---- awards ---- */
 
 .awards {
-  background: #b8b8b8;
-  padding: 80px 20px;
+  padding: 140px 20px;
+  background: #b8b8b8; /* лек фон за контраст */
   text-align: center;
 }
 
-.section-title {
-  font-size: 36px;
-  font-weight: 700;
-  color: #000000;
-  margin-bottom: 10px;
-}
-
 .section-subtitle {
-  color: #000000;
-  font-size: 18px;
   margin-bottom: 50px;
 }
 
 
-.awards-container {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-  gap: 30px;
-  justify-items: center;
-}
 
-.award-card {
-  background: #ffffff;
-  padding: 30px 20px;
-  border-radius: 16px;
-  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
-  max-width: 300px;
-}
-
-.award-card:hover {
-  transform: translateY(-6px);
-  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.15);
-}
-
-.award-card img {
-  width: 80px;
-  height: auto;
-  margin-bottom: 15px;
+.awards h2 {
+  font-size: 32px;
+  color: #222;
+  margin-bottom: 10px;
 }
 
 .award-card h3 {
-  font-size: 20px;
-  color: #004aad;
+  color: #000000;
   margin-bottom: 10px;
 }
 
 .award-card p {
   color: #000000;
   font-size: 15px;
-  line-height: 1.5;
 }
 
-.award-card i {
-  font-size: 50px;
-  color: #ffb703; /* златен акцент */
-  margin-bottom: 15px;
+.subtitle {
+  margin-bottom: 30px;
+  font-size: 15px;
+}
+
+.awards-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 40px;
+  flex-wrap: wrap; /* ако няма място, пада красиво на нов ред */
+}
+
+.award-card img {
+  width: 100px;          /* еднакъв размер за всички логa */
+  height: auto; 
+  opacity: 0.8;
+  transition: all 0.3s ease;
+}
+
+.award-card img:hover {
+  filter: grayscale(0%);
+  opacity: 1;
+  transform: scale(1.07);
+}
+
+/* ===============================
+   MOBILE RESPONSIVE
+================================= */
+
+@media (max-width: 600px) {
+  .award-card {
+    gap: 25px;
+  }
+
+  .award-card img {
+    width: 100px;
+  }
+
+  .awards h2 {
+    font-size: 26px;
+  }
 }
 
 
-.award-card {
-  text-align: center;
-  padding: 20px;
-  border-radius: 12px;
-  background: #ffffff;
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
-}
-.award-card:hover {
-  transform: translateY(-5px);
-  box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+
+.blog-grid {
+  display: flex;
+  justify-content: center;   /* центрира всички карти хоризонтално */
+  gap: 30px;                 /* разстояние между картите */
+  flex-wrap: wrap;           /* responsive поведение */
+  margin-top: 40px;
 }
 
 
-
-
-/* BLOG SECTION */
 .blog {
-  background: #b8b8b8;
-  padding: 80px 20px;
   text-align: center;
 }
 
-.blog h2 {
-  font-size: 36px;
-  color: #000000;
-  margin-bottom: 10px;
+
+.blog .Maintext {
+  font-size: 32px;
 }
 
 .blog .subtitle {
-  color: #000000;
-  font-size: 18px;
-  margin-bottom: 50px;
+  max-width: 700px;
+  margin: 0 auto 40px;
+  font-size: 15px;
 }
 
-.blog-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-  gap: 30px;
-  max-width: 1200px;
-  margin: 0 auto;
-}
 
 .blog-post {
-  background: #ffffff;
-  border-radius: 10px;
+  background: #fff;
+  max-width: 360px;
+  width: 100%;
+  border-radius: 14px;
   overflow: hidden;
-  box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+  box-shadow: 0 12px 30px rgba(0,0,0,0.08);
   transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
+/* hover ефект */
 .blog-post:hover {
-  transform: translateY(-5px);
-  box-shadow: 0 8px 20px rgba(0,0,0,0.15);
+  transform: translateY(-8px);
+  box-shadow: 0 20px 40px rgba(0,0,0,0.12);
 }
 
+/* =========================
+   IMAGE
+   ========================= */
 .blog-post img {
   width: 100%;
-  height: 200px;
+  height: 220px;
   object-fit: cover;
+  display: block;
 }
 
+/* =========================
+   CONTENT
+   ========================= */
 .blog-content {
-  padding: 20px;
+  padding: 22px;
   text-align: left;
 }
 
 .blog-content h3 {
-  font-size: 22px;
-  color: #0a2540;
-  margin-bottom: 10px;
+  font-size: 1.15rem;
+  margin-bottom: 12px;
 }
 
 .blog-content p {
-  font-size: 16px;
+  font-size: 0.95rem;
+  line-height: 1.6;
+  margin-bottom: 18px;
   color: #555;
-  line-height: 1.5;
-  margin-bottom: 15px;
 }
 
-.btn-read {
+/* =========================
+   READ MORE BUTTON
+   ========================= */
+.blog .btn-read {
+  display: inline-block;
+  font-size: 0.9rem;
+  color: #fff;
+  background: #0047ab;
+  padding: 10px 18px;
+  border-radius: 30px;
   text-decoration: none;
-  color: #007bff;
-  font-weight: 600;
-  transition: color 0.3s ease;
+  transition: background 0.3s ease;
 }
 
-.btn-read:hover {
-  color: #0056b3;
-}
-
-
-/* Responsive */
-@media (max-width: 768px) {
-  .blog h2 {
-    font-size: 30px;
-  }
-  .blog-content h3 {
-    font-size: 20px;
-  }
-}
-
-.blog-card, .blog-card h3, .blog-card p, #blog h2, #blog .section-subtitle {
-  transition: opacity 0.4s ease;
+.blog .btn-read:hover {
+  background: #444;
 }
 
 
+/* =========================
+   PRICING GRID – centered
+   ========================= */
 
-/* PRICING SECTION */
 .pricing {
   background: #b8b8b8;
   padding: 80px 0;
-  text-align: center;
 }
 
 .pricing h2 {
-  font-size: 36px;
+  text-align: center;
+  font-size: 2.6rem;
   margin-bottom: 10px;
 }
 
 .pricing .subtitle {
-  font-size: 18px;
-  margin-bottom: 50px;
-  color: #000000;
+  text-align: center;
+  font-size: 1.1rem;
+  margin-bottom: 60px;
+  color: #111;
 }
 
+/* =========================
+   PRICING GRID
+   ========================= */
 .pricing-grid {
   display: flex;
-  flex-wrap: wrap;
   justify-content: center;
-  gap: 30px;
+  gap: 35px;
+  flex-wrap: wrap;
 }
 
+/* =========================
+   PRICING CARD
+   ========================= */
 .pricing-card {
-  background: #ffffff;
-  padding: 30px;
-  border-radius: 10px;
-  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
-  width: 300px;
+  background: #fff;
+  width: 330px;
+  border-radius: 18px;
+  padding: 40px 30px;
+  text-align: center;
+  box-shadow: 0 15px 40px rgba(0,0,0,0.12);
   transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
 .pricing-card:hover {
-  transform: translateY(-8px);
-  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.15);
+  transform: translateY(-10px);
+  box-shadow: 0 25px 55px rgba(0,0,0,0.18);
 }
 
+/* Featured (Standard) */
 .pricing-card.featured {
-  border-top: 6px solid #007bff;
-  transform: scale(1.05);
+  border-top: 6px solid #0d6efd;
 }
 
+/* =========================
+   TITLES & PRICE
+   ========================= */
 .pricing-card h3 {
-  font-size: 24px;
-  margin-bottom: 15px;
-  color: #007bff;
+  font-size: 1.6rem;
+  color: #0d6efd;
+  margin-bottom: 20px;
 }
 
-.price {
-  font-size: 40px;
-  font-weight: bold;
-  margin-bottom: 25px;
+.pricing-card .price {
+  font-size: 2.6rem;
+  font-weight: 700;
+  margin-bottom: 30px;
   color: #222;
 }
 
-.price span {
-  font-size: 16px;
-  color: #777;
+.pricing-card .price span {
+  font-size: 1rem;
+  font-weight: 400;
 }
 
+/* =========================
+   FEATURES LIST
+   ========================= */
 .pricing-card ul {
   list-style: none;
   padding: 0;
-  margin-bottom: 25px;
-  color: #000000;
+  margin: 0 0 30px;
 }
 
 .pricing-card ul li {
-  margin: 10px 0;
+  font-size: 0.95rem;
+  margin-bottom: 12px;
+  color: #111;
 }
 
+/* =========================
+   BUTTON
+   ========================= */
 .pricing-card .btn {
-  background: #007bff;
-  color: #fff;
-  padding: 12px 25px;
-  text-decoration: none;
-  border-radius: 6px;
-  font-weight: 600;
   display: inline-block;
+  padding: 12px 30px;
+  background: #0d6efd;
+  color: #fff;
+  border-radius: 10px;
+  text-decoration: none;
+  font-weight: 500;
   transition: background 0.3s ease;
 }
 
 .pricing-card .btn:hover {
-  background: #0056b3;
+  background: #084298;
 }
 
-/* RESPONSIVE */
-@media (max-width: 768px) {
+/* =========================
+   MOBILE
+   ========================= */
+@media (max-width: 900px) {
   .pricing-grid {
-    flex-direction: column;
-    align-items: center;
+    gap: 25px;
+  }
+}
+
+@media (max-width: 600px) {
+  .pricing h2 {
+    font-size: 2.1rem;
+  }
+
+  .pricing-card {
+    width: 100%;
+    max-width: 360px;
   }
 }
 
 
-/* CTA Final Section */
-.cta-final {
-  background-image: url("img/cta-final/background.png");
-  background-position: center 60%; /* 👈 показва долната част на снимката */
-  filter: brightness(80%);
-  margin-bottom: 30px;
-  text-align: center;
-  padding: 80px 20px;
-  position: relative;
-  overflow: hidden;
+/* JOURNEY SECTION */
+.journey {
+  background: #b8b8b8;
+  padding: 80px 0;
 }
 
-.cta-final::before {
+.journey h2 {
+  text-align: center;
+  font-size: 36px;
+  margin-bottom: 10px;
+  color: #2c2c2c;
+}
+
+.journey .subtitle {
+  text-align: center;
+  font-size: 16px;
+  color: #333;
+  margin-bottom: 60px;
+}
+
+/* Timeline wrapper */
+.timeline {
+  position: relative;
+  max-width: 900px;
+  margin: 0 auto;
+  padding-left: 40px;
+}
+
+/* Vertical line */
+.timeline::before {
   content: "";
   position: absolute;
+  left: 10px;
   top: 0;
-  left: 0;
-  width: 100%;
+  width: 3px;
   height: 100%;
-  background: rgba(0, 0, 0, 0.3);
-  z-index: 1;
+  background: #0d6efd;
 }
 
-.cta-content {
+/* Timeline item */
+.timeline-item {
   position: relative;
-  z-index: 2;
-  max-width: 800px;
+  margin-bottom: 40px;
+}
+
+/* Dot */
+.timeline-item::before {
+  content: "";
+  position: absolute;
+  left: -3px;
+  top: 20px;
+  width: 16px;
+  height: 16px;
+  background: #0d6efd;
+  border-radius: 50%;
+  border: 3px solid #fff;
+}
+
+/* Content card */
+.timeline-content {
+  background: #fff;
+  padding: 25px 30px;
+  border-radius: 12px;
+  box-shadow: 0 8px 20px rgba(0,0,0,0.1);
+}
+
+/* Titles */
+.timeline-content h3 {
+  color: #0d6efd;
+  font-size: 18px;
+  margin-bottom: 6px;
+}
+
+.timeline-content h4 {
+  font-size: 20px;
+  color: #000;
+  margin-bottom: 10px;
+}
+
+.timeline-content p {
+  font-size: 15px;
+  color: #333;
+  line-height: 1.6;
+}
+
+
+/* CAREERS SECTION */
+.careers {
+  background: #bfbfbf;
+  padding: 80px 0;
+}
+
+.careers h2 {
+  text-align: center;
+  font-size: 36px;
+  margin-bottom: 10px;
+  color: #2c2c2c;
+}
+
+.careers h2 span {
+  color: #0d6efd;
+}
+
+.careers .subtitle {
+  text-align: center;
+  font-size: 16px;
+  color: #333;
+  margin-bottom: 60px;
+}
+
+
+/* Grid */
+.careers-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 30px;
+  max-width: 1100px;
   margin: 0 auto;
 }
 
-.cta-content h2 {
-  color: rgb(255, 255, 255);
-  text-shadow: 2px 2px 5px black;
-  font-size: 36px;
+/* Card */
+.career-card {
+  background: #fff;
+  padding: 30px;
+  border-radius: 16px;
+  box-shadow: 0 10px 25px rgba(0,0,0,0.12);
+  display: flex;
+  flex-direction: column;
+}
+
+.career-card h3 {
+  font-size: 22px;
+  color: #0d6efd;
+  margin-bottom: 10px;
+}
+
+.career-card p {
+  font-size: 15px;
+  color: #333;
   margin-bottom: 20px;
-  font-weight: bold;
+  line-height: 1.6;
 }
 
-.cta-content p {
-  color: rgb(255, 255, 255);
+/* List */
+.career-card ul {
+  list-style: none;
+  padding: 0;
+  margin-bottom: 25px;
+}
+
+.career-card ul li {
+  display: flex;
+  align-items: center;
+  font-size: 14px;
+  margin-bottom: 10px;
+  color: #000;
+}
+
+.career-card ul li i {
+  color: #0d6efd;
+  margin-right: 10px;
+  font-size: 16px;
+}
+
+/* Button */
+.btn-apply {
+  margin-top: auto;
+  align-self: flex-start;
+  background: #0d6efd;
+  color: #fff;
+  padding: 12px 24px;
+  border-radius: 8px;
+  text-decoration: none;
+  font-size: 14px;
+  font-weight: 500;
+  transition: background 0.3s ease;
+}
+
+.btn-apply:hover {
+  background: #0b5ed7;
+}
+
+
+/* =========================
+   CTA FINAL
+   ========================= */
+.cta-final {
+    background-image: url(img/cta-final/background.png);
+    background-position: center 60%;
+    filter: brightness(80%);
+    margin-bottom: 30px;
+    text-align: center;
+    padding: 80px 20px;
+    position: relative;
+    overflow: hidden;
+
+}
+
+.cta-final .cta-content {
+  max-width: 900px;
+  margin: 0 auto;
+}
+
+.cta-final h2 {
+  font-size: 2.4rem;
+  font-weight: 700;
+  margin-bottom: 20px;
   text-shadow: 2px 2px 5px black;
-  font-size: 18px;
-  margin-bottom: 30px;
-  opacity: 0.9;
+  color: #ffffff;
+  border: #000
 }
 
-.cta-content .btn-primary {
+.cta-final p {
+  font-size: 1.15rem;
+  text-shadow: 2px 2px 5px black;
+  margin-bottom: 35px;
+  line-height: 1.6;
+  opacity: 0.95;
+  color: #ffffff;
+}
+
+.cta-final .btn-primary {
   display: inline-block;
   background: #fff;
-  color: #007bff;
-  padding: 14px 28px;
-  border-radius: 6px;
-  font-size: 18px;
-  font-weight: bold;
+  color: #0d6efd;
+  padding: 14px 36px;
+  border-radius: 8px;
+  font-weight: 600;
   text-decoration: none;
-  transition: background 0.3s ease, color 0.3s ease;
+  transition: all 0.3s ease;
 }
 
-.cta-content .btn-primary:hover {
-  background: #004b8d;
-  color: #fff;
-}
-
-@media (max-width: 768px) {
-  .cta-content h2 {
-    font-size: 28px;
-  }
-  .cta-content p {
-    font-size: 16px;
-  }
+.cta-final .btn-primary:hover {
+  background: #e9f1ff;
+  transform: translateY(-2px);
 }
 
 
-/* ---------------- CONTACT SECTION ---------------- */
-
-
+/* =========================
+   CONTACT SECTION
+   ========================= */
 .contact {
   background: #01193a;
-  padding: 80px 20px;
+  padding: 90px 20px;
+}
+
+.contact .container {
+  max-width: 1200px;
+  margin: 0 auto;
 }
 
 .contact h2 {
   text-align: center;
-  font-size: 36px;
+  font-size: 2.4rem;
+  margin-bottom: 10px;
   color: #ffffff;
 }
 
 .contact .subtitle {
   text-align: center;
+  max-width: 650px;
+  margin: 0 auto 60px;
   color: #ffffff;
-  margin-bottom: 50px;
 }
 
 .contact-grid {
   display: grid;
   grid-template-columns: 1fr 1fr;
-  gap: 40px;
-  max-width: 1100px;
-  margin: 0 auto;
-  align-items: flex-start;
+  gap: 50px;
 }
 
-/* Лява част */
 .contact-info h3 {
-  font-size: 24px;
-  margin-bottom: 20px;
+  font-size: 1.6rem;
+  margin-bottom: 15px;
   color: #ffffff;
 }
 
 .contact-info p {
-  color: #ffffff;
-  line-height: 1.6;
   margin-bottom: 25px;
+  color: #ffffff;
 }
 
 .contact-info ul {
@@ -2076,106 +2192,295 @@ footer .social a:hover {
 }
 
 .contact-info li {
+  display: flex;
+  align-items: center;
   margin-bottom: 15px;
-  color: #ffffff;
-  font-size: 16px;
+  font-size: 1rem;
 }
 
 .contact-info i {
-  color: #007bff;
-  margin-right: 10px;
+  color: #0d6efd;
+  margin-right: 12px;
+  font-size: 1.1rem;
 }
 
-/* Форма */
+
+.Contacts {
+  color: #ffffff;
+}
+
+/* FORM */
 .contact-form {
   background: #fff;
-  padding: 30px;
-  border-radius: 10px;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+  padding: 35px;
+  border-radius: 14px;
+  box-shadow: 0 12px 30px rgba(0,0,0,0.08);
 }
 
-.contact-form .form-group {
+.form-group {
   margin-bottom: 20px;
 }
 
 .contact-form input,
 .contact-form textarea {
   width: 100%;
-  padding: 12px;
+  padding: 14px 16px;
+  border-radius: 8px;
   border: 1px solid #ddd;
-  border-radius: 6px;
-  font-size: 16px;
-  transition: border-color 0.3s ease;
+  font-size: 0.95rem;
 }
 
 .contact-form input:focus,
 .contact-form textarea:focus {
-  border-color: #007bff;
   outline: none;
+  border-color: #0d6efd;
 }
 
 .contact-form .btn {
-  background: #007bff;
+  width: 100%;
+  padding: 14px;
+  background: #0d6efd;
   color: #fff;
   border: none;
-  padding: 12px 25px;
   border-radius: 8px;
   font-weight: 600;
   cursor: pointer;
-  transition: 0.3s;
+  transition: background 0.3s ease;
 }
 
 .contact-form .btn:hover {
-  background: #005fcc;
+  background: #0b5ed7;
+}
+
+/* Responsive */
+@media (max-width: 900px) {
+  .contact-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+
+
+/* =========================
+   CONTACT FORM
+   ========================= */
+.contact-form {
+  background: #ffffff;
+  padding: 40px;
+  border-radius: 16px;
+  box-shadow: 0 15px 35px rgba(0, 0, 0, 0.08);
+}
+
+.contact-form form {
+  display: flex;
+  flex-direction: column;
+}
+
+.form-group {
+  margin-bottom: 18px;
+}
+
+.contact-form input,
+.contact-form textarea {
+  width: 100%;
+  padding: 14px 16px;
+  border-radius: 10px;
+  border: 1px solid #ddd;
+  font-size: 0.95rem;
+  font-family: inherit;
+  transition: border-color 0.25s ease, box-shadow 0.25s ease;
+}
+
+.contact-form textarea {
+  resize: none;
+}
+
+.contact-form input::placeholder,
+.contact-form textarea::placeholder {
+  color: #999;
+}
+
+.contact-form input:focus,
+.contact-form textarea:focus {
+  outline: none;
+  border-color: #0d6efd;
+  box-shadow: 0 0 0 3px rgba(13, 110, 253, 0.15);
+}
+
+/* Submit button */
+.contact-form .btn {
+  margin-top: 10px;
+  padding: 14px;
+  background: linear-gradient(135deg, #0d6efd, #0b5ed7);
+  color: #fff;
+  font-size: 1rem;
+  font-weight: 600;
+  border: none;
+  border-radius: 10px;
+  cursor: pointer;
+  transition: transform 0.25s ease, box-shadow 0.25s ease;
+}
+
+.contact-form .btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 10px 25px rgba(13, 110, 253, 0.35);
+}
+
+.contact-form .btn:active {
+  transform: translateY(0);
+  box-shadow: none;
+}
+
+/* Mobile */
+@media (max-width: 768px) {
+  .contact-form {
+    padding: 30px 25px;
+  }
+}
+
+
+
+/* =========================
+   NEWSLETTER SECTION
+   ========================= */
+.newsletter {
+  padding: 80px 20px;
+  background: linear-gradient(135deg, #0d6efd, #0b5ed7);
+  color: #ffffff;
+  text-align: center;
+}
+
+.newsletter .container {
+  max-width: 700px;
+  margin: 0 auto;
+}
+
+.newsletter h2 {
+  font-size: 2.2rem;
+  margin-bottom: 15px;
+  font-weight: 700;
+}
+
+.newsletter .subtitle {
+  font-size: 1.05rem;
+  line-height: 1.6;
+  margin-bottom: 35px;
+  color: rgba(255, 255, 255, 0.9);
+}
+
+.newsletter .subtitle strong {
+  color: #ffffff;
+}
+
+/* Form */
+.newsletter-form {
+  display: flex;
+  justify-content: center;
+  gap: 12px;
+  max-width: 600px;
+  margin: 0 auto 20px;
+}
+
+.newsletter-form input {
+  flex: 1;
+  padding: 14px 16px;
+  border-radius: 10px;
+  border: none;
+  font-size: 0.95rem;
+}
+
+.newsletter-form input::placeholder {
+  color: #999;
+}
+
+.newsletter-form input:focus {
+  outline: none;
+}
+
+/* Button */
+.btn-subscribe {
+  padding: 14px 24px;
+  background: #ffffff;
+  color: #0d6efd;
+  font-weight: 600;
+  border: none;
+  border-radius: 10px;
+  cursor: pointer;
+  transition: transform 0.25s ease, box-shadow 0.25s ease;
+}
+
+.btn-subscribe:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+}
+
+.btn-subscribe:active {
+  transform: translateY(0);
+  box-shadow: none;
+}
+
+/* Note */
+.newsletter .note {
+  font-size: 0.85rem;
+  color: rgba(255, 255, 255, 0.85);
 }
 
 /* Responsive */
 @media (max-width: 768px) {
-  .contact-grid {
-    grid-template-columns: 1fr;
+  .newsletter-form {
+    flex-direction: column;
   }
 
-  .contact-info,
-  .contact-form {
-    text-align: center;
-  }
-
-  .contact-form {
-    margin-top: 20px;
+  .btn-subscribe {
+    width: 100%;
   }
 }
 
-/* ---------------- MAP SECTION ---------------- */
+
+/* =========================
+   MAP SECTION
+   ========================= */
 .map-section {
-  background: #f8f9fb;
-  padding: 60px 20px;
+  padding: 80px 20px;
+  background-color: #f8f9fc;
+}
+
+.map-section .container {
+  max-width: 1100px;
+  margin: 0 auto;
   text-align: center;
 }
 
 .map-section h3 {
-  font-size: 28px;
-  color: #0a1f33;
-  margin-bottom: 25px;
+  font-size: 1.9rem;
+  font-weight: 700;
+  margin-bottom: 30px;
+  color: #222;
 }
 
+/* Map container */
 .map-container {
-  max-width: 1100px;
-  margin: 0 auto;
-  border-radius: 12px;
+  width: 100%;
+  border-radius: 16px;
   overflow: hidden;
-  box-shadow: 0 5px 20px rgba(0, 0, 0, 0.15);
+  box-shadow: 0 20px 45px rgba(0, 0, 0, 0.1);
 }
 
+/* Responsive height */
 .map-container iframe {
   width: 100%;
-  height: 400px;
-  border: none;
+  height: 420px;
+  border: 0;
 }
 
-/* Responsive */
+/* Mobile */
 @media (max-width: 768px) {
+  .map-section {
+    padding: 60px 15px;
+  }
+
   .map-section h3 {
-    font-size: 22px;
+    font-size: 1.6rem;
   }
 
   .map-container iframe {
@@ -2185,150 +2490,208 @@ footer .social a:hover {
 
 
 
-
-/* ===== Chat Widget ===== */
+/* =========================
+   CHAT WIDGET
+   ========================= */
 .chat-widget {
   position: fixed;
   bottom: 25px;
   right: 25px;
-  z-index: 1000;
+  z-index: 9999;
+  font-family: inherit;
 }
 
-/* Бутон за отваряне */
+/* Toggle button */
 .chat-toggle {
-  background: #0a7bff;
-  color: #fff;
-  border: none;
-  border-radius: 50%;
   width: 60px;
   height: 60px;
-  font-size: 24px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, #4f46e5, #6366f1);
+  color: #fff;
+  border: none;
   cursor: pointer;
-  box-shadow: 0 4px 10px rgba(0,0,0,0.2);
-  transition: background 0.3s, transform 0.2s;
+  font-size: 22px;
+  box-shadow: 0 15px 35px rgba(79, 70, 229, 0.4);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
 .chat-toggle:hover {
-  background: #005fcc;
-  transform: scale(1.05);
+  transform: translateY(-3px);
+  box-shadow: 0 20px 40px rgba(79, 70, 229, 0.55);
 }
 
-/* Прозорецът на чата */
+/* Chat box */
 .chat-box {
-  display: none;
   position: absolute;
-  bottom: 80px;
+  bottom: 75px;
   right: 0;
   width: 320px;
+  max-height: 460px;
   background: #fff;
-  border-radius: 10px;
-  box-shadow: 0 4px 20px rgba(0,0,0,0.2);
-  overflow: hidden;
+  border-radius: 18px;
+  box-shadow: 0 25px 60px rgba(0, 0, 0, 0.15);
+  display: none;
   flex-direction: column;
+  overflow: hidden;
+  animation: chatFadeUp 0.3s ease;
 }
 
-/* Заглавие */
-.chat-header {
-  background: #0a7bff;
-  color: #fff;
-  padding: 12px 15px;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-}
-
-.chat-header h4 {
-  margin: 0;
-  font-size: 1rem;
-}
-
-.chat-header button {
-  background: none;
-  border: none;
-  color: #fff;
-  font-size: 20px;
-  cursor: pointer;
-}
-
-/* Основна част */
-.chat-body {
-  padding: 15px;
-  max-height: 250px;
-  overflow-y: auto;
-  font-size: 0.95rem;
-  color: #333;
-}
-
-/* Поле за писане */
-.chat-footer {
-  display: flex;
-  border-top: 1px solid #ddd;
-}
-
-.chat-footer input {
-  flex: 1;
-  border: none;
-  padding: 10px;
-  font-size: 0.9rem;
-}
-
-.chat-footer button {
-  background: #0a7bff;
-  color: #fff;
-  border: none;
-  padding: 10px 15px;
-  cursor: pointer;
-}
-
-.chat-footer button:hover {
-  background: #005fcc;
-}
-
-/* Отворен прозорец */
 .chat-box.active {
   display: flex;
 }
 
-
-
-
-/* ====== FOOTER SECTION ====== */
-.footer {
-  background: #1e2a38;
-  color: #ddd;
-  padding: 60px 20px 30px;
-  font-family: 'Poppins', sans-serif;
+@keyframes chatFadeUp {
+  from {
+    opacity: 0;
+    transform: translateY(15px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
 
-.footer-container {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-  gap: 40px;
-  max-width: 1200px;
-  margin: 0 auto;
-}
-
-.footer-logo h2 {
-  font-size: 28px;
+/* Header */
+.chat-header {
+  background: linear-gradient(135deg, #4f46e5, #6366f1);
   color: #fff;
+  padding: 15px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.chat-header h4 {
+  font-size: 1rem;
+  margin: 0;
+  font-weight: 600;
+}
+
+.chat-close {
+  background: none;
+  border: none;
+  color: #fff;
+  font-size: 22px;
+  cursor: pointer;
+}
+
+/* Body */
+.chat-body {
+  padding: 15px;
+  flex: 1;
+  overflow-y: auto;
+  background: #f9fafb;
+}
+
+.chat-body p {
+  font-size: 0.9rem;
+  color: #555;
   margin-bottom: 10px;
 }
 
-.footer-logo span {
-  color: #00aaff;
+.chat-messages {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+/* Footer */
+.chat-footer {
+  display: flex;
+  align-items: center;
+  border-top: 1px solid #eee;
+  padding: 10px;
+  background: #fff;
+}
+
+.chat-footer input {
+  flex: 1;
+  padding: 10px 12px;
+  border: 1px solid #ddd;
+  border-radius: 10px;
+  font-size: 0.9rem;
+  outline: none;
+}
+
+.chat-footer button {
+  margin-left: 10px;
+  background: #4f46e5;
+  border: none;
+  color: #fff;
+  padding: 10px 14px;
+  border-radius: 10px;
+  cursor: pointer;
+  font-size: 14px;
+  transition: background 0.3s ease;
+}
+
+.chat-footer button:hover {
+  background: #4338ca;
+}
+
+
+.chat-msg {
+  max-width: 80%;
+  padding: 10px 14px;
+  border-radius: 12px;
+  font-size: 0.9rem;
+  line-height: 1.4;
+}
+
+.chat-msg.user {
+  align-self: flex-end;
+  background: #4f46e5;
+  color: #fff;
+}
+
+.chat-msg.bot {
+  align-self: flex-start;
+  background: #e5e7eb;
+  color: #333;
+}
+
+/* Mobile */
+@media (max-width: 480px) {
+  .chat-box {
+    width: 90vw;
+    right: -10px;
+  }
+}
+
+
+.footer {
+  background: #0f172a;
+  color: #cbd5f5;
+  padding: 60px 20px 30px;
+}
+
+.footer-container {
+  max-width: 1200px;
+  margin: auto;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 40px;
+}
+
+.footer-logo h2 {
+  font-size: 1.8rem;
+  color: #fff;
+}
+
+.footer-logo h2 span {
+  color: #4f46e5;
 }
 
 .footer-logo p {
-  font-size: 15px;
+  margin-top: 10px;
+  font-size: 0.95rem;
   line-height: 1.6;
-  color: #aaa;
 }
 
-.footer-links h3,
-.footer-contact h3 {
-  color: #fff;
-  font-size: 18px;
+.footer h3 {
+  font-size: 1.1rem;
   margin-bottom: 15px;
+  color: #fff;
 }
 
 .footer-links ul {
@@ -2336,1239 +2699,34 @@ footer .social a:hover {
   padding: 0;
 }
 
-.footer-links ul li {
+.footer-links li {
   margin-bottom: 8px;
 }
 
-.footer-links ul li a {
-  color: #bbb;
+.footer-links a {
+  color: #cbd5f5;
   text-decoration: none;
   transition: color 0.3s;
 }
 
-.footer-links ul li a:hover {
-  color: #00aaff;
+.footer-links a:hover {
+  color: #4f46e5;
 }
 
 .footer-contact p {
-  margin: 8px 0;
-  font-size: 15px;
-  color: #bbb;
+  margin-bottom: 10px;
+  font-size: 0.95rem;
 }
 
 .footer-contact i {
-  color: #00aaff;
   margin-right: 8px;
+  color: #4f46e5;
 }
 
 .footer-bottom {
-  text-align: center;
-  margin-top: 50px;
-  border-top: 1px solid #2e3d4f;
+  margin-top: 40px;
+  border-top: 1px solid rgba(255,255,255,0.1);
   padding-top: 20px;
-  font-size: 14px;
-  color: #888;
-}
-
-
-/* ========================= */
-/* NEWSLETTER SECTION */
-/* ========================= */
-.newsletter {
-  background: linear-gradient(135deg, #007bff, #003d80);
-  color: #fff;
   text-align: center;
-  padding: 80px 20px;
-}
-
-.newsletter h2 {
-  font-size: 36px;
-  margin-bottom: 15px;
-}
-
-.newsletter .subtitle {
-  font-size: 18px;
-  color: #f0f0f0;
-  margin-bottom: 30px;
-}
-
-.newsletter-form {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  gap: 15px;
-  flex-wrap: wrap;
-}
-
-.newsletter-form input {
-  padding: 15px 20px;
-  width: 350px;
-  border-radius: 8px;
-  border: none;
-  outline: none;
-  font-size: 16px;
-}
-
-.btn-subscribe {
-  background: #fff;
-  color: #007bff;
-  padding: 15px 30px;
-  border: none;
-  border-radius: 8px;
-  font-size: 16px;
-  font-weight: 600;
-  cursor: pointer;
-  transition: all 0.3s ease;
-}
-
-.btn-subscribe:hover {
-  background: #e6e6e6;
-  transform: translateY(-3px);
-}
-
-.note {
-  margin-top: 20px;
-  font-size: 14px;
-  color: #cdd9f3;
-}
-
-/* RESPONSIVE */
-@media (max-width: 600px) {
-  .newsletter h2 {
-    font-size: 28px;
-  }
-
-  .newsletter-form input {
-    width: 100%;
-  }
-
-  .btn-subscribe {
-    width: 100%;
-  }
-}
-
-
-/* Our Journey / Timeline */
-.journey {
-  background: #b8b8b8;
-  padding: 80px 20px;
-  text-align: center;
-}
-
-.journey h2 {
-  font-size: 36px;
-  margin-bottom: 10px;
-}
-
-.journey .subtitle {
-  color: #000000;
-  margin-bottom: 60px;
-}
-
-.timeline {
-  position: relative;
-  margin: 0 auto;
-  max-width: 900px;
-  padding-left: 20px;
-  border-left: 3px solid #0a7bff;
-}
-
-.timeline-item {
-  position: relative;
-  margin-bottom: 50px;
-  text-align: left;
-}
-
-.timeline-item::before {
-  content: '';
-  position: absolute;
-  left: -10px;
-  top: 10px;
-  width: 20px;
-  height: 20px;
-  background: #0a7bff;
-  border-radius: 50%;
-  border: 3px solid #fff;
-}
-
-.timeline-content {
-  background: #ffffff;
-  padding: 20px 30px;
-  border-radius: 10px;
-  box-shadow: 0 4px 10px rgba(0,0,0,0.1);
-  transition: transform 0.3s ease;
-}
-
-.timeline-content:hover {
-  transform: translateY(-5px);
-}
-
-.timeline-content h3 {
-  color: #0a7bff;
-  margin-bottom: 5px;
-}
-
-.timeline-content h4 {
-  font-size: 20px;
-  margin-bottom: 10px;
-  color: #000000;
-}
-
-.timeline-content p {
-  color: #000000;
-  font-size: 16px;
-  line-height: 1.6;
-}
-
-/* Responsive */
-@media (max-width: 768px) {
-  .timeline {
-    padding-left: 10px;
-  }
-  .timeline-content {
-    padding: 15px 20px;
-  }
-
-  /* ====== FIX MOBILE OVERFLOW ====== */
-html, body {
-  overflow-x: hidden !important;
-  width: 100%;
-}
-
-.header, .hero, .container, .language-switcher, .nav {
-  max-width: 100%;
-  overflow-x: visible;
-}
-
-/* За езиковите флагове — корекция на позицията */
-.language-switcher {
-  position: relative;
-  right: 0;
-  margin-right: 10px;
-  z-index: 10;
-}
-
-.lang-btn img {
-  width: 40px;
-  height: 25px;
-  object-fit: cover;
-}
-
-
-  /* ========== MOBILE RESPONSIVE FIX ========== */
-
-/* Универсален ресет за скалиране */
-html, body {
-  margin: 0;
-  padding: 0;
-  overflow-x: hidden;
-  width: 100%;
-  max-width: 100%;
-  font-size: 16px;
-  zoom: 1;
-}
-
-/* Контейнерите да не излизат извън екрана */
-.container, section, header, footer {
-  width: 100%;
-  max-width: 100%;
-  overflow-x: hidden;
-  box-sizing: border-box;
-}
-
-/* Текстът и бутоните — нормален размер */
-h1, h2, h3, h4, p, a, button {
-  font-size: inherit;
-  line-height: 1.4;
-  word-wrap: break-word;
-}
-
-/* Поправка за hero секцията */
-.hero {
-  background-size: cover;
-  background-position: center;
-  background-repeat: no-repeat;
-  text-align: center;
-  padding: 60px 15px;
-}
-
-/* Фикс за флаговете */
-.language-switcher {
-  position: relative;
-  display: flex;
-  gap: 8px;
-  align-items: center;
-  justify-content: center;
-  right: 0;
-  margin-left: auto;
-  margin-right: 10px;
-  z-index: 10;
-}
-
-.lang-btn img {
-  width: 35px;
-  height: 25px;
-  object-fit: cover;
-  border-radius: 4px;
-}
-
-/* За телефони и таблети */
-@media (max-width: 768px) {
-  .header {
-    
-    justify-content: space-between;
-    padding: 10px;
-  }
-
-  .hero h1 {
-    font-size: 3.3rem;
-  }
-
-  .hero p {
-    font-size: 1rem;
-  }
-
-  .btn, .btn-primary {
-    font-size: 1rem;
-    padding: 10px 18px;
-  }
-
-  .language-switcher {
-    position: relative;
-    right: 0;
-    top: 0;
-    margin: 5px auto;
-  }
-
-  img {
-    max-width: 100%;
-    height: auto;
-  }
-
-
-  /* ========== FIX: White space above nav (mobile) ========== */
-
-html, body {
-  margin: 0 !important;
-  padding: 0 !important;
-  overflow-x: hidden;
-  background-color: #ffffff;
-}
-
-header {
-  margin: 0 !important;
-  padding-top: 0 !important;
-  position: relative;
-  top: 0;
-  left: 0;
-  width: 100%;
-  z-index: 1000;
-}
-
-.nav {
-  margin-top: 0 !important;
-  padding-top: 0 !important;
-}
-
-/* За телефони, които добавят автоматичен safe-area (пример: iPhone, Huawei, Xiaomi) */
-@supports (padding: env(safe-area-inset-top)) {
-  body {
-    padding-top: env(safe-area-inset-top, 0);
-  }
-}
-}
-
-  /* ========== FIX: White space & zoom issues on mobile ========== */
-
-/* Общи нулировки — гарантираме, че сайтът започва от горния ръб */
-html, body {
-  margin: 0 !important;
-  padding: 0 !important;
-  overflow-x: hidden;
-  background-color: #ffffff;
-}
-
-/* Header позициониране */
-header {
-  margin: 0 !important;
-  padding-top: 0 !important;
-  position: relative;
-  top: 0;
-  left: 0;
-  width: 100%;
-  z-index: 1000;
-}
-
-/* Навигация */
-.nav {
-  margin-top: 0 !important;
-  padding-top: 0 !important;
-}
-
-/* ========== FIX: White space & zoom issues on mobile ========== */
-
-/* Общи нулировки — гарантираме, че сайтът започва от горния ръб */
-html, body {
-  margin: 0 !important;
-  padding: 0 !important;
-  overflow-x: hidden;
-  background-color: #ffffff;
-}
-
-/* Header позициониране */
-header {
-  margin: 0 !important;
-  padding-top: 0 !important;
-  position: relative;
-  top: 0;
-  left: 0;
-  width: 100%;
-  z-index: 1000;
-}
-
-/* Навигация */
-.nav {
-  margin-top: 0 !important;
-  padding-top: 0 !important;
-}
-
-/* ===================== Mobile-Specific Adjustments ===================== */
-@media only screen and (max-width: 768px) {
-  /* Премахваме излишно празно пространство */
-  body {
-    padding: 0 !important;
-    margin: 0 !important;
-    overflow-x: hidden;
-  }
-
-  /* Корекция за флаговете — центриране и вътрешно подравняване */
-  .language-switcher {
-    position: static;
-    right: 15px;
-    top: 10px;
-    transform: scale(0.9);
-  }
-
-  /* Намаляваме размера на логото, за да не избутва layout-а */
-  .logo {
-    font-size: 1.5rem;
-  }
-
-  /* Избягваме авто-мащабиране от браузъра */
-  html {
-    -webkit-text-size-adjust: 100%;
-    touch-action: manipulation;
-  }
-
-  /* Safe-area за телефони с notch (пример iPhone, Huawei) */
-  @supports (padding: env(safe-area-inset-top)) {
-    body {
-      padding-top: env(safe-area-inset-top, 0);
-    }
-  }
-
-  /* Принудително спиране на браузърния zoom за някои Android устройства */
-  meta[name="viewport"] {
-    content: "width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no";
-  }
-}
-
-/* ============================================= */
-
-
-  /* --- ALIGN MENU TOGGLE + FLAGS ON ONE LINE --- */
-.nav-controls {
-  display: flex;
-  align-items: center;
-  gap: 10px;
-  margin-left: auto;
-}
-
-/* Прави контейнера на флаговете малко по-компактен на телефон */
-.language-switcher {
-  display: flex;
-  align-items: center;
-  gap: 8px;
-}
-
-/* Бутоните за флаговете */
-.lang-btn img {
-  width: 35px;
-  height: 24px;
-  border-radius: 3px;
-  display: block;
-}
-
-/* Мобилна версия — по-компактна подредба */
-@media (max-width: 768px) {
-  .nav-controls {
-    gap: 6px;
-  }
-
-  .menu-toggle {
-    font-size: 22px;
-    padding: 6px;
-  }
-
-  .lang-btn img {
-    width: 30px;
-    height: 20px;
-  }
-}
-
-  /* Подрежда бутона и флаговете хоризонтално */
-.nav-controls {
-  display: flex;
-  align-items: center;
-  gap: 10px;
-  margin-left: auto;
-}
-
-.language-switcher {
-  display: flex;
-  align-items: center;
-  gap: 8px;
-}
-
-.lang-btn {
-  background: transparent;
-  border: none;
-  padding: 2px;
-  cursor: pointer;
-}
-
-.lang-btn img {
-  width: 36px;
-  height: 24px;
-  border-radius: 3px;
-  display: block;
-}
-
-.menu-toggle {
-  background: none;
-  border: none;
-  font-size: 26px;
-  color: white;
-  cursor: pointer;
-}
-
-@media (max-width: 768px) {
-  .nav-controls {
-    gap: 6px;
-  }
-
-  .menu-toggle {
-    font-size: 22px;
-  }
-
-  .lang-btn img {
-    width: 30px;
-    height: 20px;
-  }
-}
-
-/* ---------- HEADER FIX ---------- */
-.header {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  padding: 10px 20px;
-  background-color: #0a1b2b;
-  position: sticky;
-  top: 0;
-  z-index: 1000;
-}
-
-.nav-controls {
-  display: flex;
-  align-items: center;
-  gap: 12px;
-}
-
-.language-switcher {
-  display: flex;
-  align-items: center;
-  gap: 8px;
-}
-
-.lang-btn {
-  background: transparent;
-  border: none;
-  cursor: pointer;
-  padding: 2px;
-}
-
-.lang-btn img {
-  width: 38px;
-  height: 26px;
-  border-radius: 4px;
-  display: block;
-}
-
-.menu-toggle {
-  background: none;
-  border: none;
-  font-size: 28px;
-  color: white;
-  cursor: pointer;
-}
-
-@media (max-width: 768px) {
-  .lang-btn img {
-    width: 30px;
-    height: 20px;
-  }
-  .menu-toggle {
-    font-size: 24px;
-  }
-}
-
-  /* ===== HEADER / LANGUAGE FIX ===== */
-.header {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  padding: 10px 18px;
-  background-color: #0a1b2b; /* остави своя цвят */
-  position: sticky;
-  top: 0;
-  z-index: 1000;
-  box-sizing: border-box;
-}
-
-/* Контейнер за меню-контроли (menu-toggle + flags) */
-.nav-controls {
-  display: flex;
-  align-items: center;
-  gap: 12px;
-  flex-shrink: 0;
-}
-
-/* Навигацията (извън мобилния режим може да е flex) */
-.nav {
-  display: flex;
-  gap: 22px;
-  align-items: center;
-  flex-wrap: nowrap;
-  white-space: nowrap;
-}
-
-/* Бутон за меню (hamburger) */
-.menu-toggle {
-  background: transparent;
-  border: none;
-  color: #fff;
-  font-size: 26px;
-  cursor: pointer;
-  padding: 6px;
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  flex-shrink: 0;
-}
-
-/* Language switcher */
-.language-switcher {
-  display: flex;
-  align-items: center;
-  gap: 8px;            /* разстояние между флаговете */
-  margin-left: 6px;
-  flex-shrink: 0;
-}
-
-/* бутоните около флаговете */
-.lang-btn {
-  background: transparent;
-  border: none;
-  padding: 2px;
-  cursor: pointer;
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  flex-shrink: 0;
-}
-
-/* КЛЮЧОВО: фиксираме размера на флаговете и спираме глобално широки правила */
-.lang-btn img {
-  width: 38px;          /* регулираш тук размера */
-  height: auto;
-  max-width: none;      /* отменя глобални max-width правила */
-  object-fit: cover;
-  display: block;
-  flex: 0 0 auto;       /* не позволява да растат/смаляват с flex контейнер */
-  border-radius: 4px;
-}
-
-/* Активен флаг */
-.lang-btn.active {
-  outline: 2px solid #0a7bff;
-  border-radius: 6px;
-}
-
-/* Ако имаш глобално правило img { width:100% } — това ще го препокрие.
-   Ако имаш друго глобално правило в style.css, тествай следния по-специфичен селектор: */
-header .lang-btn img { width: 38px !important; max-width: none !important; }
-
-/* -------- Responsive: когато пробутваш навигацията под/върху header -------- */
-@media (max-width: 900px) {
-  .nav {
-    display: none; /* ако използваш бутон за мобилно меню, скриваме основната nav */
-  }
-  .menu-toggle {
-    display: inline-flex;
-  }
-  .lang-btn img { width: 30px; } /* малко по-малки флагове на телефони */
-}
-
-/* Ако желаеш менюто и флаговете винаги да стоят на един ред:
-   ограничи растежа на логото (в противен случай логото може да „избута“ флаговете) */
-.logo {
-  font-size: 28px;
-  font-weight: 700;
-  color: #11b2e0;
-  flex-shrink: 0;
-  margin-right: 12px;
-}
-
-
-  /* Корекция за флагове и меню в header */
-.nav-controls {
-  display: flex;
-  align-items: center;
-  gap: 12px;
-  flex-shrink: 0;
-}
-
-.language-switcher {
-  display: flex;
-  align-items: center;
-  gap: 8px;
-  flex-shrink: 0;
-}
-
-.lang-btn img {
-  width: 36px;
-  height: auto;
-  max-width: none;
-  object-fit: cover;
-  flex: 0 0 auto;
-  display: block;
-}
-
-.menu-toggle {
-  font-size: 26px;
-  padding: 6px;
-  flex-shrink: 0;
-}
-
-.header {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  padding: 10px 18px;
-  box-sizing: border-box;
-  width: 100%;
-}
-
-/* Мобилна версия */
-@media (max-width: 768px) {
-  .lang-btn img {
-    width: 30px;
-  }
-  .menu-toggle {
-    font-size: 22px;
-  }
-}
-
-/* === FIX за мобилна подредба на HEADER === */
-body {
-  overflow-x: hidden; /* ❌ маха хоризонталния скрол и празното място вдясно */
-}
-
-/* Основен header */
-.header {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  background-color: #0f1d2d;
-  padding: 10px 16px;
-  width: 100%;
-  box-sizing: border-box;
-  position: fixed;
-  top: 0;
-  left: 0;
-  z-index: 1000;
-}
-
-/* Лого */
-.logo {
-  font-size: 1.6rem;
-  font-weight: bold;
-  color: #00b4d8;
-  display: flex;
-  align-items: center;
-  white-space: nowrap;
-}
-
-/* Езикови флагове + бутон меню */
-.header-right {
-  display: flex;
-  align-items: center;
-  gap: 8px; /* разстояние между флаговете и бутона */
-}
-
-/* Контейнер за езиковите бутони */
-.language-switcher {
-  display: flex;
-  align-items: center;
-  gap: 6px;
-}
-
-.lang-btn {
-  background: transparent;
-  border: none;
-  padding: 0;
-  cursor: pointer;
-}
-
-.lang-btn img {
-  width: 28px;
-  height: 18px;
-  border-radius: 3px;
-  object-fit: cover;
-}
-
-/* Бутон за меню */
-.menu-toggle {
-  background: none;
-  border: none;
-  color: white;
-  font-size: 1.6rem;
-  cursor: pointer;
-  display: flex;
-  align-items: center;
-}
-
-/* Отзивчивост за мобилни устройства */
-@media (max-width: 768px) {
-  .header {
-    padding: 10px 12px;
-  }
-
-  .logo {
-    font-size: 1.4rem;
-  }
-
-  .header-right {
-    gap: 6px;
-  }
-
-  .lang-btn img {
-    width: 26px;
-    height: 16px;
-  }
-}
-
-
-  /* === FIXED HEADER LAYOUT === */
-body {
-  margin: 0;
-  padding: 0;
-  overflow-x: hidden; /* предотвратява празно място вдясно */
-  font-family: "Segoe UI", sans-serif;
-}
-
-/* Header основен стил */
-.header {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  background: #0f1d2d;
-  color: #fff;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  padding: 10px 24px;
-  z-index: 1000;
-  box-shadow: 0 2px 5px rgba(0,0,0,0.3);
-  box-sizing: border-box;
-}
-
-/* Лого */
-.logo {
-  font-size: 1.8rem;
-  font-weight: bold;
-  color: #00b4d8;
-}
-.logo span {
-  color: #fff;
-}
-
-/* Навигация */
-.nav {
-  display: flex;
-  gap: 20px;
-}
-.nav a {
-  color: #fff;
-  text-decoration: none;
-  font-size: 1rem;
-  transition: 0.3s;
-}
-.nav a:hover {
-  color: #00b4d8;
-}
-
-/* Флагове */
-.language-switcher {
-  display: flex;
-  align-items: center;
-  gap: 8px;
-}
-.lang-btn {
-  background: none;
-  border: none;
-  padding: 0;
-  cursor: pointer;
-}
-.lang-btn img {
-  width: 50px;
-  height: 30px;
-  border-radius: 4px;
-  object-fit: cover;
-  display: block;
-  transition: transform 0.2s ease;
-}
-.lang-btn:hover img {
-  transform: scale(1.1);
-}
-.lang-btn.active {
-  outline: 2px solid #00b4d8;
-  border-radius: 4px;
-}
-
-/* Бутон ☰ за мобилно меню */
-.menu-toggle {
-  display: none;
-  background: none;
-  border: none;
-  font-size: 1.8rem;
-  color: white;
-  cursor: pointer;
-}
-
-/* === РЕСПОНСИВНОСТ === */
-@media (max-width: 992px) {
-  .nav {
-    display: none;
-    flex-direction: column;
-    position: absolute;
-    top: 60px;
-    right: 20px;
-    background: #1a2733;
-    padding: 15px;
-    border-radius: 10px;
-    box-shadow: 0 4px 8px rgba(0,0,0,0.3);
-  }
-  .nav.active {
-    display: flex;
-  }
-  .menu-toggle {
-    display: block;
-  }
-  .language-switcher {
-    gap: 5px;
-  }
-}
-
-/* Избягване на чупене на layout */
-@media (max-width: 480px) {
-  .logo {
-    font-size: 1.4rem;
-  }
-  .lang-btn img {
-    width: 28px;
-    height: 20px;
-  }
-}
-
-  /* === RESET === */
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-}
-
-body {
-  overflow-x: hidden; /* премахва празното място вдясно */
-  font-family: "Segoe UI", sans-serif;
-}
-
-/* === HEADER === */
-.header {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  background: #0f1d2d;
-  color: #fff;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  padding: 12px 20px;
-  z-index: 1000;
-  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
-}
-
-/* Лого */
-.logo {
-  font-size: 1.8rem;
-  font-weight: bold;
-  color: #00b4d8;
-}
-.logo span {
-  color: #fff;
-}
-
-/* Дясната секция (бутон + флагове) */
-.header-right {
-  display: flex;
-  align-items: center;
-  gap: 12px;
-}
-
-/* Бутон ☰ */
-.menu-toggle {
-  display: none;
-  background: none;
-  border: none;
-  font-size: 1.7rem;
-  color: white;
-  cursor: pointer;
-}
-
-/* Навигация */
-.nav {
-  display: flex;
-  gap: 20px;
-}
-.nav a {
-  color: white;
-  text-decoration: none;
-  transition: 0.3s;
-}
-.nav a:hover {
-  color: #00b4d8;
-}
-
-/* Флагове */
-.language-switcher {
-  display: flex;
-  align-items: center;
-  gap: 6px;
-}
-.lang-btn {
-  background: none;
-  border: none;
-  padding: 0;
-  cursor: pointer;
-}
-.lang-btn img {
-  width: 30px;
-  height: 20px;
-  border-radius: 3px;
-  object-fit: cover;
-  transition: transform 0.2s ease;
-}
-.lang-btn:hover img {
-  transform: scale(1.1);
-}
-.lang-btn.active {
-  outline: 2px solid #00b4d8;
-  border-radius: 4px;
-}
-
-/* === MOBILE === */
-@media (max-width: 992px) {
-  .nav {
-    display: none;
-    flex-direction: column;
-    position: absolute;
-    top: 60px;
-    right: 20px;
-    background: #1a2733;
-    padding: 15px;
-    border-radius: 10px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
-  }
-
-  .nav.active {
-    display: flex;
-  }
-
-  .menu-toggle {
-    display: block;
-  }
-}
-
-  /* === HEADER === */
-.header {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  background: #16222e;
-  color: #fff;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  padding: 12px 30px;
-  z-index: 1000;
-  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.25);
-}
-
-body {
-  overflow-x: hidden;
-  font-family: "Segoe UI", sans-serif;
-  margin: 0;
-}
-
-/* Лого */
-.logo {
-  font-size: 1.8rem;
-  font-weight: bold;
-  color: #00b4d8;
-}
-.logo span {
-  color: #fff;
-}
-
-/* Навигация (вляво) */
-.nav {
-  display: flex;
-  gap: 25px;
-}
-.nav a {
-  color: #fff;
-  text-decoration: none;
-  font-weight: 500;
-  transition: color 0.3s;
-}
-.nav a:hover {
-  color: #00b4d8;
-}
-
-/* Дясна част: флагове + меню бутон */
-.header-right {
-  display: flex;
-  align-items: center;
-  gap: 12px;
-}
-
-/* Флагове */
-.language-switcher {
-  display: flex;
-  align-items: center;
-  gap: 8px;
-}
-.lang-btn {
-  background: transparent;
-  border: 2px solid transparent;
-  border-radius: 5px;
-  padding: 2px;
-  cursor: pointer;
-  transition: all 0.3s ease;
-}
-.lang-btn img {
-  width: 34px;
-  height: 22px;
-  border-radius: 4px;
-  object-fit: cover;
-}
-.lang-btn:hover {
-  border-color: #00b4d8;
-}
-.lang-btn.active {
-  border-color: #00b4d8; /* ✅ синя рамка при избран флаг */
-  box-shadow: 0 0 6px rgba(0, 180, 216, 0.5);
-}
-
-.lang-btn.active img {
-  outline: 2px solid #0a7bff;
-  border-radius: 4px;
-  box-shadow: 0 0 6px rgba(10, 123, 255, 0.5);
-  transition: all 0.3s ease;
-}
-
-
-/* Бутон ☰ */
-.menu-toggle {
-  display: none;
-  background: none;
-  border: none;
-  color: white;
-  font-size: 1.8rem;
-  cursor: pointer;
-}
-
-/* === MOBILE === */
-@media (max-width: 992px) {
-  .nav {
-    display: none;
-    position: absolute;
-    top: 60px;
-    left: 0;
-    width: 100%;
-    flex-direction: column;
-    background: #1a2733;
-    padding: 15px;
-    gap: 10px;
-    text-align: center;
-  }
-
-  .nav.active {
-    display: flex;
-  }
-
-  .menu-toggle {
-    display: block;
-  }
-
-  .header {
-    flex-wrap: nowrap;
-  }
-
-  .language-switcher {
-    gap: 6px;
-  }
-}
-
-
-/* Активен флаг – показва се рамка */
-.lang-btn.active img {
-  border: 2px solid #0a7bff;
-  box-shadow: 0 0 8px rgba(10, 123, 255, 0.5);
-  border-radius: 5px;
-}
-
-
-  .testimonial-card {
-  opacity: 0;
-  transform: translateY(12px);
-  transition: opacity 0.6s ease, transform 0.6s ease;
-  will-change: opacity, transform;
-}
-
-.testimonial-card.visible {
-  opacity: 1;
-  transform: translateY(0);
-}
-
-  .reveal { opacity: 0; transform: translateY(18px); transition: opacity .6s ease, transform .6s ease; }
-.reveal.in-view { opacity: 1; transform: none; }
-.nav.open { /* your mobile styles */ }
-.menu-toggle.open { /* change icon state */ }
-.lang-btn.active { outline: 2px solid rgba(0,0,0,0.06); transform: scale(1.02); }
-  
+  font-size: 0.85rem;
 }
