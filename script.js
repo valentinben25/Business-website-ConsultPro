@@ -1,505 +1,2732 @@
-/* script.js
-   - I18N translate (data-i18n, data-i18n-html, data-i18n-placeholder, data-i18n-alt)
-   - Language buttons (en-btn, bg-btn) + autosave (localStorage)
-   - Menu toggle (menu-toggle)
-   - Ensure nav links show pointer cursor
-   - Fade-in / Scroll reveal (IntersectionObserver)
-   - Stats counter on scroll
-   - Basic accessibility tweaks
-*/
+/* Общи стилове */
+* {
+ margin: 0;
+ padding: 0;
+ box-sizing:border-box;
+}
 
-/* =========================
-   TRANSLATIONS: EN and BG
-   ========================= */
-const translations = {
-  en: {
-    nav: {
-      home: "Home",
-      services: "Services",
-      stats: "Stats",
-      portfolio: "Portfolio",
-      testimonials: "Testimonials",
-      pricing: "Pricing",
-      contact: "Contact",
-      map: "Map"
-    },
-    hero: {
-      title: 'Grow Your Business with <span>ConsultPro</span>',
-      text: 'We provide expert consulting services to help you achieve sustainable growth and success.',
-      btn: 'Get Started'
-    },
-    services: {
-      "card1": { title: "Business Strategy", text: "Tailored strategies to help your company achieve sustainable growth and efficiency." },
-      "card2": { title: "Financial Consulting", text: "Expert financial planning, analysis, and risk management for your business success." },
-      "card3": { title: "Market Analysis", text: "In-depth research and insights into your market to keep you ahead of competitors." },
-      "card4": { title: "Corporate Training", text: "Workshops and training sessions to boost team productivity and leadership skills." },
-      "card5": { title: "IT Consulting", text: "Guidance on digital transformation, cloud solutions, and tech infrastructure." },
-      "card6": { title: "Partnership Development", text: "Building strong partnerships to expand your business opportunities worldwide." }
-    },
-    team: {
-      testimonial1: { text: "“Working at ConsultPro has been an incredible journey! I’ve grown professionally and personally thanks to the supportive leadership.”", name: "John Smith", role: "CEO & Founder" },
-      testimonial2: { text: "“The teamwork and company culture here are truly inspiring. Every project feels like a shared success.”", name: "Grace Campbell", role: "Financial Consultant" },
-      testimonial3: { text: "“ConsultPro gives you the freedom to innovate and contribute your ideas. It’s amazing to work in such a dynamic environment.”", name: "Mason Jerome", role: "Marketing Expert" }
-    },
-    clients: {
-      testimonial1: { name: "Sarah Thompson", role: "Marketing Director, VisionCorp", text: "“ConsultPro helped us redefine our strategy and achieve record growth last quarter. Their team is exceptional!”" },
-      testimonial2: { name: "James Walker", role: "CEO, FinEdge Solutions", text: "“Professional and reliable — their insights completely transformed how we approach our clients.”" },
-      testimonial3: { name: "Emily Davis", role: "Operations Manager, NovaTech", text: "“Working with ConsultPro was a game changer for our company’s long-term vision and operations.”" }
-    },
-    partners: {
-      title: "Our Trusted Partners",
-      subtitle: "We’re proud to collaborate with these leading brands and organizations.",
-      img1_alt: "Partner 1",
-      img2_alt: "Partner 2",
-      img3_alt: "Partner 3",
-      img4_alt: "Partner 4",
-      img5_alt: "Partner 5"
-    },
-    awards: {
-      title: "Our Awards & Achievements",
-      subtitle: "Recognizing our dedication to excellence, innovation, and customer satisfaction.",
-      card1: { title: "Best Consulting Firm 2023", text: "Awarded for outstanding business strategy and innovation." },
-      card2: { title: "Excellence in Customer Service", text: "Recognized for our exceptional client support and care." },
-      card3: { title: "Top Business Growth 2024", text: "Honored for driving rapid and sustainable growth." },
-      card4: { title: "Innovation Award", text: "Celebrating creative and forward-thinking business solutions." }
-    },
-    blog: {
-      title: "Latest Insights",
-      subtitle: "Stay updated with our business tips, success stories, and industry news.",
-      post1: { title: "How to Build a Winning Business Strategy", text: "Discover the key elements of developing a strong strategy that drives growth and success." },
-      post2: { title: "Top 5 Market Trends for 2025", text: "Explore the biggest shifts that will shape the future of business and consulting." },
-      post3: { title: "Boost Your Team’s Productivity", text: "Learn simple yet powerful techniques to keep your team motivated and efficient." },
-      btn: "Read More"
-    },
-    pricing: {
-      chooseBtn: "Choose Plan",
-      basic: {
-        title: "Basic",
-        price: "$199 / month",
-        feature1: "✔ Business Consultation",
-        feature2: "✔ Financial Planning",
-        feature3: "✖ Marketing Strategy",
-        feature4: "✖ Ongoing Support"
-      },
-      standard: {
-        title: "Standard",
-        price: "$399 / month",
-        feature1: "✔ Full Business Consultation",
-        feature2: "✔ Financial & Market Analysis",
-        feature3: "✔ Marketing Strategy",
-        feature4: "✖ Dedicated Consultant"
-      },
-      premium: {
-        title: "Premium",
-        price: "Custom",
-        feature1: "✔ Complete Business Solutions",
-        feature2: "✔ Dedicated Expert Consultant",
-        feature3: "✔ Full Support 24/7",
-        feature4: "✔ Growth Strategy Reports"
-      }
-    },
-    journey: {
-      title: "Our Journey",
-      subtitle: "A look back at our milestones and growth through the years.",
-      step1: { title: "2016 Foundation of ConsultPro", text: "ConsultPro began its journey as a small consultancy firm with a vision to empower businesses worldwide." },
-      step2: { title: "2018 International Expansion", text: "We secured our first international client and expanded our services to financial and IT sectors." },
-      step3: { title: "2020 Innovation & Growth", text: "Our consulting team grew across Europe, establishing partnerships with global enterprises." },
-      step4: { title: "2023", text: "Celebrated a major milestone — over 100 successful consulting projects delivered worldwide." },
-      step6: { title: "2025", text: "ConsultPro continues to lead the way in digital transformation and business innovation." }
-    },
-    careers: {
-      title: "Join <span>Our Team</span>",
-      subtitle1: "We're always looking for passionate and talented professionals to grow with us.",
-      position1: "Business Consultant",
-      position2: "Financial Analyst",
-      position3: "Marketing Manager",
-      subtitle2: "Provide expert advice and insights to help clients improve efficiency and achieve success.",
-      subtitle3: "Analyze financial data and develop strategies that help clients grow sustainably.",
-      subtitle4: "Lead digital campaigns and branding initiatives to boost our clients’ visibility."
-    },
-    contact: {
-      formName: "Your Name",
-      formEmail: "Your Email",
-      formMessage: "Your Message",
-      sendBtn: "Send Message",
-      mapTitle: "Find Us in London"
-    },
-    footer: {
-      rights: "© 2025 ConsultPro. All rights reserved."
-    }
-  },
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
 
-  bg: {
-    nav: {
-      home: "Начало",
-      services: "Услуги",
-      stats: "Статистика",
-      portfolio: "Портфолио",
-      testimonials: "Отзиви",
-      pricing: "Цени",
-      contact: "Контакт",
-      map: "Карта"
-    },
-    hero: {
-      title: 'Развийте бизнеса си с <span>ConsultPro</span>',
-      text: 'Предлагаме експертни консултантски услуги, за да постигнете устойчив растеж и успех.',
-      btn: 'Започнете'
-    },
-    services: {
-      "card1": { title: "Бизнес стратегия", text: "Индивидуални стратегии за устойчив растеж и ефективност." },
-      "card2": { title: "Финансови консултации", text: "Експертно финансово планиране, анализ и управление на риска." },
-      "card3": { title: "Маркетингов анализ", text: "Задълбочени изследвания и пазарни прозрения за преднина пред конкуренцията." },
-      "card4": { title: "Корпоративно обучение", text: "Работилници и обучения за повишаване на продуктивността и лидерството." },
-      "card5": { title: "IT консултации", text: "Насоки за дигитална трансформация, облачни решения и инфраструктура." },
-      "card6": { title: "Развитие на партньорства", text: "Изграждане на силни партньорства за разширяване на възможности." }
-    },
-    team: {
-      testimonial1: { text: "„Работата в ConsultPro беше невероятно преживяване! Израснах професионално и лично благодарение на подкрепящото ръководство.“", name: "John Smith", role: "Главен изпълнителен директор" },
-      testimonial2: { text: "„Екипната работа и културата тук са истинско вдъхновение. Всеки проект е споделен успех.“", name: "Grace Campbell", role: "Финансов консултант" },
-      testimonial3: { text: "„ConsultPro ти дава свобода да иновираш и допринасяш с идеи. Прекрасно е да работиш в такава динамична среда.“", name: "Mason Jerome", role: "Маркетинг експерт" }
-    },
-    clients: {
-      testimonial1: { name: "Sarah Thompson", role: "Директор маркетинг, VisionCorp", text: "„ConsultPro ни помогна да преразгледаме стратегията и да постигнем рекорден растеж през последното тримесечие. Екипът е изключителен!“" },
-      testimonial2: { name: "James Walker", role: "Изпълнителен директор, FinEdge Solutions", text: "„Професионални и надеждни — техните анализи промениха изцяло начина ни на работа.“" },
-      testimonial3: { name: "Emily Davis", role: "Оперативен мениджър, NovaTech", text: "„Работата с ConsultPro беше решаваща за дългосрочната визия и операции на нашата компания.“" }
-    },
-    partners: {
-      title: "Нашите партньори",
-      subtitle: "Горди сме да си сътрудничим с тези водещи марки и организации.",
-      img1_alt: "Партньор 1",
-      img2_alt: "Партньор 2",
-      img3_alt: "Партньор 3",
-      img4_alt: "Партньор 4",
-      img5_alt: "Партньор 5"
-    },
-    awards: {
-      title: "Нашите награди",
-      subtitle: "Признаване за ангажимента ни към качество, иновации и удовлетворение на клиентите.",
-      card1: { title: "Най-добра консултантска фирма 2023", text: "Наградена за отлична бизнес стратегия и иновации." },
-      card2: { title: "Отличие за обслужване на клиенти", text: "Признание за изключителна клиентска подкрепа и грижа." },
-      card3: { title: "Най-голям бизнес растеж 2024", text: "Отличени за ускорен и устойчив растеж." },
-      card4: { title: "Награда за иновации", text: "Отбелязване на креативни и напредничави бизнес решения." }
-    },
-    blog: {
-      title: "Последни публикации",
-      subtitle: "Актуални бизнес съвети, истории за успех и новини от бранша.",
-      post1: { title: "Как да създадете печеливша бизнес стратегия", text: "Открийте ключовите елементи за разработка на силна стратегия." },
-      post2: { title: "Топ 5 маркетингови тенденции за 2025", text: "Разгледайте най-големите промени, които ще формират бъдещето." },
-      post3: { title: "Повишете продуктивността на екипа си", text: "Прости, но мощни техники за мотивация и ефективност." },
-      btn: "Прочети"
-    },
-    pricing: {
-      chooseBtn: "Избери план",
-      basic: {
-        title: "Бейсик",
-        price: "199 лв / месец",
-        feature1: "✔ Бизнес консултация",
-        feature2: "✔ Финансово планиране",
-        feature3: "✖ Маркетинг стратегия",
-        feature4: "✖ Постоянна поддръжка"
-      },
-      standard: {
-        title: "Стандартен",
-        price: "399 лв / месец",
-        feature1: "✔ Пълна бизнес консултация",
-        feature2: "✔ Финансов и пазарен анализ",
-        feature3: "✔ Маркетинг стратегия",
-        feature4: "✖ Персонален консултант"
-      },
-      premium: {
-        title: "Премиум",
-        price: "По заявка",
-        feature1: "✔ Цялостни бизнес решения",
-        feature2: "✔ Посветен експерт консултант",
-        feature3: "✔ Денонощна поддръжка 24/7",
-        feature4: "✔ Доклади за растеж"
-      }
-    },
-    journey: {
-      title: "Нашият път",
-      subtitle: "Връщане назад към нашите важни моменти и растеж.",
-      step1: { title: "2016 Основаниe", text: "ConsultPro започна като малка консултантска фирма с визия да подкрепя бизнеса." },
-      step2: { title: "2018 Международно разрастване", text: "Първи международен клиент и разширяване на услугите." },
-      step3: { title: "2020 Иновации и растеж", text: "Екипът се разраства и създава партньорства в Европа." },
-      step4: { title: "2023", text: "Празнуване на над 100 успешно приключени проекта." },
-      step6: { title: "2025", text: "ConsultPro продължава да води дигиталната трансформация." }
-    },
-    careers: {
-      title: "Присъедини се към нашия екип",
-      subtitle1: "Търсим талантливи професионалисти, които да растат с нас.",
-      position1: "Бизнес консултант",
-      position2: "Финансов анализатор",
-      position3: "Маркетинг мениджър",
-      subtitle2: "Предоставяне на експертни насоки и препоръки за оптимизация.",
-      subtitle3: "Анализ на финансови данни и разработване на стратегии.",
-      subtitle4: "Водене на дигитални кампании и бранд активности."
-    },
-    contact: {
-      formName: "Вашето име",
-      formEmail: "Вашият имейл",
-      formMessage: "Съобщение",
-      sendBtn: "Изпрати съобщение",
-      mapTitle: "Намерете ни в Лондон"
-    },
-    footer: {
-      rights: "© 2025 ConsultPro. Всички права запазени."
-    }
+
+
+
+
+/* ================================
+HEADER
+================================ */
+
+.header {
+ position: fixed;
+ top: 0;
+ left: 0;
+ width: 100%;
+ background: #1a2733;
+ color: #fff;
+ display: flex;
+ justify-content: space-between;
+ align-items: center;
+ padding: 10px 25px;
+ z-index: 1000;
+ box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2);
+}
+
+/* Logo */
+.logo {
+ font-size: 28px;
+ font-weight: 700;
+ color: #00b4d8;
+}
+.logo span {
+ color: #fff;
+}
+
+/* Navigation */
+.nav {
+ display: flex;
+ gap: 25px;
+ align-items: center;
+}
+
+.nav a {
+ color: #fff;
+ margin-left: 20px;
+ text-decoration: none;
+ font-weight: 500;
+ transition: color 0.3s; 
+ font-size: 20px;
+}
+
+.nav a:hover {
+ color: #0077ff;
+}
+
+/* Right side (language + menu) */
+.header-right {
+ display: flex;
+ align-items: center;
+ gap: 15px;
+}
+
+/* Language switch buttons */
+.lang-btn {
+ background: none;
+border: 2px solid transparent;
+ padding: 3px;
+border-radius: 6px;
+ cursor: pointer;
+ transition: 0.25s;
+}
+
+.lang-btn img {
+  width: 50px;
+ height: 30px;
+ object-fit: cover;
+border-radius: 4px;
+ transition: transform 0.3s 
+ea
+}
+
+.lang-btn.active img {
+border: 1px solid #00b4d8;
+border-radius: 4px;
+ box-shadow: 0 0 5px rgba(0, 180, 216, 0.6);
+}
+
+/* Desktop */
+.nav {
+  display: flex;
+  gap: 24px;
+}
+
+/* Mobile */
+.menu-toggle {
+  display: none;
+  color: #ffffff;
+}
+
+/* Mobile styles */
+
+
+
+/* =====================================
+RESPONSIVE NAVIGATION
+===================================== */
+/* Общи стилове */
+* {
+ margin: 0;
+ padding: 0;
+ box-sizing:border-box;
+}
+
+
+/* ================================
+HEADER
+================================ */
+
+.header {
+ position: fixed;
+ top: 0;
+ left: 0;
+ width: 100%;
+ background: #1a2733;
+ color: #fff;
+ display: flex;
+ justify-content: space-between;
+ align-items: center;
+ padding: 10px 25px;
+ z-index: 1000;
+ box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2);
+}
+
+/* Logo */
+.logo {
+ font-size: 28px;
+ font-weight: 700;
+ color: #00b4d8;
+}
+.logo span {
+ color: #fff;
+}
+
+/* Navigation */
+.nav {
+ display: flex;
+ gap: 25px;
+ align-items: center;
+}
+
+.nav a {
+ color: #fff;
+ margin-left: 20px;
+ text-decoration: none;
+ font-weight: 500;
+ transition: color 0.3s; 
+ font-size: 20px;
+}
+
+.nav a:hover {
+ color: #0077ff;
+}
+
+/* Right side (language + menu) */
+.header-right {
+ display: flex;
+ align-items: center;
+ gap: 15px;
+}
+
+/* Language switch buttons */
+.lang-btn {
+ background: none;
+border: 2px solid transparent;
+ padding: 3px;
+border-radius: 6px;
+ cursor: pointer;
+ transition: 0.25s;
+}
+
+.lang-btn img {
+  width: 50px;
+ height: 30px;
+ object-fit: cover;
+border-radius: 4px;
+ transition: transform 0.3s 
+ea
+}
+
+.lang-btn.active img {
+border: 1px solid #00b4d8;
+border-radius: 4px;
+ box-shadow: 0 0 5px rgba(0, 180, 216, 0.6);
+}
+
+/* Desktop */
+.nav {
+  display: flex;
+  gap: 24px;
+}
+
+/* Mobile */
+.menu-toggle {
+  display: none;
+  color: #ffffff;
+}
+
+/* Mobile styles */
+@media (max-width: 992px) {
+  .menu-toggle {
+    display: block;
+    font-size: 26px;
+    background: none;
+    border: none;
+    cursor: pointer;
+    color: #ffffff;
   }
-};
 
-/* =========================
-   HELPERS: find by dotted key
-   ========================= */
-function getByDotted(obj, path) {
-  if (!obj || !path) return undefined;
-  return path.split('.').reduce((acc, p) => (acc ? acc[p] : undefined), obj);
-}
+ 
 
-/* =========================
-   APPLY TRANSLATIONS
-   - data-i18n          -> textContent
-   - data-i18n-html     -> innerHTML
-   - data-i18n-placeholder -> placeholder
-   - data-i18n-alt      -> alt attribute
-   ========================= */
-function applyTranslation(lang) {
-  const dict = translations[lang] || translations.en;
-
-  // data-i18n (textContent)
-  document.querySelectorAll('[data-i18n]').forEach(el => {
-    const key = el.getAttribute('data-i18n');
-    const val = getByDotted(dict, key);
-    if (val !== undefined) el.textContent = val;
-  });
-
-  // data-i18n-html (innerHTML)
-  document.querySelectorAll('[data-i18n-html]').forEach(el => {
-    const key = el.getAttribute('data-i18n-html');
-    const val = getByDotted(dict, key);
-    if (val !== undefined) el.innerHTML = val;
-  });
-
-  // data-i18n-placeholder
-  document.querySelectorAll('[data-i18n-placeholder]').forEach(el => {
-    const key = el.getAttribute('data-i18n-placeholder');
-    const val = getByDotted(dict, key);
-    if (val !== undefined) el.placeholder = val;
-  });
-
-  // data-i18n-alt
-  document.querySelectorAll('[data-i18n-alt]').forEach(el => {
-    const key = el.getAttribute('data-i18n-alt');
-    const val = getByDotted(dict, key);
-    if (val !== undefined) el.alt = val;
-  });
-
-  // Special: support nested structured keys for services, team, clients, pricing etc.
-  // Loop through known groups and apply internal keys if present on elements as e.g. data-i18n="services.card1.title"
-  // (Handled by generic getByDotted above)
-
-  // Ensure nav anchors have pointer cursor
-  document.querySelectorAll('nav a').forEach(a => {
-    a.style.cursor = 'pointer';
-  });
-
-  // Update active flag button aria-labels
-  const currentLang = lang;
-  document.querySelectorAll('.lang-btn').forEach(btn => {
-    btn.setAttribute('aria-pressed', btn.classList.contains('active') ? 'true' : 'false');
-  });
-}
-
-/* =========================
-   LANGUAGE SWITCHING + persistence
-   ========================= */
-const LANG_KEY = 'consultpro_lang';
-
-function setLanguage(lang) {
-  // remove active class on all
-  document.querySelectorAll('.lang-btn').forEach(b => b.classList.remove('active'));
-  // set appropriate button active
-  const btnMap = { en: document.getElementById('en-btn'), bg: document.getElementById('bg-btn') };
-  if (btnMap[lang]) btnMap[lang].classList.add('active');
-
-  applyTranslation(lang);
-  localStorage.setItem(LANG_KEY, lang);
-}
-
-/* =========================
-   INITIALIZE LANGUAGE on load
-   ========================= */
-function initLanguage() {
-  const saved = localStorage.getItem(LANG_KEY);
-  let lang = saved || (navigator.language && navigator.language.startsWith('bg') ? 'bg' : 'en');
-  // default some pages to en if unknown
-  if (!['en', 'bg'].includes(lang)) lang = 'en';
-  setLanguage(lang);
-}
-
-/* =========================
-   Set up language buttons events
-   ========================= */
-function initLanguageButtons() {
-  const enBtn = document.getElementById('en-btn');
-  const bgBtn = document.getElementById('bg-btn');
-
-  if (enBtn) enBtn.addEventListener('click', () => setLanguage('en'));
-  if (bgBtn) bgBtn.addEventListener('click', () => setLanguage('bg'));
-}
-
-/* =========================
-   MENU TOGGLE (mobile)
-   ========================= */
-function initMenuToggle() {
-  const menuBtn = document.querySelector('.menu-toggle');
-  const nav = document.querySelector('.nav');
-
-  if (!menuBtn || !nav) return;
-
-  menuBtn.addEventListener('click', () => {
-    nav.classList.toggle('active');
-    const expanded = nav.classList.contains('active');
-    menuBtn.setAttribute('aria-expanded', expanded ? 'true' : 'false');
-  });
-
-  // Close nav when clicking outside (for mobile)
-  document.addEventListener('click', (e) => {
-    const isClickInside = e.target.closest('.header');
-    if (!isClickInside && nav.classList.contains('active')) {
-      nav.classList.remove('active');
-      menuBtn.setAttribute('aria-expanded', 'false');
-    }
-  });
-}
-
-/* =========================
-   Fade-in / Scroll reveal
-   Add class 'reveal-on-scroll' to elements you want to reveal,
-   but to be safe we will attach this to many section children automatically.
-   ========================= */
-function initScrollReveal() {
-  // Add reveal-on-scroll class to common blocks if not already present
-  const autoTargets = [
-    'section .container', '.service-card', '.process-step', '.case-card',
-    '.testimonial-card', '.award-card', '.blog-post', '.pricing-card', '.career-card', '.cta-content', '.contact-info', '.contact-form'
-  ];
-  autoTargets.forEach(sel => {
-    document.querySelectorAll(sel).forEach(el => {
-      if (!el.classList.contains('reveal-on-scroll')) el.classList.add('reveal-on-scroll');
-    });
-  });
-
-  const observer = new IntersectionObserver((entries) => {
-    entries.forEach(entry => {
-      if (entry.isIntersecting) {
-        entry.target.classList.add('revealed');
-        // optional: if you want the animation only once:
-        observer.unobserve(entry.target);
-      }
-    });
-  }, { threshold: 0.12 });
-
-  document.querySelectorAll('.reveal-on-scroll').forEach(el => {
-    observer.observe(el);
-  });
-}
-
-/* =========================
-   STATS COUNTER (animate numeric up)
-   target: elements with class .number and data-target attr
-   ========================= */
-function initStatsCounter() {
-  const counters = document.querySelectorAll('.number[data-target]');
-  const observed = new IntersectionObserver((entries, obs) => {
-    entries.forEach(entry => {
-      if (entry.isIntersecting) {
-        const el = entry.target;
-        const target = parseInt(el.getAttribute('data-target'), 10) || 0;
-        const duration = 1500; // ms
-        const stepTime = Math.max(20, Math.floor(duration / target));
-        let current = 0;
-        const increment = Math.ceil(target / (duration / stepTime));
-
-        const timer = setInterval(() => {
-          current += increment;
-          if (current >= target) {
-            el.textContent = target;
-            clearInterval(timer);
-          } else {
-            el.textContent = current;
-          }
-        }, stepTime);
-
-        obs.unobserve(el);
-      }
-    });
-  }, { threshold: 0.4 });
-
-  counters.forEach(c => observed.observe(c));
-}
-
-/* =========================
-   Accessibility / small fixes
-   - Ensure anchors without href still navigable with cursor
-   - Add role="button" where needed
-   ========================= */
-function accessibilityTweaks() {
-  document.querySelectorAll('nav a').forEach(a => {
-    if (!a.hasAttribute('href') || a.getAttribute('href').trim() === '') {
-      a.setAttribute('role', 'button');
-      a.style.cursor = 'pointer';
-    }
-  });
-
-  // ensure menu-toggle has aria-label
-  const menuBtn = document.querySelector('.menu-toggle');
-  if (menuBtn && !menuBtn.hasAttribute('aria-label')) menuBtn.setAttribute('aria-label', 'Toggle menu');
-}
-
-/* =========================
-   Initialize all
-   ========================= */
-function initAll() {
-  initLanguageButtons();
-  initLanguage();         // applies translation
-  initMenuToggle();
-  initScrollReveal();
-  initStatsCounter();
-  accessibilityTweaks();
-
-  // Make sure nav anchor focus shows pointer (fix for cursor text insertion issue)
-  document.querySelectorAll('nav a').forEach(a => {
-    a.addEventListener('mousedown', (e) => {
-      // prevent text cursor caret on accidental focus
-      try { e.preventDefault(); } catch (err) { /* ignore */ }
-    });
-  });
-}
-
-/* =========================
-   DOMContentLoaded
-   ========================= */
-document.addEventListener('DOMContentLoaded', () => {
-  try {
-    initAll();
-  } catch (err) {
-    // safe fallback log — don't break page
-    console.error('initAll error:', err);
+  body.menu-open .nav {
+    transform: translateX(0);
   }
-});
+}
+
+
+/* =====================================
+RESPONSIVE NAVIGATION
+===================================== */
+/* Desktop */
+.nav {
+  display: flex;
+  gap: 24px;
+}
+
+/* Mobile */
+.menu-toggle {
+  display: none;
+  font-size: 26px;
+  background: none;
+  border: none;
+  cursor: pointer;
+  color: #ffffff;
+}
+
+@media (max-width: 992px) {
+
+  /* ☰ винаги видим */
+  .menu-toggle {
+    display: block;
+    font-size: 26px;
+    background: none;
+    border: none;
+    cursor: pointer;
+    color: #fff;
+    position: static;
+    top: 15px;
+    right: 20px;
+    z-index: 2001;
+  }
+
+  /* NAV = dropdown */
+  .nav {
+    position: fixed;
+    top: 70px; /* под header */
+    left: 0;
+    width: 100%;
+    background: #1a2733;
+
+    flex-direction: column;
+    align-items: center;
+    gap: 18px;
+    padding: 25px 0;
+
+    /* 🔽 hidden by default */
+    transform: translateY(-120%);
+    transition: transform 0.35s ease;
+
+    z-index: 2000;
+  }
+
+  /* 🔓 open */
+  body.menu-open .nav {
+    transform: translateY(0);
+    height: 530px;
+    width: 200px;
+    margin-left: 180px;
+  }
+
+  .nav a {
+    font-size: 18px;
+    padding: 8px 0;
+  }
+}
+
+/* Prevent header overlap on scroll */
+body {
+ padding-top: 95px;
+ font-family: "Segoe UI", Tahoma, sans-serif;
+ line-height: 1.6;
+ color: #333;
+ background: #b8b8b8;
+ padding-top: 90px; /* височината на header-а */
+}
+
+
+
+/* ================================
+HERO SECTION
+================================ */
+
+.hero {
+ position: relative;
+ width: 100%;
+ height: 90vh;
+ overflow: hidden;
+ display: flex;
+ align-items: center;
+ justify-content: center;
+}
+
+/* Background slider */
+.hero-slider {
+ position: absolute;
+ inset: 0;
+ width: 100%;
+ height: 100%;
+}
+
+.hero-slider .slide {
+ position: absolute;
+ inset: 0;
+ background-size: cover;
+ background-position: center;
+ opacity: 0;
+ transition: opacity 1.2s ease;
+}
+
+.hero-slider .slide.active {
+ opacity: 1;
+}
+
+/* Dark overlay */
+.hero::before {
+ content: "";
+ position: absolute;
+ inset: 0;
+ background: rgba(0, 0, 0, 0.45);
+ z-index: 1;
+}
+
+/* HERO content */
+
+.slide {
+ position: absolute;
+ inset: 0;
+ background-size: cover;
+ background-position: center;
+ background-repeat: no-repeat;
+ opacity: 0;
+ transition: opacity 1s 
+ease-in-out;
+ height: 100vh;
+}
+
+.hero-content {
+ position: relative;
+ z-index: 2;
+ text-align: center;
+ max-width: 900px;
+ padding: 0 20px;
+ color: #fff;
+ animation: fadeUp 1.2s ease;
+}
+
+.hero-content h1 {
+  font-size: 48px;
+ margin-bottom: 20px;
+border-width: 10px;
+ background-color: rgb(255 255 255);
+ color: #000;
+ line-height: 1.2;
+ margin: 10px 2em;
+}
+
+.hero-content h1 span {
+ color: #00a2ff;
+}
+
+.hero-content p {
+  margin-bottom: 20px;
+ font-size: 19px;
+ background-color: rgb(255 255 255);
+ color: #000;
+ line-height: 1.5;
+ margin: 30px 5em;
+}
+
+.hero-content .btn {
+ display: inline-block;
+ background: #00a2ff;
+ padding: 14px 32px;
+border-radius: 8px;
+ font-size: 18px;
+ font-weight: 600;
+ color: #fff;
+ text-decoration: none;
+ transition: 0.25s;
+}
+
+.hero-content .btn:hover {
+ background: #0080cc;
+}
+
+/* ================================
+ANIMATION
+================================ */
+@keyframes fadeUp {
+ 0% { opacity: 0; transform: translateY(30px); }
+ 100% { opacity: 1; transform: translateY(0); }
+}
+
+/* ================================
+RESPONSIVE
+================================ */
+@media (max-width: 900px) {
+ .hero {
+ height: 70vh;
+ }
+
+ .hero-content h1 {
+    font-size: 3.3rem;
+ }
+
+ .hero-content p {
+ font-size: 1rem;
+ }
+
+ .hero-content .btn {
+ font-size: 1rem;
+ padding: 10px 18px;
+ }
+}
+
+@media (max-width: 600px) {
+ .hero {
+ height: 60vh;
+ }
+
+ .hero-content h1 {
+ font-size: 3.3rem;
+ }
+
+ .hero-content p {
+ font-size: 1rem;
+ }
+}
+
+/* ================================
+SERVICES SECTION
+================================ */
+
+.services {
+  background: #01193a;
+ padding: 80px 20px;
+ text-align: center;
+}
+
+.services .container {
+ max-width: 1300px;
+ margin: 0 auto;
+ padding: 0 20px;
+ text-align: center;
+}
+
+.services h2 {
+ font-size: 2.5rem;
+ color: #ffffff;
+ margin-bottom: 10px;
+}
+
+.services p {
+  color: #ffffff;
+ margin-bottom: 40px;
+ font-size: 1.2rem;
+}
+
+/* Grid layout */
+.services-grid {
+ display: grid;
+ grid-template-columns: repeat(3, 1fr);
+ gap: 30px;
+}
+
+/* Service Cards */
+.service-card {
+ background: #ffffff;
+ padding: 30px;
+border-radius: 10px;
+ text-align: center;
+ box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+ transition: transform 0.3s 
+ease, box-shadow 0.3s 
+
+}
+
+.service-card i {
+ font-size: 40px;
+ color: #0056b3;
+ margin-bottom: 15px;
+}
+
+
+.service-card:hover {
+ transform: translateY(-8px);
+ box-shadow: 0 10px 28px rgba(0,0,0,0.14);
+}
+
+/* Icon */
+.service-card img,
+.service-card ion-icon {
+ width: 70px;
+ height: 70px;
+ margin-bottom: 20px;
+ color: #00a2ff;
+}
+
+/* Text */
+.service-card h3 {
+  margin-bottom: 15px;
+ font-size: 22px;
+ color: #333;
+}
+
+.service-card p {
+ color: #333;
+ font-size: 1rem;
+ line-height: 1.6;
+}
+
+/* ================================
+RESPONSIVE
+================================ */
+@media (max-width: 950px) {
+ .services-grid {
+ grid-template-columns: repeat(2, 1fr);
+ }
+}
+
+@media (max-width: 600px) {
+ .services-grid {
+ grid-template-columns: 1fr;
+ }
+
+ .service-card {
+ padding: 30px 20px;
+ }
+}
+
+/* ================================
+PROCESS SECTION
+================================ */
+
+.process {
+ background: #b8b8b8;
+ padding: 80px 20px;
+ text-align: center;
+}
+
+.process .container {
+ max-width: 1280px;
+ margin: 0 auto;
+ padding: 0 20px;
+ text-align: center;
+}
+
+.process h2 {
+ font-size: 36px;
+ color: #000000;
+ margin-bottom: 15px;
+}
+
+.process p {
+ font-size: 18px;
+ color: #000000;
+ margin-bottom: 50px;
+}
+
+.process-step i {
+ font-size: 40px;
+ color: #007bff;
+ margin-bottom: 15px;
+}
+
+/* Grid Layout */
+.process-grid {
+ display: grid;
+ grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+ gap: 25px;
+ max-width: 900px;
+ margin: 0 auto; 
+}
+
+/* Cards */
+.process-step {
+  background: #ffffff;
+ padding: 30px 20px;
+border-radius: 12px;
+ box-shadow: 0 4px 15px rgba(0, 0, 0, 0.06);
+ transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.process-step:hover {
+ transform: translateY(-10px);
+ box-shadow: 0 10px 28px rgba(0,0,0,0.12);
+}
+
+/* Step Number */
+.process-step .step-number {
+ width: 60px;
+ height: 60px;
+ background: #00a2ff;
+ color: #fff;
+ display: flex;
+ align-items: center;
+ justify-content: center;
+border-radius: 50%;
+ font-size: 22px;
+ font-weight: 700;
+ margin: 0 auto 20px auto;
+}
+
+/* Title */
+.process-step h3 {
+  font-size: 22px;
+ margin-bottom: 10px;
+ color: #000000;
+}
+
+/* Text */
+.process-step p {
+ font-size: 15px;
+ color: #000000;
+ line-height: 1.55;
+}
+
+/* ================================
+RESPONSIVE
+================================ */
+@media (max-width: 950px) {
+ .process-grid {
+ grid-template-columns: repeat(2, 1fr);
+ }
+}
+
+@media (max-width: 600px) {
+ .process-grid {
+ grid-template-columns: 1fr;
+ }
+
+ .process-step {
+ padding: 30px 20px;
+ }
+
+ .process-step .step-number {
+ width: 55px;
+ height: 55px;
+ font-size: 20px;
+ }
+}
+
+/* ================================
+STATS SECTION
+================================ */
+
+.stats {
+ text-align: center;
+ padding: 60px 20px;
+ background: #b8b8b8;
+ flex-direction: column;
+ align-items: center;
+}
+
+.stats .container {
+ max-width: 1280px;
+ margin: 0 auto;
+ padding: 0 20px;
+}
+
+.stats h2 {
+ font-size: 36px;
+ font-weight: 700;
+ margin-bottom: 15px;
+ color: #000;
+}
+
+.stats p.section-subtitle {
+ font-size: 18px;
+ color: #000000;
+ margin-bottom: 50px;
+}
+
+/* Grid layout */
+.stats-grid {
+ display: grid;
+ grid-template-columns: repeat(4, 1fr);
+ gap: 35px;
+}
+
+/* Stat box */
+.stat-item {
+ background: #ffffff;
+ padding: 40px 25px;
+border-radius: 14px;
+ box-shadow: 0 6px 20px rgba(0,0,0,0.06);
+ transition: 0.3s ease;
+}
+
+.stat-item:hover {
+ transform: translateY(-8px);
+ box-shadow: 0 12px 26px rgba(0,0,0,0.10);
+}
+
+/* Number */
+.stat-item .stat-number {
+ font-size: 42px;
+ font-weight: 800;
+ color: #005eff;
+ margin-bottom: 10px;
+}
+
+/* Label */
+.stat-item .stat-label {
+ font-size: 16px;
+ font-weight: 600;
+ color: #333;
+}
+
+
+@media (max-width: 900px) {
+  .stats {
+    padding: 60px 0;
+  }
+
+  .stats-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 25px;
+  }
+
+  .stat-card {
+    padding: 24px 18px;
+  }
+
+  .stat-number {
+    font-size: 36px;
+  }
+
+  .stat-label {
+    font-size: 15px;
+  }
+}
+
+/* ============================================
+            MOBILE — max-width: 600px
+============================================ */
+@media (max-width: 600px) {
+
+  .stats {
+    padding: 50px 0;
+  }
+
+  .stats h2 {
+    font-size: 24px;
+  }
+
+  .stats .subtitle {
+    font-size: 14px;
+    margin-bottom: 30px;
+  }
+
+  .stats-grid {
+    grid-template-columns: 1fr;   /* ❗ Една колона */
+    gap: 18px;
+    max-width: 380px;
+  }
+
+  .stat-card {
+    padding: 22px 16px;
+  }
+
+  .stat-number {
+    font-size: 32px;
+  }
+
+  .stat-label {
+    font-size: 14px;
+  }
+}
+
+
+
+
+
+/* ==========================================
+   PORTFOLIO SECTION — CLEAN & ORIGINAL STYLE
+========================================== */
+
+
+.portfolio {
+ padding: 20px;
+ text-align: center;
+ max-width: 1000px;
+ margin: 0 auto 130px;
+ background: #b8b8b8;
+}
+
+.portfolio h2 {
+ margin-bottom: 10px;
+ color: #000000;
+ font-size: 30px;
+}
+
+.portfolio .subtitle {
+ color: #000000;
+ font-size: 16px;
+ margin-bottom: 40px;
+}
+
+.slide {
+position: relative;
+inset: 0;
+background-size: cover;
+background-position: center;
+background-repeat: no-repeat;
+opacity: 0;
+transition: opacity 1s 
+ease-in-out;
+height: 100vh;
+
+}
+
+/* SLIDER WRAPPER */
+.portfolio-slider {
+ position: relative;
+width: 100%;
+max-width: 1000px;
+margin: 0 auto;
+overflow: visible;
+}
+
+.portfolio-slider button {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background: rgba(255, 255, 255, 0.8);
+    border: none;
+    font-size: 28px;
+    cursor: pointer;
+    border-radius: 50%;
+    width: 45px;
+    height: 45px;
+    transition: background 0.3s;
+}
+
+/* --- SLIDES --- */
+.portfolio-slider .slide {
+ position: absolute;
+ top: 0;
+ left: 0;
+ width: 100%;
+ opacity: 0;
+ transition: opacity 0.7s ease;
+ pointer-events: none;
+}
+
+/* Първият слайд трябва да се вижда */
+.portfolio-slider .slide:first-child {
+ position: relative;
+}
+
+/* Активен слайд */
+.portfolio-slider .slide.active {
+ opacity: 1;
+ pointer-events: auto;
+}
+
+/* IMAGES */
+.portfolio-slider img {
+ width: 84%;
+ height: 70%;
+ object-fit: cover;   /* изрязва, за да са еднакви */
+ object-position: center; /* центрира изображението */
+ border-radius: 12px;
+}
+
+/* CAPTION — бял блок под снимката */
+.portfolio-slider .caption {
+ background: #fff;
+ padding: 15px 10px 60px;
+ border-radius: 0 0 14px 14px;
+ box-shadow: 0 8px 25px rgba(0,0,0,0.12);
+ max-width: 900px;
+ margin: 20px 80px;
+}
+
+.portfolio-slider .caption h3 {
+ font-size: 22px;
+ margin-bottom: 10px;
+ font-weight: 600;
+}
+
+.portfolio-slider .caption p {
+ font-size: 16px;
+ color: #666;
+}
+
+/* BUTTONS */
+.portfolio-slider .prev,
+.portfolio-slider .next {
+ position: absolute;
+ top: 50%;
+ transform: translateY(-50%);
+ background: rgba(255,255,255,0.85);
+ width: 48px;
+ height: 48px;
+ border: none;
+ font-size: 28px;
+ border-radius: 50%;
+ cursor: pointer;
+ transition: 0.3s;
+ z-index: 20;
+ display: flex;
+ justify-content: center;
+ align-items: center;
+}
+
+.portfolio-slider .prev:hover,
+.portfolio-slider .next:hover {
+ background: rgba(255,255,255,1);
+}
+
+.portfolio-slider .prev {
+ left: -55px;
+}
+
+.portfolio-slider .next {
+ right: -55px;
+}
+
+/* ================================
+          MOBILE RESPONSIVE
+================================ */
+
+/* До 768px (таблет) */
+@media (max-width: 768px) {
+
+  .portfolio {
+    padding: 60px 0;
+  }
+
+  .portfolio-slider img {
+    height: 400px;
+    width: 360px;
+  }
+
+  .portfolio-slider .prev,
+  .portfolio-slider .next {
+    top: 45%;
+    padding: 9px 12px;
+    font-size: 20px;
+  }
+
+  .portfolio-slider .prev {
+    left: 10px;
+  }
+
+  .portfolio-slider .next {
+    right: 10px;
+  }
+}
+
+/* До 480px (малък телефон) */
+@media (max-width: 480px) {
+
+  .portfolio h2 {
+    font-size: 24px;
+  }
+
+  .portfolio .subtitle {
+    font-size: 14px;
+  }
+
+  .portfolio-slider img {
+    height: 400px;
+  }
+
+  .caption h3 {
+    font-size: 18px;
+  }
+
+  .caption p {
+    font-size: 14px;
+  }
+
+  .portfolio-slider .prev,
+  .portfolio-slider .next {
+    padding: 8px 10px;
+    font-size: 18px;
+    margin-top: 80px;
+  }
+}
+
+
+
+/* ================================
+   CASE STUDIES – CLEAN CARD LAYOUT
+================================= */
+
+.case-studies {
+  padding: 80px 0;
+}
+
+.case-studies .container {
+  max-width: 1200px;
+  margin: 0 auto;
+  text-align: center;
+}
+
+.case-studies h2 {
+  margin-bottom: 10px;
+  color: #000;
+  font-size: 30px;
+}
+
+.case-studies .subtitle {
+  max-width: 700px;
+  margin: 0 auto 50px;
+  color: #000000;
+  font-size: 16px;
+}
+
+/* GRID – 3 CARDS IN ONE ROW */
+.case-grid {
+  display: flex;
+  gap: 30px;
+  justify-content: center;
+  flex-wrap: nowrap; /* важно! – 3 хоризонтално */
+}
+
+/* CARD */
+.case-card {
+  background: #fff;
+  border-radius: 14px;
+  overflow: hidden;
+  width: 100%;
+  max-width: 360px;
+  box-shadow: 0 8px 25px rgba(0,0,0,0.09);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.case-card:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 12px 30px rgba(0,0,0,0.13);
+}
+
+/* IMAGE */
+.case-card img {
+  width: 100%;
+  height: 220px;
+  object-fit: cover;   /* всички снимки стават еднакви */
+  display: block;
+}
+
+/* TEXT AREA */
+.case-content {
+  padding: 20px 25px;
+  text-align: left;
+}
+
+.case-content h3 {
+  font-size: 20px;
+  margin-bottom: 10px;
+  font-weight: 600;
+}
+
+.case-content p {
+  color: #000000;
+  font-size: 15px;
+  line-height: 1.55;
+  margin-bottom: 18px;
+}
+
+/* READ BUTTON */
+.case-content .btn-read {
+  display: inline-block;
+  padding: 10px 18px;
+  background: #0047ab;
+  color: #fff;
+  font-size: 14px;
+  border-radius: 8px;
+  text-decoration: none;
+  transition: background 0.3s;
+}
+
+.case-content .btn-read:hover {
+  background: #00398a;
+}
+
+/* ================================
+        RESPONSIVE
+================================ */
+
+/* На таблет – 2 в ред */
+@media (max-width: 900px) {
+  .case-grid {
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+
+  .case-card {
+    max-width: 45%;
+  }
+}
+
+/* На телефон – 1 в ред */
+@media (max-width: 600px) {
+  .case-card {
+    max-width: 90%;
+  }
+}
+
+
+/* ================================
+        TESTIMONIALS — MAIN
+================================ */
+/* ================================
+   TESTIMONIALS – CARD STYLE
+================================ */
+.testimonials {
+  padding: 80px 0;
+  background: #b8b8b8;
+  text-align: center;
+}
+
+.testimonial-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 30px;
+  margin-top: 40px;
+}
+
+
+.subtitle-text {
+  font-size: 30px;
+  color: #000;
+}
+
+
+/* Card */
+.testimonial-card {
+  background: #ffffff;
+  border-radius: 16px;
+  overflow: hidden;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+  transition: 0.3s ease;
+}
+
+.testimonial-card:hover {
+  transform: translateY(-6px);
+}
+
+/* Image */
+.testimonial-card img {
+  width: 50%;
+  height: 220px;
+  object-fit: cover;
+  border-radius: 60%;
+  padding: 30px;
+}
+
+/* Content */
+.testimonial-content {
+  padding: 20px 25px;
+}
+
+.testimonial-content h3 {
+  font-size: 20px;
+  margin-bottom: 4px;
+  font-weight: 600;
+  color: #000;
+}
+
+.testimonial-content span {
+  font-size: 14px;
+  color: #000000;
+  display: block;
+  margin-bottom: 12px;
+}
+
+.testimonial-content p {
+  font-size: 15px;
+  color: #000000;
+  line-height: 1.6;
+}
+
+.subtitle {
+  color: #000;
+  font-size: 15px;
+}
+
+
+
+/* ================================
+        TESTIMONIALS — MOBILE
+================================ */
+@media (max-width: 992px) {
+  .testimonial-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 600px) {
+  .testimonial-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .testimonial-card img {
+    height: 180px;
+  }
+}
+
+
+
+/* ==========================
+    WHY CHOOSE SECTION
+========================== */
+.why-choose {
+  padding: 80px 0;
+  background: #b8b8b8;
+  text-align: center;
+}
+
+.why-choose h2 {
+  font-size: 36px;
+  font-weight: 700;
+  margin-bottom: 10px;
+  color: #000;
+}
+
+.why-choose .subtitle {
+  font-size: 18px;
+  color: #000000;
+  margin-bottom: 50px;
+}
+
+/* GRID */
+.why-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 30px;
+  justify-items: center;
+}
+
+/* CARD */
+.why-card {
+  background: #ffffff;
+  padding: 40px 30px;
+  border-radius: 16px;
+  box-shadow: 0 12px 25px rgba(0, 0, 0, 0.15);
+  max-width: 260px;
+  text-align: center;
+  transition: 0.3s ease;
+}
+
+.why-card:hover {
+  transform: translateY(-6px);
+}
+
+/* ICON */
+.why-card .icon {
+  font-size: 44px;
+  color: #007bff;
+  margin-bottom: 15px;
+}
+
+/* TEXT */
+.why-card h3 {
+  font-size: 20px;
+  font-weight: 600;
+  margin-bottom: 15px;
+}
+
+.why-card p {
+  font-size: 15px;
+  line-height: 1.6;
+  color: #000000;
+}
+
+
+/* Tablet */
+@media (max-width: 992px) {
+  .why-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+/* Mobile */
+@media (max-width: 600px) {
+  .why-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .why-card {
+    max-width: 100%;
+  }
+}
+
+
+
+/* ================================
+   CLIENTS (Testimonials) Section
+================================== */
+
+.clients {
+  padding: 70px 20px;
+  background: #b8b8b8;
+}
+
+.clients .container {
+  max-width: 1200px;
+  margin: 0 auto;
+  text-align: center;
+}
+
+.clients h2 {
+  font-size: 32px;
+  font-weight: 700;
+  color: #222;
+  margin-bottom: 10px;
+}
+
+.clients .subtitle {
+  font-size: 18px;
+  color: #000000;
+  margin-bottom: 40px;
+}
+
+/* GRID */
+.clients-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 25px;
+  padding: 10px;
+}
+
+/* CARD */
+.client-card {
+  background: #fff;
+  border-radius: 15px;
+  padding: 25px 20px;
+  text-align: center;
+  box-shadow: 0px 4px 15px rgba(0,0,0,0.1);
+  transition: all 0.3s ease;
+}
+
+.client-card:hover {
+  transform: translateY(-7px);
+  box-shadow: 0px 10px 22px rgba(0,0,0,0.15);
+}
+
+/* IMAGE */
+.client-card img {
+  width: 110px;
+  height: 110px;
+  object-fit: cover;
+  border-radius: 50%;
+  margin-bottom: 15px;
+  border: 4px solid #e6e6e6;
+}
+
+/* TEXT */
+.client-card h3 {
+  font-size: 20px;
+  font-weight: 700;
+  margin-bottom: 5px;
+  color: #000000;
+}
+
+.client-card span {
+  display: block;
+  font-size: 15px;
+  color: #000000;
+  margin-bottom: 15px;
+}
+
+.client-card p {
+  font-size: 15px;
+  line-height: 1.6;
+  color: #000000;
+}
+
+/* ================================
+   RESPONSIVE – TABLET
+================================== */
+@media (max-width: 992px) {
+  .clients-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .client-card img {
+    width: 100px;
+    height: 100px;
+  }
+}
+
+/* ================================
+   RESPONSIVE – MOBILE
+================================== */
+@media (max-width: 600px) {
+  .clients {
+    padding: 50px 10px;
+  }
+
+  .clients-grid {
+    grid-template-columns: 1fr;
+    gap: 20px;
+  }
+
+  .client-card {
+    padding: 20px 15px;
+  }
+
+  .client-card img {
+    width: 90px;
+    height: 90px;
+  }
+
+  .client-card h3 {
+    font-size: 18px;
+  }
+
+  .client-card p {
+    font-size: 14px;
+  }
+}
+
+
+/* ===============================
+   FAQ SECTION — Clean & Modern
+================================= */
+
+.faq {
+  padding: 80px 20px;
+  color: #b8b8b8;
+}
+
+.faq .container {
+  max-width: 900px;
+  margin: 0 auto;
+  text-align: center;
+}
+
+/* Заглавия */
+.faq h2 {
+  font-size: 34px;
+  font-weight: 700;
+  color: #000000;
+  margin-bottom: 10px;
+}
+
+.faq .subtitle {
+  font-size: 18px;
+  color: #000000;
+  margin-bottom: 40px;
+}
+
+/* Въпросите */
+.faq-item {
+  max-width: 800px;
+  margin: 0 auto 15px;
+  text-align: left;
+  padding: 18px 0;
+  border-bottom: 3px solid #ffffff;
+  cursor: pointer;
+  transition: color 0.3s ease;
+  padding-bottom: 10px;
+}
+
+.faq-item:hover {
+  color: #0066cc;
+}
+
+.faq-item h3 {
+  font-size: 20px;
+  font-weight: 600;
+  margin: 0;
+  color: #000000;
+}
+
+/* Скрити отговори (ако решиш да ги активираш по-късно) */
+.faq-answer {
+  display: none;
+  padding-top: 10px;
+  font-size: 16px;
+  color: #000000;
+  line-height: 1.6;
+}
+
+.faq-item:hover {
+    color: #007bff;
+}
+
+/* ===============================
+   MOBILE RESPONSIVE (max-width: 600px)
+================================= */
+
+@media (max-width: 600px) {
+  .faq {
+    padding: 50px 15px;
+  }
+
+  .faq h2 {
+    font-size: 28px;
+  }
+
+  .faq .subtitle {
+    font-size: 16px;
+  }
+
+  .faq-item h3 {
+    font-size: 18px;
+  }
+}
+
+
+/* ===============================
+   PARTNERS SECTION — Clean Logos Row
+================================= */
+
+.partners {
+  padding: 70px 20px;
+  background: #b8b8b8; /* лек фон за контраст */
+  text-align: center;
+}
+
+.partners h2 {
+  font-size: 32px;
+  font-weight: 700;
+  color: #222;
+  margin-bottom: 10px;
+}
+
+.subtitle {
+  margin-bottom: 30px;
+  font-size: 15px;
+}
+
+.partners-row {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 40px;
+  flex-wrap: wrap; /* ако няма място, пада красиво на нов ред */
+}
+
+.partners-row img {
+  width: 130px;          /* еднакъв размер за всички логa */
+  height: auto; 
+  opacity: 0.8;
+  transition: all 0.3s ease;
+}
+
+.partners-row img:hover {
+  filter: grayscale(0%);
+  opacity: 1;
+  transform: scale(1.07);
+}
+
+/* ===============================
+   MOBILE RESPONSIVE
+================================= */
+
+@media (max-width: 600px) {
+  .partners-row {
+    gap: 25px;
+  }
+
+  .partners-row img {
+    width: 100px;
+  }
+
+  .partners h2 {
+    font-size: 26px;
+  }
+}
+
+/* Awards */
+
+
+.awards {
+  padding: 140px 20px;
+  background: #b8b8b8; /* лек фон за контраст */
+  text-align: center;
+}
+
+.section-subtitle {
+  margin-bottom: 50px;
+}
+
+
+
+.awards h2 {
+  font-size: 32px;
+  color: #222;
+  margin-bottom: 10px;
+}
+
+.award-card h3 {
+  color: #000000;
+  margin-bottom: 10px;
+}
+
+.award-card p {
+  color: #000000;
+  font-size: 15px;
+}
+
+.subtitle {
+  margin-bottom: 30px;
+  font-size: 15px;
+}
+
+.awards-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 40px;
+  flex-wrap: wrap; /* ако няма място, пада красиво на нов ред */
+}
+
+.award-card img {
+  width: 100px;          /* еднакъв размер за всички логa */
+  height: auto; 
+  opacity: 0.8;
+  transition: all 0.3s ease;
+}
+
+.award-card img:hover {
+  filter: grayscale(0%);
+  opacity: 1;
+  transform: scale(1.07);
+}
+
+/* ===============================
+   MOBILE RESPONSIVE
+================================= */
+
+@media (max-width: 600px) {
+  .award-card {
+    gap: 25px;
+  }
+
+  .award-card img {
+    width: 100px;
+  }
+
+  .awards h2 {
+    font-size: 26px;
+  }
+}
+
+
+
+.blog-grid {
+  display: flex;
+  justify-content: center;   /* центрира всички карти хоризонтално */
+  gap: 30px;                 /* разстояние между картите */
+  flex-wrap: wrap;           /* responsive поведение */
+  margin-top: 40px;
+}
+
+
+.blog {
+  text-align: center;
+}
+
+
+.blog .Maintext {
+  font-size: 32px;
+}
+
+.blog .subtitle {
+  max-width: 700px;
+  margin: 0 auto 40px;
+  font-size: 15px;
+}
+
+
+.blog-post {
+  background: #fff;
+  max-width: 360px;
+  width: 100%;
+  border-radius: 14px;
+  overflow: hidden;
+  box-shadow: 0 12px 30px rgba(0,0,0,0.08);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+/* hover ефект */
+.blog-post:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 20px 40px rgba(0,0,0,0.12);
+}
 
 /* =========================
-   Optional: expose for debugging
+   IMAGE
    ========================= */
-window._i18n = {
-  translations,
-  setLanguage,
-  applyTranslation
-};
+.blog-post img {
+  width: 100%;
+  height: 220px;
+  object-fit: cover;
+  display: block;
+}
 
 /* =========================
-   CSS note: for reveal animations you need CSS like:
-   .reveal-on-scroll { opacity:0; transform: translateY(12px); transition: all .7s ease-out; }
-   .reveal-on-scroll.revealed { opacity:1; transform: translateY(0); }
-   Add this to your style.css if not present.
+   CONTENT
    ========================= */
+.blog-content {
+  padding: 22px;
+  text-align: left;
+}
+
+.blog-content h3 {
+  font-size: 1.15rem;
+  margin-bottom: 12px;
+}
+
+.blog-content p {
+  font-size: 0.95rem;
+  line-height: 1.6;
+  margin-bottom: 18px;
+  color: #555;
+}
+
+/* =========================
+   READ MORE BUTTON
+   ========================= */
+.blog .btn-read {
+  display: inline-block;
+  font-size: 0.9rem;
+  color: #fff;
+  background: #0047ab;
+  padding: 10px 18px;
+  border-radius: 30px;
+  text-decoration: none;
+  transition: background 0.3s ease;
+}
+
+.blog .btn-read:hover {
+  background: #444;
+}
+
+
+/* =========================
+   PRICING GRID – centered
+   ========================= */
+
+.pricing {
+  background: #b8b8b8;
+  padding: 80px 0;
+}
+
+.pricing h2 {
+  text-align: center;
+  font-size: 2.6rem;
+  margin-bottom: 10px;
+}
+
+.pricing .subtitle {
+  text-align: center;
+  font-size: 1.1rem;
+  margin-bottom: 60px;
+  color: #111;
+}
+
+/* =========================
+   PRICING GRID
+   ========================= */
+.pricing-grid {
+  display: flex;
+  justify-content: center;
+  gap: 35px;
+  flex-wrap: wrap;
+}
+
+/* =========================
+   PRICING CARD
+   ========================= */
+.pricing-card {
+  background: #fff;
+  width: 330px;
+  border-radius: 18px;
+  padding: 40px 30px;
+  text-align: center;
+  box-shadow: 0 15px 40px rgba(0,0,0,0.12);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.pricing-card:hover {
+  transform: translateY(-10px);
+  box-shadow: 0 25px 55px rgba(0,0,0,0.18);
+}
+
+/* Featured (Standard) */
+.pricing-card.featured {
+  border-top: 6px solid #0d6efd;
+}
+
+/* =========================
+   TITLES & PRICE
+   ========================= */
+.pricing-card h3 {
+  font-size: 1.6rem;
+  color: #0d6efd;
+  margin-bottom: 20px;
+}
+
+.pricing-card .price {
+  font-size: 2.6rem;
+  font-weight: 700;
+  margin-bottom: 30px;
+  color: #222;
+}
+
+.pricing-card .price span {
+  font-size: 1rem;
+  font-weight: 400;
+}
+
+/* =========================
+   FEATURES LIST
+   ========================= */
+.pricing-card ul {
+  list-style: none;
+  padding: 0;
+  margin: 0 0 30px;
+}
+
+.pricing-card ul li {
+  font-size: 0.95rem;
+  margin-bottom: 12px;
+  color: #111;
+}
+
+/* =========================
+   BUTTON
+   ========================= */
+.pricing-card .btn {
+  display: inline-block;
+  padding: 12px 30px;
+  background: #0d6efd;
+  color: #fff;
+  border-radius: 10px;
+  text-decoration: none;
+  font-weight: 500;
+  transition: background 0.3s ease;
+}
+
+.pricing-card .btn:hover {
+  background: #084298;
+}
+
+/* =========================
+   MOBILE
+   ========================= */
+@media (max-width: 900px) {
+  .pricing-grid {
+    gap: 25px;
+  }
+}
+
+@media (max-width: 600px) {
+  .pricing h2 {
+    font-size: 2.1rem;
+  }
+
+  .pricing-card {
+    width: 100%;
+    max-width: 360px;
+  }
+}
+
+
+/* JOURNEY SECTION */
+.journey {
+  background: #b8b8b8;
+  padding: 80px 0;
+}
+
+.journey h2 {
+  text-align: center;
+  font-size: 36px;
+  margin-bottom: 10px;
+  color: #2c2c2c;
+}
+
+.journey .subtitle {
+  text-align: center;
+  font-size: 16px;
+  color: #333;
+  margin-bottom: 60px;
+}
+
+/* Timeline wrapper */
+.timeline {
+  position: relative;
+  max-width: 900px;
+  margin: 0 auto;
+  padding-left: 40px;
+}
+
+/* Vertical line */
+.timeline::before {
+  content: "";
+  position: absolute;
+  left: 10px;
+  top: 0;
+  width: 3px;
+  height: 100%;
+  background: #0d6efd;
+}
+
+/* Timeline item */
+.timeline-item {
+  position: relative;
+  margin-bottom: 40px;
+}
+
+/* Dot */
+.timeline-item::before {
+  content: "";
+  position: absolute;
+  left: -3px;
+  top: 20px;
+  width: 16px;
+  height: 16px;
+  background: #0d6efd;
+  border-radius: 50%;
+  border: 3px solid #fff;
+}
+
+/* Content card */
+.timeline-content {
+  background: #fff;
+  padding: 25px 30px;
+  border-radius: 12px;
+  box-shadow: 0 8px 20px rgba(0,0,0,0.1);
+}
+
+/* Titles */
+.timeline-content h3 {
+  color: #0d6efd;
+  font-size: 18px;
+  margin-bottom: 6px;
+}
+
+.timeline-content h4 {
+  font-size: 20px;
+  color: #000;
+  margin-bottom: 10px;
+}
+
+.timeline-content p {
+  font-size: 15px;
+  color: #333;
+  line-height: 1.6;
+}
+
+
+/* CAREERS SECTION */
+.careers {
+  background: #bfbfbf;
+  padding: 80px 0;
+}
+
+.careers h2 {
+  text-align: center;
+  font-size: 36px;
+  margin-bottom: 10px;
+  color: #2c2c2c;
+}
+
+.careers h2 span {
+  color: #0d6efd;
+}
+
+.careers .subtitle {
+  text-align: center;
+  font-size: 16px;
+  color: #333;
+  margin-bottom: 60px;
+}
+
+
+/* Grid */
+.careers-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 30px;
+  max-width: 1100px;
+  margin: 0 auto;
+}
+
+/* Card */
+.career-card {
+  background: #fff;
+  padding: 30px;
+  border-radius: 16px;
+  box-shadow: 0 10px 25px rgba(0,0,0,0.12);
+  display: flex;
+  flex-direction: column;
+}
+
+.career-card h3 {
+  font-size: 22px;
+  color: #0d6efd;
+  margin-bottom: 10px;
+}
+
+.career-card p {
+  font-size: 15px;
+  color: #333;
+  margin-bottom: 20px;
+  line-height: 1.6;
+}
+
+/* List */
+.career-card ul {
+  list-style: none;
+  padding: 0;
+  margin-bottom: 25px;
+}
+
+.career-card ul li {
+  display: flex;
+  align-items: center;
+  font-size: 14px;
+  margin-bottom: 10px;
+  color: #000;
+}
+
+.career-card ul li i {
+  color: #0d6efd;
+  margin-right: 10px;
+  font-size: 16px;
+}
+
+/* Button */
+.btn-apply {
+  margin-top: auto;
+  align-self: flex-start;
+  background: #0d6efd;
+  color: #fff;
+  padding: 12px 24px;
+  border-radius: 8px;
+  text-decoration: none;
+  font-size: 14px;
+  font-weight: 500;
+  transition: background 0.3s ease;
+}
+
+.btn-apply:hover {
+  background: #0b5ed7;
+}
+
+
+/* =========================
+   CTA FINAL
+   ========================= */
+.cta-final {
+    background-image: url(img/cta-final/background.png);
+    background-position: center 60%;
+    filter: brightness(80%);
+    margin-bottom: 30px;
+    text-align: center;
+    padding: 80px 20px;
+    position: relative;
+    overflow: hidden;
+
+}
+
+.cta-final .cta-content {
+  max-width: 900px;
+  margin: 0 auto;
+}
+
+.cta-final h2 {
+  font-size: 2.4rem;
+  font-weight: 700;
+  margin-bottom: 20px;
+  text-shadow: 2px 2px 5px black;
+  color: #ffffff;
+  border: #000
+}
+
+.cta-final p {
+  font-size: 1.15rem;
+  text-shadow: 2px 2px 5px black;
+  margin-bottom: 35px;
+  line-height: 1.6;
+  opacity: 0.95;
+  color: #ffffff;
+}
+
+.cta-final .btn-primary {
+  display: inline-block;
+  background: #fff;
+  color: #0d6efd;
+  padding: 14px 36px;
+  border-radius: 8px;
+  font-weight: 600;
+  text-decoration: none;
+  transition: all 0.3s ease;
+}
+
+.cta-final .btn-primary:hover {
+  background: #e9f1ff;
+  transform: translateY(-2px);
+}
+
+
+/* =========================
+   CONTACT SECTION
+   ========================= */
+.contact {
+  background: #01193a;
+  padding: 90px 20px;
+}
+
+.contact .container {
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.contact h2 {
+  text-align: center;
+  font-size: 2.4rem;
+  margin-bottom: 10px;
+  color: #ffffff;
+}
+
+.contact .subtitle {
+  text-align: center;
+  max-width: 650px;
+  margin: 0 auto 60px;
+  color: #ffffff;
+}
+
+.contact-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 50px;
+}
+
+.contact-info h3 {
+  font-size: 1.6rem;
+  margin-bottom: 15px;
+  color: #ffffff;
+}
+
+.contact-info p {
+  margin-bottom: 25px;
+  color: #ffffff;
+}
+
+.contact-info ul {
+  list-style: none;
+  padding: 0;
+}
+
+.contact-info li {
+  display: flex;
+  align-items: center;
+  margin-bottom: 15px;
+  font-size: 1rem;
+}
+
+.contact-info i {
+  color: #0d6efd;
+  margin-right: 12px;
+  font-size: 1.1rem;
+}
+
+
+.Contacts {
+  color: #ffffff;
+}
+
+/* FORM */
+.contact-form {
+  background: #fff;
+  padding: 35px;
+  border-radius: 14px;
+  box-shadow: 0 12px 30px rgba(0,0,0,0.08);
+}
+
+.form-group {
+  margin-bottom: 20px;
+}
+
+.contact-form input,
+.contact-form textarea {
+  width: 100%;
+  padding: 14px 16px;
+  border-radius: 8px;
+  border: 1px solid #ddd;
+  font-size: 0.95rem;
+}
+
+.contact-form input:focus,
+.contact-form textarea:focus {
+  outline: none;
+  border-color: #0d6efd;
+}
+
+.contact-form .btn {
+  width: 100%;
+  padding: 14px;
+  background: #0d6efd;
+  color: #fff;
+  border: none;
+  border-radius: 8px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background 0.3s ease;
+}
+
+.contact-form .btn:hover {
+  background: #0b5ed7;
+}
+
+/* Responsive */
+@media (max-width: 900px) {
+  .contact-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+
+
+/* =========================
+   CONTACT FORM
+   ========================= */
+.contact-form {
+  background: #ffffff;
+  padding: 40px;
+  border-radius: 16px;
+  box-shadow: 0 15px 35px rgba(0, 0, 0, 0.08);
+}
+
+.contact-form form {
+  display: flex;
+  flex-direction: column;
+}
+
+.form-group {
+  margin-bottom: 18px;
+}
+
+.contact-form input,
+.contact-form textarea {
+  width: 100%;
+  padding: 14px 16px;
+  border-radius: 10px;
+  border: 1px solid #ddd;
+  font-size: 0.95rem;
+  font-family: inherit;
+  transition: border-color 0.25s ease, box-shadow 0.25s ease;
+}
+
+.contact-form textarea {
+  resize: none;
+}
+
+.contact-form input::placeholder,
+.contact-form textarea::placeholder {
+  color: #999;
+}
+
+.contact-form input:focus,
+.contact-form textarea:focus {
+  outline: none;
+  border-color: #0d6efd;
+  box-shadow: 0 0 0 3px rgba(13, 110, 253, 0.15);
+}
+
+/* Submit button */
+.contact-form .btn {
+  margin-top: 10px;
+  padding: 14px;
+  background: linear-gradient(135deg, #0d6efd, #0b5ed7);
+  color: #fff;
+  font-size: 1rem;
+  font-weight: 600;
+  border: none;
+  border-radius: 10px;
+  cursor: pointer;
+  transition: transform 0.25s ease, box-shadow 0.25s ease;
+}
+
+.contact-form .btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 10px 25px rgba(13, 110, 253, 0.35);
+}
+
+.contact-form .btn:active {
+  transform: translateY(0);
+  box-shadow: none;
+}
+
+/* Mobile */
+@media (max-width: 768px) {
+  .contact-form {
+    padding: 30px 25px;
+  }
+}
+
+
+
+/* =========================
+   NEWSLETTER SECTION
+   ========================= */
+.newsletter {
+  padding: 80px 20px;
+  background: linear-gradient(135deg, #0d6efd, #0b5ed7);
+  color: #ffffff;
+  text-align: center;
+}
+
+.newsletter .container {
+  max-width: 700px;
+  margin: 0 auto;
+}
+
+.newsletter h2 {
+  font-size: 2.2rem;
+  margin-bottom: 15px;
+  font-weight: 700;
+}
+
+.newsletter .subtitle {
+  font-size: 1.05rem;
+  line-height: 1.6;
+  margin-bottom: 35px;
+  color: rgba(255, 255, 255, 0.9);
+}
+
+.newsletter .subtitle strong {
+  color: #ffffff;
+}
+
+/* Form */
+.newsletter-form {
+  display: flex;
+  justify-content: center;
+  gap: 12px;
+  max-width: 600px;
+  margin: 0 auto 20px;
+}
+
+.newsletter-form input {
+  flex: 1;
+  padding: 14px 16px;
+  border-radius: 10px;
+  border: none;
+  font-size: 0.95rem;
+}
+
+.newsletter-form input::placeholder {
+  color: #999;
+}
+
+.newsletter-form input:focus {
+  outline: none;
+}
+
+/* Button */
+.btn-subscribe {
+  padding: 14px 24px;
+  background: #ffffff;
+  color: #0d6efd;
+  font-weight: 600;
+  border: none;
+  border-radius: 10px;
+  cursor: pointer;
+  transition: transform 0.25s ease, box-shadow 0.25s ease;
+}
+
+.btn-subscribe:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+}
+
+.btn-subscribe:active {
+  transform: translateY(0);
+  box-shadow: none;
+}
+
+/* Note */
+.newsletter .note {
+  font-size: 0.85rem;
+  color: rgba(255, 255, 255, 0.85);
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .newsletter-form {
+    flex-direction: column;
+  }
+
+  .btn-subscribe {
+    width: 100%;
+  }
+}
+
+
+/* =========================
+   MAP SECTION
+   ========================= */
+.map-section {
+  padding: 80px 20px;
+  background-color: #f8f9fc;
+}
+
+.map-section .container {
+  max-width: 1100px;
+  margin: 0 auto;
+  text-align: center;
+}
+
+.map-section h3 {
+  font-size: 1.9rem;
+  font-weight: 700;
+  margin-bottom: 30px;
+  color: #222;
+}
+
+/* Map container */
+.map-container {
+  width: 100%;
+  border-radius: 16px;
+  overflow: hidden;
+  box-shadow: 0 20px 45px rgba(0, 0, 0, 0.1);
+}
+
+/* Responsive height */
+.map-container iframe {
+  width: 100%;
+  height: 420px;
+  border: 0;
+}
+
+/* Mobile */
+@media (max-width: 768px) {
+  .map-section {
+    padding: 60px 15px;
+  }
+
+  .map-section h3 {
+    font-size: 1.6rem;
+  }
+
+  .map-container iframe {
+    height: 300px;
+  }
+}
+
+
+
+/* =========================
+   CHAT WIDGET
+   ========================= */
+.chat-widget {
+  position: fixed;
+  bottom: 25px;
+  right: 25px;
+  z-index: 9999;
+  font-family: inherit;
+}
+
+/* Toggle button */
+.chat-toggle {
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, #4f46e5, #6366f1);
+  color: #fff;
+  border: none;
+  cursor: pointer;
+  font-size: 22px;
+  box-shadow: 0 15px 35px rgba(79, 70, 229, 0.4);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.chat-toggle:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 20px 40px rgba(79, 70, 229, 0.55);
+}
+
+/* Chat box */
+.chat-box {
+  position: absolute;
+  bottom: 75px;
+  right: 0;
+  width: 320px;
+  max-height: 460px;
+  background: #fff;
+  border-radius: 18px;
+  box-shadow: 0 25px 60px rgba(0, 0, 0, 0.15);
+  display: none;
+  flex-direction: column;
+  overflow: hidden;
+  animation: chatFadeUp 0.3s ease;
+}
+
+.chat-box.active {
+  display: flex;
+}
+
+@keyframes chatFadeUp {
+  from {
+    opacity: 0;
+    transform: translateY(15px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Header */
+.chat-header {
+  background: linear-gradient(135deg, #4f46e5, #6366f1);
+  color: #fff;
+  padding: 15px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.chat-header h4 {
+  font-size: 1rem;
+  margin: 0;
+  font-weight: 600;
+}
+
+.chat-close {
+  background: none;
+  border: none;
+  color: #fff;
+  font-size: 22px;
+  cursor: pointer;
+}
+
+/* Body */
+.chat-body {
+  padding: 15px;
+  flex: 1;
+  overflow-y: auto;
+  background: #f9fafb;
+}
+
+.chat-body p {
+  font-size: 0.9rem;
+  color: #555;
+  margin-bottom: 10px;
+}
+
+.chat-messages {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+/* Footer */
+.chat-footer {
+  display: flex;
+  align-items: center;
+  border-top: 1px solid #eee;
+  padding: 10px;
+  background: #fff;
+}
+
+.chat-footer input {
+  flex: 1;
+  padding: 10px 12px;
+  border: 1px solid #ddd;
+  border-radius: 10px;
+  font-size: 0.9rem;
+  outline: none;
+}
+
+.chat-footer button {
+  margin-left: 10px;
+  background: #4f46e5;
+  border: none;
+  color: #fff;
+  padding: 10px 14px;
+  border-radius: 10px;
+  cursor: pointer;
+  font-size: 14px;
+  transition: background 0.3s ease;
+}
+
+.chat-footer button:hover {
+  background: #4338ca;
+}
+
+
+.chat-msg {
+  max-width: 80%;
+  padding: 10px 14px;
+  border-radius: 12px;
+  font-size: 0.9rem;
+  line-height: 1.4;
+}
+
+.chat-msg.user {
+  align-self: flex-end;
+  background: #4f46e5;
+  color: #fff;
+}
+
+.chat-msg.bot {
+  align-self: flex-start;
+  background: #e5e7eb;
+  color: #333;
+}
+
+/* Mobile */
+@media (max-width: 480px) {
+  .chat-box {
+    width: 90vw;
+    right: -10px;
+  }
+}
+
+
+.footer {
+  background: #0f172a;
+  color: #cbd5f5;
+  padding: 60px 20px 30px;
+}
+
+.footer-container {
+  max-width: 1200px;
+  margin: auto;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 40px;
+}
+
+.footer-logo h2 {
+  font-size: 1.8rem;
+  color: #fff;
+}
+
+.footer-logo h2 span {
+  color: #4f46e5;
+}
+
+.footer-logo p {
+  margin-top: 10px;
+  font-size: 0.95rem;
+  line-height: 1.6;
+}
+
+.footer h3 {
+  font-size: 1.1rem;
+  margin-bottom: 15px;
+  color: #fff;
+}
+
+.footer-links ul {
+  list-style: none;
+  padding: 0;
+}
+
+.footer-links li {
+  margin-bottom: 8px;
+}
+
+.footer-links a {
+  color: #cbd5f5;
+  text-decoration: none;
+  transition: color 0.3s;
+}
+
+.footer-links a:hover {
+  color: #4f46e5;
+}
+
+.footer-contact p {
+  margin-bottom: 10px;
+  font-size: 0.95rem;
+}
+
+.footer-contact i {
+  margin-right: 8px;
+  color: #4f46e5;
+}
+
+.footer-bottom {
+  margin-top: 40px;
+  border-top: 1px solid rgba(255,255,255,0.1);
+  padding-top: 20px;
+  text-align: center;
+  font-size: 0.85rem;
+}
