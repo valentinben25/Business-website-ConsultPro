@@ -822,6 +822,31 @@ function setLanguageWithTransition(lang) {
   }, 200);
 }
 
+function setLanguageWithTransition(lang) {
+  const textNodes = document.querySelectorAll(
+    '[data-i18n], [data-i18n-html], [data-i18n-placeholder]'
+  );
+
+  // fade out ONLY text
+  textNodes.forEach(el => {
+    el.classList.add('text-fade-out');
+  });
+
+  setTimeout(() => {
+    setLanguage(lang);
+
+    textNodes.forEach(el => {
+      el.classList.remove('text-fade-out');
+      el.classList.add('text-fade-in');
+
+      setTimeout(() => {
+        el.classList.remove('text-fade-in');
+      }, 300);
+    });
+  }, 200);
+}
+
+
 function initLanguageButtons() {
   const enBtn = document.getElementById('en-btn');
   const bgBtn = document.getElementById('bg-btn');
