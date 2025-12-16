@@ -716,6 +716,33 @@ footer: {
 
 };
 
+document.addEventListener("DOMContentLoaded", () => {
+  const slides = document.querySelectorAll(".hero-slider .slide");
+  if (!slides.length) return;
+
+  let currentIndex = 0;
+  const intervalTime = 10000; // 
+
+  // начално състояние
+  slides.forEach((slide, index) => {
+    slide.style.opacity = index === 0 ? "1" : "0";
+    slide.style.transition = "opacity 1s ease";
+    slide.classList.toggle("active", index === 0);
+  });
+
+  function showNextSlide() {
+    slides[currentIndex].classList.remove("active");
+    slides[currentIndex].style.opacity = "0";
+
+    currentIndex = (currentIndex + 1) % slides.length;
+
+    slides[currentIndex].classList.add("active");
+    slides[currentIndex].style.opacity = "1";
+  }
+
+  setInterval(showNextSlide, intervalTime);
+});
+
 /* =========================
    Helpers
    ========================= */
@@ -821,6 +848,7 @@ function setLanguageWithTransition(lang) {
     textEls.forEach(el => el.classList.remove('lang-text-hide'));
   }, 200);
 }
+
 
 function setLanguageWithTransition(lang) {
   const textNodes = document.querySelectorAll(
